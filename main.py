@@ -10,6 +10,7 @@ library_paths = [
     os.path.join(script_path, "lib"),
     os.path.join(script_path, "lib", "log"),
     os.path.join(script_path, "lib", "loader"),
+    os.path.join(script_path, "lib", "converter"),
 ]
 
 for p in library_paths:
@@ -19,6 +20,7 @@ for p in library_paths:
 # Import library classes
 from logger_facade import LoggerFacade
 from odis_geodata_loader import OdisGeoDataLoader
+from lor_statistics_data_loader import LorStatisticsDataLoader
 from tracking_decorator import TrackingDecorator
 
 
@@ -59,6 +61,7 @@ def main(argv):
 
     # Load data
     OdisGeoDataLoader().run(logger, os.path.join(raw_path, "lor-odis-geo"), clean=clean, quiet=quiet)
+    LorStatisticsDataLoader().run(logger, os.path.join(raw_path, "lor-statistics"), clean=clean, quiet=quiet)
 
 
 if __name__ == "__main__":
