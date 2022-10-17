@@ -21,6 +21,7 @@ for p in library_paths:
 from logger_facade import LoggerFacade
 from odis_geodata_loader import OdisGeoDataLoader
 from lor_statistics_data_loader import LorStatisticsDataLoader
+from lor_senate_data_loader import LorSenateDataLoader
 from tracking_decorator import TrackingDecorator
 
 
@@ -62,6 +63,7 @@ def main(argv):
     # Load data
     OdisGeoDataLoader().run(logger, os.path.join(raw_path, "lor-odis-geo"), clean=clean, quiet=quiet)
     LorStatisticsDataLoader().run(logger, os.path.join(raw_path, "lor-statistics"), clean=clean, quiet=quiet)
+    LorSenateDataLoader().run(logger, os.path.join(raw_path, "lor-senate"), clean=clean, quiet=quiet)
 
 
 if __name__ == "__main__":
