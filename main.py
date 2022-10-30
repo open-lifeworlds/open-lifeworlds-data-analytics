@@ -23,6 +23,7 @@ from odis_geodata_loader import OdisGeoDataLoader
 from lor_statistics_data_loader import LorStatisticsDataLoader
 from lor_senate_data_loader import LorSenateDataLoader
 from geojson_projection_converter import GeojsonProjectionConverter
+from geojson_bounding_box_converter import GeojsonBoundingBoxConverter
 from tracking_decorator import TrackingDecorator
 
 
@@ -68,7 +69,7 @@ def main(argv):
 
     # Convert data
     GeojsonProjectionConverter().run(logger, os.path.join(raw_path, "lor-odis-geo"), data_path, clean=False, quiet=False)
-
+    GeojsonBoundingBoxConverter().run(logger, data_path, data_path, clean=False, quiet=False)
 
 if __name__ == "__main__":
     main(sys.argv[1:])

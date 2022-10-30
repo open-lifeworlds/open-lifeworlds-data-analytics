@@ -64,7 +64,7 @@ class GeojsonProjectionConverter:
 
             # Check if result needs to be generated
             if clean or not os.path.exists(results_file_path):
-                with open(source_file_path) as geojson_file:
+                with open(source_file_path, "r") as geojson_file:
                     geojson = json.load(geojson_file)
                     projection = str(geojson["crs"]["properties"]["name"])
                     projection_number = projection.split(":")[-1]
