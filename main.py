@@ -68,8 +68,8 @@ def main(argv):
     LorSenateDataLoader().run(logger, os.path.join(raw_path, "lor-senate"), clean=clean, quiet=quiet)
 
     # Convert data
-    GeojsonProjectionConverter().run(logger, os.path.join(raw_path, "lor-odis-geo"), data_path, clean=False, quiet=False)
-    GeojsonBoundingBoxConverter().run(logger, data_path, data_path, clean=False, quiet=False)
+    GeojsonProjectionConverter().run(logger, os.path.join(raw_path, "lor-odis-geo"), data_path, clean=clean, quiet=quiet)
+    GeojsonBoundingBoxConverter().run(logger, data_path, data_path, clean=clean, quiet=quiet)
 
 if __name__ == "__main__":
     main(sys.argv[1:])

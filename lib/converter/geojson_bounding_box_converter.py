@@ -1,3 +1,4 @@
+import itertools
 import json
 import os
 from pathlib import Path
@@ -5,9 +6,16 @@ from pathlib import Path
 from tracking_decorator import TrackingDecorator
 
 
-def extend_by_bounding_box(geojson):
+def flatten_list(complex_list):
+    while not (type(complex_list[0][0]) == float and type(complex_list[0][1]) == float):
+        complex_list = list(itertools.chain(*complex_list))
+
+    return complex_list
+
+
+def extend_by_bounding_box(geojson, clean=False):
     for feature in geojson["features"]:
-        if "bounding_box" not in feature["properties"]:
+        if "bounding_box" not in feature["properties"] or clean:
             xmin = None
             ymin = None
             xmax = None
@@ -16,10 +24,7 @@ def extend_by_bounding_box(geojson):
             geometry = feature["geometry"]
             coordinates = geometry["coordinates"]
 
-            while not (type(coordinates[0][0]) == float and type(coordinates[0][1]) == float):
-                coordinates = coordinates[0]
-
-            for coordinate in coordinates:
+            for coordinate in flatten_list(coordinates):
 
                 x = coordinate[0]
                 y = coordinate[1]
@@ -62,7 +67,7 @@ class GeojsonBoundingBoxConverter:
                 projection_number = projection.split(":")[-1]
 
                 if projection_number == target_projection_number or projection_number == "CRS84":
-                    geojson_with_bounding_box = extend_by_bounding_box(geojson)
+                    geojson_with_bounding_box = extend_by_bounding_box(geojson, clean)
 
                     with open(results_file_path, "w") as geojson_file:
                         json.dump(geojson_with_bounding_box, geojson_file)
