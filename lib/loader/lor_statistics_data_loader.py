@@ -49,14 +49,14 @@ def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
                     "deutsche_zusammen_anzahl", "deutsche_zusammen_prozentual",
                     "deutsche_ohne_migrationshintergrund_anzahl", "deutsche_ohne_migrationshintergrund_prozentual",
                     "deutsche_mit_migrationshintergrund_anzahl", "deutsche_mit_migrationshintergrund_prozentual",
-                    "auslaender_anzahl", "auslaender_prozentual",
+                    "auslaender_anzahl", "auslaender_prozentual"
                 ]
             elif "T2" in sheet:
                 skiprows = 4
                 names = [
                     "bezirk", "prognoseraum", "bezirksregion", "planungsraum",
                     "insgesamt",
-                    "alter_unter_6", "alter_6-15", "alter_15-18", "alter_28-27", "alter_27-45", "alter_45-55",
+                    "alter_unter_6", "alter_6-15", "alter_15-18", "alter_18-27", "alter_27-45", "alter_45-55",
                     "alter_55-65", "alter_65_und_mehr",
                     "weiblich", "auslaender"
                 ]
@@ -65,9 +65,8 @@ def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
                 names = [
                     "bezirk", "prognoseraum", "bezirksregion", "planungsraum",
                     "insgesamt",
-                    "alter_unter_6", "alter_6-15", "alter_15-18", "alter_28-27", "alter_27-45", "alter_45-55",
-                    "alter_55-65", "alter_65_und_mehr",
-                    "weiblich", "auslaender"
+                    "alter_unter_6", "alter_6-15", "alter_15-18", "alter_18-27", "alter_27-45", "alter_45-55",
+                    "alter_55-65", "alter_65_und_mehr", "weiblich", "auslaender"
                 ]
             elif "T4" in sheet:
                 skiprows = 6
@@ -88,8 +87,14 @@ def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
             if clean or not os.path.exists(file_path_csv):
 
                 # Convert Excel file to csv
-                pd.read_excel(file_path, engine=engine, sheet_name=sheet, skiprows=skiprows, names=names) \
+                pd.read_excel(file_path, engine=engine, sheet_name=sheet, skiprows=skiprows,
+                              usecols=list(range(0, len(names))), names=names) \
+                    .drop(columns="_", errors="ignore") \
                     .dropna() \
+                    .astype({"bezirk": "int"}, errors="ignore") \
+                    .astype({"prognoseraum": "int"}, errors="ignore") \
+                    .astype({"bezirksregion": "int"}, errors="ignore") \
+                    .astype({"planungsraum": "int"}, errors="ignore") \
                     .to_csv(file_path_csv, index=False)
 
                 if not quiet:
@@ -181,4 +186,6 @@ class LorStatisticsDataLoader:
             convert_file_to_csv(
                 logger=logger,
                 file_path=file_path,
+                clean=clean,
+                quiet=quiet
             )
