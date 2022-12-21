@@ -330,7 +330,6 @@ def blend_data(feature, area_sqkm, statistic_t1, statistic_t2, statistic_t3, sta
     add_prop(feature, "inhabitants_age_45_55", inhabitants_age_45_55, inhabitants, area_sqkm)
     add_prop(feature, "inhabitants_age_55_65", inhabitants_age_55_65, inhabitants, area_sqkm)
     add_prop(feature, "inhabitants_age_above_65", inhabitants_age_above_65, inhabitants, area_sqkm)
-    add_prop(feature, "inhabitants_age_above_65", inhabitants_age_above_65, inhabitants, area_sqkm)
     add_prop(feature, "inhabitants_female", inhabitants_female, inhabitants, area_sqkm)
 
     add_prop(feature, "inhabitants_with_migration_background_age_below_6",
@@ -347,8 +346,6 @@ def blend_data(feature, area_sqkm, statistic_t1, statistic_t2, statistic_t3, sta
              inhabitants_with_migration_background_age_45_55, inhabitants_with_migration_background, area_sqkm)
     add_prop(feature, "inhabitants_with_migration_background_age_55_65",
              inhabitants_with_migration_background_age_55_65, inhabitants_with_migration_background, area_sqkm)
-    add_prop(feature, "inhabitants_with_migration_background_age_above_65",
-             inhabitants_with_migration_background_age_above_65, inhabitants_with_migration_background, area_sqkm)
     add_prop(feature, "inhabitants_with_migration_background_age_above_65",
              inhabitants_with_migration_background_age_above_65, inhabitants_with_migration_background, area_sqkm)
     add_prop(feature, "inhabitants_with_migration_background_female", inhabitants_with_migration_background_female,
