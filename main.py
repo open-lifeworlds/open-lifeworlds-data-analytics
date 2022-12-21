@@ -23,6 +23,7 @@ from logger_facade import LoggerFacade
 from odis_geodata_loader import OdisGeoDataLoader
 from lor_statistics_data_loader import LorStatisticsDataLoader
 from lor_senate_data_loader import LorSenateDataLoader
+from geojson_copier import GeojsonCopier
 from geojson_projection_converter import GeojsonProjectionConverter
 from geojson_bounding_box_converter import GeojsonBoundingBoxConverter
 from data_blender import DataBlender
@@ -60,7 +61,6 @@ def main(argv):
     # Set paths
     data_path = os.path.join(script_path, "data")
     raw_path = os.path.join(script_path, "raw")
-    geojson_path = os.path.join(raw_path, "lor-odis-geo")
     statistics_path = os.path.join(raw_path, "lor-statistics")
 
     # Initialize logger
@@ -71,14 +71,14 @@ def main(argv):
     LorStatisticsDataLoader().run(logger, os.path.join(raw_path, "lor-statistics"), clean=clean, quiet=quiet)
     LorSenateDataLoader().run(logger, os.path.join(raw_path, "lor-senate"), clean=clean, quiet=quiet)
 
-    # Blend data
-    DataBlender().run(logger, geojson_path=geojson_path, statistics_path=statistics_path, results_path=data_path,
-                      clean=True, quiet=quiet)
-
     # Convert data
-    GeojsonProjectionConverter().run(logger, os.path.join(raw_path, "lor-odis-geo"), data_path, clean=clean,
-                                     quiet=quiet)
+    GeojsonCopier().run(logger, os.path.join(raw_path, "lor-odis-geo"), data_path, clean=clean, quiet=quiet)
+    GeojsonProjectionConverter().run(logger, data_path, data_path, clean=clean, quiet=quiet)
     GeojsonBoundingBoxConverter().run(logger, data_path, data_path, clean=clean, quiet=quiet)
+
+    # Blend data
+    DataBlender().run(logger, data_path=data_path, statistics_path=statistics_path, results_path=data_path,
+                      clean=True, quiet=quiet)
 
 
 if __name__ == "__main__":

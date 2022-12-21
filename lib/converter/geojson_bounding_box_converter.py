@@ -73,4 +73,4 @@ class GeojsonBoundingBoxConverter:
                         json.dump(geojson_with_bounding_box, geojson_file)
 
                 if not quiet:
-                    logger.log_line(f"✓ Convert {path}")
+                    logger.log_line(f"✓ Convert {file_name}")

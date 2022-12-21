@@ -43,6 +43,213 @@ post_2020_statistics = [
 ]
 
 
+def extend_districts(logger, results_path, result_file_name, statistic, statistic_t1, statistic_t2, statistic_t3,
+                     statistic_t4, geojson, id_property, area_property, clean, quiet):
+    geojson_extended_file = os.path.join(results_path, result_file_name)
+    geojson_extended = copy.deepcopy(geojson)
+
+    # Check if file needs to be created
+    if clean or not os.path.exists(geojson_extended_file):
+        for feature in geojson_extended["features"]:
+            id = feature["properties"][id_property]
+            district_id = id
+
+            # Filter statistics
+            statistic_t1_filtered = statistic_t1.loc[(statistic_t1["bezirk"] == int(district_id))]
+            statistic_t2_filtered = statistic_t2.loc[(statistic_t2["bezirk"] == int(district_id))]
+            statistic_t3_filtered = statistic_t3.loc[(statistic_t3["bezirk"] == int(district_id))]
+            statistic_t4_filtered = statistic_t4.loc[(statistic_t4["bezirk"] == int(district_id))]
+
+            # Check for missing data
+            if statistic_t1_filtered.shape[0] == 0 or statistic_t2_filtered.shape[0] == 0 or \
+                    statistic_t3_filtered.shape[0] == 0 or statistic_t4_filtered.shape[0] == 0 or \
+                    int(statistic_t1_filtered["insgesamt_anzahl"].sum()) == 0 or \
+                    int(statistic_t1_filtered["darunter_mit_migrationshintergrund_anzahl"].sum()) == 0:
+                logger.log_line(f"✗️ No data in {statistic} for district={district_id}")
+                continue
+
+            # Blend data
+            blend_data(
+                feature=feature, area_sqkm=None,
+                statistic_t1=statistic_t1_filtered,
+                statistic_t2=statistic_t2_filtered,
+                statistic_t3=statistic_t3_filtered,
+                statistic_t4=statistic_t4_filtered
+            )
+
+        write_geojson_file(geojson_extended_file, geojson_extended)
+
+        if not quiet:
+            logger.log_line(f"✓ Blend data from {statistic} into {result_file_name}")
+
+
+def extend_forecast_areas(logger, results_path, result_file_name, statistic, statistic_t1, statistic_t2, statistic_t3,
+                          statistic_t4, geojson, id_property, area_property, clean, quiet):
+    geojson_extended_file = os.path.join(results_path, result_file_name)
+    geojson_extended = copy.deepcopy(geojson)
+
+    # Check if file needs to be created
+    if clean or not os.path.exists(geojson_extended_file):
+        for feature in geojson_extended["features"]:
+            id = feature["properties"][id_property]
+            district_id, forecast_area_id, district_region_id, planning_area_id = build_ids(id)
+            area_sqm = feature["properties"][area_property]
+            area_sqkm = area_sqm / 1_000_000
+
+            # Filter statistics
+            statistic_t1_filtered = statistic_t1.loc[
+                (statistic_t1["bezirk"] == int(district_id)) &
+                (statistic_t1["prognoseraum"] == int(forecast_area_id))]
+            statistic_t2_filtered = statistic_t2.loc[
+                (statistic_t2["bezirk"] == int(district_id)) &
+                (statistic_t2["prognoseraum"] == int(forecast_area_id))]
+            statistic_t3_filtered = statistic_t3.loc[
+                (statistic_t3["bezirk"] == int(district_id)) &
+                (statistic_t3["prognoseraum"] == int(forecast_area_id))]
+            statistic_t4_filtered = statistic_t4.loc[
+                (statistic_t4["bezirk"] == int(district_id)) &
+                (statistic_t4["prognoseraum"] == int(forecast_area_id))]
+
+            # Check for missing data
+            if statistic_t1_filtered.shape[0] == 0 or statistic_t2_filtered.shape[0] == 0 or \
+                    statistic_t3_filtered.shape[0] == 0 or statistic_t4_filtered.shape[0] == 0 or \
+                    statistic_t1_filtered["insgesamt_anzahl"].sum() == 0 or \
+                    statistic_t1_filtered["darunter_mit_migrationshintergrund_anzahl"].sum() == 0:
+                logger.log_line(
+                    f"✗️ No data in {statistic} for district={district_id}, forecast area={forecast_area_id}")
+                continue
+
+            # Blend data
+            blend_data(
+                feature=feature, area_sqkm=area_sqkm,
+                statistic_t1=statistic_t1_filtered,
+                statistic_t2=statistic_t2_filtered,
+                statistic_t3=statistic_t3_filtered,
+                statistic_t4=statistic_t4_filtered
+            )
+
+        write_geojson_file(geojson_extended_file, geojson_extended)
+
+        if not quiet:
+            logger.log_line(f"✓ Blend data from {statistic} into {result_file_name}")
+
+
+def extend_distric_regions(logger, results_path, result_file_name, statistic, statistic_t1, statistic_t2, statistic_t3,
+                           statistic_t4, geojson, id_property, area_property, clean, quiet):
+    geojson_extended_file = os.path.join(results_path, result_file_name)
+    geojson_extended = copy.deepcopy(geojson)
+
+    # Check if file needs to be created
+    if clean or not os.path.exists(geojson_extended_file):
+        for feature in geojson_extended["features"]:
+            id = feature["properties"][id_property]
+            district_id, forecast_area_id, district_region_id, planning_area_id = build_ids(id)
+            area_sqm = feature["properties"][area_property]
+            area_sqkm = area_sqm / 1_000_000
+
+            # Filter statistics
+            statistic_t1_filtered = statistic_t1.loc[
+                (statistic_t1["bezirk"] == int(district_id)) &
+                (statistic_t1["prognoseraum"] == int(forecast_area_id)) &
+                (statistic_t1["bezirksregion"] == int(district_region_id))]
+            statistic_t2_filtered = statistic_t2.loc[
+                (statistic_t2["bezirk"] == int(district_id)) &
+                (statistic_t2["prognoseraum"] == int(forecast_area_id)) &
+                (statistic_t2["bezirksregion"] == int(district_region_id))]
+            statistic_t3_filtered = statistic_t3.loc[
+                (statistic_t3["bezirk"] == int(district_id)) &
+                (statistic_t3["prognoseraum"] == int(forecast_area_id)) &
+                (statistic_t3["bezirksregion"] == int(district_region_id))]
+            statistic_t4_filtered = statistic_t4.loc[
+                (statistic_t4["bezirk"] == int(district_id)) &
+                (statistic_t4["prognoseraum"] == int(forecast_area_id)) &
+                (statistic_t4["bezirksregion"] == int(district_region_id))]
+
+            # Check for missing data
+            if statistic_t1_filtered.shape[0] == 0 or statistic_t2_filtered.shape[0] == 0 or \
+                    statistic_t3_filtered.shape[0] == 0 or statistic_t4_filtered.shape[0] == 0 or \
+                    statistic_t1_filtered["insgesamt_anzahl"].sum() == 0 or \
+                    statistic_t1_filtered["darunter_mit_migrationshintergrund_anzahl"].sum() == 0:
+                logger.log_line(
+                    f"✗️ No data in {statistic} for district={district_id}, forecast area={forecast_area_id}, district_region_id={district_region_id}")
+                continue
+
+            # Blend data
+            blend_data(
+                feature=feature, area_sqkm=area_sqkm,
+                statistic_t1=statistic_t1_filtered,
+                statistic_t2=statistic_t2_filtered,
+                statistic_t3=statistic_t3_filtered,
+                statistic_t4=statistic_t4_filtered
+            )
+
+        write_geojson_file(geojson_extended_file, geojson_extended)
+
+        if not quiet:
+            logger.log_line(f"✓ Blend data from {statistic} into {result_file_name}")
+
+
+def extend_planning_areas(logger, results_path, result_file_name, statistic, statistic_t1, statistic_t2, statistic_t3,
+                          statistic_t4, geojson, id_property, area_property, clean, quiet):
+    geojson_extended_file = os.path.join(results_path, result_file_name)
+    geojson_extended = copy.deepcopy(geojson)
+
+    # Check if file needs to be created
+    if clean or not os.path.exists(geojson_extended_file):
+        for feature in geojson_extended["features"]:
+            id = feature["properties"][id_property]
+            district_id, forecast_area_id, district_region_id, planning_area_id = build_ids(id)
+            area_sqm = feature["properties"][area_property]
+            area_sqkm = area_sqm / 1_000_000
+
+            # Filter statistics
+            statistic_t1_filtered = statistic_t1.loc[
+                (statistic_t1["bezirk"] == int(district_id)) &
+                (statistic_t1["prognoseraum"] == int(forecast_area_id)) &
+                (statistic_t1["bezirksregion"] == int(district_region_id)) &
+                (statistic_t1["planungsraum"] == int(planning_area_id))]
+            statistic_t2_filtered = statistic_t2.loc[
+                (statistic_t2["bezirk"] == int(district_id)) &
+                (statistic_t2["prognoseraum"] == int(forecast_area_id)) &
+                (statistic_t2["bezirksregion"] == int(district_region_id)) &
+                (statistic_t2["planungsraum"] == int(planning_area_id))]
+            statistic_t3_filtered = statistic_t3.loc[
+                (statistic_t3["bezirk"] == int(district_id)) &
+                (statistic_t3["prognoseraum"] == int(forecast_area_id)) &
+                (statistic_t3["bezirksregion"] == int(district_region_id)) &
+                (statistic_t3["planungsraum"] == int(planning_area_id))]
+            statistic_t4_filtered = statistic_t4.loc[
+                (statistic_t4["bezirk"] == int(district_id)) &
+                (statistic_t4["prognoseraum"] == int(forecast_area_id)) &
+                (statistic_t4["bezirksregion"] == int(district_region_id)) &
+                (statistic_t4["planungsraum"] == int(planning_area_id))]
+
+            # Check for missing data
+            if statistic_t1_filtered.shape[0] == 0 or statistic_t2_filtered.shape[0] == 0 or \
+                    statistic_t3_filtered.shape[0] == 0 or statistic_t4_filtered.shape[0] == 0 or \
+                    statistic_t1_filtered["insgesamt_anzahl"].sum() == 0 or \
+                    statistic_t1_filtered["darunter_mit_migrationshintergrund_anzahl"].sum() == 0:
+                logger.log_line(
+                    f"✗️ No data in {statistic} for district={district_id}, forecast area={forecast_area_id}, district_region_id={district_region_id}, planning_area_id={planning_area_id}")
+                continue
+
+            # Blend data
+            blend_data(
+                feature=feature, area_sqkm=area_sqkm,
+                statistic_t1=statistic_t1_filtered,
+                statistic_t2=statistic_t2_filtered,
+                statistic_t3=statistic_t3_filtered,
+                statistic_t4=statistic_t4_filtered
+            )
+
+        write_geojson_file(geojson_extended_file, geojson_extended)
+
+        if not quiet:
+            logger.log_line(f"✓ Blend data from {statistic} into {result_file_name}")
+
+        logger.log_line(" ")
+
+
 def build_ids(combined_id):
     return combined_id[0:2], combined_id[2:4], combined_id[4:6], combined_id[6:8]
 
@@ -196,13 +403,13 @@ def add_prop(feature, property_name, property_value, total_count, total_area_sqk
 class DataBlender:
 
     @TrackingDecorator.track_time
-    def run(self, logger, geojson_path, statistics_path, results_path, clean=False, quiet=False):
+    def run(self, logger, data_path, statistics_path, results_path, clean=False, quiet=False):
 
         # Load geojson
-        geojson_lor_districts = read_geojson_file(os.path.join(geojson_path, "bezirksgrenzen.geojson"))
-        geojson_lor_forecast_areas = read_geojson_file(os.path.join(geojson_path, "lor_prognoseraeume.geojson"))
-        geojson_lor_district_regions = read_geojson_file(os.path.join(geojson_path, "lor_bezirksregionen.geojson"))
-        geojson_lor_planning_areas = read_geojson_file(os.path.join(geojson_path, "lor_planungsraeume.geojson"))
+        geojson_lor_districts = read_geojson_file(os.path.join(data_path, "bezirksgrenzen.geojson"))
+        geojson_lor_forecast_areas = read_geojson_file(os.path.join(data_path, "lor_prognoseraeume.geojson"))
+        geojson_lor_district_regions = read_geojson_file(os.path.join(data_path, "lor_bezirksregionen.geojson"))
+        geojson_lor_planning_areas = read_geojson_file(os.path.join(data_path, "lor_planungsraeume.geojson"))
 
         # Iterate over statistics
         for statistic in pre_2020_statistics:
@@ -216,208 +423,64 @@ class DataBlender:
             statistic_t4 = read_csv_file(os.path.join(statistics_path, f"{statistic}_T4.csv"))
 
             # Extend districts
-            geojson_extended_file_name = f"bezirksgrenzen_social_{year}_{half_year}.geojson"
-            geojson_extended_file = os.path.join(results_path, geojson_extended_file_name)
-            geojson_extended = copy.deepcopy(geojson_lor_districts)
-
-            # Check if file needs to be created
-            if clean or not os.path.exists(geojson_extended_file):
-                for feature in geojson_extended["features"]:
-                    id = feature["properties"]["Gemeinde_schluessel"]
-                    district_id = id
-
-                    # Filter statistics
-                    statistic_t1_filtered = statistic_t1.loc[(statistic_t1["bezirk"] == int(district_id))]
-                    statistic_t2_filtered = statistic_t2.loc[(statistic_t2["bezirk"] == int(district_id))]
-                    statistic_t3_filtered = statistic_t3.loc[(statistic_t3["bezirk"] == int(district_id))]
-                    statistic_t4_filtered = statistic_t4.loc[(statistic_t4["bezirk"] == int(district_id))]
-
-                    # Check for missing data
-                    if statistic_t1_filtered.shape[0] == 0 or statistic_t2_filtered.shape[0] == 0 or \
-                            statistic_t3_filtered.shape[0] == 0 or statistic_t4_filtered.shape[0] == 0 or \
-                            statistic_t1_filtered["insgesamt_anzahl"].sum() == 0 or \
-                            statistic_t1_filtered["darunter_mit_migrationshintergrund_anzahl"].sum() == 0:
-                        logger.log_line(f"✗️ No data in {statistic} for district={district_id}")
-                        continue
-
-                    # Blend data
-                    blend_data(
-                        feature=feature, area_sqkm=None,
-                        statistic_t1=statistic_t1_filtered,
-                        statistic_t2=statistic_t2_filtered,
-                        statistic_t3=statistic_t3_filtered,
-                        statistic_t4=statistic_t4_filtered
-                    )
-
-                write_geojson_file(geojson_extended_file, geojson_extended)
-
-                if not quiet:
-                    logger.log_line(f"✓ Blend data from {statistic} into {geojson_extended_file_name}")
+            extend_districts(logger=logger,
+                             results_path=results_path,
+                             result_file_name=f"bezirksgrenzen_social_{year}_{half_year}.geojson",
+                             statistic=statistic,
+                             statistic_t1=statistic_t1,
+                             statistic_t2=statistic_t2,
+                             statistic_t3=statistic_t3,
+                             statistic_t4=statistic_t4,
+                             id_property="Gemeinde_schluessel",
+                             area_property=None,
+                             geojson=geojson_lor_districts,
+                             clean=clean,
+                             quiet=quiet)
 
             # Extend forecast areas
-            geojson_extended_file_name = f"lor_prognoseraeume_social_{year}_{half_year}.geojson"
-            geojson_extended_file = os.path.join(results_path, geojson_extended_file_name)
-            geojson_extended = copy.deepcopy(geojson_lor_forecast_areas)
-
-            # Check if file needs to be created
-            if clean or not os.path.exists(geojson_extended_file):
-                for feature in geojson_extended["features"]:
-                    id = feature["properties"]["broker Dow"]
-                    district_id, forecast_area_id, district_region_id, planning_area_id = build_ids(id)
-                    area_sqm = feature["properties"]["FLAECHENGR"]
-                    area_sqkm = area_sqm / 1_000_000
-
-                    # Filter statistics
-                    statistic_t1_filtered = statistic_t1.loc[
-                        (statistic_t1["bezirk"] == int(district_id)) &
-                        (statistic_t1["prognoseraum"] == int(forecast_area_id))]
-                    statistic_t2_filtered = statistic_t2.loc[
-                        (statistic_t2["bezirk"] == int(district_id)) &
-                        (statistic_t2["prognoseraum"] == int(forecast_area_id))]
-                    statistic_t3_filtered = statistic_t3.loc[
-                        (statistic_t3["bezirk"] == int(district_id)) &
-                        (statistic_t3["prognoseraum"] == int(forecast_area_id))]
-                    statistic_t4_filtered = statistic_t4.loc[
-                        (statistic_t4["bezirk"] == int(district_id)) &
-                        (statistic_t4["prognoseraum"] == int(forecast_area_id))]
-
-                    # Check for missing data
-                    if statistic_t1_filtered.shape[0] == 0 or statistic_t2_filtered.shape[0] == 0 or \
-                            statistic_t3_filtered.shape[0] == 0 or statistic_t4_filtered.shape[0] == 0 or \
-                            statistic_t1_filtered["insgesamt_anzahl"].sum() == 0 or \
-                            statistic_t1_filtered["darunter_mit_migrationshintergrund_anzahl"].sum() == 0:
-                        logger.log_line(
-                            f"✗️ No data in {statistic} for district={district_id}, forecast area={forecast_area_id}")
-                        continue
-
-                    # Blend data
-                    blend_data(
-                        feature=feature, area_sqkm=area_sqkm,
-                        statistic_t1=statistic_t1_filtered,
-                        statistic_t2=statistic_t2_filtered,
-                        statistic_t3=statistic_t3_filtered,
-                        statistic_t4=statistic_t4_filtered
-                    )
-
-                write_geojson_file(geojson_extended_file, geojson_extended)
-
-                if not quiet:
-                    logger.log_line(f"✓ Blend data from {statistic} into {geojson_extended_file_name}")
+            extend_forecast_areas(logger=logger,
+                                  results_path=results_path,
+                                  result_file_name=f"lor_prognoseraeume_social_{year}_{half_year}.geojson",
+                                  statistic=statistic,
+                                  statistic_t1=statistic_t1,
+                                  statistic_t2=statistic_t2,
+                                  statistic_t3=statistic_t3,
+                                  statistic_t4=statistic_t4,
+                                  id_property="broker Dow",
+                                  area_property="FLAECHENGR",
+                                  geojson=geojson_lor_forecast_areas,
+                                  clean=clean,
+                                  quiet=quiet)
 
             # Extend district regions
-            geojson_extended_file_name = f"lor_bezirksregionen_social_{year}_{half_year}.geojson"
-            geojson_extended_file = os.path.join(results_path, geojson_extended_file_name)
-            geojson_extended = copy.deepcopy(geojson_lor_district_regions)
-
-            # Check if file needs to be created
-            if clean or not os.path.exists(geojson_extended_file):
-                for feature in geojson_extended["features"]:
-                    id = feature["properties"]["broker Dow"]
-                    district_id, forecast_area_id, district_region_id, planning_area_id = build_ids(id)
-                    area_sqm = feature["properties"]["FLAECHENGR"]
-                    area_sqkm = area_sqm / 1_000_000
-
-                    # Filter statistics
-                    statistic_t1_filtered = statistic_t1.loc[
-                        (statistic_t1["bezirk"] == int(district_id)) &
-                        (statistic_t1["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t1["bezirksregion"] == int(district_region_id))]
-                    statistic_t2_filtered = statistic_t2.loc[
-                        (statistic_t2["bezirk"] == int(district_id)) &
-                        (statistic_t2["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t2["bezirksregion"] == int(district_region_id))]
-                    statistic_t3_filtered = statistic_t3.loc[
-                        (statistic_t3["bezirk"] == int(district_id)) &
-                        (statistic_t3["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t3["bezirksregion"] == int(district_region_id))]
-                    statistic_t4_filtered = statistic_t4.loc[
-                        (statistic_t4["bezirk"] == int(district_id)) &
-                        (statistic_t4["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t4["bezirksregion"] == int(district_region_id))]
-
-                    # Check for missing data
-                    if statistic_t1_filtered.shape[0] == 0 or statistic_t2_filtered.shape[0] == 0 or \
-                            statistic_t3_filtered.shape[0] == 0 or statistic_t4_filtered.shape[0] == 0 or \
-                            statistic_t1_filtered["insgesamt_anzahl"].sum() == 0 or \
-                            statistic_t1_filtered["darunter_mit_migrationshintergrund_anzahl"].sum() == 0:
-                        logger.log_line(
-                            f"✗️ No data in {statistic} for district={district_id}, forecast area={forecast_area_id}, district_region_id={district_region_id}")
-                        continue
-
-                    # Blend data
-                    blend_data(
-                        feature=feature, area_sqkm=area_sqkm,
-                        statistic_t1=statistic_t1_filtered,
-                        statistic_t2=statistic_t2_filtered,
-                        statistic_t3=statistic_t3_filtered,
-                        statistic_t4=statistic_t4_filtered
-
-                    )
-
-                write_geojson_file(geojson_extended_file, geojson_extended)
-
-                if not quiet:
-                    logger.log_line(f"✓ Blend data from {statistic} into {geojson_extended_file_name}")
+            extend_distric_regions(logger=logger,
+                                   results_path=results_path,
+                                   result_file_name=f"lor_bezirksregionen_social_{year}_{half_year}.geojson",
+                                   statistic=statistic,
+                                   statistic_t1=statistic_t1,
+                                   statistic_t2=statistic_t2,
+                                   statistic_t3=statistic_t3,
+                                   statistic_t4=statistic_t4,
+                                   geojson=geojson_lor_district_regions,
+                                   id_property="broker Dow",
+                                   area_property="FLAECHENGR",
+                                   clean=clean,
+                                   quiet=quiet)
 
             # Extend planning areas
-            geojson_extended_file_name = f"lor_planungsraeume_social_{year}_{half_year}.geojson"
-            geojson_extended_file = os.path.join(results_path, geojson_extended_file_name)
-            geojson_extended = copy.deepcopy(geojson_lor_planning_areas)
-
-            # Check if file needs to be created
-            if clean or not os.path.exists(geojson_extended_file):
-                for feature in geojson_lor_planning_areas["features"]:
-                    id = feature["properties"]["broker Dow"]
-                    district_id, forecast_area_id, district_region_id, planning_area_id = build_ids(id)
-                    area_sqm = feature["properties"]["FLAECHENGR"]
-                    area_sqkm = area_sqm / 1_000_000
-
-                    # Filter statistics
-                    statistic_t1_filtered = statistic_t1.loc[
-                        (statistic_t1["bezirk"] == int(district_id)) &
-                        (statistic_t1["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t1["bezirksregion"] == int(district_region_id)) &
-                        (statistic_t1["planungsraum"] == int(planning_area_id))]
-                    statistic_t2_filtered = statistic_t2.loc[
-                        (statistic_t2["bezirk"] == int(district_id)) &
-                        (statistic_t2["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t2["bezirksregion"] == int(district_region_id)) &
-                        (statistic_t2["planungsraum"] == int(planning_area_id))]
-                    statistic_t3_filtered = statistic_t3.loc[
-                        (statistic_t3["bezirk"] == int(district_id)) &
-                        (statistic_t3["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t3["bezirksregion"] == int(district_region_id)) &
-                        (statistic_t3["planungsraum"] == int(planning_area_id))]
-                    statistic_t4_filtered = statistic_t4.loc[
-                        (statistic_t4["bezirk"] == int(district_id)) &
-                        (statistic_t4["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t4["bezirksregion"] == int(district_region_id)) &
-                        (statistic_t4["planungsraum"] == int(planning_area_id))]
-
-                    # Check for missing data
-                    if statistic_t1_filtered.shape[0] == 0 or statistic_t2_filtered.shape[0] == 0 or \
-                            statistic_t3_filtered.shape[0] == 0 or statistic_t4_filtered.shape[0] == 0 or \
-                            statistic_t1_filtered["insgesamt_anzahl"].sum() == 0 or \
-                            statistic_t1_filtered["darunter_mit_migrationshintergrund_anzahl"].sum() == 0:
-                        logger.log_line(
-                            f"✗️ No data in {statistic} for district={district_id}, forecast area={forecast_area_id}, district_region_id={district_region_id}, planning_area_id={planning_area_id}")
-                        continue
-
-                    # Blend data
-                    blend_data(
-                        feature=feature, area_sqkm=area_sqkm,
-                        statistic_t1=statistic_t1_filtered,
-                        statistic_t2=statistic_t2_filtered,
-                        statistic_t3=statistic_t3_filtered,
-                        statistic_t4=statistic_t4_filtered
-                    )
-
-                write_geojson_file(geojson_extended_file, geojson_extended)
-
-                if not quiet:
-                    logger.log_line(f"✓ Blend data from {statistic} into {geojson_extended_file_name}")
-
-                logger.log_line(" ")
+            extend_planning_areas(logger=logger,
+                                  results_path=results_path,
+                                  result_file_name=f"lor_planungsraeume_social_{year}_{half_year}.geojson",
+                                  statistic=statistic,
+                                  statistic_t1=statistic_t1,
+                                  statistic_t2=statistic_t2,
+                                  statistic_t3=statistic_t3,
+                                  statistic_t4=statistic_t4,
+                                  geojson=geojson_lor_planning_areas,
+                                  id_property="broker Dow",
+                                  area_property="FLAECHENGR",
+                                  clean=clean,
+                                  quiet=quiet)
 
         # Iterate over statistics
         for statistic in exactly_2020_statistics:
@@ -431,214 +494,70 @@ class DataBlender:
             statistic_t4 = read_csv_file(os.path.join(statistics_path, f"{statistic}_T4a.csv"))
 
             # Extend districts
-            geojson_extended_file_name = f"bezirksgrenzen_social_{year}_{half_year}.geojson"
-            geojson_extended_file = os.path.join(results_path, geojson_extended_file_name)
-            geojson_extended = copy.deepcopy(geojson_lor_districts)
-
-            # Check if file needs to be created
-            if clean or not os.path.exists(geojson_extended_file):
-                for feature in geojson_extended["features"]:
-                    id = feature["properties"]["Gemeinde_schluessel"]
-                    district_id = id
-
-                    # Filter statistics
-                    statistic_t1_filtered = statistic_t1.loc[(statistic_t1["bezirk"] == int(district_id))]
-                    statistic_t2_filtered = statistic_t2.loc[(statistic_t2["bezirk"] == int(district_id))]
-                    statistic_t3_filtered = statistic_t3.loc[(statistic_t3["bezirk"] == int(district_id))]
-                    statistic_t4_filtered = statistic_t4.loc[(statistic_t4["bezirk"] == int(district_id))]
-
-                    # Check for missing data
-                    if statistic_t1_filtered.shape[0] == 0 or statistic_t2_filtered.shape[0] == 0 or \
-                            statistic_t3_filtered.shape[0] == 0 or statistic_t4_filtered.shape[0] == 0 or \
-                            statistic_t1_filtered["insgesamt_anzahl"].sum() == 0 or \
-                            statistic_t1_filtered["darunter_mit_migrationshintergrund_anzahl"].sum() == 0:
-                        logger.log_line(f"✗️ No data in {statistic} for district={district_id}")
-                        continue
-
-                    # Blend data
-                    blend_data(
-                        feature=feature, area_sqkm=None,
-                        statistic_t1=statistic_t1_filtered,
-                        statistic_t2=statistic_t2_filtered,
-                        statistic_t3=statistic_t3_filtered,
-                        statistic_t4=statistic_t4_filtered
-                    )
-
-                write_geojson_file(geojson_extended_file, geojson_extended)
-
-                if not quiet:
-                    logger.log_line(f"✓ Blend data from {statistic} into {geojson_extended_file_name}")
+            extend_districts(logger=logger,
+                             results_path=results_path,
+                             result_file_name=f"bezirksgrenzen_social_{year}_{half_year}.geojson",
+                             statistic=statistic,
+                             statistic_t1=statistic_t1,
+                             statistic_t2=statistic_t2,
+                             statistic_t3=statistic_t3,
+                             statistic_t4=statistic_t4,
+                             id_property="Gemeinde_schluessel",
+                             area_property=None,
+                             geojson=geojson_lor_districts,
+                             clean=clean,
+                             quiet=quiet)
 
             # Extend forecast areas
-            geojson_extended_file_name = f"lor_prognoseraeume_social_{year}_{half_year}.geojson"
-            geojson_extended_file = os.path.join(results_path, geojson_extended_file_name)
-            geojson_extended = copy.deepcopy(geojson_lor_forecast_areas)
-
-            # Check if file needs to be created
-            if clean or not os.path.exists(geojson_extended_file):
-                for feature in geojson_extended["features"]:
-                    id = feature["properties"]["broker Dow"]
-                    district_id, forecast_area_id, district_region_id, planning_area_id = build_ids(id)
-                    area_sqm = feature["properties"]["FLAECHENGR"]
-                    area_sqkm = area_sqm / 1_000_000
-
-                    # Filter statistics
-                    statistic_t1_filtered = statistic_t1.loc[
-                        (statistic_t1["bezirk"] == int(district_id)) &
-                        (statistic_t1["prognoseraum"] == int(forecast_area_id))]
-                    statistic_t2_filtered = statistic_t2.loc[
-                        (statistic_t2["bezirk"] == int(district_id)) &
-                        (statistic_t2["prognoseraum"] == int(forecast_area_id))]
-                    statistic_t3_filtered = statistic_t3.loc[
-                        (statistic_t3["bezirk"] == int(district_id)) &
-                        (statistic_t3["prognoseraum"] == int(forecast_area_id))]
-                    statistic_t4_filtered = statistic_t4.loc[
-                        (statistic_t4["bezirk"] == int(district_id)) &
-                        (statistic_t4["prognoseraum"] == int(forecast_area_id))]
-
-                    # Check for missing data
-                    if statistic_t1_filtered.shape[0] == 0 or statistic_t2_filtered.shape[0] == 0 or \
-                            statistic_t3_filtered.shape[0] == 0 or statistic_t4_filtered.shape[0] == 0 or \
-                            statistic_t1_filtered["insgesamt_anzahl"].sum() == 0 or \
-                            statistic_t1_filtered["darunter_mit_migrationshintergrund_anzahl"].sum() == 0:
-                        logger.log_line(
-                            f"✗️ No data in {statistic} for district={district_id}, forecast area={forecast_area_id}")
-                        continue
-
-                    # Blend data
-                    blend_data(
-                        feature=feature, area_sqkm=area_sqkm,
-                        statistic_t1=statistic_t1_filtered,
-                        statistic_t2=statistic_t2_filtered,
-                        statistic_t3=statistic_t3_filtered,
-                        statistic_t4=statistic_t4_filtered
-                    )
-
-                write_geojson_file(geojson_extended_file, geojson_extended)
-
-                if not quiet:
-                    logger.log_line(f"✓ Blend data from {statistic} into {geojson_extended_file_name}")
+            extend_forecast_areas(logger=logger,
+                                  results_path=results_path,
+                                  result_file_name=f"lor_prognoseraeume_social_{year}_{half_year}.geojson",
+                                  statistic=statistic,
+                                  statistic_t1=statistic_t1,
+                                  statistic_t2=statistic_t2,
+                                  statistic_t3=statistic_t3,
+                                  statistic_t4=statistic_t4,
+                                  id_property="broker Dow",
+                                  area_property="FLAECHENGR",
+                                  geojson=geojson_lor_forecast_areas,
+                                  clean=clean,
+                                  quiet=quiet)
 
             # Extend district regions
-            geojson_extended_file_name = f"lor_bezirksregionen_social_{year}_{half_year}.geojson"
-            geojson_extended_file = os.path.join(results_path, geojson_extended_file_name)
-            geojson_extended = copy.deepcopy(geojson_lor_district_regions)
-
-            # Check if file needs to be created
-            if clean or not os.path.exists(geojson_extended_file):
-                for feature in geojson_extended["features"]:
-                    id = feature["properties"]["broker Dow"]
-                    district_id, forecast_area_id, district_region_id, planning_area_id = build_ids(id)
-                    area_sqm = feature["properties"]["FLAECHENGR"]
-                    area_sqkm = area_sqm / 1_000_000
-
-                    # Filter statistics
-                    statistic_t1_filtered = statistic_t1.loc[
-                        (statistic_t1["bezirk"] == int(district_id)) &
-                        (statistic_t1["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t1["bezirksregion"] == int(district_region_id))]
-                    statistic_t2_filtered = statistic_t2.loc[
-                        (statistic_t2["bezirk"] == int(district_id)) &
-                        (statistic_t2["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t2["bezirksregion"] == int(district_region_id))]
-                    statistic_t3_filtered = statistic_t3.loc[
-                        (statistic_t3["bezirk"] == int(district_id)) &
-                        (statistic_t3["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t3["bezirksregion"] == int(district_region_id))]
-                    statistic_t4_filtered = statistic_t4.loc[
-                        (statistic_t4["bezirk"] == int(district_id)) &
-                        (statistic_t4["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t4["bezirksregion"] == int(district_region_id))]
-
-                    # Check for missing data
-                    if statistic_t1_filtered.shape[0] == 0 or statistic_t2_filtered.shape[0] == 0 or \
-                            statistic_t3_filtered.shape[0] == 0 or statistic_t4_filtered.shape[0] == 0 or \
-                            statistic_t1_filtered["insgesamt_anzahl"].sum() == 0 or \
-                            statistic_t1_filtered["darunter_mit_migrationshintergrund_anzahl"].sum() == 0:
-                        logger.log_line(
-                            f"✗️ No data in {statistic} for district={district_id}, forecast area={forecast_area_id}, district_region_id={district_region_id}")
-                        continue
-
-                    # Blend data
-                    blend_data(
-                        feature=feature, area_sqkm=area_sqkm,
-                        statistic_t1=statistic_t1_filtered,
-                        statistic_t2=statistic_t2_filtered,
-                        statistic_t3=statistic_t3_filtered,
-                        statistic_t4=statistic_t4_filtered
-
-                    )
-
-                write_geojson_file(geojson_extended_file, geojson_extended)
-
-                if not quiet:
-                    logger.log_line(f"✓ Blend data from {statistic} into {geojson_extended_file_name}")
+            extend_distric_regions(logger=logger,
+                                   results_path=results_path,
+                                   result_file_name=f"lor_bezirksregionen_social_{year}_{half_year}.geojson",
+                                   statistic=statistic,
+                                   statistic_t1=statistic_t1,
+                                   statistic_t2=statistic_t2,
+                                   statistic_t3=statistic_t3,
+                                   statistic_t4=statistic_t4,
+                                   geojson=geojson_lor_district_regions,
+                                   id_property="broker Dow",
+                                   area_property="FLAECHENGR",
+                                   clean=clean,
+                                   quiet=quiet)
 
             # Extend planning areas
-            geojson_extended_file_name = f"lor_planungsraeume_social_{year}_{half_year}.geojson"
-            geojson_extended_file = os.path.join(results_path, geojson_extended_file_name)
-            geojson_extended = copy.deepcopy(geojson_lor_planning_areas)
-
-            # Check if file needs to be created
-            if clean or not os.path.exists(geojson_extended_file):
-                for feature in geojson_lor_planning_areas["features"]:
-                    id = feature["properties"]["broker Dow"]
-                    district_id, forecast_area_id, district_region_id, planning_area_id = build_ids(id)
-                    area_sqm = feature["properties"]["FLAECHENGR"]
-                    area_sqkm = area_sqm / 1_000_000
-
-                    # Filter statistics
-                    statistic_t1_filtered = statistic_t1.loc[
-                        (statistic_t1["bezirk"] == int(district_id)) &
-                        (statistic_t1["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t1["bezirksregion"] == int(district_region_id)) &
-                        (statistic_t1["planungsraum"] == int(planning_area_id))]
-                    statistic_t2_filtered = statistic_t2.loc[
-                        (statistic_t2["bezirk"] == int(district_id)) &
-                        (statistic_t2["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t2["bezirksregion"] == int(district_region_id)) &
-                        (statistic_t2["planungsraum"] == int(planning_area_id))]
-                    statistic_t3_filtered = statistic_t3.loc[
-                        (statistic_t3["bezirk"] == int(district_id)) &
-                        (statistic_t3["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t3["bezirksregion"] == int(district_region_id)) &
-                        (statistic_t3["planungsraum"] == int(planning_area_id))]
-                    statistic_t4_filtered = statistic_t4.loc[
-                        (statistic_t4["bezirk"] == int(district_id)) &
-                        (statistic_t4["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t4["bezirksregion"] == int(district_region_id)) &
-                        (statistic_t4["planungsraum"] == int(planning_area_id))]
-
-                    # Check for missing data
-                    if statistic_t1_filtered.shape[0] == 0 or statistic_t2_filtered.shape[0] == 0 or \
-                            statistic_t3_filtered.shape[0] == 0 or statistic_t4_filtered.shape[0] == 0 or \
-                            statistic_t1_filtered["insgesamt_anzahl"].sum() == 0 or \
-                            statistic_t1_filtered["darunter_mit_migrationshintergrund_anzahl"].sum() == 0:
-                        logger.log_line(
-                            f"✗️ No data in {statistic} for district={district_id}, forecast area={forecast_area_id}, district_region_id={district_region_id}, planning_area_id={planning_area_id}")
-                        continue
-
-                    # Blend data
-                    blend_data(
-                        feature=feature, area_sqkm=area_sqkm,
-                        statistic_t1=statistic_t1_filtered,
-                        statistic_t2=statistic_t2_filtered,
-                        statistic_t3=statistic_t3_filtered,
-                        statistic_t4=statistic_t4_filtered
-                    )
-
-                write_geojson_file(geojson_extended_file, geojson_extended)
-
-                if not quiet:
-                    logger.log_line(f"✓ Blend data from {statistic} into {geojson_extended_file_name}")
-
-                logger.log_line(" ")
+            extend_planning_areas(logger=logger,
+                                  results_path=results_path,
+                                  result_file_name=f"lor_planungsraeume_social_{year}_{half_year}.geojson",
+                                  statistic=statistic,
+                                  statistic_t1=statistic_t1,
+                                  statistic_t2=statistic_t2,
+                                  statistic_t3=statistic_t3,
+                                  statistic_t4=statistic_t4,
+                                  geojson=geojson_lor_planning_areas,
+                                  id_property="broker Dow",
+                                  area_property="FLAECHENGR",
+                                  clean=clean,
+                                  quiet=quiet)
 
         # Load geojson
-        geojson_lor_districts = read_geojson_file(os.path.join(geojson_path, "bezirksgrenzen.geojson"))
-        geojson_lor_forecast_areas = read_geojson_file(os.path.join(geojson_path, "lor_prognoseraeume_2021.geojson"))
-        geojson_lor_district_regions = read_geojson_file(os.path.join(geojson_path, "lor_bezirksregionen_2021.geojson"))
-        geojson_lor_planning_areas = read_geojson_file(os.path.join(geojson_path, "lor_planungsraeume_2021.geojson"))
+        geojson_lor_districts = read_geojson_file(os.path.join(data_path, "bezirksgrenzen.geojson"))
+        geojson_lor_forecast_areas = read_geojson_file(os.path.join(data_path, "lor_prognoseraeume_2021.geojson"))
+        geojson_lor_district_regions = read_geojson_file(os.path.join(data_path, "lor_bezirksregionen_2021.geojson"))
+        geojson_lor_planning_areas = read_geojson_file(os.path.join(data_path, "lor_planungsraeume_2021.geojson"))
 
         # Iterate over statistics
         for statistic in exactly_2020_statistics:
@@ -652,208 +571,64 @@ class DataBlender:
             statistic_t4 = read_csv_file(os.path.join(statistics_path, f"{statistic}_T4b.csv"))
 
             # Extend districts
-            geojson_extended_file_name = f"bezirksgrenzen_social_{year}_{half_year}_new_format.geojson"
-            geojson_extended_file = os.path.join(results_path, geojson_extended_file_name)
-            geojson_extended = copy.deepcopy(geojson_lor_districts)
-
-            # Check if file needs to be created
-            if clean or not os.path.exists(geojson_extended_file):
-                for feature in geojson_extended["features"]:
-                    id = feature["properties"]["Gemeinde_schluessel"]
-                    district_id = id
-
-                    # Filter statistics
-                    statistic_t1_filtered = statistic_t1.loc[(statistic_t1["bezirk"] == int(district_id))]
-                    statistic_t2_filtered = statistic_t2.loc[(statistic_t2["bezirk"] == int(district_id))]
-                    statistic_t3_filtered = statistic_t3.loc[(statistic_t3["bezirk"] == int(district_id))]
-                    statistic_t4_filtered = statistic_t4.loc[(statistic_t4["bezirk"] == int(district_id))]
-
-                    # Check for missing data
-                    if statistic_t1_filtered.shape[0] == 0 or statistic_t2_filtered.shape[0] == 0 or \
-                            statistic_t3_filtered.shape[0] == 0 or statistic_t4_filtered.shape[0] == 0 or \
-                            int(statistic_t1_filtered["insgesamt_anzahl"].sum()) == 0 or \
-                            int(statistic_t1_filtered["darunter_mit_migrationshintergrund_anzahl"].sum()) == 0:
-                        logger.log_line(f"✗️ No data in {statistic} for district={district_id}")
-                        continue
-
-                    # Blend data
-                    blend_data(
-                        feature=feature, area_sqkm=None,
-                        statistic_t1=statistic_t1_filtered,
-                        statistic_t2=statistic_t2_filtered,
-                        statistic_t3=statistic_t3_filtered,
-                        statistic_t4=statistic_t4_filtered
-                    )
-
-                write_geojson_file(geojson_extended_file, geojson_extended)
-
-                if not quiet:
-                    logger.log_line(f"✓ Blend data from {statistic} into {geojson_extended_file_name}")
+            extend_districts(logger=logger,
+                             results_path=results_path,
+                             result_file_name=f"bezirksgrenzen_social_{year}_{half_year}_new_format.geojson",
+                             statistic=statistic,
+                             statistic_t1=statistic_t1,
+                             statistic_t2=statistic_t2,
+                             statistic_t3=statistic_t3,
+                             statistic_t4=statistic_t4,
+                             id_property="Gemeinde_schluessel",
+                             area_property=None,
+                             geojson=geojson_lor_districts,
+                             clean=clean,
+                             quiet=quiet)
 
             # Extend forecast areas
-            geojson_extended_file_name = f"lor_prognoseraeume_social_{year}_{half_year}_new_format.geojson"
-            geojson_extended_file = os.path.join(results_path, geojson_extended_file_name)
-            geojson_extended = copy.deepcopy(geojson_lor_forecast_areas)
-
-            # Check if file needs to be created
-            if clean or not os.path.exists(geojson_extended_file):
-                for feature in geojson_extended["features"]:
-                    id = feature["properties"]["PGR_ID"]
-                    district_id, forecast_area_id, district_region_id, planning_area_id = build_ids(id)
-                    area_sqm = feature["properties"]["GROESSE_M2"]
-                    area_sqkm = area_sqm / 1_000_000
-
-                    # Filter statistics
-                    statistic_t1_filtered = statistic_t1.loc[
-                        (statistic_t1["bezirk"] == int(district_id)) &
-                        (statistic_t1["prognoseraum"] == int(forecast_area_id))]
-                    statistic_t2_filtered = statistic_t2.loc[
-                        (statistic_t2["bezirk"] == int(district_id)) &
-                        (statistic_t2["prognoseraum"] == int(forecast_area_id))]
-                    statistic_t3_filtered = statistic_t3.loc[
-                        (statistic_t3["bezirk"] == int(district_id)) &
-                        (statistic_t3["prognoseraum"] == int(forecast_area_id))]
-                    statistic_t4_filtered = statistic_t4.loc[
-                        (statistic_t4["bezirk"] == int(district_id)) &
-                        (statistic_t4["prognoseraum"] == int(forecast_area_id))]
-
-                    # Check for missing data
-                    if statistic_t1_filtered.shape[0] == 0 or statistic_t2_filtered.shape[0] == 0 or \
-                            statistic_t3_filtered.shape[0] == 0 or statistic_t4_filtered.shape[0] == 0 or \
-                            statistic_t1_filtered["insgesamt_anzahl"].sum() == 0 or \
-                            statistic_t1_filtered["darunter_mit_migrationshintergrund_anzahl"].sum() == 0:
-                        logger.log_line(
-                            f"✗️ No data in {statistic} for district={district_id}, forecast area={forecast_area_id}")
-                        continue
-
-                    # Blend data
-                    blend_data(
-                        feature=feature, area_sqkm=area_sqkm,
-                        statistic_t1=statistic_t1_filtered,
-                        statistic_t2=statistic_t2_filtered,
-                        statistic_t3=statistic_t3_filtered,
-                        statistic_t4=statistic_t4_filtered
-                    )
-
-                write_geojson_file(geojson_extended_file, geojson_extended)
-
-                if not quiet:
-                    logger.log_line(f"✓ Blend data from {statistic} into {geojson_extended_file_name}")
+            extend_forecast_areas(logger=logger,
+                                  results_path=results_path,
+                                  result_file_name=f"lor_prognoseraeume_social_{year}_{half_year}_new_format.geojson",
+                                  statistic=statistic,
+                                  statistic_t1=statistic_t1,
+                                  statistic_t2=statistic_t2,
+                                  statistic_t3=statistic_t3,
+                                  statistic_t4=statistic_t4,
+                                  id_property="PGR_ID",
+                                  area_property="GROESSE_M2",
+                                  geojson=geojson_lor_forecast_areas,
+                                  clean=clean,
+                                  quiet=quiet)
 
             # Extend district regions
-            geojson_extended_file_name = f"lor_bezirksregionen_social_{year}_{half_year}_new_format.geojson"
-            geojson_extended_file = os.path.join(results_path, geojson_extended_file_name)
-            geojson_extended = copy.deepcopy(geojson_lor_district_regions)
-
-            # Check if file needs to be created
-            if clean or not os.path.exists(geojson_extended_file):
-                for feature in geojson_extended["features"]:
-                    id = feature["properties"]["BZR_ID"]
-                    district_id, forecast_area_id, district_region_id, planning_area_id = build_ids(id)
-                    area_sqm = feature["properties"]["GROESSE_m2"]
-                    area_sqkm = area_sqm / 1_000_000
-
-                    # Filter statistics
-                    statistic_t1_filtered = statistic_t1.loc[
-                        (statistic_t1["bezirk"] == int(district_id)) &
-                        (statistic_t1["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t1["bezirksregion"] == int(district_region_id))]
-                    statistic_t2_filtered = statistic_t2.loc[
-                        (statistic_t2["bezirk"] == int(district_id)) &
-                        (statistic_t2["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t2["bezirksregion"] == int(district_region_id))]
-                    statistic_t3_filtered = statistic_t3.loc[
-                        (statistic_t3["bezirk"] == int(district_id)) &
-                        (statistic_t3["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t3["bezirksregion"] == int(district_region_id))]
-                    statistic_t4_filtered = statistic_t4.loc[
-                        (statistic_t4["bezirk"] == int(district_id)) &
-                        (statistic_t4["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t4["bezirksregion"] == int(district_region_id))]
-
-                    # Check for missing data
-                    if statistic_t1_filtered.shape[0] == 0 or statistic_t2_filtered.shape[0] == 0 or \
-                            statistic_t3_filtered.shape[0] == 0 or statistic_t4_filtered.shape[0] == 0 or \
-                            statistic_t1_filtered["insgesamt_anzahl"].sum() == 0 or \
-                            statistic_t1_filtered["darunter_mit_migrationshintergrund_anzahl"].sum() == 0:
-                        logger.log_line(
-                            f"✗️ No data in {statistic} for district={district_id}, forecast area={forecast_area_id}, district_region_id={district_region_id}")
-                        continue
-
-                    # Blend data
-                    blend_data(
-                        feature=feature, area_sqkm=area_sqkm,
-                        statistic_t1=statistic_t1_filtered,
-                        statistic_t2=statistic_t2_filtered,
-                        statistic_t3=statistic_t3_filtered,
-                        statistic_t4=statistic_t4_filtered
-
-                    )
-
-                write_geojson_file(geojson_extended_file, geojson_extended)
-
-                if not quiet:
-                    logger.log_line(f"✓ Blend data from {statistic} into {geojson_extended_file_name}")
+            extend_distric_regions(logger=logger,
+                                   results_path=results_path,
+                                   result_file_name=f"lor_bezirksregionen_social_{year}_{half_year}_new_format.geojson",
+                                   statistic=statistic,
+                                   statistic_t1=statistic_t1,
+                                   statistic_t2=statistic_t2,
+                                   statistic_t3=statistic_t3,
+                                   statistic_t4=statistic_t4,
+                                   geojson=geojson_lor_district_regions,
+                                   id_property="BZR_ID",
+                                   area_property="GROESSE_m2",
+                                   clean=clean,
+                                   quiet=quiet)
 
             # Extend planning areas
-            geojson_extended_file_name = f"lor_planungsraeume_social_{year}_{half_year}_new_format.geojson"
-            geojson_extended_file = os.path.join(results_path, geojson_extended_file_name)
-            geojson_extended = copy.deepcopy(geojson_lor_planning_areas)
-
-            # Check if file needs to be created
-            if clean or not os.path.exists(geojson_extended_file):
-                for feature in geojson_lor_planning_areas["features"]:
-                    id = feature["properties"]["PLR_ID"]
-                    district_id, forecast_area_id, district_region_id, planning_area_id = build_ids(id)
-                    area_sqm = feature["properties"]["GROESSE_M2"]
-                    area_sqkm = area_sqm / 1_000_000
-
-                    # Filter statistics
-                    statistic_t1_filtered = statistic_t1.loc[
-                        (statistic_t1["bezirk"] == int(district_id)) &
-                        (statistic_t1["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t1["bezirksregion"] == int(district_region_id)) &
-                        (statistic_t1["planungsraum"] == int(planning_area_id))]
-                    statistic_t2_filtered = statistic_t2.loc[
-                        (statistic_t2["bezirk"] == int(district_id)) &
-                        (statistic_t2["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t2["bezirksregion"] == int(district_region_id)) &
-                        (statistic_t2["planungsraum"] == int(planning_area_id))]
-                    statistic_t3_filtered = statistic_t3.loc[
-                        (statistic_t3["bezirk"] == int(district_id)) &
-                        (statistic_t3["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t3["bezirksregion"] == int(district_region_id)) &
-                        (statistic_t3["planungsraum"] == int(planning_area_id))]
-                    statistic_t4_filtered = statistic_t4.loc[
-                        (statistic_t4["bezirk"] == int(district_id)) &
-                        (statistic_t4["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t4["bezirksregion"] == int(district_region_id)) &
-                        (statistic_t4["planungsraum"] == int(planning_area_id))]
-
-                    # Check for missing data
-                    if statistic_t1_filtered.shape[0] == 0 or statistic_t2_filtered.shape[0] == 0 or \
-                            statistic_t3_filtered.shape[0] == 0 or statistic_t4_filtered.shape[0] == 0 or \
-                            statistic_t1_filtered["insgesamt_anzahl"].sum() == 0 or \
-                            statistic_t1_filtered["darunter_mit_migrationshintergrund_anzahl"].sum() == 0:
-                        logger.log_line(
-                            f"✗️ No data in {statistic} for district={district_id}, forecast area={forecast_area_id}, district_region_id={district_region_id}, planning_area_id={planning_area_id}")
-                        continue
-
-                    # Blend data
-                    blend_data(
-                        feature=feature, area_sqkm=area_sqkm,
-                        statistic_t1=statistic_t1_filtered,
-                        statistic_t2=statistic_t2_filtered,
-                        statistic_t3=statistic_t3_filtered,
-                        statistic_t4=statistic_t4_filtered
-                    )
-
-                write_geojson_file(geojson_extended_file, geojson_extended)
-
-                if not quiet:
-                    logger.log_line(f"✓ Blend data from {statistic} into {geojson_extended_file_name}")
-
-                logger.log_line(" ")
+            extend_planning_areas(logger=logger,
+                                  results_path=results_path,
+                                  result_file_name=f"lor_planungsraeume_social_{year}_{half_year}_new_format.geojson",
+                                  statistic=statistic,
+                                  statistic_t1=statistic_t1,
+                                  statistic_t2=statistic_t2,
+                                  statistic_t3=statistic_t3,
+                                  statistic_t4=statistic_t4,
+                                  geojson=geojson_lor_planning_areas,
+                                  id_property="PLR_ID",
+                                  area_property="GROESSE_M2",
+                                  clean=clean,
+                                  quiet=quiet)
 
         # Iterate over statistics
         for statistic in post_2020_statistics:
@@ -867,205 +642,61 @@ class DataBlender:
             statistic_t4 = read_csv_file(os.path.join(statistics_path, f"{statistic}_T4.csv"))
 
             # Extend districts
-            geojson_extended_file_name = f"bezirksgrenzen_social_{year}_{half_year}.geojson"
-            geojson_extended_file = os.path.join(results_path, geojson_extended_file_name)
-            geojson_extended = copy.deepcopy(geojson_lor_districts)
-
-            # Check if file needs to be created
-            if clean or not os.path.exists(geojson_extended_file):
-                for feature in geojson_extended["features"]:
-                    id = feature["properties"]["Gemeinde_schluessel"]
-                    district_id = id
-
-                    # Filter statistics
-                    statistic_t1_filtered = statistic_t1.loc[(statistic_t1["bezirk"] == int(district_id))]
-                    statistic_t2_filtered = statistic_t2.loc[(statistic_t2["bezirk"] == int(district_id))]
-                    statistic_t3_filtered = statistic_t3.loc[(statistic_t3["bezirk"] == int(district_id))]
-                    statistic_t4_filtered = statistic_t4.loc[(statistic_t4["bezirk"] == int(district_id))]
-
-                    # Check for missing data
-                    if statistic_t1_filtered.shape[0] == 0 or statistic_t2_filtered.shape[0] == 0 or \
-                            statistic_t3_filtered.shape[0] == 0 or statistic_t4_filtered.shape[0] == 0 or \
-                            int(statistic_t1_filtered["insgesamt_anzahl"].sum()) == 0 or \
-                            int(statistic_t1_filtered["darunter_mit_migrationshintergrund_anzahl"].sum()) == 0:
-                        logger.log_line(f"✗️ No data in {statistic} for district={district_id}")
-                        continue
-
-                    # Blend data
-                    blend_data(
-                        feature=feature, area_sqkm=None,
-                        statistic_t1=statistic_t1_filtered,
-                        statistic_t2=statistic_t2_filtered,
-                        statistic_t3=statistic_t3_filtered,
-                        statistic_t4=statistic_t4_filtered
-                    )
-
-                write_geojson_file(geojson_extended_file, geojson_extended)
-
-                if not quiet:
-                    logger.log_line(f"✓ Blend data from {statistic} into {geojson_extended_file_name}")
+            extend_districts(logger=logger,
+                             results_path=results_path,
+                             result_file_name=f"bezirksgrenzen_social_{year}_{half_year}.geojson",
+                             statistic=statistic,
+                             statistic_t1=statistic_t1,
+                             statistic_t2=statistic_t2,
+                             statistic_t3=statistic_t3,
+                             statistic_t4=statistic_t4,
+                             id_property="Gemeinde_schluessel",
+                             area_property=None,
+                             geojson=geojson_lor_districts,
+                             clean=clean,
+                             quiet=quiet)
 
             # Extend forecast areas
-            geojson_extended_file_name = f"lor_prognoseraeume_social_{year}_{half_year}.geojson"
-            geojson_extended_file = os.path.join(results_path, geojson_extended_file_name)
-            geojson_extended = copy.deepcopy(geojson_lor_forecast_areas)
-
-            # Check if file needs to be created
-            if clean or not os.path.exists(geojson_extended_file):
-                for feature in geojson_extended["features"]:
-                    id = feature["properties"]["PGR_ID"]
-                    district_id, forecast_area_id, district_region_id, planning_area_id = build_ids(id)
-                    area_sqm = feature["properties"]["GROESSE_M2"]
-                    area_sqkm = area_sqm / 1_000_000
-
-                    # Filter statistics
-                    statistic_t1_filtered = statistic_t1.loc[
-                        (statistic_t1["bezirk"] == int(district_id)) &
-                        (statistic_t1["prognoseraum"] == int(forecast_area_id))]
-                    statistic_t2_filtered = statistic_t2.loc[
-                        (statistic_t2["bezirk"] == int(district_id)) &
-                        (statistic_t2["prognoseraum"] == int(forecast_area_id))]
-                    statistic_t3_filtered = statistic_t3.loc[
-                        (statistic_t3["bezirk"] == int(district_id)) &
-                        (statistic_t3["prognoseraum"] == int(forecast_area_id))]
-                    statistic_t4_filtered = statistic_t4.loc[
-                        (statistic_t4["bezirk"] == int(district_id)) &
-                        (statistic_t4["prognoseraum"] == int(forecast_area_id))]
-
-                    # Check for missing data
-                    if statistic_t1_filtered.shape[0] == 0 or statistic_t2_filtered.shape[0] == 0 or \
-                            statistic_t3_filtered.shape[0] == 0 or statistic_t4_filtered.shape[0] == 0 or \
-                            statistic_t1_filtered["insgesamt_anzahl"].sum() == 0 or \
-                            statistic_t1_filtered["darunter_mit_migrationshintergrund_anzahl"].sum() == 0:
-                        logger.log_line(
-                            f"✗️ No data in {statistic} for district={district_id}, forecast area={forecast_area_id}")
-                        continue
-
-                    # Blend data
-                    blend_data(
-                        feature=feature, area_sqkm=area_sqkm,
-                        statistic_t1=statistic_t1_filtered,
-                        statistic_t2=statistic_t2_filtered,
-                        statistic_t3=statistic_t3_filtered,
-                        statistic_t4=statistic_t4_filtered
-                    )
-
-                write_geojson_file(geojson_extended_file, geojson_extended)
-
-                if not quiet:
-                    logger.log_line(f"✓ Blend data from {statistic} into {geojson_extended_file_name}")
+            extend_forecast_areas(logger=logger,
+                                  results_path=results_path,
+                                  result_file_name=f"lor_prognoseraeume_social_{year}_{half_year}.geojson",
+                                  statistic=statistic,
+                                  statistic_t1=statistic_t1,
+                                  statistic_t2=statistic_t2,
+                                  statistic_t3=statistic_t3,
+                                  statistic_t4=statistic_t4,
+                                  id_property="PGR_ID",
+                                  area_property="GROESSE_M2",
+                                  geojson=geojson_lor_forecast_areas,
+                                  clean=clean,
+                                  quiet=quiet)
 
             # Extend district regions
-            geojson_extended_file_name = f"lor_bezirksregionen_social_{year}_{half_year}.geojson"
-            geojson_extended_file = os.path.join(results_path, geojson_extended_file_name)
-            geojson_extended = copy.deepcopy(geojson_lor_district_regions)
-
-            # Check if file needs to be created
-            if clean or not os.path.exists(geojson_extended_file):
-                for feature in geojson_extended["features"]:
-                    id = feature["properties"]["BZR_ID"]
-                    district_id, forecast_area_id, district_region_id, planning_area_id = build_ids(id)
-                    area_sqm = feature["properties"]["GROESSE_m2"]
-                    area_sqkm = area_sqm / 1_000_000
-
-                    # Filter statistics
-                    statistic_t1_filtered = statistic_t1.loc[
-                        (statistic_t1["bezirk"] == int(district_id)) &
-                        (statistic_t1["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t1["bezirksregion"] == int(district_region_id))]
-                    statistic_t2_filtered = statistic_t2.loc[
-                        (statistic_t2["bezirk"] == int(district_id)) &
-                        (statistic_t2["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t2["bezirksregion"] == int(district_region_id))]
-                    statistic_t3_filtered = statistic_t3.loc[
-                        (statistic_t3["bezirk"] == int(district_id)) &
-                        (statistic_t3["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t3["bezirksregion"] == int(district_region_id))]
-                    statistic_t4_filtered = statistic_t4.loc[
-                        (statistic_t4["bezirk"] == int(district_id)) &
-                        (statistic_t4["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t4["bezirksregion"] == int(district_region_id))]
-
-                    # Check for missing data
-                    if statistic_t1_filtered.shape[0] == 0 or statistic_t2_filtered.shape[0] == 0 or \
-                            statistic_t3_filtered.shape[0] == 0 or statistic_t4_filtered.shape[0] == 0 or \
-                            statistic_t1_filtered["insgesamt_anzahl"].sum() == 0 or \
-                            statistic_t1_filtered["darunter_mit_migrationshintergrund_anzahl"].sum() == 0:
-                        logger.log_line(
-                            f"✗️ No data in {statistic} for district={district_id}, forecast area={forecast_area_id}, district_region_id={district_region_id}")
-                        continue
-
-                    # Blend data
-                    blend_data(
-                        feature=feature, area_sqkm=area_sqkm,
-                        statistic_t1=statistic_t1_filtered,
-                        statistic_t2=statistic_t2_filtered,
-                        statistic_t3=statistic_t3_filtered,
-                        statistic_t4=statistic_t4_filtered
-
-                    )
-
-                write_geojson_file(geojson_extended_file, geojson_extended)
-
-                if not quiet:
-                    logger.log_line(f"✓ Blend data from {statistic} into {geojson_extended_file_name}")
+            extend_distric_regions(logger=logger,
+                                   results_path=results_path,
+                                   result_file_name=f"lor_bezirksregionen_social_{year}_{half_year}.geojson",
+                                   statistic=statistic,
+                                   statistic_t1=statistic_t1,
+                                   statistic_t2=statistic_t2,
+                                   statistic_t3=statistic_t3,
+                                   statistic_t4=statistic_t4,
+                                   geojson=geojson_lor_district_regions,
+                                   id_property="BZR_ID",
+                                   area_property="GROESSE_m2",
+                                   clean=clean,
+                                   quiet=quiet)
 
             # Extend planning areas
-            geojson_extended_file_name = f"lor_planungsraeume_social_{year}_{half_year}.geojson"
-            geojson_extended_file = os.path.join(results_path, geojson_extended_file_name)
-            geojson_extended = copy.deepcopy(geojson_lor_planning_areas)
-
-            # Check if file needs to be created
-            if clean or not os.path.exists(geojson_extended_file):
-                for feature in geojson_lor_planning_areas["features"]:
-                    id = feature["properties"]["PLR_ID"]
-                    district_id, forecast_area_id, district_region_id, planning_area_id = build_ids(id)
-                    area_sqm = feature["properties"]["GROESSE_M2"]
-                    area_sqkm = area_sqm / 1_000_000
-
-                    # Filter statistics
-                    statistic_t1_filtered = statistic_t1.loc[
-                        (statistic_t1["bezirk"] == int(district_id)) &
-                        (statistic_t1["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t1["bezirksregion"] == int(district_region_id)) &
-                        (statistic_t1["planungsraum"] == int(planning_area_id))]
-                    statistic_t2_filtered = statistic_t2.loc[
-                        (statistic_t2["bezirk"] == int(district_id)) &
-                        (statistic_t2["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t2["bezirksregion"] == int(district_region_id)) &
-                        (statistic_t2["planungsraum"] == int(planning_area_id))]
-                    statistic_t3_filtered = statistic_t3.loc[
-                        (statistic_t3["bezirk"] == int(district_id)) &
-                        (statistic_t3["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t3["bezirksregion"] == int(district_region_id)) &
-                        (statistic_t3["planungsraum"] == int(planning_area_id))]
-                    statistic_t4_filtered = statistic_t4.loc[
-                        (statistic_t4["bezirk"] == int(district_id)) &
-                        (statistic_t4["prognoseraum"] == int(forecast_area_id)) &
-                        (statistic_t4["bezirksregion"] == int(district_region_id)) &
-                        (statistic_t4["planungsraum"] == int(planning_area_id))]
-
-                    # Check for missing data
-                    if statistic_t1_filtered.shape[0] == 0 or statistic_t2_filtered.shape[0] == 0 or \
-                            statistic_t3_filtered.shape[0] == 0 or statistic_t4_filtered.shape[0] == 0 or \
-                            statistic_t1_filtered["insgesamt_anzahl"].sum() == 0 or \
-                            statistic_t1_filtered["darunter_mit_migrationshintergrund_anzahl"].sum() == 0:
-                        logger.log_line(
-                            f"✗️ No data in {statistic} for district={district_id}, forecast area={forecast_area_id}, district_region_id={district_region_id}, planning_area_id={planning_area_id}")
-                        continue
-
-                    # Blend data
-                    blend_data(
-                        feature=feature, area_sqkm=area_sqkm,
-                        statistic_t1=statistic_t1_filtered,
-                        statistic_t2=statistic_t2_filtered,
-                        statistic_t3=statistic_t3_filtered,
-                        statistic_t4=statistic_t4_filtered
-                    )
-
-                write_geojson_file(geojson_extended_file, geojson_extended)
-
-                if not quiet:
-                    logger.log_line(f"✓ Blend data from {statistic} into {geojson_extended_file_name}")
-
-                logger.log_line(" ")
+            extend_planning_areas(logger=logger,
+                                  results_path=results_path,
+                                  result_file_name=f"lor_planungsraeume_social_{year}_{half_year}.geojson",
+                                  statistic=statistic,
+                                  statistic_t1=statistic_t1,
+                                  statistic_t2=statistic_t2,
+                                  statistic_t3=statistic_t3,
+                                  statistic_t4=statistic_t4,
+                                  geojson=geojson_lor_planning_areas,
+                                  id_property="PLR_ID",
+                                  area_property="GROESSE_M2",
+                                  clean=clean,
+                                  quiet=quiet)
