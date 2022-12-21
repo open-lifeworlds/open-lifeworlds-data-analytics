@@ -386,14 +386,11 @@ def blend_data(feature, area_sqkm, statistic_t1, statistic_t2, statistic_t3, sta
 
 
 def add_prop(feature, property_name, property_value, total_count, total_area_sqkm):
-    if int(total_count) == 0:
-        print(f"FOO total_count {total_count}")
-
-    feature["properties"][f"{property_name}"] = str(int(property_value))
-    feature["properties"][f"{property_name}_percentage"] = str(round(property_value / total_count * 100, 2))
+    feature["properties"][f"{property_name}"] = int(property_value)
+    feature["properties"][f"{property_name}_percentage"] = round(property_value / total_count * 100, 2)
 
     if total_area_sqkm is not None:
-        feature["properties"][f"{property_name}_per_sqkm"] = str(round(property_value / total_area_sqkm, 4))
+        feature["properties"][f"{property_name}_per_sqkm"] = round(property_value / total_area_sqkm, 4)
 
 
 #
