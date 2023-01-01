@@ -414,7 +414,7 @@ def add_prop(feature, property_name, property_value, total_count, total_area_sqk
     feature["properties"][f"{property_name}_percentage"] = round(property_value / total_count * 100, 2)
 
     if total_area_sqkm is not None:
-        feature["properties"][f"{property_name}_per_sqkm"] = round(property_value / total_area_sqkm, 4)
+        feature["properties"][f"{property_name}_per_sqkm"] = round(property_value / total_area_sqkm)
 
 
 #
