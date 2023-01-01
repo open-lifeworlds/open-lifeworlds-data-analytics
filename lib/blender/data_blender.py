@@ -68,9 +68,36 @@ def extend_districts(logger, results_path, result_file_name, statistic, statisti
                 logger.log_line(f"✗️ No data in {statistic} for district={district_id}")
                 continue
 
+            if district_id == "001":
+                area_sqkm = 39.34
+            elif district_id == "002":
+                area_sqkm = 20.36
+            elif district_id == "003":
+                area_sqkm = 103.10
+            elif district_id == "004":
+                area_sqkm = 59.76
+            elif district_id == "005":
+                area_sqkm = 91.74
+            elif district_id == "006":
+                area_sqkm = 102.40
+            elif district_id == "007":
+                area_sqkm = 52.93
+            elif district_id == "008":
+                area_sqkm = 44.89
+            elif district_id == "009":
+                area_sqkm = 167.41
+            elif district_id == "010":
+                area_sqkm = 61.77
+            elif district_id == "011":
+                area_sqkm = 52.02
+            elif district_id == "012":
+                area_sqkm = 89.19
+            else:
+                area_sqkm = None
+
             # Blend data
             blend_data(
-                feature=feature, area_sqkm=None,
+                feature=feature, area_sqkm=area_sqkm,
                 statistic_t1=statistic_t1_filtered,
                 statistic_t2=statistic_t2_filtered,
                 statistic_t3=statistic_t3_filtered,
