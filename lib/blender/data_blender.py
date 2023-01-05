@@ -322,9 +322,9 @@ def blend_data(feature, area_sqkm, statistic_t1, statistic_t2, statistic_t3, sta
     inhabitants_from_croatia = statistic_t4["kroatien"].sum()
     inhabitants_from_united_kingdom = statistic_t4["vereinigtes_koenigreich"].sum()
     inhabitants_from_former_yugoslavia = statistic_t4["ehemaliges_jugoslawien"].sum()
-    inhabitants_from_bosnia_herzegowina = statistic_t4["bosnien_und_herzegowina"].sum()
+    inhabitants_from_bosnia_herzegovina = statistic_t4["bosnien_und_herzegowina"].sum()
     inhabitants_from_serbia = statistic_t4["serbien"].sum()
-    inhabitants_from_former_sowjet_union = statistic_t4["ehemalige_sowjetunion"].sum()
+    inhabitants_from_former_soviet_union = statistic_t4["ehemalige_sowjetunion"].sum()
     inhabitants_from_russia = statistic_t4["russische_foederation"].sum()
     inhabitants_from_ukraine = statistic_t4["ukraine"].sum()
     inhabitants_from_kazakhstan = statistic_t4["kasachstan"].sum()
@@ -332,7 +332,7 @@ def blend_data(feature, area_sqkm, statistic_t1, statistic_t2, statistic_t3, sta
     inhabitants_from_turkey = statistic_t4["tuerkei"].sum()
     inhabitants_from_iran = statistic_t4["iran"].sum()
     inhabitants_from_arabic_countries = statistic_t4["arabische_laender"].sum()
-    inhabitants_from_libanon = statistic_t4["libanon"].sum()
+    inhabitants_from_lebanon = statistic_t4["libanon"].sum()
     inhabitants_from_syria = statistic_t4["syrien"].sum()
     inhabitants_from_vietnam = statistic_t4["vietnam"].sum()
     inhabitants_from_united_states = statistic_t4["vereinigte_staaten"].sum()
@@ -390,10 +390,10 @@ def blend_data(feature, area_sqkm, statistic_t1, statistic_t2, statistic_t3, sta
     add_prop(feature, "inhabitants_from_croatia", inhabitants_from_croatia, inhabitants, area_sqkm)
     add_prop(feature, "inhabitants_from_united_kingdom", inhabitants_from_united_kingdom, inhabitants, area_sqkm)
     add_prop(feature, "inhabitants_from_former_yugoslavia", inhabitants_from_former_yugoslavia, inhabitants, area_sqkm)
-    add_prop(feature, "inhabitants_from_bosnia_herzegowina", inhabitants_from_bosnia_herzegowina, inhabitants,
+    add_prop(feature, "inhabitants_from_bosnia_herzegovina", inhabitants_from_bosnia_herzegovina, inhabitants,
              area_sqkm)
     add_prop(feature, "inhabitants_from_serbia", inhabitants_from_serbia, inhabitants, area_sqkm)
-    add_prop(feature, "inhabitants_from_former_sowjet_union", inhabitants_from_former_sowjet_union, inhabitants,
+    add_prop(feature, "inhabitants_from_former_soviet_union", inhabitants_from_former_soviet_union, inhabitants,
              area_sqkm)
     add_prop(feature, "inhabitants_from_russia", inhabitants_from_russia, inhabitants, area_sqkm)
     add_prop(feature, "inhabitants_from_ukraine", inhabitants_from_ukraine, inhabitants, area_sqkm)
@@ -402,7 +402,7 @@ def blend_data(feature, area_sqkm, statistic_t1, statistic_t2, statistic_t3, sta
     add_prop(feature, "inhabitants_from_turkey", inhabitants_from_turkey, inhabitants, area_sqkm)
     add_prop(feature, "inhabitants_from_iran", inhabitants_from_iran, inhabitants, area_sqkm)
     add_prop(feature, "inhabitants_from_arabic_countries", inhabitants_from_arabic_countries, inhabitants, area_sqkm)
-    add_prop(feature, "inhabitants_from_libanon", inhabitants_from_libanon, inhabitants, area_sqkm)
+    add_prop(feature, "inhabitants_from_lebanon", inhabitants_from_lebanon, inhabitants, area_sqkm)
     add_prop(feature, "inhabitants_from_syria", inhabitants_from_syria, inhabitants, area_sqkm)
     add_prop(feature, "inhabitants_from_vietnam", inhabitants_from_vietnam, inhabitants, area_sqkm)
     add_prop(feature, "inhabitants_from_united_states", inhabitants_from_united_states, inhabitants, area_sqkm)
