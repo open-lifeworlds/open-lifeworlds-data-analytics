@@ -446,7 +446,7 @@ class DataBlender:
             # Extend districts
             extend_districts(logger=logger,
                              results_path=results_path,
-                             result_file_name=f"bezirksgrenzen_social_{year}_{half_year}.geojson",
+                             result_file_name=f"bezirksgrenzen_population_{year}_{half_year}.geojson",
                              statistic=statistic,
                              statistic_t1=statistic_t1,
                              statistic_t2=statistic_t2,
@@ -461,7 +461,7 @@ class DataBlender:
             # Extend forecast areas
             extend_forecast_areas(logger=logger,
                                   results_path=results_path,
-                                  result_file_name=f"lor_prognoseraeume_social_{year}_{half_year}.geojson",
+                                  result_file_name=f"lor_prognoseraeume_population_{year}_{half_year}.geojson",
                                   statistic=statistic,
                                   statistic_t1=statistic_t1,
                                   statistic_t2=statistic_t2,
@@ -476,7 +476,7 @@ class DataBlender:
             # Extend district regions
             extend_distric_regions(logger=logger,
                                    results_path=results_path,
-                                   result_file_name=f"lor_bezirksregionen_social_{year}_{half_year}.geojson",
+                                   result_file_name=f"lor_bezirksregionen_population_{year}_{half_year}.geojson",
                                    statistic=statistic,
                                    statistic_t1=statistic_t1,
                                    statistic_t2=statistic_t2,
@@ -491,7 +491,7 @@ class DataBlender:
             # Extend planning areas
             extend_planning_areas(logger=logger,
                                   results_path=results_path,
-                                  result_file_name=f"lor_planungsraeume_social_{year}_{half_year}.geojson",
+                                  result_file_name=f"lor_planungsraeume_population_{year}_{half_year}.geojson",
                                   statistic=statistic,
                                   statistic_t1=statistic_t1,
                                   statistic_t2=statistic_t2,
@@ -517,7 +517,7 @@ class DataBlender:
             # Extend districts
             extend_districts(logger=logger,
                              results_path=results_path,
-                             result_file_name=f"bezirksgrenzen_social_{year}_{half_year}.geojson",
+                             result_file_name=f"bezirksgrenzen_population_{year}_{half_year}.geojson",
                              statistic=statistic,
                              statistic_t1=statistic_t1,
                              statistic_t2=statistic_t2,
@@ -532,7 +532,7 @@ class DataBlender:
             # Extend forecast areas
             extend_forecast_areas(logger=logger,
                                   results_path=results_path,
-                                  result_file_name=f"lor_prognoseraeume_social_{year}_{half_year}.geojson",
+                                  result_file_name=f"lor_prognoseraeume_population_{year}_{half_year}.geojson",
                                   statistic=statistic,
                                   statistic_t1=statistic_t1,
                                   statistic_t2=statistic_t2,
@@ -547,7 +547,7 @@ class DataBlender:
             # Extend district regions
             extend_distric_regions(logger=logger,
                                    results_path=results_path,
-                                   result_file_name=f"lor_bezirksregionen_social_{year}_{half_year}.geojson",
+                                   result_file_name=f"lor_bezirksregionen_population_{year}_{half_year}.geojson",
                                    statistic=statistic,
                                    statistic_t1=statistic_t1,
                                    statistic_t2=statistic_t2,
@@ -562,7 +562,7 @@ class DataBlender:
             # Extend planning areas
             extend_planning_areas(logger=logger,
                                   results_path=results_path,
-                                  result_file_name=f"lor_planungsraeume_social_{year}_{half_year}.geojson",
+                                  result_file_name=f"lor_planungsraeume_population_{year}_{half_year}.geojson",
                                   statistic=statistic,
                                   statistic_t1=statistic_t1,
                                   statistic_t2=statistic_t2,
@@ -594,7 +594,7 @@ class DataBlender:
             # Extend districts
             extend_districts(logger=logger,
                              results_path=results_path,
-                             result_file_name=f"bezirksgrenzen_social_{year}_{half_year}_new_format.geojson",
+                             result_file_name=f"bezirksgrenzen_population_{year}_{half_year}_new_format.geojson",
                              statistic=statistic,
                              statistic_t1=statistic_t1,
                              statistic_t2=statistic_t2,
@@ -609,7 +609,7 @@ class DataBlender:
             # Extend forecast areas
             extend_forecast_areas(logger=logger,
                                   results_path=results_path,
-                                  result_file_name=f"lor_prognoseraeume_social_{year}_{half_year}_new_format.geojson",
+                                  result_file_name=f"lor_prognoseraeume_population_{year}_{half_year}_new_format.geojson",
                                   statistic=statistic,
                                   statistic_t1=statistic_t1,
                                   statistic_t2=statistic_t2,
@@ -624,7 +624,7 @@ class DataBlender:
             # Extend district regions
             extend_distric_regions(logger=logger,
                                    results_path=results_path,
-                                   result_file_name=f"lor_bezirksregionen_social_{year}_{half_year}_new_format.geojson",
+                                   result_file_name=f"lor_bezirksregionen_population_{year}_{half_year}_new_format.geojson",
                                    statistic=statistic,
                                    statistic_t1=statistic_t1,
                                    statistic_t2=statistic_t2,
@@ -639,7 +639,7 @@ class DataBlender:
             # Extend planning areas
             extend_planning_areas(logger=logger,
                                   results_path=results_path,
-                                  result_file_name=f"lor_planungsraeume_social_{year}_{half_year}_new_format.geojson",
+                                  result_file_name=f"lor_planungsraeume_population_{year}_{half_year}_new_format.geojson",
                                   statistic=statistic,
                                   statistic_t1=statistic_t1,
                                   statistic_t2=statistic_t2,
@@ -665,7 +665,7 @@ class DataBlender:
             # Extend districts
             extend_districts(logger=logger,
                              results_path=results_path,
-                             result_file_name=f"bezirksgrenzen_social_{year}_{half_year}.geojson",
+                             result_file_name=f"bezirksgrenzen_population_{year}_{half_year}.geojson",
                              statistic=statistic,
                              statistic_t1=statistic_t1,
                              statistic_t2=statistic_t2,
@@ -680,7 +680,7 @@ class DataBlender:
             # Extend forecast areas
             extend_forecast_areas(logger=logger,
                                   results_path=results_path,
-                                  result_file_name=f"lor_prognoseraeume_social_{year}_{half_year}.geojson",
+                                  result_file_name=f"lor_prognoseraeume_population_{year}_{half_year}.geojson",
                                   statistic=statistic,
                                   statistic_t1=statistic_t1,
                                   statistic_t2=statistic_t2,
@@ -695,7 +695,7 @@ class DataBlender:
             # Extend district regions
             extend_distric_regions(logger=logger,
                                    results_path=results_path,
-                                   result_file_name=f"lor_bezirksregionen_social_{year}_{half_year}.geojson",
+                                   result_file_name=f"lor_bezirksregionen_population_{year}_{half_year}.geojson",
                                    statistic=statistic,
                                    statistic_t1=statistic_t1,
                                    statistic_t2=statistic_t2,
@@ -710,7 +710,7 @@ class DataBlender:
             # Extend planning areas
             extend_planning_areas(logger=logger,
                                   results_path=results_path,
-                                  result_file_name=f"lor_planungsraeume_social_{year}_{half_year}.geojson",
+                                  result_file_name=f"lor_planungsraeume_population_{year}_{half_year}.geojson",
                                   statistic=statistic,
                                   statistic_t1=statistic_t1,
                                   statistic_t2=statistic_t2,
