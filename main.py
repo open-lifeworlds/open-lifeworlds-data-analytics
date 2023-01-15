@@ -61,23 +61,25 @@ def main(argv):
     # Set paths
     data_path = os.path.join(script_path, "data")
     raw_path = os.path.join(script_path, "raw")
-    statistics_path = os.path.join(raw_path, "lor-statistics")
+    statistics_population_path = os.path.join(raw_path, "lor-statistics-population")
 
     # Initialize logger
     logger = LoggerFacade(data_path, console=True, file=False)
 
-    # Load data
+    # Download data
     OdisGeoDataLoader().run(logger, os.path.join(raw_path, "lor-odis-geo"), clean=clean, quiet=quiet)
-    LorStatisticsDataLoader().run(logger, os.path.join(raw_path, "lor-statistics"), clean=clean, quiet=quiet)
     LorSenateDataLoader().run(logger, os.path.join(raw_path, "lor-senate"), clean=clean, quiet=quiet)
+
+    # Download statistics data
+    LorStatisticsDataLoader().run(logger, os.path.join(raw_path, statistics_population_path), clean=clean, quiet=quiet)
 
     # Convert data
     GeojsonCopier().run(logger, os.path.join(raw_path, "lor-odis-geo"), data_path, clean=clean, quiet=quiet)
     GeojsonProjectionConverter().run(logger, data_path, data_path, clean=clean, quiet=quiet)
     GeojsonBoundingBoxConverter().run(logger, data_path, data_path, clean=clean, quiet=quiet)
 
-    # Blend data
-    DataBlender().run(logger, data_path=data_path, statistics_path=statistics_path, results_path=data_path,
+    # Blend data into geojson
+    DataBlender().run(logger, data_path=data_path, statistics_population_path=statistics_population_path, results_path=data_path,
                       clean=True, quiet=quiet)
 
 
