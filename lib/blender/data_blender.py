@@ -43,8 +43,9 @@ post_2020_statistics = [
 ]
 
 
-def extend_districts(logger, results_path, result_file_name, statistic, statistic_t1, statistic_t2, statistic_t3,
-                     statistic_t4, geojson, id_property, area_property, clean, quiet):
+def extend_districts(logger, results_path, result_file_name,
+                     statistic, statistic_t1, statistic_t2, statistic_t3, statistic_t4,
+                     geojson, id_property, area_property, clean, quiet):
     geojson_extended_file = os.path.join(results_path, result_file_name)
     geojson_extended = copy.deepcopy(geojson)
 
@@ -110,8 +111,9 @@ def extend_districts(logger, results_path, result_file_name, statistic, statisti
             logger.log_line(f"✓ Blend data from {statistic} into {result_file_name}")
 
 
-def extend_forecast_areas(logger, results_path, result_file_name, statistic, statistic_t1, statistic_t2, statistic_t3,
-                          statistic_t4, geojson, id_property, area_property, clean, quiet):
+def extend_forecast_areas(logger, results_path, result_file_name,
+                          statistic, statistic_t1, statistic_t2, statistic_t3, statistic_t4,
+                          geojson, id_property, area_property, clean, quiet):
     geojson_extended_file = os.path.join(results_path, result_file_name)
     geojson_extended = copy.deepcopy(geojson)
 
@@ -161,8 +163,9 @@ def extend_forecast_areas(logger, results_path, result_file_name, statistic, sta
             logger.log_line(f"✓ Blend data from {statistic} into {result_file_name}")
 
 
-def extend_distric_regions(logger, results_path, result_file_name, statistic, statistic_t1, statistic_t2, statistic_t3,
-                           statistic_t4, geojson, id_property, area_property, clean, quiet):
+def extend_district_regions(logger, results_path, result_file_name,
+                            statistic, statistic_t1, statistic_t2, statistic_t3, statistic_t4,
+                            geojson, id_property, area_property, clean, quiet):
     geojson_extended_file = os.path.join(results_path, result_file_name)
     geojson_extended = copy.deepcopy(geojson)
 
@@ -216,8 +219,9 @@ def extend_distric_regions(logger, results_path, result_file_name, statistic, st
             logger.log_line(f"✓ Blend data from {statistic} into {result_file_name}")
 
 
-def extend_planning_areas(logger, results_path, result_file_name, statistic, statistic_t1, statistic_t2, statistic_t3,
-                          statistic_t4, geojson, id_property, area_property, clean, quiet):
+def extend_planning_areas(logger, results_path, result_file_name,
+                          statistic, statistic_t1, statistic_t2, statistic_t3, statistic_t4,
+                          geojson, id_property, area_property, clean, quiet):
     geojson_extended_file = os.path.join(results_path, result_file_name)
     geojson_extended = copy.deepcopy(geojson)
 
@@ -273,8 +277,6 @@ def extend_planning_areas(logger, results_path, result_file_name, statistic, sta
 
         if not quiet:
             logger.log_line(f"✓ Blend data from {statistic} into {result_file_name}")
-
-        logger.log_line(" ")
 
 
 def build_ids(combined_id):
@@ -474,19 +476,19 @@ class DataBlender:
                                   quiet=quiet)
 
             # Extend district regions
-            extend_distric_regions(logger=logger,
-                                   results_path=results_path,
-                                   result_file_name=f"lor_bezirksregionen_population_{year}_{half_year}.geojson",
-                                   statistic=statistic,
-                                   statistic_t1=statistic_t1,
-                                   statistic_t2=statistic_t2,
-                                   statistic_t3=statistic_t3,
-                                   statistic_t4=statistic_t4,
-                                   geojson=geojson_lor_district_regions,
-                                   id_property="broker Dow",
-                                   area_property="FLAECHENGR",
-                                   clean=clean,
-                                   quiet=quiet)
+            extend_district_regions(logger=logger,
+                                    results_path=results_path,
+                                    result_file_name=f"lor_bezirksregionen_population_{year}_{half_year}.geojson",
+                                    statistic=statistic,
+                                    statistic_t1=statistic_t1,
+                                    statistic_t2=statistic_t2,
+                                    statistic_t3=statistic_t3,
+                                    statistic_t4=statistic_t4,
+                                    geojson=geojson_lor_district_regions,
+                                    id_property="broker Dow",
+                                    area_property="FLAECHENGR",
+                                    clean=clean,
+                                    quiet=quiet)
 
             # Extend planning areas
             extend_planning_areas(logger=logger,
@@ -545,19 +547,19 @@ class DataBlender:
                                   quiet=quiet)
 
             # Extend district regions
-            extend_distric_regions(logger=logger,
-                                   results_path=results_path,
-                                   result_file_name=f"lor_bezirksregionen_population_{year}_{half_year}.geojson",
-                                   statistic=statistic,
-                                   statistic_t1=statistic_t1,
-                                   statistic_t2=statistic_t2,
-                                   statistic_t3=statistic_t3,
-                                   statistic_t4=statistic_t4,
-                                   geojson=geojson_lor_district_regions,
-                                   id_property="broker Dow",
-                                   area_property="FLAECHENGR",
-                                   clean=clean,
-                                   quiet=quiet)
+            extend_district_regions(logger=logger,
+                                    results_path=results_path,
+                                    result_file_name=f"lor_bezirksregionen_population_{year}_{half_year}.geojson",
+                                    statistic=statistic,
+                                    statistic_t1=statistic_t1,
+                                    statistic_t2=statistic_t2,
+                                    statistic_t3=statistic_t3,
+                                    statistic_t4=statistic_t4,
+                                    geojson=geojson_lor_district_regions,
+                                    id_property="broker Dow",
+                                    area_property="FLAECHENGR",
+                                    clean=clean,
+                                    quiet=quiet)
 
             # Extend planning areas
             extend_planning_areas(logger=logger,
@@ -622,19 +624,19 @@ class DataBlender:
                                   quiet=quiet)
 
             # Extend district regions
-            extend_distric_regions(logger=logger,
-                                   results_path=results_path,
-                                   result_file_name=f"lor_bezirksregionen_population_{year}_{half_year}_new_format.geojson",
-                                   statistic=statistic,
-                                   statistic_t1=statistic_t1,
-                                   statistic_t2=statistic_t2,
-                                   statistic_t3=statistic_t3,
-                                   statistic_t4=statistic_t4,
-                                   geojson=geojson_lor_district_regions,
-                                   id_property="BZR_ID",
-                                   area_property="GROESSE_m2",
-                                   clean=clean,
-                                   quiet=quiet)
+            extend_district_regions(logger=logger,
+                                    results_path=results_path,
+                                    result_file_name=f"lor_bezirksregionen_population_{year}_{half_year}_new_format.geojson",
+                                    statistic=statistic,
+                                    statistic_t1=statistic_t1,
+                                    statistic_t2=statistic_t2,
+                                    statistic_t3=statistic_t3,
+                                    statistic_t4=statistic_t4,
+                                    geojson=geojson_lor_district_regions,
+                                    id_property="BZR_ID",
+                                    area_property="GROESSE_m2",
+                                    clean=clean,
+                                    quiet=quiet)
 
             # Extend planning areas
             extend_planning_areas(logger=logger,
@@ -693,19 +695,19 @@ class DataBlender:
                                   quiet=quiet)
 
             # Extend district regions
-            extend_distric_regions(logger=logger,
-                                   results_path=results_path,
-                                   result_file_name=f"lor_bezirksregionen_population_{year}_{half_year}.geojson",
-                                   statistic=statistic,
-                                   statistic_t1=statistic_t1,
-                                   statistic_t2=statistic_t2,
-                                   statistic_t3=statistic_t3,
-                                   statistic_t4=statistic_t4,
-                                   geojson=geojson_lor_district_regions,
-                                   id_property="BZR_ID",
-                                   area_property="GROESSE_m2",
-                                   clean=clean,
-                                   quiet=quiet)
+            extend_district_regions(logger=logger,
+                                    results_path=results_path,
+                                    result_file_name=f"lor_bezirksregionen_population_{year}_{half_year}.geojson",
+                                    statistic=statistic,
+                                    statistic_t1=statistic_t1,
+                                    statistic_t2=statistic_t2,
+                                    statistic_t3=statistic_t3,
+                                    statistic_t4=statistic_t4,
+                                    geojson=geojson_lor_district_regions,
+                                    id_property="BZR_ID",
+                                    area_property="GROESSE_m2",
+                                    clean=clean,
+                                    quiet=quiet)
 
             # Extend planning areas
             extend_planning_areas(logger=logger,

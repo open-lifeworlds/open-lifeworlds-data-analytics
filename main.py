@@ -12,6 +12,7 @@ library_paths = [
     os.path.join(script_path, "lib", "loader"),
     os.path.join(script_path, "lib", "converter"),
     os.path.join(script_path, "lib", "blender"),
+    os.path.join(script_path, "lib", "aggregator"),
 ]
 
 for p in library_paths:
@@ -27,6 +28,7 @@ from geojson_copier import GeojsonCopier
 from geojson_projection_converter import GeojsonProjectionConverter
 from geojson_bounding_box_converter import GeojsonBoundingBoxConverter
 from data_blender import DataBlender
+from data_aggregator import DataAggregator
 from tracking_decorator import TrackingDecorator
 
 
@@ -79,8 +81,11 @@ def main(argv):
     GeojsonBoundingBoxConverter().run(logger, data_path, data_path, clean=clean, quiet=quiet)
 
     # Blend data into geojson
-    DataBlender().run(logger, data_path=data_path, statistics_population_path=statistics_population_path, results_path=data_path,
+    DataBlender().run(logger, data_path=data_path, statistics_path=statistics_population_path, results_path=data_path,
                       clean=True, quiet=quiet)
+
+    # Aggregate data
+    DataAggregator().run(logger, data_path=data_path, statistics_path=statistics_population_path, results_path=data_path, clean=True, quiet=quiet)
 
 
 if __name__ == "__main__":
