@@ -1,9 +1,39 @@
-import copy
 import json
 import os
 from pathlib import Path
 
 from tracking_decorator import TrackingDecorator
+
+
+def unify_properties(geojson):
+    changed = False
+
+    for feature in geojson["features"]:
+        properties = feature["properties"]
+
+        id = None
+        name = None
+
+        # Iterate over potential ID properties
+        for id_property in ["Gemeinde_schluessel", "broker Dow", "PGR_ID", "BZR_ID", "PLR_ID"]:
+            if id_property in properties:
+                id = properties[id_property]
+                properties.pop(id_property, None)
+
+        # Iterate over potential name properties
+        for name_property in ["Gemeinde_name", "PROGNOSERA", "PGR_NAME", "BEZIRKSREG", "BZR_NAME", "PLANUNGSRA", "PLR_NAME"]:
+            if name_property in properties:
+                name = properties[name_property]
+                properties.pop(name_property, None)
+
+        if id is not None:
+            properties["id"] = id
+            changed = True
+        if name is not None:
+            properties["name"] = name
+            changed = True
+
+    return changed
 
 
 def clean_geometry(geojson):
@@ -46,7 +76,9 @@ class GeojsonCleaner:
                 with open(source_file_path, "r") as geojson_file:
                     geojson = json.load(geojson_file)
 
-                changed = clean_geometry(geojson)
+                changed = False
+                changed |= unify_properties(geojson)
+                changed |= clean_geometry(geojson)
 
                 if changed:
                     with open(results_file_path, "w") as geojson_file:
