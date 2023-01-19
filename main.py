@@ -25,6 +25,7 @@ from odis_geodata_loader import OdisGeoDataLoader
 from lor_statistics_data_loader import LorStatisticsDataLoader
 from lor_senate_data_loader import LorSenateDataLoader
 from geojson_copier import GeojsonCopier
+from geojson_cleaner import GeojsonCleaner
 from geojson_projection_converter import GeojsonProjectionConverter
 from geojson_bounding_box_converter import GeojsonBoundingBoxConverter
 from data_blender import DataBlender
@@ -76,7 +77,8 @@ def main(argv):
     LorStatisticsDataLoader().run(logger, os.path.join(raw_path, statistics_population_path), clean=clean, quiet=quiet)
 
     # Convert data
-    GeojsonCopier().run(logger, os.path.join(raw_path, "lor-odis-geo"), data_path, clean=clean, quiet=quiet)
+    GeojsonCopier().run(logger, os.path.join(raw_path, "lor-odis-geo"), data_path, clean=True, quiet=quiet)
+    GeojsonCleaner().run(logger, data_path, data_path, clean=clean, quiet=quiet)
     GeojsonProjectionConverter().run(logger, data_path, data_path, clean=clean, quiet=quiet)
     GeojsonBoundingBoxConverter().run(logger, data_path, data_path, clean=clean, quiet=quiet)
 
