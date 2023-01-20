@@ -18,6 +18,10 @@ def unify_properties(geojson):
         for id_property in ["Gemeinde_schluessel", "broker Dow", "PGR_ID", "BZR_ID", "PLR_ID"]:
             if id_property in properties:
                 id = properties[id_property]
+
+                if id_property is "Gemeinde_schluessel":
+                    id = id[1:]
+
                 properties.pop(id_property, None)
 
         # Iterate over potential name properties
