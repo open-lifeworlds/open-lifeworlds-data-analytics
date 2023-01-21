@@ -454,7 +454,7 @@ class DataBlender:
                              statistic_t2=statistic_t2,
                              statistic_t3=statistic_t3,
                              statistic_t4=statistic_t4,
-                             id_property="Gemeinde_schluessel",
+                             id_property="id",
                              area_property=None,
                              geojson=geojson_lor_districts,
                              clean=clean,
@@ -469,8 +469,8 @@ class DataBlender:
                                   statistic_t2=statistic_t2,
                                   statistic_t3=statistic_t3,
                                   statistic_t4=statistic_t4,
-                                  id_property="broker Dow",
-                                  area_property="FLAECHENGR",
+                                  id_property="id",
+                                  area_property="area",
                                   geojson=geojson_lor_forecast_areas,
                                   clean=clean,
                                   quiet=quiet)
@@ -485,8 +485,8 @@ class DataBlender:
                                     statistic_t3=statistic_t3,
                                     statistic_t4=statistic_t4,
                                     geojson=geojson_lor_district_regions,
-                                    id_property="broker Dow",
-                                    area_property="FLAECHENGR",
+                                    id_property="id",
+                                    area_property="area",
                                     clean=clean,
                                     quiet=quiet)
 
@@ -500,8 +500,8 @@ class DataBlender:
                                   statistic_t3=statistic_t3,
                                   statistic_t4=statistic_t4,
                                   geojson=geojson_lor_planning_areas,
-                                  id_property="broker Dow",
-                                  area_property="FLAECHENGR",
+                                  id_property="id",
+                                  area_property="area",
                                   clean=clean,
                                   quiet=quiet)
 
@@ -525,7 +525,7 @@ class DataBlender:
                              statistic_t2=statistic_t2,
                              statistic_t3=statistic_t3,
                              statistic_t4=statistic_t4,
-                             id_property="Gemeinde_schluessel",
+                             id_property="id",
                              area_property=None,
                              geojson=geojson_lor_districts,
                              clean=clean,
@@ -540,8 +540,8 @@ class DataBlender:
                                   statistic_t2=statistic_t2,
                                   statistic_t3=statistic_t3,
                                   statistic_t4=statistic_t4,
-                                  id_property="broker Dow",
-                                  area_property="FLAECHENGR",
+                                  id_property="id",
+                                  area_property="area",
                                   geojson=geojson_lor_forecast_areas,
                                   clean=clean,
                                   quiet=quiet)
@@ -556,8 +556,8 @@ class DataBlender:
                                     statistic_t3=statistic_t3,
                                     statistic_t4=statistic_t4,
                                     geojson=geojson_lor_district_regions,
-                                    id_property="broker Dow",
-                                    area_property="FLAECHENGR",
+                                    id_property="id",
+                                    area_property="area",
                                     clean=clean,
                                     quiet=quiet)
 
@@ -571,8 +571,8 @@ class DataBlender:
                                   statistic_t3=statistic_t3,
                                   statistic_t4=statistic_t4,
                                   geojson=geojson_lor_planning_areas,
-                                  id_property="broker Dow",
-                                  area_property="FLAECHENGR",
+                                  id_property="id",
+                                  area_property="area",
                                   clean=clean,
                                   quiet=quiet)
 
@@ -602,7 +602,7 @@ class DataBlender:
                              statistic_t2=statistic_t2,
                              statistic_t3=statistic_t3,
                              statistic_t4=statistic_t4,
-                             id_property="Gemeinde_schluessel",
+                             id_property="id",
                              area_property=None,
                              geojson=geojson_lor_districts,
                              clean=clean,
@@ -617,8 +617,8 @@ class DataBlender:
                                   statistic_t2=statistic_t2,
                                   statistic_t3=statistic_t3,
                                   statistic_t4=statistic_t4,
-                                  id_property="PGR_ID",
-                                  area_property="GROESSE_M2",
+                                  id_property="id",
+                                  area_property="area",
                                   geojson=geojson_lor_forecast_areas,
                                   clean=clean,
                                   quiet=quiet)
@@ -633,8 +633,8 @@ class DataBlender:
                                     statistic_t3=statistic_t3,
                                     statistic_t4=statistic_t4,
                                     geojson=geojson_lor_district_regions,
-                                    id_property="BZR_ID",
-                                    area_property="GROESSE_m2",
+                                    id_property="id",
+                                    area_property="area",
                                     clean=clean,
                                     quiet=quiet)
 
@@ -648,8 +648,8 @@ class DataBlender:
                                   statistic_t3=statistic_t3,
                                   statistic_t4=statistic_t4,
                                   geojson=geojson_lor_planning_areas,
-                                  id_property="PLR_ID",
-                                  area_property="GROESSE_M2",
+                                  id_property="id",
+                                  area_property="area",
                                   clean=clean,
                                   quiet=quiet)
 
@@ -673,7 +673,7 @@ class DataBlender:
                              statistic_t2=statistic_t2,
                              statistic_t3=statistic_t3,
                              statistic_t4=statistic_t4,
-                             id_property="Gemeinde_schluessel",
+                             id_property="id",
                              area_property=None,
                              geojson=geojson_lor_districts,
                              clean=clean,
@@ -688,8 +688,8 @@ class DataBlender:
                                   statistic_t2=statistic_t2,
                                   statistic_t3=statistic_t3,
                                   statistic_t4=statistic_t4,
-                                  id_property="PGR_ID",
-                                  area_property="GROESSE_M2",
+                                  id_property="id",
+                                  area_property="area",
                                   geojson=geojson_lor_forecast_areas,
                                   clean=clean,
                                   quiet=quiet)
@@ -704,8 +704,8 @@ class DataBlender:
                                     statistic_t3=statistic_t3,
                                     statistic_t4=statistic_t4,
                                     geojson=geojson_lor_district_regions,
-                                    id_property="BZR_ID",
-                                    area_property="GROESSE_m2",
+                                    id_property="id",
+                                    area_property="area",
                                     clean=clean,
                                     quiet=quiet)
 
@@ -719,7 +719,7 @@ class DataBlender:
                                   statistic_t3=statistic_t3,
                                   statistic_t4=statistic_t4,
                                   geojson=geojson_lor_planning_areas,
-                                  id_property="PLR_ID",
-                                  area_property="GROESSE_M2",
+                                  id_property="id",
+                                  area_property="area",
                                   clean=clean,
                                   quiet=quiet)

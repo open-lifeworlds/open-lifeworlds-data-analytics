@@ -13,13 +13,14 @@ def unify_properties(geojson):
 
         id = None
         name = None
+        area = None
 
         # Iterate over potential ID properties
         for id_property in ["Gemeinde_schluessel", "broker Dow", "PGR_ID", "BZR_ID", "PLR_ID"]:
             if id_property in properties:
                 id = properties[id_property]
 
-                if id_property is "Gemeinde_schluessel":
+                if id_property == "Gemeinde_schluessel":
                     id = id[1:]
 
                 properties.pop(id_property, None)
@@ -30,11 +31,20 @@ def unify_properties(geojson):
                 name = properties[name_property]
                 properties.pop(name_property, None)
 
+        # Iterate over potential area properties
+        for area_property in ["FLAECHENGR", "GROESSE_m2", "GROESSE_M2"]:
+            if area_property in properties:
+                area = properties[area_property]
+                properties.pop(area_property, None)
+
         if id is not None:
             properties["id"] = id
             changed = True
         if name is not None:
             properties["name"] = name
+            changed = True
+        if area is not None:
+            properties["area"] = area
             changed = True
 
     return changed
