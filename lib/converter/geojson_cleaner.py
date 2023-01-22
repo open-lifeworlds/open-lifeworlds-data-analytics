@@ -60,7 +60,7 @@ def clean_geometry(geojson):
             polygon_max = [[]]
             for polygon in polygons:
                 if len(polygon[0]) > len(polygon_max[0]):
-                    polygon_max = polygon
+                    polygon_max = [polygon]
 
             feature["geometry"]["coordinates"] = polygon_max
             changed = True
