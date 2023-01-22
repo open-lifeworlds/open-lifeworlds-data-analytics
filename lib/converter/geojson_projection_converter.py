@@ -59,24 +59,29 @@ class GeojsonProjectionConverter:
         for path in Path(source_path).glob("*.geojson"):
 
             file_name = path.name
-            source_file_path = os.path.join(source_path, file_name)
-            results_file_path = os.path.join(results_path, file_name)
 
-            with open(source_file_path, "r") as geojson_file:
-                geojson = json.load(geojson_file)
-                projection = str(geojson["crs"]["properties"]["name"])
-                projection_number = projection.split(":")[-1]
+            if file_name in ["bezirksgrenzen.geojson", "lor_prognoseraeume.geojson", "lor_prognoseraeume_2021.geojson",
+                             "lor_bezirksregionen.geojson", "lor_bezirksregionen_2021.geojson",
+                             "lor_planungsraeume.geojson", "lor_planungsraeume_2021.geojson"]:
 
-                if projection_number != target_projection_number and projection_number != "CRS84":
-                    geojson_polar = convert_to_polar(
-                        geojson=geojson,
-                        target_projection_number=target_projection_number,
-                        source_projection=pyproj.Proj(init=f"epsg:{projection_number}"),
-                        target_projection=pyproj.Proj(init=f"epsg:{target_projection_number}")
-                    )
+                source_file_path = os.path.join(source_path, file_name)
+                results_file_path = os.path.join(results_path, file_name)
 
-                    with open(results_file_path, "w") as geojson_polar_file:
-                        json.dump(geojson_polar, geojson_polar_file)
+                with open(source_file_path, "r") as geojson_file:
+                    geojson = json.load(geojson_file)
+                    projection = str(geojson["crs"]["properties"]["name"])
+                    projection_number = projection.split(":")[-1]
 
-                if not quiet:
-                    logger.log_line(f"✓ Convert {file_name}")
+                    if projection_number != target_projection_number and projection_number != "CRS84":
+                        geojson_polar = convert_to_polar(
+                            geojson=geojson,
+                            target_projection_number=target_projection_number,
+                            source_projection=pyproj.Proj(init=f"epsg:{projection_number}"),
+                            target_projection=pyproj.Proj(init=f"epsg:{target_projection_number}")
+                        )
+
+                        with open(results_file_path, "w") as geojson_polar_file:
+                            json.dump(geojson_polar, geojson_polar_file)
+
+                    if not quiet:
+                        logger.log_line(f"✓ Convert {file_name}")
