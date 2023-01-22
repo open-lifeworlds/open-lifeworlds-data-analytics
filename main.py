@@ -22,7 +22,7 @@ for p in library_paths:
 # Import library classes
 from logger_facade import LoggerFacade
 from odis_geodata_loader import OdisGeoDataLoader
-from lor_statistics_data_loader import LorStatisticsDataLoader
+from lor_statistics_population_data_loader import LorStatisticsPopulationDataLoader
 from lor_senate_data_loader import LorSenateDataLoader
 from geojson_copier import GeojsonCopier
 from geojson_cleaner import GeojsonCleaner
@@ -69,20 +69,20 @@ def main(argv):
     # Initialize logger
     logger = LoggerFacade(data_path, console=True, file=False)
 
-    # Download data
+    # Data retrieval: Download data
     OdisGeoDataLoader().run(logger, os.path.join(raw_path, "lor-odis-geo"), clean=clean, quiet=quiet)
     LorSenateDataLoader().run(logger, os.path.join(raw_path, "lor-senate"), clean=clean, quiet=quiet)
 
-    # Download statistics data
-    LorStatisticsDataLoader().run(logger, os.path.join(raw_path, statistics_population_path), clean=clean, quiet=quiet)
+    # Data retrieval: Download statistics population data
+    LorStatisticsPopulationDataLoader().run(logger, os.path.join(raw_path, statistics_population_path), clean=clean, quiet=quiet)
 
-    # Convert data
-    GeojsonCopier().run(logger, os.path.join(raw_path, "lor-odis-geo"), data_path, clean=True, quiet=quiet)
+    # Data preparation: Convert LOR geo data
+    GeojsonCopier().run(logger, os.path.join(raw_path, "lor-odis-geo"), data_path, clean=clean, quiet=quiet)
     GeojsonCleaner().run(logger, data_path, data_path, clean=clean, quiet=quiet)
     GeojsonProjectionConverter().run(logger, data_path, data_path, clean=clean, quiet=quiet)
     GeojsonBoundingBoxConverter().run(logger, data_path, data_path, clean=clean, quiet=quiet)
 
-    # Blend data into geojson
+    # Data enhancement: Blend data into geojson
     DataBlender().run(logger, data_path=data_path, statistics_path=statistics_population_path, results_path=data_path,
                       clean=True, quiet=quiet)
 

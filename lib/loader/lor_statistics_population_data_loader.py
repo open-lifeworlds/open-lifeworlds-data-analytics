@@ -108,7 +108,7 @@ def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
 # Main
 #
 
-class LorStatisticsDataLoader:
+class LorStatisticsPopulationDataLoader:
 
     @TrackingDecorator.track_time
     def run(self, logger, results_path, clean=False, quiet=False):
