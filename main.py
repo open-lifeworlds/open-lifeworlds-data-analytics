@@ -45,7 +45,7 @@ def main(argv):
 
     # Read command line arguments
     try:
-        opts, args = getopt.getopt(argv, "hcqp:", ["help", "clean", "quiet"])
+        opts, args = getopt.getopt(argv, "hcq", ["help", "clean", "quiet"])
     except getopt.GetoptError:
         print("main.py --help --clean --quiet")
         sys.exit(2)
