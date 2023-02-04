@@ -66,29 +66,29 @@ def extend_districts(logger, statistics, year, half_year,
             logger.log_line(f"✗️ No data in {statistic} for district={district_id}")
             continue
 
-        if district_id == "001":
+        if district_id == "01":
             area_sqkm = 39.34
-        elif district_id == "002":
+        elif district_id == "02":
             area_sqkm = 20.36
-        elif district_id == "003":
+        elif district_id == "03":
             area_sqkm = 103.10
-        elif district_id == "004":
+        elif district_id == "04":
             area_sqkm = 59.76
-        elif district_id == "005":
+        elif district_id == "05":
             area_sqkm = 91.74
-        elif district_id == "006":
+        elif district_id == "06":
             area_sqkm = 102.40
-        elif district_id == "007":
+        elif district_id == "07":
             area_sqkm = 52.93
-        elif district_id == "008":
+        elif district_id == "08":
             area_sqkm = 44.89
-        elif district_id == "009":
+        elif district_id == "09":
             area_sqkm = 167.41
-        elif district_id == "010":
+        elif district_id == "10":
             area_sqkm = 61.77
-        elif district_id == "011":
+        elif district_id == "11":
             area_sqkm = 52.02
-        elif district_id == "012":
+        elif district_id == "12":
             area_sqkm = 89.19
         else:
             area_sqkm = None
