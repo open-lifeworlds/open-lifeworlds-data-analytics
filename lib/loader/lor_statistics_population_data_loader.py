@@ -5,13 +5,18 @@ import requests
 from tracking_decorator import TrackingDecorator
 
 
-def download_file(logger, file_path, url):
+def download_file(logger, file_path, url, quiet):
     try:
         data = requests.get(url)
-        with open(file_path, 'wb') as file:
-            file.write(data.content)
+        if str(data.status_code).startswith("2"):
+            with open(file_path, 'wb') as file:
+                file.write(data.content)
+            if not quiet:
+                logger.log_line(f"✓ Download {file_path}")
+        elif not quiet:
+            logger.log_line(f"✗️ Error: {str(data.status_code)}, url {url}")
     except Exception as e:
-        logger.log_line(f"✗️ Exception: {str(e)}")
+        logger.log_line(f"✗️ Exception: {str(e)}, url {url}")
         return None
 
 
@@ -174,12 +179,11 @@ class LorStatisticsPopulationDataLoader:
                 download_file(
                     logger=logger,
                     file_path=file_path,
-                    url=f"{url}/{file_name}"
+                    url=f"{url}/{file_name}",
+                    quiet=quiet
                 )
 
-                if not quiet:
-                    logger.log_line(f"✓ Download {file_path}")
-            else:
+            elif not quiet:
                 logger.log_line(f"✓ Already exists {file_path}")
 
             # Convert file to csv

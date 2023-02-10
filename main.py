@@ -22,6 +22,7 @@ for p in library_paths:
 # Import library classes
 from logger_facade import LoggerFacade
 from odis_geodata_loader import OdisGeoDataLoader
+from lor_statistics_monitoring_social_urban_development_data_loader import LorStatisticsMonitoringSocialUrbanDevelopmentDataLoader
 from lor_statistics_population_data_loader import LorStatisticsPopulationDataLoader
 from lor_senate_data_loader import LorSenateDataLoader
 from geojson_copier import GeojsonCopier
@@ -65,6 +66,7 @@ def main(argv):
     data_path = os.path.join(script_path, "data")
     raw_path = os.path.join(script_path, "raw")
     statistics_population_path = os.path.join(raw_path, "lor-statistics-population")
+    statistics_monitoring_social_urban_development_path = os.path.join(raw_path, "lor-statistics-monitoring-social-urban-development")
 
     # Initialize logger
     logger = LoggerFacade(data_path, console=True, file=False)
@@ -73,8 +75,9 @@ def main(argv):
     OdisGeoDataLoader().run(logger, os.path.join(raw_path, "lor-odis-geo"), clean=clean, quiet=quiet)
     LorSenateDataLoader().run(logger, os.path.join(raw_path, "lor-senate"), clean=clean, quiet=quiet)
 
-    # Data retrieval: Download statistics population data
+    # Data retrieval: Download statistics data
     LorStatisticsPopulationDataLoader().run(logger, os.path.join(raw_path, statistics_population_path), clean=clean, quiet=quiet)
+    LorStatisticsMonitoringSocialUrbanDevelopmentDataLoader().run(logger, os.path.join(raw_path, statistics_monitoring_social_urban_development_path), clean=clean, quiet=quiet)
 
     # Data preparation: Convert LOR geo data
     GeojsonCopier().run(logger, os.path.join(raw_path, "lor-odis-geo"), data_path, clean=clean, quiet=quiet)
