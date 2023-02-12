@@ -5,19 +5,25 @@ import requests
 from tracking_decorator import TrackingDecorator
 
 
-def download_file(logger, file_path, url, quiet):
-    try:
-        data = requests.get(url)
-        if str(data.status_code).startswith("2"):
-            with open(file_path, 'wb') as file:
-                file.write(data.content)
-            if not quiet:
-                logger.log_line(f"✓ Download {file_path}")
-        elif not quiet:
-            logger.log_line(f"✗️ Error: {str(data.status_code)}, url {url}")
-    except Exception as e:
-        logger.log_line(f"✗️ Exception: {str(e)}, url {url}")
-        return None
+def download_file(logger, file_path, url, clean, quiet):
+    # Check if result needs to be generated
+    if clean or not os.path.exists(file_path):
+
+        try:
+            data = requests.get(url)
+            if str(data.status_code).startswith("2"):
+                with open(file_path, "wb") as file:
+                    file.write(data.content)
+                if not quiet:
+                    logger.log_line(f"✓ Download {file_path}")
+            elif not quiet:
+                logger.log_line(f"✗️ Error: {str(data.status_code)}, url {url}")
+        except Exception as e:
+            logger.log_line(f"✗️ Exception: {str(e)}, url {url}")
+            return None
+
+    elif not quiet:
+        logger.log_line(f"✓ Already exists {file_path}")
 
 
 def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
@@ -104,6 +110,8 @@ def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
 
                 if not quiet:
                     logger.log_line(f"✓ Convert {file_path_csv}")
+            elif not quiet:
+                logger.log_line(f"✓ Already exists {file_path_csv}")
     except Exception as e:
         logger.log_line(f"✗️ Exception: {str(e)}")
         return None
@@ -173,18 +181,14 @@ class LorStatisticsPopulationDataLoader:
             # Define file path
             file_path = os.path.join(results_path, file_name)
 
-            # Check if result needs to be generated
-            if clean or not os.path.exists(file_path):
-
-                download_file(
-                    logger=logger,
-                    file_path=file_path,
-                    url=f"{url}/{file_name}",
-                    quiet=quiet
-                )
-
-            elif not quiet:
-                logger.log_line(f"✓ Already exists {file_path}")
+            # Download file
+            download_file(
+                logger=logger,
+                file_path=file_path,
+                url=f"{url}/{file_name}",
+                clean=clean,
+                quiet=quiet
+            )
 
             # Convert file to csv
             convert_file_to_csv(
