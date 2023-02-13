@@ -84,6 +84,28 @@ def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
                      "s3_anteil_transferbezieher", "s4_anteil_transferbezieher_unter_15",
                      "d1_anteil_arbeitslose", "d2_anteil_langzeitarbeitsose",
                      "d3_anteil_transferbezieher", "d4_anteil_transferbezieher_unter_15"]
+        elif file_name_base.startswith("2-3-indexind_anteile_bezirke_mss") \
+                or file_name_base.startswith(
+            "tabelle_2-3_index-indikatoren_auf_ebene_der_bezirke_mss_"):
+
+            if year == "2021":
+                sheets = ["2.3.IndexInd_Ant_Bezirk_MSS2021"]
+            else:
+                sheets = [f"2.3.IndexInd_Ant_BezirkeMSS{year}"]
+
+            skiprows = 8
+            if year == "2019" or year == "2021":
+                names = ["nummer", "name", "einwohner",
+                     "s1_anteil_arbeitslose", "_",
+                     "s3_anteil_transferbezieher", "s4_anteil_transferbezieher_unter_15",
+                     "d1_anteil_arbeitslose", "_2",
+                     "d3_anteil_transferbezieher", "d4_anteil_transferbezieher_unter_15"]
+            else:
+                names = ["nummer", "name", "einwohner",
+                     "s1_anteil_arbeitslose", "s2_anteil_langzeitarbeitslose",
+                     "s3_anteil_transferbezieher", "s4_anteil_transferbezieher_unter_15",
+                     "d1_anteil_arbeitslose", "d2_anteil_langzeitarbeitsose",
+                     "d3_anteil_transferbezieher", "d4_anteil_transferbezieher_unter_15"]
         else:
             sheets = []
             skiprows = 0
