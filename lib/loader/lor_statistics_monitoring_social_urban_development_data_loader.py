@@ -106,6 +106,27 @@ def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
                      "s3_anteil_transferbezieher", "s4_anteil_transferbezieher_unter_15",
                      "d1_anteil_arbeitslose", "d2_anteil_langzeitarbeitsose",
                      "d3_anteil_transferbezieher", "d4_anteil_transferbezieher_unter_15"]
+        elif file_name_base.startswith("3-indexind_z_wertemss") \
+                or file_name_base.startswith("tabelle_3_index-indikatoren_z-werte_mss_"):
+
+            if file_name_base == "3-indexind_z_wertemss2017":
+                sheets = [f"3.IndexInd_z_Werte_MSS2015"]
+            else:
+                sheets = [f"3.IndexInd_z_Werte_MSS{year}"]
+            skiprows = 8
+
+            if year == "2019" or year == "2021":
+                names = ["nummer", "name", "einwohner",
+                         "z_s1_anteil_arbeitslose", "_",
+                         "z_s3_anteil_transferbezieher", "z_s4_anteil_transferbezieher_unter_15",
+                         "z_d1_anteil_arbeitslose", "_2",
+                         "z_d3_anteil_transferbezieher", "z_d4_anteil_transferbezieher_unter_15"]
+            else:
+                names = ["nummer", "name", "einwohner",
+                     "z_s1_anteil_arbeitslose", "z_s1_anteil_langzeitarbeitslose",
+                     "z_s3_anteil_transferbezieher", "z_s4_anteil_transferbezieher_unter_15",
+                     "z_d1_anteil_arbeitslose", "z_d1_anteil_langzeitarbeitslose",
+                     "z_d3_anteil_transferbezieher", "z_d4_anteil_transferbezieher_unter_15"]
         else:
             sheets = []
             skiprows = 0
