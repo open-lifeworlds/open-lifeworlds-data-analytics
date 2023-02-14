@@ -232,6 +232,21 @@ def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
                      "k07_auslaendische_transferbezieher", "k08_staedtische_wohnungen", "k14_wohnraeume",
                      "k15_wohnflaeche", "k09_einfache_wohnlage", "k10_wohndauer_ueber_5_jahre",
                      "k11_wanderungsvolumen", "k12_wanderungssaldo", "k13_wanderungssaldo_von_kindern_unter_6_jahren"]
+        elif file_name_base.startswith("tabelle_4-1-1_kontext-indikatoren_anteile_plr_mss_"):
+
+            sheets = [f"4.1.1.KontextInd_MSS{year}"]
+            skiprows = 8
+            names = ["nummer", "name", "einwohner", "_", "k08_staedtische_wohnungen", "k14_wohnraeume", "k15_wohnflaeche"]
+        elif file_name_base.startswith("tabelle_4-2-1_kontext-indikatoren_anteile_bzr_mss_"):
+
+            sheets = [f"4.2.1.KontextInd_MSS{year}"]
+            skiprows = 8
+            names = ["nummer", "name", "einwohner", "_", "k08_staedtische_wohnungen", "k14_wohnraeume", "k15_wohnflaeche"]
+        elif file_name_base.startswith("tabelle_4-3-1_kontext-indikatoren_anteile_bezirke_mss_"):
+
+            sheets = [f"4.3.1.KontextInd_MSS{year}"]
+            skiprows = 8
+            names = ["nummer", "name", "einwohner", "_", "k08_staedtische_wohnungen", "k14_wohnraeume", "k15_wohnflaeche"]
         else:
             sheets = []
             skiprows = 0
