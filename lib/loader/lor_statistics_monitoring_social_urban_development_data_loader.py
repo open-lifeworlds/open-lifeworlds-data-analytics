@@ -113,7 +113,7 @@ def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
                 sheets = [f"3.IndexInd_z_Werte_MSS2015"]
             else:
                 sheets = [f"3.IndexInd_z_Werte_MSS{year}"]
-            skiprows = 8
+            skiprows = 15
 
             if year == "2019" or year == "2021":
                 names = ["nummer", "name", "einwohner",
@@ -127,6 +127,36 @@ def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
                      "z_s3_anteil_transferbezieher", "z_s4_anteil_transferbezieher_unter_15",
                      "z_d1_anteil_arbeitslose", "z_d1_anteil_langzeitarbeitslose",
                      "z_d3_anteil_transferbezieher", "z_d4_anteil_transferbezieher_unter_15"]
+        elif file_name_base.startswith("4.1.kontextind_anteile_plr_mss") \
+                or file_name_base.startswith("4-1-kontextind_anteile_plr_mss") \
+                or file_name_base.startswith("tabelle_4-1_kontext-indikatoren_anteile_plr_mss_"):
+
+            if year == "2013":
+                sheets = [f"Kontextind_MSS{year}_PLR"]
+            elif year == "2017":
+                sheets = [f"4.1.KontextInd_MSS2015"]
+            else:
+                sheets = [f"4.1.KontextInd_MSS{year}"]
+
+            if year == "2021":
+                skiprows = 18
+                names = ["nummer", "name", "einwohner", "_", "k01_jugendarbeitslosigkeit",
+                         "k02_alleinerziehende_haushalte", "k03_altersarmut",
+                         "k04_kinder_und_jugendliche_mit_migrationshintergrund",
+                         "k05_einwohnerinnen_und_einwohner_mit_migrationshintergrund",
+                         "k16_auslaenderinnen_und_auslaender", "k06_einwohnerinn_mit_migrationshintergrund",
+                         "k17_nicht_eu_auslaenderinnen_und_auslaender", "k07_auslaendische_transferbezieher", "_2",
+                         "_3", "_4", "k09_einfache_wohnlage", "k10_wohndauer_ueber_5_jahre", "k11_wanderungsvolumen",
+                         "k12_wanderungssaldo", "k13_wanderungssaldo_von_kindern_unter_6_jahren"]
+            else:
+                skiprows = 15
+                names = ["nummer", "name", "einwohner", "_",
+                     "k01_jugendarbeitslosigkeit", "k02_alleinerziehende_haushalte", "k03_altersarmut",
+                     "k04_kinder_und_jugendliche_mit_migrationshintergrund",
+                     "k05_kinder_und_jugendliche_mit_migrationshintergrund",
+                     "k06_einwohnerinn_mit_migrationshintergrund", "k07_auslaendische_transferbezieher",
+                     "k08_staedtische_wohnungen", "k09_einfache_wohnlage", "k10_wohndauer_ueber_5_jahre",
+                     "k11_wanderungsvolumen", "k12_wanderungssaldo", "k13_wanderungssaldo_von_kindern_unter_6_jahren"]
         else:
             sheets = []
             skiprows = 0
@@ -143,7 +173,7 @@ def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
                 # Convert Excel file to csv
                 pd.read_excel(file_path, engine=engine, sheet_name=sheet, skiprows=skiprows,
                               usecols=list(range(0, len(names))), names=names) \
-                    .drop(columns=["_", "_2"], errors="ignore") \
+                    .drop(columns=["_", "_2", "_3", "_4"], errors="ignore") \
                     .dropna() \
                     .to_csv(file_path_csv, index=False)
 
