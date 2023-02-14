@@ -36,6 +36,9 @@ def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
     else:
         return
 
+    # Set default values
+    drop_columns = []
+
     try:
         sheets = ["Schlüssel 31.12.2020", "T1a", "T2a", "T3a", "T4a",
                   "Schlüssel 01.01.2021", "T1b", "T2b", "T3b", "T4b"] \
@@ -100,7 +103,7 @@ def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
                 # Convert Excel file to csv
                 pd.read_excel(file_path, engine=engine, sheet_name=sheet, skiprows=skiprows,
                               usecols=list(range(0, len(names))), names=names) \
-                    .drop(columns="_", errors="ignore") \
+                    .drop(columns=drop_columns, errors="ignore") \
                     .dropna() \
                     .astype({"bezirk": "int"}, errors="ignore") \
                     .astype({"prognoseraum": "int"}, errors="ignore") \
@@ -177,7 +180,6 @@ class LorStatisticsPopulationDataLoader:
             (base_url + "6f9755e94509ab97/a56498f8dbdc", "SB_A01-06-00_2015h01_BE.xlsx"),
             (base_url + "39635be33812cbc9/ab5676ed32d8", "SB_A01-06-00_2015h01_BE.pdf"),
         ]:
-
             # Define file path
             file_path = os.path.join(results_path, file_name)
 

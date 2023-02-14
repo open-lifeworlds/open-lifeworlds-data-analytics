@@ -41,6 +41,9 @@ def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
     else:
         return
 
+    # Set default values
+    drop_columns = []
+
     try:
         if file_name_base.startswith("1-sdi_mss") \
                 or file_name_base.startswith("tabelle_1_gesamtindex_soziale_ungleichheit_sdi_mss_"):
@@ -54,36 +57,34 @@ def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
 
             sheets = [f"2.1.IndexInd_Ant_PLR_MSS{year}"]
             skiprows = 8
+            names = [
+                "nummer", "name", "einwohner", "z_s1_anteil_arbeitslose", "z_s1_anteil_langzeitarbeitslose",
+                "z_s3_anteil_transferbezieher", "z_s4_anteil_transferbezieher_unter_15", "z_d1_anteil_arbeitslose",
+                "z_d1_anteil_langzeitarbeitslose", "z_d3_anteil_transferbezieher",
+                "z_d4_anteil_transferbezieher_unter_15"
+            ]
             if year == 2019 or year == 2021:
-                names = ["nummer", "name", "einwohner",
-                     "s1_anteil_arbeitslose", "_",
-                     "s3_anteil_transferbezieher", "s4_anteil_transferbezieher_unter_15",
-                     "d1_anteil_arbeitslose", "_2",
-                     "d3_anteil_transferbezieher", "d4_anteil_transferbezieher_unter_15"]
+                drop_columns = ["average_and_standard_deviation", "z_s1_anteil_langzeitarbeitslose",
+                                "z_d1_anteil_langzeitarbeitslose"]
             else:
-                names = ["nummer", "name", "einwohner",
-                     "s1_anteil_arbeitslose", "s2_anteil_langzeitarbeitslose",
-                     "s3_anteil_transferbezieher", "s4_anteil_transferbezieher_unter_15",
-                     "d1_anteil_arbeitslose", "d2_anteil_langzeitarbeitsose",
-                     "d3_anteil_transferbezieher", "d4_anteil_transferbezieher_unter_15"]
+                drop_columns = ["average_and_standard_deviation"]
         elif file_name_base.startswith("2-2-indexind_anteile_bzr_mss") \
                 or file_name_base.startswith(
             "tabelle_2-2_index-indikatoren_anteilswerte_auf_bezirksregionen-ebene_mss_"):
 
             sheets = [f"2.2.IndexInd_Ant_BZR_MSS{year}"]
             skiprows = 8
+            names = [
+                "nummer", "name", "einwohner", "z_s1_anteil_arbeitslose", "z_s1_anteil_langzeitarbeitslose",
+                "z_s3_anteil_transferbezieher", "z_s4_anteil_transferbezieher_unter_15", "z_d1_anteil_arbeitslose",
+                "z_d1_anteil_langzeitarbeitslose", "z_d3_anteil_transferbezieher",
+                "z_d4_anteil_transferbezieher_unter_15"
+            ]
             if year == 2019 or year == 2021:
-                names = ["nummer", "name", "einwohner",
-                     "s1_anteil_arbeitslose", "_",
-                     "s3_anteil_transferbezieher", "s4_anteil_transferbezieher_unter_15",
-                     "d1_anteil_arbeitslose", "_2",
-                     "d3_anteil_transferbezieher", "d4_anteil_transferbezieher_unter_15"]
+                drop_columns = ["average_and_standard_deviation", "z_s1_anteil_langzeitarbeitslose",
+                                "z_d1_anteil_langzeitarbeitslose"]
             else:
-                names = ["nummer", "name", "einwohner",
-                     "s1_anteil_arbeitslose", "s2_anteil_langzeitarbeitslose",
-                     "s3_anteil_transferbezieher", "s4_anteil_transferbezieher_unter_15",
-                     "d1_anteil_arbeitslose", "d2_anteil_langzeitarbeitsose",
-                     "d3_anteil_transferbezieher", "d4_anteil_transferbezieher_unter_15"]
+                drop_columns = ["average_and_standard_deviation"]
         elif file_name_base.startswith("2-3-indexind_anteile_bezirke_mss") \
                 or file_name_base.startswith(
             "tabelle_2-3_index-indikatoren_auf_ebene_der_bezirke_mss_"):
@@ -94,39 +95,36 @@ def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
                 sheets = [f"2.3.IndexInd_Ant_BezirkeMSS{year}"]
 
             skiprows = 8
+            names = [
+                "nummer", "name", "einwohner", "z_s1_anteil_arbeitslose", "z_s1_anteil_langzeitarbeitslose",
+                "z_s3_anteil_transferbezieher", "z_s4_anteil_transferbezieher_unter_15", "z_d1_anteil_arbeitslose",
+                "z_d1_anteil_langzeitarbeitslose", "z_d3_anteil_transferbezieher",
+                "z_d4_anteil_transferbezieher_unter_15"
+            ]
             if year == 2019 or year == 2021:
-                names = ["nummer", "name", "einwohner",
-                     "s1_anteil_arbeitslose", "_",
-                     "s3_anteil_transferbezieher", "s4_anteil_transferbezieher_unter_15",
-                     "d1_anteil_arbeitslose", "_2",
-                     "d3_anteil_transferbezieher", "d4_anteil_transferbezieher_unter_15"]
+                drop_columns = ["average_and_standard_deviation", "z_s1_anteil_langzeitarbeitslose",
+                                "z_d1_anteil_langzeitarbeitslose"]
             else:
-                names = ["nummer", "name", "einwohner",
-                     "s1_anteil_arbeitslose", "s2_anteil_langzeitarbeitslose",
-                     "s3_anteil_transferbezieher", "s4_anteil_transferbezieher_unter_15",
-                     "d1_anteil_arbeitslose", "d2_anteil_langzeitarbeitsose",
-                     "d3_anteil_transferbezieher", "d4_anteil_transferbezieher_unter_15"]
+                drop_columns = ["average_and_standard_deviation"]
         elif file_name_base.startswith("3-indexind_z_wertemss") \
                 or file_name_base.startswith("tabelle_3_index-indikatoren_z-werte_mss_"):
 
-            if file_name_base == "3-indexind_z_wertemss2017":
+            if year == 2017:
                 sheets = [f"3.IndexInd_z_Werte_MSS2015"]
             else:
                 sheets = [f"3.IndexInd_z_Werte_MSS{year}"]
             skiprows = 15
-
+            names = [
+                "nummer", "name", "einwohner", "z_s1_anteil_arbeitslose", "z_s1_anteil_langzeitarbeitslose",
+                "z_s3_anteil_transferbezieher", "z_s4_anteil_transferbezieher_unter_15", "z_d1_anteil_arbeitslose",
+                "z_d1_anteil_langzeitarbeitslose", "z_d3_anteil_transferbezieher",
+                "z_d4_anteil_transferbezieher_unter_15"
+            ]
             if year == 2019 or year == 2021:
-                names = ["nummer", "name", "einwohner",
-                         "z_s1_anteil_arbeitslose", "_",
-                         "z_s3_anteil_transferbezieher", "z_s4_anteil_transferbezieher_unter_15",
-                         "z_d1_anteil_arbeitslose", "_2",
-                         "z_d3_anteil_transferbezieher", "z_d4_anteil_transferbezieher_unter_15"]
+                drop_columns = ["average_and_standard_deviation", "z_s1_anteil_langzeitarbeitslose",
+                                "z_d1_anteil_langzeitarbeitslose"]
             else:
-                names = ["nummer", "name", "einwohner",
-                     "z_s1_anteil_arbeitslose", "z_s1_anteil_langzeitarbeitslose",
-                     "z_s3_anteil_transferbezieher", "z_s4_anteil_transferbezieher_unter_15",
-                     "z_d1_anteil_arbeitslose", "z_d1_anteil_langzeitarbeitslose",
-                     "z_d3_anteil_transferbezieher", "z_d4_anteil_transferbezieher_unter_15"]
+                drop_columns = ["average_and_standard_deviation"]
         elif file_name_base.startswith("4.1.kontextind_anteile_plr_mss") \
                 or file_name_base.startswith("4-1-kontextind_anteile_plr_mss") \
                 or file_name_base.startswith("tabelle_4-1_kontext-indikatoren_anteile_plr_mss_"):
@@ -140,117 +138,126 @@ def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
 
             if year == 2021:
                 skiprows = 18
-                names = ["nummer", "name", "einwohner", "_", "k01_jugendarbeitslosigkeit",
-                         "k02_alleinerziehende_haushalte", "k03_altersarmut",
-                         "k04_kinder_und_jugendliche_mit_migrationshintergrund",
-                         "k05_einwohnerinnen_und_einwohner_mit_migrationshintergrund",
-                         "k16_auslaenderinnen_und_auslaender", "k06_einwohnerinn_mit_migrationshintergrund",
-                         "k17_nicht_eu_auslaenderinnen_und_auslaender", "k07_auslaendische_transferbezieher", "_2",
-                         "_3", "_4", "k09_einfache_wohnlage", "k10_wohndauer_ueber_5_jahre", "k11_wanderungsvolumen",
-                         "k12_wanderungssaldo", "k13_wanderungssaldo_von_kindern_unter_6_jahren"]
+                names = [
+                    "nummer", "name", "einwohner", "average_and_standard_deviation", "k01_jugendarbeitslosigkeit",
+                    "k02_alleinerziehende_haushalte", "k03_altersarmut",
+                    "k04_kinder_und_jugendliche_mit_migrationshintergrund",
+                    "k05_einwohnerinnen_und_einwohner_mit_migrationshintergrund",
+                    "k16_auslaenderinnen_und_auslaender", "k06_einwohnerinn_mit_migrationshintergrund",
+                    "k17_nicht_eu_auslaenderinnen_und_auslaender", "k07_auslaendische_transferbezieher",
+                    "k08_staedtische_wohnungen", "k14_wohnraeume", "k15_wohnflaeche", "k09_einfache_wohnlage",
+                    "k10_wohndauer_ueber_5_jahre", "k11_wanderungsvolumen", "k12_wanderungssaldo",
+                    "k13_wanderungssaldo_von_kindern_unter_6_jahren"
+                ]
+                drop_columns = ["average_and_standard_deviation", "k08_staedtische_wohnungen", "k14_wohnraeume",
+                                "k15_wohnflaeche"]
             else:
                 skiprows = 15
-                names = ["nummer", "name", "einwohner", "_",
-                     "k01_jugendarbeitslosigkeit", "k02_alleinerziehende_haushalte", "k03_altersarmut",
-                     "k04_kinder_und_jugendliche_mit_migrationshintergrund",
-                     "k05_kinder_und_jugendliche_mit_migrationshintergrund",
-                     "k06_einwohnerinn_mit_migrationshintergrund", "k07_auslaendische_transferbezieher",
-                     "k08_staedtische_wohnungen", "k09_einfache_wohnlage", "k10_wohndauer_ueber_5_jahre",
-                     "k11_wanderungsvolumen", "k12_wanderungssaldo", "k13_wanderungssaldo_von_kindern_unter_6_jahren"]
+                names = [
+                    "nummer", "name", "einwohner", "average_and_standard_deviation", "k01_jugendarbeitslosigkeit",
+                    "k02_alleinerziehende_haushalte", "k03_altersarmut",
+                    "k04_kinder_und_jugendliche_mit_migrationshintergrund",
+                    "k05_kinder_und_jugendliche_mit_migrationshintergrund",
+                    "k06_einwohnerinn_mit_migrationshintergrund", "k07_auslaendische_transferbezieher",
+                    "k08_staedtische_wohnungen", "k09_einfache_wohnlage", "k10_wohndauer_ueber_5_jahre",
+                    "k11_wanderungsvolumen", "k12_wanderungssaldo", "k13_wanderungssaldo_von_kindern_unter_6_jahren"
+                ]
+                drop_columns = ["average_and_standard_deviation"]
         elif file_name_base.startswith("4.2.kontextind_anteile_bzr_mss") \
                 or file_name_base.startswith("4-2-kontextind_anteile_bzr_mss") \
                 or file_name_base.startswith("tabelle_4-2_kontext-indikatoren_anteile_bzr_mss_"):
 
             if year == 2013:
                 sheets = [f"Kontextind_MSS{year}_BZR"]
+                skiprows = 8
+                names = [
+                    "nummer", "name", "einwohner", "average_and_standard_deviation", "k01_jugendarbeitslosigkeit",
+                    "k02_alleinerziehende_haushalte", "k03_altersarmut",
+                    "k04_kinder_und_jugendliche_mit_migrationshintergrund",
+                    "k05_kinder_und_jugendliche_mit_migrationshintergrund",
+                    "k06_einwohnerinn_mit_migrationshintergrund", "k07_auslaendische_transferbezieher",
+                    "k08_staedtische_wohnungen", "k09_einfache_wohnlage", "k10_wohndauer_ueber_5_jahre",
+                    "k11_wanderungsvolumen", "k12_wanderungssaldo", "k13_wanderungssaldo_von_kindern_unter_6_jahren"
+                ]
             else:
                 sheets = [f"4.2.KontextInd_MSS{year}"]
+                skiprows = 8
+                names = [
+                    "nummer", "name", "einwohner", "average_and_standard_deviation", "k01_jugendarbeitslosigkeit",
+                    "k02_alleinerziehende_haushalte", "k03_altersarmut",
+                    "k04_kinder_und_jugendliche_mit_migrationshintergrund",
+                    "k05_kinder_und_jugendliche_mit_migrationshintergrund", "k16_auslaenderinnen_und_auslaender",
+                    "k06_veraenderung_auslaenderanteil", "k17_nicht_eu_auslaenderinnen_und_auslaender",
+                    "k07_auslaendische_transferbezieher", "k08_staedtische_wohnungen", "k14_wohnraeume",
+                    "k15_wohnflaeche", "k09_einfache_wohnlage", "k10_wohndauer_ueber_5_jahre",
+                    "k11_wanderungsvolumen", "k12_wanderungssaldo", "k13_wanderungssaldo_von_kindern_unter_6_jahren"
+                ]
 
-            skiprows = 8
-
-            if year == 2013:
-                names = ["nummer", "name", "einwohner", "_",
-                         "k01_jugendarbeitslosigkeit", "k02_alleinerziehende_haushalte", "k03_altersarmut",
-                         "k04_kinder_und_jugendliche_mit_migrationshintergrund",
-                         "k05_kinder_und_jugendliche_mit_migrationshintergrund",
-                         "k06_einwohnerinn_mit_migrationshintergrund", "k07_auslaendische_transferbezieher",
-                         "k08_staedtische_wohnungen", "k09_einfache_wohnlage", "k10_wohndauer_ueber_5_jahre",
-                         "k11_wanderungsvolumen", "k12_wanderungssaldo",
-                         "k13_wanderungssaldo_von_kindern_unter_6_jahren"]
-            elif year == 2021:
-                names = ["nummer", "name", "einwohner", "_",
-                     "k01_jugendarbeitslosigkeit", "k02_alleinerziehende_haushalte", "k03_altersarmut",
-                     "k04_kinder_und_jugendliche_mit_migrationshintergrund",
-                     "k05_kinder_und_jugendliche_mit_migrationshintergrund", "k16_auslaenderinnen_und_auslaender",
-                     "k06_veraenderung_auslaenderanteil", "k17_nicht_eu_auslaenderinnen_und_auslaender",
-                     "k07_auslaendische_transferbezieher", "_2", "_3", "_4", "k09_einfache_wohnlage",
-                     "k10_wohndauer_ueber_5_jahre", "k11_wanderungsvolumen", "k12_wanderungssaldo",
-                     "k13_wanderungssaldo_von_kindern_unter_6_jahren"]
+            if year == 2021:
+                drop_columns = ["average_and_standard_deviation", "k08_staedtische_wohnungen", "k14_wohnraeume",
+                                "k15_wohnflaeche"]
             else:
-                names = ["nummer", "name", "einwohner", "_",
-                     "k01_jugendarbeitslosigkeit", "k02_alleinerziehende_haushalte", "k03_altersarmut",
-                     "k04_kinder_und_jugendliche_mit_migrationshintergrund",
-                     "k05_kinder_und_jugendliche_mit_migrationshintergrund", "k16_auslaenderinnen_und_auslaender",
-                     "k06_veraenderung_auslaenderanteil", "k17_nicht_eu_auslaenderinnen_und_auslaender",
-                     "k07_auslaendische_transferbezieher", "k08_staedtische_wohnungen", "k14_wohnraeume",
-                     "k15_wohnflaeche", "k09_einfache_wohnlage", "k10_wohndauer_ueber_5_jahre",
-                     "k11_wanderungsvolumen", "k12_wanderungssaldo", "k13_wanderungssaldo_von_kindern_unter_6_jahren"]
+                drop_columns = ["average_and_standard_deviation"]
         elif file_name_base.startswith("4-3-kontextind_anteile_bezirke_mss") \
                 or file_name_base.startswith("tabelle_4-3_kontext-indikatoren_anteile_bezirke_mss_"):
 
             if year == 2013:
                 sheets = [f"Kontextind_MSS{year}_Bezirke"]
+                skiprows = 8
+                names = [
+                    "nummer", "name", "einwohner", "average_and_standard_deviation",
+                    "k01_jugendarbeitslosigkeit", "k02_alleinerziehende_haushalte", "k03_altersarmut",
+                    "k04_kinder_und_jugendliche_mit_migrationshintergrund",
+                    "k05_kinder_und_jugendliche_mit_migrationshintergrund",
+                    "k06_einwohnerinn_mit_migrationshintergrund", "k07_auslaendische_transferbezieher",
+                    "k08_staedtische_wohnungen", "k09_einfache_wohnlage", "k10_wohndauer_ueber_5_jahre",
+                    "k11_wanderungsvolumen", "k12_wanderungssaldo", "k13_wanderungssaldo_von_kindern_unter_6_jahren"
+                ]
             else:
                 sheets = [f"4.3.KontextInd_MSS{year}"]
+                skiprows = 8
+                names = [
+                    "nummer", "name", "einwohner", "average_and_standard_deviation", "k01_jugendarbeitslosigkeit",
+                    "k02_alleinerziehende_haushalte", "k03_altersarmut",
+                    "k04_kinder_und_jugendliche_mit_migrationshintergrund",
+                    "k05_kinder_und_jugendliche_mit_migrationshintergrund", "k16_auslaenderinnen_und_auslaender",
+                    "k06_veraenderung_auslaenderanteil", "k17_nicht_eu_auslaenderinnen_und_auslaender",
+                    "k07_auslaendische_transferbezieher", "k08_staedtische_wohnungen", "k14_wohnraeume",
+                    "k15_wohnflaeche", "k09_einfache_wohnlage", "k10_wohndauer_ueber_5_jahre",
+                    "k11_wanderungsvolumen", "k12_wanderungssaldo", "k13_wanderungssaldo_von_kindern_unter_6_jahren"
+                ]
 
-            skiprows = 8
-
-            if year == 2013:
-                names = ["nummer", "name", "einwohner", "_",
-                         "k01_jugendarbeitslosigkeit", "k02_alleinerziehende_haushalte", "k03_altersarmut",
-                         "k04_kinder_und_jugendliche_mit_migrationshintergrund",
-                         "k05_kinder_und_jugendliche_mit_migrationshintergrund",
-                         "k06_einwohnerinn_mit_migrationshintergrund", "k07_auslaendische_transferbezieher",
-                         "k08_staedtische_wohnungen", "k09_einfache_wohnlage", "k10_wohndauer_ueber_5_jahre",
-                         "k11_wanderungsvolumen", "k12_wanderungssaldo",
-                         "k13_wanderungssaldo_von_kindern_unter_6_jahren"]
-            elif year == 2021:
-                names = ["nummer", "name", "einwohner", "_",
-                     "k01_jugendarbeitslosigkeit", "k02_alleinerziehende_haushalte", "k03_altersarmut",
-                     "k04_kinder_und_jugendliche_mit_migrationshintergrund",
-                     "k05_kinder_und_jugendliche_mit_migrationshintergrund", "k16_auslaenderinnen_und_auslaender",
-                     "k06_veraenderung_auslaenderanteil", "k17_nicht_eu_auslaenderinnen_und_auslaender",
-                     "k07_auslaendische_transferbezieher", "_2", "_3", "_4", "k09_einfache_wohnlage",
-                     "k10_wohndauer_ueber_5_jahre", "k11_wanderungsvolumen", "k12_wanderungssaldo",
-                     "k13_wanderungssaldo_von_kindern_unter_6_jahren"]
+            if year == 2021:
+                drop_columns = ["average_and_standard_deviation", "k08_staedtische_wohnungen", "k14_wohnraeume",
+                                "k15_wohnflaeche"]
             else:
-                names = ["nummer", "name", "einwohner", "_",
-                     "k01_jugendarbeitslosigkeit", "k02_alleinerziehende_haushalte", "k03_altersarmut",
-                     "k04_kinder_und_jugendliche_mit_migrationshintergrund",
-                     "k05_kinder_und_jugendliche_mit_migrationshintergrund", "k16_auslaenderinnen_und_auslaender",
-                     "k06_veraenderung_auslaenderanteil", "k17_nicht_eu_auslaenderinnen_und_auslaender",
-                     "k07_auslaendische_transferbezieher", "k08_staedtische_wohnungen", "k14_wohnraeume",
-                     "k15_wohnflaeche", "k09_einfache_wohnlage", "k10_wohndauer_ueber_5_jahre",
-                     "k11_wanderungsvolumen", "k12_wanderungssaldo", "k13_wanderungssaldo_von_kindern_unter_6_jahren"]
+                drop_columns = ["average_and_standard_deviation"]
         elif file_name_base.startswith("tabelle_4-1-1_kontext-indikatoren_anteile_plr_mss_"):
 
             sheets = [f"4.1.1.KontextInd_MSS{year}"]
             skiprows = 8
-            names = ["nummer", "name", "einwohner", "_", "k08_staedtische_wohnungen", "k14_wohnraeume", "k15_wohnflaeche"]
+            names = ["nummer", "name", "einwohner", "average_and_standard_deviation", "k08_staedtische_wohnungen",
+                     "k14_wohnraeume", "k15_wohnflaeche"]
+            drop_columns = ["average_and_standard_deviation"]
         elif file_name_base.startswith("tabelle_4-2-1_kontext-indikatoren_anteile_bzr_mss_"):
 
             sheets = [f"4.2.1.KontextInd_MSS{year}"]
             skiprows = 8
-            names = ["nummer", "name", "einwohner", "_", "k08_staedtische_wohnungen", "k14_wohnraeume", "k15_wohnflaeche"]
+            names = ["nummer", "name", "einwohner", "average_and_standard_deviation", "k08_staedtische_wohnungen",
+                     "k14_wohnraeume", "k15_wohnflaeche"]
+            drop_columns = ["average_and_standard_deviation"]
         elif file_name_base.startswith("tabelle_4-3-1_kontext-indikatoren_anteile_bezirke_mss_"):
 
             sheets = [f"4.3.1.KontextInd_MSS{year}"]
             skiprows = 8
-            names = ["nummer", "name", "einwohner", "_", "k08_staedtische_wohnungen", "k14_wohnraeume", "k15_wohnflaeche"]
+            names = ["nummer", "name", "einwohner", "average_and_standard_deviation", "k08_staedtische_wohnungen",
+                     "k14_wohnraeume", "k15_wohnflaeche"]
+            drop_columns = ["average_and_standard_deviation"]
         else:
             sheets = []
             skiprows = 0
             names = []
+            drop_columns = []
 
         for sheet in sheets:
 
@@ -261,20 +268,17 @@ def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
             if clean or not os.path.exists(file_path_csv):
 
                 dataframe = pd.read_excel(file_path, engine=engine, sheet_name=sheet, skiprows=skiprows,
-                              usecols=list(range(0, len(names))), names=names) \
-                    .drop(columns=["_", "_2", "_3", "_4"], errors="ignore") \
+                                          usecols=list(range(0, len(names))), names=names) \
+                    .drop(columns=drop_columns, errors="ignore") \
                     .dropna()
 
                 if dataframe.shape[0] > 0:
-                    # Convert Excel file to csv
                     dataframe.to_csv(file_path_csv, index=False)
                     if not quiet:
                         logger.log_line(f"✓ Convert {file_path_csv}")
                 else:
                     if not quiet:
                         logger.log_line(f"✗️ Empty {file_path_csv}")
-                    pd.read_excel(file_path, engine=engine, sheet_name=sheet, skiprows=skiprows,
-                                  usecols=list(range(0, len(names))), names=names).to_csv(file_path_csv, index=False)
             elif not quiet:
                 logger.log_line(f"✓ Already exists {file_path_csv}")
     except Exception as e:
