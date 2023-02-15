@@ -143,7 +143,7 @@ def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
                     "k02_alleinerziehende_haushalte", "k03_altersarmut",
                     "k04_kinder_und_jugendliche_mit_migrationshintergrund",
                     "k05_einwohnerinnen_und_einwohner_mit_migrationshintergrund",
-                    "k16_auslaenderinnen_und_auslaender", "k06_einwohnerinn_mit_migrationshintergrund",
+                    "k16_auslaenderinnen_und_auslaender", "k06_veraenderung_auslaenderanteil",
                     "k17_nicht_eu_auslaenderinnen_und_auslaender", "k07_auslaendische_transferbezieher",
                     "k08_staedtische_wohnungen", "k14_wohnraeume", "k15_wohnflaeche", "k09_einfache_wohnlage",
                     "k10_wohndauer_ueber_5_jahre", "k11_wanderungsvolumen", "k12_wanderungssaldo",
@@ -157,10 +157,10 @@ def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
                     "nummer", "name", "einwohner", "average_and_standard_deviation", "k01_jugendarbeitslosigkeit",
                     "k02_alleinerziehende_haushalte", "k03_altersarmut",
                     "k04_kinder_und_jugendliche_mit_migrationshintergrund",
-                    "k05_kinder_und_jugendliche_mit_migrationshintergrund",
-                    "k06_einwohnerinn_mit_migrationshintergrund", "k07_auslaendische_transferbezieher",
-                    "k08_staedtische_wohnungen", "k09_einfache_wohnlage", "k10_wohndauer_ueber_5_jahre",
-                    "k11_wanderungsvolumen", "k12_wanderungssaldo", "k13_wanderungssaldo_von_kindern_unter_6_jahren"
+                    "k05_einwohnerinnen_und_einwohner_mit_migrationshintergrund", "k06_veraenderung_auslaenderanteil",
+                    "k07_auslaendische_transferbezieher", "k08_staedtische_wohnungen", "k09_einfache_wohnlage",
+                    "k10_wohndauer_ueber_5_jahre", "k11_wanderungsvolumen", "k12_wanderungssaldo",
+                    "k13_wanderungssaldo_von_kindern_unter_6_jahren"
                 ]
                 drop_columns = ["average_and_standard_deviation"]
         elif file_name_base.startswith("4.2.kontextind_anteile_bzr_mss") \
@@ -174,10 +174,10 @@ def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
                     "nummer", "name", "einwohner", "average_and_standard_deviation", "k01_jugendarbeitslosigkeit",
                     "k02_alleinerziehende_haushalte", "k03_altersarmut",
                     "k04_kinder_und_jugendliche_mit_migrationshintergrund",
-                    "k05_kinder_und_jugendliche_mit_migrationshintergrund",
-                    "k06_einwohnerinn_mit_migrationshintergrund", "k07_auslaendische_transferbezieher",
-                    "k08_staedtische_wohnungen", "k09_einfache_wohnlage", "k10_wohndauer_ueber_5_jahre",
-                    "k11_wanderungsvolumen", "k12_wanderungssaldo", "k13_wanderungssaldo_von_kindern_unter_6_jahren"
+                    "k05_einwohnerinnen_und_einwohner_mit_migrationshintergrund", "k06_veraenderung_auslaenderanteil",
+                    "k07_auslaendische_transferbezieher", "k08_staedtische_wohnungen", "k09_einfache_wohnlage",
+                    "k10_wohndauer_ueber_5_jahre", "k11_wanderungsvolumen", "k12_wanderungssaldo",
+                    "k13_wanderungssaldo_von_kindern_unter_6_jahren"
                 ]
             else:
                 sheets = [f"4.2.KontextInd_MSS{year}"]
@@ -186,7 +186,7 @@ def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
                     "nummer", "name", "einwohner", "average_and_standard_deviation", "k01_jugendarbeitslosigkeit",
                     "k02_alleinerziehende_haushalte", "k03_altersarmut",
                     "k04_kinder_und_jugendliche_mit_migrationshintergrund",
-                    "k05_kinder_und_jugendliche_mit_migrationshintergrund", "k16_auslaenderinnen_und_auslaender",
+                    "k05_einwohnerinnen_und_einwohner_mit_migrationshintergrund", "k16_auslaenderinnen_und_auslaender",
                     "k06_veraenderung_auslaenderanteil", "k17_nicht_eu_auslaenderinnen_und_auslaender",
                     "k07_auslaendische_transferbezieher", "k08_staedtische_wohnungen", "k14_wohnraeume",
                     "k15_wohnflaeche", "k09_einfache_wohnlage", "k10_wohndauer_ueber_5_jahre",
@@ -209,10 +209,10 @@ def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
                     "nummer", "name", "einwohner", "average_and_standard_deviation",
                     "k01_jugendarbeitslosigkeit", "k02_alleinerziehende_haushalte", "k03_altersarmut",
                     "k04_kinder_und_jugendliche_mit_migrationshintergrund",
-                    "k05_kinder_und_jugendliche_mit_migrationshintergrund",
-                    "k06_einwohnerinn_mit_migrationshintergrund", "k07_auslaendische_transferbezieher",
-                    "k08_staedtische_wohnungen", "k09_einfache_wohnlage", "k10_wohndauer_ueber_5_jahre",
-                    "k11_wanderungsvolumen", "k12_wanderungssaldo", "k13_wanderungssaldo_von_kindern_unter_6_jahren"
+                    "k05_einwohnerinnen_und_einwohner_mit_migrationshintergrund", "k06_veraenderung_auslaenderanteil",
+                    "k07_auslaendische_transferbezieher", "k08_staedtische_wohnungen", "k09_einfache_wohnlage",
+                    "k10_wohndauer_ueber_5_jahre", "k11_wanderungsvolumen", "k12_wanderungssaldo",
+                    "k13_wanderungssaldo_von_kindern_unter_6_jahren"
                 ]
             else:
                 sheets = [f"4.3.KontextInd_MSS{year}"]
@@ -221,7 +221,7 @@ def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
                     "nummer", "name", "einwohner", "average_and_standard_deviation", "k01_jugendarbeitslosigkeit",
                     "k02_alleinerziehende_haushalte", "k03_altersarmut",
                     "k04_kinder_und_jugendliche_mit_migrationshintergrund",
-                    "k05_kinder_und_jugendliche_mit_migrationshintergrund", "k16_auslaenderinnen_und_auslaender",
+                    "k05_einwohnerinnen_und_einwohner_mit_migrationshintergrund", "k16_auslaenderinnen_und_auslaender",
                     "k06_veraenderung_auslaenderanteil", "k17_nicht_eu_auslaenderinnen_und_auslaender",
                     "k07_auslaendische_transferbezieher", "k08_staedtische_wohnungen", "k14_wohnraeume",
                     "k15_wohnflaeche", "k09_einfache_wohnlage", "k10_wohndauer_ueber_5_jahre",
