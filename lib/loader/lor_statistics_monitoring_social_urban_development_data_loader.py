@@ -58,14 +58,14 @@ def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
             sheets = [f"2.1.IndexInd_Ant_PLR_MSS{year}"]
             skiprows = 8
             names = [
-                "nummer", "name", "einwohner", "z_s1_anteil_arbeitslose", "z_s1_anteil_langzeitarbeitslose",
-                "z_s3_anteil_transferbezieher", "z_s4_anteil_transferbezieher_unter_15", "z_d1_anteil_arbeitslose",
-                "z_d1_anteil_langzeitarbeitslose", "z_d3_anteil_transferbezieher",
-                "z_d4_anteil_transferbezieher_unter_15"
+                "nummer", "name", "einwohner", "s1_anteil_arbeitslose", "s2_anteil_langzeitarbeitslose",
+                "s3_anteil_transferbezieher", "s4_anteil_transferbezieher_unter_15", "d1_anteil_arbeitslose",
+                "d2_anteil_langzeitarbeitslose", "d3_anteil_transferbezieher",
+                "d4_anteil_transferbezieher_unter_15"
             ]
             if year == 2019 or year == 2021:
-                drop_columns = ["average_and_standard_deviation", "z_s1_anteil_langzeitarbeitslose",
-                                "z_d1_anteil_langzeitarbeitslose"]
+                drop_columns = ["average_and_standard_deviation", "s2_anteil_langzeitarbeitslose",
+                                "d2_anteil_langzeitarbeitslose"]
             else:
                 drop_columns = ["average_and_standard_deviation"]
         elif file_name_base.startswith("2-2-indexind_anteile_bzr_mss") \
@@ -75,14 +75,14 @@ def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
             sheets = [f"2.2.IndexInd_Ant_BZR_MSS{year}"]
             skiprows = 8
             names = [
-                "nummer", "name", "einwohner", "z_s1_anteil_arbeitslose", "z_s1_anteil_langzeitarbeitslose",
-                "z_s3_anteil_transferbezieher", "z_s4_anteil_transferbezieher_unter_15", "z_d1_anteil_arbeitslose",
-                "z_d1_anteil_langzeitarbeitslose", "z_d3_anteil_transferbezieher",
-                "z_d4_anteil_transferbezieher_unter_15"
+                "nummer", "name", "einwohner", "s1_anteil_arbeitslose", "s2_anteil_langzeitarbeitslose",
+                "s3_anteil_transferbezieher", "s4_anteil_transferbezieher_unter_15", "d1_anteil_arbeitslose",
+                "d2_anteil_langzeitarbeitslose", "d3_anteil_transferbezieher",
+                "d4_anteil_transferbezieher_unter_15"
             ]
             if year == 2019 or year == 2021:
-                drop_columns = ["average_and_standard_deviation", "z_s1_anteil_langzeitarbeitslose",
-                                "z_d1_anteil_langzeitarbeitslose"]
+                drop_columns = ["average_and_standard_deviation", "s2_anteil_langzeitarbeitslose",
+                                "d2_anteil_langzeitarbeitslose"]
             else:
                 drop_columns = ["average_and_standard_deviation"]
         elif file_name_base.startswith("2-3-indexind_anteile_bezirke_mss") \
@@ -96,14 +96,14 @@ def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
 
             skiprows = 8
             names = [
-                "nummer", "name", "einwohner", "z_s1_anteil_arbeitslose", "z_s1_anteil_langzeitarbeitslose",
-                "z_s3_anteil_transferbezieher", "z_s4_anteil_transferbezieher_unter_15", "z_d1_anteil_arbeitslose",
-                "z_d1_anteil_langzeitarbeitslose", "z_d3_anteil_transferbezieher",
-                "z_d4_anteil_transferbezieher_unter_15"
+                "nummer", "name", "einwohner", "s1_anteil_arbeitslose", "s2_anteil_langzeitarbeitslose",
+                "s3_anteil_transferbezieher", "s4_anteil_transferbezieher_unter_15", "d1_anteil_arbeitslose",
+                "d2_anteil_langzeitarbeitslose", "d3_anteil_transferbezieher",
+                "d4_anteil_transferbezieher_unter_15"
             ]
             if year == 2019 or year == 2021:
-                drop_columns = ["average_and_standard_deviation", "z_s1_anteil_langzeitarbeitslose",
-                                "z_d1_anteil_langzeitarbeitslose"]
+                drop_columns = ["average_and_standard_deviation", "s2_anteil_langzeitarbeitslose",
+                                "d2_anteil_langzeitarbeitslose"]
             else:
                 drop_columns = ["average_and_standard_deviation"]
         elif file_name_base.startswith("3-indexind_z_wertemss") \
@@ -115,14 +115,14 @@ def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
                 sheets = [f"3.IndexInd_z_Werte_MSS{year}"]
             skiprows = 15
             names = [
-                "nummer", "name", "einwohner", "z_s1_anteil_arbeitslose", "z_s1_anteil_langzeitarbeitslose",
+                "nummer", "name", "einwohner", "z_s1_anteil_arbeitslose", "z_s2_anteil_langzeitarbeitslose",
                 "z_s3_anteil_transferbezieher", "z_s4_anteil_transferbezieher_unter_15", "z_d1_anteil_arbeitslose",
-                "z_d1_anteil_langzeitarbeitslose", "z_d3_anteil_transferbezieher",
+                "z_d2_anteil_langzeitarbeitslose", "z_d3_anteil_transferbezieher",
                 "z_d4_anteil_transferbezieher_unter_15"
             ]
             if year == 2019 or year == 2021:
-                drop_columns = ["average_and_standard_deviation", "z_s1_anteil_langzeitarbeitslose",
-                                "z_d1_anteil_langzeitarbeitslose"]
+                drop_columns = ["average_and_standard_deviation", "z_s2_anteil_langzeitarbeitslose",
+                                "z_d2_anteil_langzeitarbeitslose"]
             else:
                 drop_columns = ["average_and_standard_deviation"]
         elif file_name_base.startswith("4.1.kontextind_anteile_plr_mss") \
@@ -198,7 +198,8 @@ def convert_file_to_csv(logger, file_path, clean=False, quiet=False):
                                 "k15_wohnflaeche"]
             else:
                 drop_columns = ["average_and_standard_deviation"]
-        elif file_name_base.startswith("4-3-kontextind_anteile_bezirke_mss") \
+        elif file_name_base.startswith("4.3.kontextind_anteile_bezirke_mss2019") \
+                or file_name_base.startswith("4-3-kontextind_anteile_bezirke_mss") \
                 or file_name_base.startswith("tabelle_4-3_kontext-indikatoren_anteile_bezirke_mss_"):
 
             if year == 2013:
