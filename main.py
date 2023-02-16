@@ -22,14 +22,17 @@ for p in library_paths:
 # Import library classes
 from logger_facade import LoggerFacade
 from odis_geodata_loader import OdisGeoDataLoader
-from lor_statistics_monitoring_social_urban_development_data_loader import LorStatisticsMonitoringSocialUrbanDevelopmentDataLoader
+from lor_statistics_monitoring_social_urban_development_data_loader import \
+    LorStatisticsMonitoringSocialUrbanDevelopmentDataLoader
 from lor_statistics_population_data_loader import LorStatisticsPopulationDataLoader
 from lor_senate_data_loader import LorSenateDataLoader
 from geojson_copier import GeojsonCopier
 from geojson_cleaner import GeojsonCleaner
 from geojson_projection_converter import GeojsonProjectionConverter
 from geojson_bounding_box_converter import GeojsonBoundingBoxConverter
-from data_blender import DataBlender
+from lor_statistics_population_data_blender import LorStatisticsPopulationDataBlender
+from lor_statistics_monitoring_social_urban_development_data_blender import \
+    LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender
 from data_aggregator import DataAggregator
 from tracking_decorator import TrackingDecorator
 
@@ -66,7 +69,8 @@ def main(argv):
     data_path = os.path.join(script_path, "data")
     raw_path = os.path.join(script_path, "raw")
     statistics_population_path = os.path.join(raw_path, "lor-statistics-population")
-    statistics_monitoring_social_urban_development_path = os.path.join(raw_path, "lor-statistics-monitoring-social-urban-development")
+    statistics_monitoring_social_urban_development_path = os.path.join(raw_path,
+                                                                       "lor-statistics-monitoring-social-urban-development")
 
     # Initialize logger
     logger = LoggerFacade(data_path, console=True, file=False)
@@ -76,8 +80,11 @@ def main(argv):
     LorSenateDataLoader().run(logger, os.path.join(raw_path, "lor-senate"), clean=clean, quiet=quiet)
 
     # Data retrieval: Download statistics data
-    LorStatisticsPopulationDataLoader().run(logger, os.path.join(raw_path, statistics_population_path), clean=clean, quiet=quiet)
-    LorStatisticsMonitoringSocialUrbanDevelopmentDataLoader().run(logger, os.path.join(raw_path, statistics_monitoring_social_urban_development_path), clean=clean, quiet=quiet)
+    LorStatisticsPopulationDataLoader().run(logger, os.path.join(raw_path, statistics_population_path), clean=clean,
+                                            quiet=quiet)
+    LorStatisticsMonitoringSocialUrbanDevelopmentDataLoader().run(logger, os.path.join(raw_path,
+                                                                               statistics_monitoring_social_urban_development_path),
+                                                                  clean=clean, quiet=quiet)
 
     # Data preparation: Convert LOR geo data
     GeojsonCopier().run(logger, os.path.join(raw_path, "lor-odis-geo"), data_path, clean=clean, quiet=quiet)
@@ -86,11 +93,14 @@ def main(argv):
     GeojsonBoundingBoxConverter().run(logger, data_path, data_path, clean=clean, quiet=quiet)
 
     # Data enhancement: Blend data into geojson
-    DataBlender().run(logger, data_path=data_path, statistics_path=statistics_population_path, results_path=data_path,
-                      clean=True, quiet=quiet)
-
+    LorStatisticsPopulationDataBlender().run(logger, data_path=data_path, statistics_path=statistics_population_path,
+                                             results_path=data_path, clean=True, quiet=quiet)
+    LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender().run(logger, data_path=data_path,
+                                                                   statistics_path=statistics_monitoring_social_urban_development_path,
+                                                                   results_path=data_path, clean=True, quiet=quiet)
     # Aggregate data
-    DataAggregator().run(logger, data_path=data_path, statistics_path=statistics_population_path, results_path=data_path, clean=True, quiet=quiet)
+    DataAggregator().run(logger, data_path=data_path, statistics_path=statistics_population_path,
+                         results_path=data_path, clean=True, quiet=quiet)
 
 
 if __name__ == "__main__":
