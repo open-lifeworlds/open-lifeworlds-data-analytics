@@ -19,9 +19,9 @@ def read_geojson_file(file_path):
         return json.load(geojson_file)
 
 
-def write_geojson_file(file_path, geojson):
-    with open(file_path, "w") as geojson_file:
-        return json.dump(geojson, geojson_file)
+def write_json_file(file_path, json_content):
+    with open(file_path, "w") as json_file:
+        return json.dump(json_content, json_file)
 
 
 pre_2020_statistics = [
@@ -83,322 +83,354 @@ post_2020_statistics = [
 ]
 
 
-def extend_districts(logger, results_path, result_file_name,
+def extend_districts(logger, statistics, year, half_year,
                      statistic, statistic_2_3, statistic_4_3,
                      geojson, id_property, area_property, clean, quiet):
-    geojson_extended_file = os.path.join(results_path, result_file_name)
     geojson_extended = copy.deepcopy(geojson)
 
-    # Check if file needs to be created
-    if clean or not os.path.exists(geojson_extended_file):
-        for feature in geojson_extended["features"]:
-            id = feature["properties"][id_property]
-            district_id = id
+    for feature in geojson_extended["features"]:
+        id = feature["properties"][id_property]
+        district_id = id
 
-            # Filter statistics
-            statistic_2_3_filtered = statistic_2_3.loc[(statistic_2_3["nummer"] == int(id))] if statistic_2_3 is not None else None
-            statistic_4_3_filtered = statistic_4_3.loc[(statistic_4_3["nummer"] == int(id))] if statistic_4_3 is not None else None
+        # Filter statistics
+        statistic_2_3_filtered = statistic_2_3.loc[
+            (statistic_2_3["nummer"] == int(id))] if statistic_2_3 is not None else None
+        statistic_4_3_filtered = statistic_4_3.loc[
+            (statistic_4_3["nummer"] == int(id))] if statistic_4_3 is not None else None
 
-            # Check for missing data
-            if statistic_2_3_filtered is None or statistic_2_3_filtered.shape[0] == 0:
-                logger.log_line(f"✗️ No data in {statistic} (statistic_2_3_filtered) for id={id}")
-                continue
-            if statistic_4_3_filtered is None or statistic_4_3_filtered.shape[0] == 0:
-                logger.log_line(f"✗️ No data in {statistic} (statistic_4_3_filtered) for id={id}")
-                continue
+        # Check for missing data
+        if statistic_2_3_filtered is None or statistic_2_3_filtered.shape[0] == 0:
+            logger.log_line(f"✗️ No data in {statistic} (statistic_2_3_filtered) for id={id}")
+            continue
+        if statistic_4_3_filtered is None or statistic_4_3_filtered.shape[0] == 0:
+            logger.log_line(f"✗️ No data in {statistic} (statistic_4_3_filtered) for id={id}")
+            continue
 
-            if district_id == "01":
-                area_sqkm = 39.34
-            elif district_id == "02":
-                area_sqkm = 20.36
-            elif district_id == "03":
-                area_sqkm = 103.10
-            elif district_id == "04":
-                area_sqkm = 59.76
-            elif district_id == "05":
-                area_sqkm = 91.74
-            elif district_id == "06":
-                area_sqkm = 102.40
-            elif district_id == "07":
-                area_sqkm = 52.93
-            elif district_id == "08":
-                area_sqkm = 44.89
-            elif district_id == "09":
-                area_sqkm = 167.41
-            elif district_id == "10":
-                area_sqkm = 61.77
-            elif district_id == "11":
-                area_sqkm = 52.02
-            elif district_id == "12":
-                area_sqkm = 89.19
-            else:
-                area_sqkm = None
+        if district_id == "01":
+            area_sqkm = 39.34
+        elif district_id == "02":
+            area_sqkm = 20.36
+        elif district_id == "03":
+            area_sqkm = 103.10
+        elif district_id == "04":
+            area_sqkm = 59.76
+        elif district_id == "05":
+            area_sqkm = 91.74
+        elif district_id == "06":
+            area_sqkm = 102.40
+        elif district_id == "07":
+            area_sqkm = 52.93
+        elif district_id == "08":
+            area_sqkm = 44.89
+        elif district_id == "09":
+            area_sqkm = 167.41
+        elif district_id == "10":
+            area_sqkm = 61.77
+        elif district_id == "11":
+            area_sqkm = 52.02
+        elif district_id == "12":
+            area_sqkm = 89.19
+        else:
+            area_sqkm = None
 
-            # Blend data
-            blend_district_data(
-                feature=feature, area_sqkm=area_sqkm,
-                statistic_2_3_filtered=statistic_2_3_filtered,
-                statistic_4_3_filtered=statistic_4_3_filtered
-            )
+        # Blend data
+        feature = blend_district_data(
+            feature=feature, area_sqkm=area_sqkm,
+            statistic_2_3_filtered=statistic_2_3_filtered,
+            statistic_4_3_filtered=statistic_4_3_filtered
+        )
 
-        write_geojson_file(geojson_extended_file, geojson_extended)
+        # Build structure
+        if year not in statistics:
+            statistics[year] = {}
+        if half_year not in statistics[year]:
+            statistics[year][half_year] = {}
 
-        if not quiet:
-            logger.log_line(f"✓ Blend data from {statistic} into {result_file_name}")
+        # Add properties
+        statistics[year][half_year][id] = feature["properties"]
+
+    if not quiet:
+        logger.log_line(f"✓ Aggregate data from {statistic}")
 
 
-def extend_district_regions(logger, results_path, result_file_name,
+def extend_district_regions(logger, statistics, year, half_year,
                             statistic, statistic_2_2, statistic_4_2,
                             geojson, id_property, area_property, clean, quiet):
-    geojson_extended_file = os.path.join(results_path, result_file_name)
     geojson_extended = copy.deepcopy(geojson)
 
-    # Check if file needs to be created
-    if clean or not os.path.exists(geojson_extended_file):
-        for feature in geojson_extended["features"]:
-            id = feature["properties"][id_property]
-            district_id, forecast_area_id, district_region_id, planning_area_id = build_ids(id)
-            area_sqm = feature["properties"][area_property]
-            area_sqkm = area_sqm / 1_000_000
+    for feature in geojson_extended["features"]:
+        id = feature["properties"][id_property]
+        district_id, forecast_area_id, district_region_id, planning_area_id = build_ids(id)
+        area_sqm = feature["properties"][area_property]
+        area_sqkm = area_sqm / 1_000_000
 
-            # Filter statistics
-            statistic_2_2_filtered = statistic_2_2.loc[(statistic_2_2["nummer"] ==  int(id))] if statistic_2_2 is not None else None
-            statistic_4_2_filtered = statistic_4_2.loc[(statistic_4_2["nummer"] == int(id))] if statistic_4_2 is not None else None
+        # Filter statistics
+        statistic_2_2_filtered = statistic_2_2.loc[
+            (statistic_2_2["nummer"] == int(id))] if statistic_2_2 is not None else None
+        statistic_4_2_filtered = statistic_4_2.loc[
+            (statistic_4_2["nummer"] == int(id))] if statistic_4_2 is not None else None
 
-            # Check for missing data
-            if statistic_2_2_filtered is None or statistic_2_2_filtered.shape[0] == 0:
-                logger.log_line(f"✗️ No data in {statistic} (statistic_2_2_filtered) for id={id}")
-                continue
-            if statistic_4_2_filtered is None or statistic_4_2_filtered.shape[0] == 0:
-                logger.log_line(f"✗️ No data in {statistic} (statistic_4_2_filtered) for id={id}")
-                continue
+        # Check for missing data
+        if statistic_2_2_filtered is None or statistic_2_2_filtered.shape[0] == 0:
+            logger.log_line(f"✗️ No data in {statistic} (statistic_2_2_filtered) for id={id}")
+            continue
+        if statistic_4_2_filtered is None or statistic_4_2_filtered.shape[0] == 0:
+            logger.log_line(f"✗️ No data in {statistic} (statistic_4_2_filtered) for id={id}")
+            continue
 
-            # Blend data
-            blend_district_region_data(
+        # Blend data
+        feature = blend_district_region_data(
                 feature=feature, area_sqkm=area_sqkm,
                 statistic_2_2_filtered=statistic_2_2_filtered,
                 statistic_4_2_filtered=statistic_4_2_filtered
-            )
+        )
 
-        write_geojson_file(geojson_extended_file, geojson_extended)
+        # Build structure
+        if year not in statistics:
+            statistics[year] = {}
+        if half_year not in statistics[year]:
+            statistics[year][half_year] = {}
 
-        if not quiet:
-            logger.log_line(f"✓ Blend data from {statistic} into {result_file_name}")
+        # Add properties
+        statistics[year][half_year][id] = feature["properties"]
+
+    if not quiet:
+        logger.log_line(f"✓ Aggregate data from {statistic}")
 
 
-def extend_planning_areas(logger, results_path, result_file_name,
+def extend_planning_areas(logger, statistics, year, half_year,
                           statistic, statistic_1, statistic_2_1, statistic_3, statistic_4_1,
                           geojson, id_property, area_property, clean, quiet):
-    geojson_extended_file = os.path.join(results_path, result_file_name)
     geojson_extended = copy.deepcopy(geojson)
 
     # Check if file needs to be created
-    if clean or not os.path.exists(geojson_extended_file):
-        for feature in geojson_extended["features"]:
-            id = feature["properties"][id_property]
-            district_id, forecast_area_id, district_region_id, planning_area_id = build_ids(id)
-            area_sqm = feature["properties"][area_property]
-            area_sqkm = area_sqm / 1_000_000
+    for feature in geojson_extended["features"]:
+        id = feature["properties"][id_property]
+        district_id, forecast_area_id, district_region_id, planning_area_id = build_ids(id)
+        area_sqm = feature["properties"][area_property]
+        area_sqkm = area_sqm / 1_000_000
 
-            # Filter statistics
-            statistic_1_filtered = statistic_1.loc[(statistic_1["nummer"] == int(id))] if statistic_1 is not None else None
-            statistic_2_1_filtered = statistic_2_1.loc[(statistic_2_1["nummer"] == int(id))] if statistic_2_1 is not None else None
-            statistic_3_filtered = statistic_3.loc[(statistic_3["nummer"] == int(id))] if statistic_3 is not None else None
-            statistic_4_1_filtered = statistic_4_1.loc[(statistic_4_1["nummer"] == int(id))] if statistic_4_1 is not None else None
+        # Filter statistics
+        statistic_1_filtered = statistic_1.loc[(statistic_1["nummer"] == int(id))] if statistic_1 is not None else None
+        statistic_2_1_filtered = statistic_2_1.loc[(statistic_2_1["nummer"] == int(id))] if statistic_2_1 is not None else None
+        statistic_3_filtered = statistic_3.loc[(statistic_3["nummer"] == int(id))] if statistic_3 is not None else None
+        statistic_4_1_filtered = statistic_4_1.loc[(statistic_4_1["nummer"] == int(id))] if statistic_4_1 is not None else None
 
-            # Check for missing data
-            if statistic_1_filtered is None or statistic_1_filtered.shape[0] == 0:
-                logger.log_line(f"✗️ No data in {statistic} (statistic_1_filtered) for id={id}")
-                continue
-            if statistic_2_1_filtered is None or statistic_2_1_filtered.shape[0] == 0:
-                logger.log_line(f"✗️ No data in {statistic} (statistic_2_1_filtered) for id={id}")
-                continue
-            if statistic_3_filtered is None or statistic_3_filtered.shape[0] == 0:
-                logger.log_line(f"✗️ No data in {statistic} (statistic_3_filtered) for id={id}")
-                continue
-            if statistic_4_1_filtered is None or statistic_4_1_filtered.shape[0] == 0:
-                logger.log_line(f"✗️ No data in {statistic} (statistic_4_1_filtered) for id={id}")
-                continue
+        # Check for missing data
+        if statistic_1_filtered is None or statistic_1_filtered.shape[0] == 0:
+            logger.log_line(f"✗️ No data in {statistic} (statistic_1_filtered) for id={id}")
+            continue
+        if statistic_2_1_filtered is None or statistic_2_1_filtered.shape[0] == 0:
+            logger.log_line(f"✗️ No data in {statistic} (statistic_2_1_filtered) for id={id}")
+            continue
+        if statistic_3_filtered is None or statistic_3_filtered.shape[0] == 0:
+            logger.log_line(f"✗️ No data in {statistic} (statistic_3_filtered) for id={id}")
+            continue
+        if statistic_4_1_filtered is None or statistic_4_1_filtered.shape[0] == 0:
+            logger.log_line(f"✗️ No data in {statistic} (statistic_4_1_filtered) for id={id}")
+            continue
 
-            # Blend data
-            blend_planning_area_data(
+        # Blend data
+        feature = blend_planning_area_data(
                 feature=feature, area_sqkm=area_sqkm,
                 statistic_1_filtered=statistic_1_filtered,
                 statistic_2_1_filtered=statistic_2_1_filtered,
                 statistic_3_filtered=statistic_3_filtered,
                 statistic_4_1_filtered=statistic_4_1_filtered
-            )
+        )
 
-        write_geojson_file(geojson_extended_file, geojson_extended)
+        # Build structure
+        if year not in statistics:
+            statistics[year] = {}
+        if half_year not in statistics[year]:
+            statistics[year][half_year] = {}
 
-        if not quiet:
-            logger.log_line(f"✓ Blend data from {statistic} into {result_file_name}")
+        # Add properties
+        statistics[year][half_year][id] = feature["properties"]
+
+    if not quiet:
+        logger.log_line(f"✓ Aggregate data from {statistic}")
 
 
-def extend_districts_post_2020(logger, results_path, result_file_name,
+def extend_districts_post_2020(logger, statistics, year, half_year,
                      statistic, statistic_2_3, statistic_4_3, statistic_4_3_1,
                      geojson, id_property, area_property, clean, quiet):
-    geojson_extended_file = os.path.join(results_path, result_file_name)
     geojson_extended = copy.deepcopy(geojson)
 
     # Check if file needs to be created
-    if clean or not os.path.exists(geojson_extended_file):
-        for feature in geojson_extended["features"]:
-            id = feature["properties"][id_property]
-            district_id = id
+    for feature in geojson_extended["features"]:
+        id = feature["properties"][id_property]
+        district_id = id
 
-            # Filter statistics
-            statistic_2_3_filtered = statistic_2_3.loc[(statistic_2_3["nummer"] == int(id))] if statistic_2_3 is not None else None
-            statistic_4_3_filtered = statistic_4_3.loc[(statistic_4_3["nummer"] == int(id))] if statistic_4_3 is not None else None
-            statistic_4_3_1_filtered = statistic_4_3_1.loc[(statistic_4_3_1["nummer"] == int(id))] if statistic_4_3_1 is not None else None
+        # Filter statistics
+        statistic_2_3_filtered = statistic_2_3.loc[(statistic_2_3["nummer"] == int(id))] if statistic_2_3 is not None else None
+        statistic_4_3_filtered = statistic_4_3.loc[(statistic_4_3["nummer"] == int(id))] if statistic_4_3 is not None else None
+        statistic_4_3_1_filtered = statistic_4_3_1.loc[(statistic_4_3_1["nummer"] == int(id))] if statistic_4_3_1 is not None else None
 
-            # Check for missing data
-            if statistic_2_3_filtered is None or statistic_2_3_filtered.shape[0] == 0:
-                logger.log_line(f"✗️ No data in {statistic} (statistic_2_3_filtered) for id={id}")
-                continue
-            if statistic_4_3_filtered is None or statistic_4_3_filtered.shape[0] == 0:
-                logger.log_line(f"✗️ No data in {statistic} (statistic_4_3_filtered) for id={id}")
-                continue
-            if statistic_4_3_1_filtered is None or statistic_4_3_1_filtered.shape[0] == 0:
-                logger.log_line(f"✗️ No data in {statistic} (statistic_4_3_1_filtered) for id={id}")
-                continue
+        # Check for missing data
+        if statistic_2_3_filtered is None or statistic_2_3_filtered.shape[0] == 0:
+            logger.log_line(f"✗️ No data in {statistic} (statistic_2_3_filtered) for id={id}")
+            continue
+        if statistic_4_3_filtered is None or statistic_4_3_filtered.shape[0] == 0:
+            logger.log_line(f"✗️ No data in {statistic} (statistic_4_3_filtered) for id={id}")
+            continue
+        if statistic_4_3_1_filtered is None or statistic_4_3_1_filtered.shape[0] == 0:
+            logger.log_line(f"✗️ No data in {statistic} (statistic_4_3_1_filtered) for id={id}")
+            continue
 
-            if district_id == "01":
-                area_sqkm = 39.34
-            elif district_id == "02":
-                area_sqkm = 20.36
-            elif district_id == "03":
-                area_sqkm = 103.10
-            elif district_id == "04":
-                area_sqkm = 59.76
-            elif district_id == "05":
-                area_sqkm = 91.74
-            elif district_id == "06":
-                area_sqkm = 102.40
-            elif district_id == "07":
-                area_sqkm = 52.93
-            elif district_id == "08":
-                area_sqkm = 44.89
-            elif district_id == "09":
-                area_sqkm = 167.41
-            elif district_id == "10":
-                area_sqkm = 61.77
-            elif district_id == "11":
-                area_sqkm = 52.02
-            elif district_id == "12":
-                area_sqkm = 89.19
-            else:
-                area_sqkm = None
+        if district_id == "01":
+            area_sqkm = 39.34
+        elif district_id == "02":
+            area_sqkm = 20.36
+        elif district_id == "03":
+            area_sqkm = 103.10
+        elif district_id == "04":
+            area_sqkm = 59.76
+        elif district_id == "05":
+            area_sqkm = 91.74
+        elif district_id == "06":
+            area_sqkm = 102.40
+        elif district_id == "07":
+            area_sqkm = 52.93
+        elif district_id == "08":
+            area_sqkm = 44.89
+        elif district_id == "09":
+            area_sqkm = 167.41
+        elif district_id == "10":
+            area_sqkm = 61.77
+        elif district_id == "11":
+            area_sqkm = 52.02
+        elif district_id == "12":
+            area_sqkm = 89.19
+        else:
+            area_sqkm = None
 
-            # Blend data
-            blend_district_data(
-                feature=feature, area_sqkm=area_sqkm,
-                statistic_2_3_filtered=statistic_2_3_filtered,
-                statistic_4_3_filtered=statistic_4_3_filtered
-            )
+        # Blend data
+        feature = blend_district_data(
+            feature=feature, area_sqkm=area_sqkm,
+            statistic_2_3_filtered=statistic_2_3_filtered,
+            statistic_4_3_filtered=statistic_4_3_filtered
+        )
 
-        write_geojson_file(geojson_extended_file, geojson_extended)
+        # Build structure
+        if year not in statistics:
+            statistics[year] = {}
+        if half_year not in statistics[year]:
+            statistics[year][half_year] = {}
 
-        if not quiet:
-            logger.log_line(f"✓ Blend data from {statistic} into {result_file_name}")
+        # Add properties
+        statistics[year][half_year][id] = feature["properties"]
+
+    if not quiet:
+        logger.log_line(f"✓ Aggregate data from {statistic}")
 
 
-def extend_district_regions_post_2020(logger, results_path, result_file_name,
+def extend_district_regions_post_2020(logger, statistics, year, half_year,
                             statistic, statistic_2_2, statistic_4_2, statistic_4_2_1,
                             geojson, id_property, area_property, clean, quiet):
-    geojson_extended_file = os.path.join(results_path, result_file_name)
     geojson_extended = copy.deepcopy(geojson)
 
     # Check if file needs to be created
-    if clean or not os.path.exists(geojson_extended_file):
-        for feature in geojson_extended["features"]:
-            id = feature["properties"][id_property]
-            district_id, forecast_area_id, district_region_id, planning_area_id = build_ids(id)
-            area_sqm = feature["properties"][area_property]
-            area_sqkm = area_sqm / 1_000_000
+    for feature in geojson_extended["features"]:
+        id = feature["properties"][id_property]
+        district_id, forecast_area_id, district_region_id, planning_area_id = build_ids(id)
+        area_sqm = feature["properties"][area_property]
+        area_sqkm = area_sqm / 1_000_000
 
-            # Filter statistics
-            statistic_2_2_filtered = statistic_2_2.loc[(statistic_2_2["nummer"] ==  int(id))] if statistic_2_2 is not None else None
-            statistic_4_2_filtered = statistic_4_2.loc[(statistic_4_2["nummer"] == int(id))] if statistic_4_2 is not None else None
-            statistic_4_2_1_filtered = statistic_4_2_1.loc[(statistic_4_2_1["nummer"] == int(id))] if statistic_4_2_1 is not None else None
+        # Filter statistics
+        statistic_2_2_filtered = statistic_2_2.loc[(statistic_2_2["nummer"] ==  int(id))] if statistic_2_2 is not None else None
+        statistic_4_2_filtered = statistic_4_2.loc[(statistic_4_2["nummer"] == int(id))] if statistic_4_2 is not None else None
+        statistic_4_2_1_filtered = statistic_4_2_1.loc[(statistic_4_2_1["nummer"] == int(id))] if statistic_4_2_1 is not None else None
 
-            # Check for missing data
-            if statistic_2_2_filtered is None or statistic_2_2_filtered.shape[0] == 0:
-                logger.log_line(f"✗️ No data in {statistic} (statistic_2_2_filtered) for id={id}")
-                continue
-            if statistic_4_2_filtered is None or statistic_4_2_filtered.shape[0] == 0:
-                logger.log_line(f"✗️ No data in {statistic} (statistic_4_2_filtered) for id={id}")
-                continue
-            if statistic_4_2_1_filtered is None or statistic_4_2_1_filtered.shape[0] == 0:
-                logger.log_line(f"✗️ No data in {statistic} (statistic_4_2_1_filtered) for id={id}")
-                continue
+        # Check for missing data
+        if statistic_2_2_filtered is None or statistic_2_2_filtered.shape[0] == 0:
+            logger.log_line(f"✗️ No data in {statistic} (statistic_2_2_filtered) for id={id}")
+            continue
+        if statistic_4_2_filtered is None or statistic_4_2_filtered.shape[0] == 0:
+            logger.log_line(f"✗️ No data in {statistic} (statistic_4_2_filtered) for id={id}")
+            continue
+        if statistic_4_2_1_filtered is None or statistic_4_2_1_filtered.shape[0] == 0:
+            logger.log_line(f"✗️ No data in {statistic} (statistic_4_2_1_filtered) for id={id}")
+            continue
 
-            # Blend data
-            blend_district_region_data_post_2020(
-                feature=feature, area_sqkm=area_sqkm,
-                statistic_2_2_filtered=statistic_2_2_filtered,
-                statistic_4_2_filtered=statistic_4_2_filtered,
-                statistic_4_2_1_filtered=statistic_4_2_1_filtered
-            )
+        # Blend data
+        feature = blend_district_region_data_post_2020(
+            feature=feature, area_sqkm=area_sqkm,
+            statistic_2_2_filtered=statistic_2_2_filtered,
+            statistic_4_2_filtered=statistic_4_2_filtered,
+            statistic_4_2_1_filtered=statistic_4_2_1_filtered
+        )
 
-        write_geojson_file(geojson_extended_file, geojson_extended)
+        # Build structure
+        if year not in statistics:
+            statistics[year] = {}
+        if half_year not in statistics[year]:
+            statistics[year][half_year] = {}
 
-        if not quiet:
-            logger.log_line(f"✓ Blend data from {statistic} into {result_file_name}")
+        # Add properties
+        statistics[year][half_year][id] = feature["properties"]
+
+    if not quiet:
+        logger.log_line(f"✓ Aggregate data from {statistic}")
 
 
-def extend_planning_areas_post_2020(logger, results_path, result_file_name,
+def extend_planning_areas_post_2020(logger, statistics, year, half_year,
                           statistic, statistic_1, statistic_2_1, statistic_3, statistic_4_1, statistic_4_1_1,
                           geojson, id_property, area_property, clean, quiet):
-    geojson_extended_file = os.path.join(results_path, result_file_name)
     geojson_extended = copy.deepcopy(geojson)
 
     # Check if file needs to be created
-    if clean or not os.path.exists(geojson_extended_file):
-        for feature in geojson_extended["features"]:
-            id = feature["properties"][id_property]
-            district_id, forecast_area_id, district_region_id, planning_area_id = build_ids(id)
-            area_sqm = feature["properties"][area_property]
-            area_sqkm = area_sqm / 1_000_000
+    for feature in geojson_extended["features"]:
+        id = feature["properties"][id_property]
+        district_id, forecast_area_id, district_region_id, planning_area_id = build_ids(id)
+        area_sqm = feature["properties"][area_property]
+        area_sqkm = area_sqm / 1_000_000
 
-            # Filter statistics
-            statistic_1_filtered = statistic_1.loc[(statistic_1["nummer"] == int(id))] if statistic_1 is not None else None
-            statistic_2_1_filtered = statistic_2_1.loc[(statistic_2_1["nummer"] == int(id))] if statistic_2_1 is not None else None
-            statistic_3_filtered = statistic_3.loc[(statistic_3["nummer"] == int(id))] if statistic_3 is not None else None
-            statistic_4_1_filtered = statistic_4_1.loc[(statistic_4_1["nummer"] == int(id))] if statistic_4_1 is not None else None
-            statistic_4_1_1_filtered = statistic_4_1_1.loc[(statistic_4_1_1["nummer"] == int(id))] if statistic_4_1_1 is not None else None
+        # Filter statistics
+        statistic_1_filtered = statistic_1.loc[(statistic_1["nummer"] == int(id))] if statistic_1 is not None else None
+        statistic_2_1_filtered = statistic_2_1.loc[(statistic_2_1["nummer"] == int(id))] if statistic_2_1 is not None else None
+        statistic_3_filtered = statistic_3.loc[(statistic_3["nummer"] == int(id))] if statistic_3 is not None else None
+        statistic_4_1_filtered = statistic_4_1.loc[(statistic_4_1["nummer"] == int(id))] if statistic_4_1 is not None else None
+        statistic_4_1_1_filtered = statistic_4_1_1.loc[(statistic_4_1_1["nummer"] == int(id))] if statistic_4_1_1 is not None else None
 
-            # Check for missing data
-            if statistic_1_filtered is None or statistic_1_filtered.shape[0] == 0:
-                logger.log_line(f"✗️ No data in {statistic} (statistic_1_filtered) for id={id}")
-                continue
-            if statistic_2_1_filtered is None or statistic_2_1_filtered.shape[0] == 0:
-                logger.log_line(f"✗️ No data in {statistic} (statistic_2_1_filtered) for id={id}")
-                continue
-            if statistic_3_filtered is None or statistic_3_filtered.shape[0] == 0:
-                logger.log_line(f"✗️ No data in {statistic} (statistic_3_filtered) for id={id}")
-                continue
-            if statistic_4_1_filtered is None or statistic_4_1_filtered.shape[0] == 0:
-                logger.log_line(f"✗️ No data in {statistic} (statistic_4_1_filtered) for id={id}")
-                continue
-            if statistic_4_1_1_filtered is None or statistic_4_1_1_filtered.shape[0] == 0:
-                logger.log_line(f"✗️ No data in {statistic} (statistic_4_1_1_filtered) for id={id}")
-                continue
+        # Check for missing data
+        if statistic_1_filtered is None or statistic_1_filtered.shape[0] == 0:
+            logger.log_line(f"✗️ No data in {statistic} (statistic_1_filtered) for id={id}")
+            continue
+        if statistic_2_1_filtered is None or statistic_2_1_filtered.shape[0] == 0:
+            logger.log_line(f"✗️ No data in {statistic} (statistic_2_1_filtered) for id={id}")
+            continue
+        if statistic_3_filtered is None or statistic_3_filtered.shape[0] == 0:
+            logger.log_line(f"✗️ No data in {statistic} (statistic_3_filtered) for id={id}")
+            continue
+        if statistic_4_1_filtered is None or statistic_4_1_filtered.shape[0] == 0:
+            logger.log_line(f"✗️ No data in {statistic} (statistic_4_1_filtered) for id={id}")
+            continue
+        if statistic_4_1_1_filtered is None or statistic_4_1_1_filtered.shape[0] == 0:
+            logger.log_line(f"✗️ No data in {statistic} (statistic_4_1_1_filtered) for id={id}")
+            continue
 
-            # Blend data
-            blend_planning_area_data_post_2020(
-                feature=feature, area_sqkm=area_sqkm,
-                statistic_1_filtered=statistic_1_filtered,
-                statistic_2_1_filtered=statistic_2_1_filtered,
-                statistic_3_filtered=statistic_3_filtered,
-                statistic_4_1_filtered=statistic_4_1_filtered,
-                statistic_4_1_1_filtered=statistic_4_1_1_filtered
-            )
+        # Blend data
+        blend_planning_area_data_post_2020(
+            feature=feature, area_sqkm=area_sqkm,
+            statistic_1_filtered=statistic_1_filtered,
+            statistic_2_1_filtered=statistic_2_1_filtered,
+            statistic_3_filtered=statistic_3_filtered,
+            statistic_4_1_filtered=statistic_4_1_filtered,
+            statistic_4_1_1_filtered=statistic_4_1_1_filtered
+        )
 
-        write_geojson_file(geojson_extended_file, geojson_extended)
+        # Build structure
+        if year not in statistics:
+            statistics[year] = {}
+        if half_year not in statistics[year]:
+            statistics[year][half_year] = {}
 
-        if not quiet:
-            logger.log_line(f"✓ Blend data from {statistic} into {result_file_name}")
+        # Add properties
+        statistics[year][half_year][id] = feature["properties"]
+
+    if not quiet:
+        logger.log_line(f"✓ Aggregate data from {statistic}")
 
 
 def build_ids(combined_id):
@@ -435,6 +467,8 @@ def blend_district_data(feature, area_sqkm, statistic_2_3_filtered, statistic_4_
     add_prop(feature, "k12_balance_of_migration", statistic_4_3_filtered, "k12_wanderungssaldo")
     add_prop(feature, "k13_balance_of_migration_of_children_below_6", statistic_4_3_filtered, "k13_wanderungssaldo_von_kindern_unter_6_jahren")
 
+    return feature
+
 
 def blend_district_region_data(feature, area_sqkm, statistic_2_2_filtered, statistic_4_2_filtered):
 
@@ -465,6 +499,8 @@ def blend_district_region_data(feature, area_sqkm, statistic_2_2_filtered, stati
     add_prop(feature, "k11_migration_volume", statistic_4_2_filtered, "k11_wanderungsvolumen")
     add_prop(feature, "k12_balance_of_migration", statistic_4_2_filtered, "k12_wanderungssaldo")
     add_prop(feature, "k13_balance_of_migration_of_children_below_6", statistic_4_2_filtered, "k13_wanderungssaldo_von_kindern_unter_6_jahren")
+
+    return feature
 
 
 def blend_planning_area_data(feature, area_sqkm, statistic_1_filtered, statistic_2_1_filtered, statistic_3_filtered, statistic_4_1_filtered):
@@ -507,6 +543,8 @@ def blend_planning_area_data(feature, area_sqkm, statistic_1_filtered, statistic
     add_prop(feature, "k12_balance_of_migration", statistic_4_1_filtered, "k12_wanderungssaldo")
     add_prop(feature, "k13_balance_of_migration_of_children_below_6", statistic_4_1_filtered, "k13_wanderungssaldo_von_kindern_unter_6_jahren")
 
+    return feature
+
 
 def blend_district_data_post_2020(feature, area_sqkm, statistic_2_3_filtered, statistic_4_3_filtered, statistic_4_3_1_filtered):
 
@@ -538,6 +576,8 @@ def blend_district_data_post_2020(feature, area_sqkm, statistic_2_3_filtered, st
     add_prop(feature, "k12_balance_of_migration", statistic_4_3_filtered, "k12_wanderungssaldo")
     add_prop(feature, "k13_balance_of_migration_of_children_below_6", statistic_4_3_filtered, "k13_wanderungssaldo_von_kindern_unter_6_jahren")
 
+    return feature
+
 
 def blend_district_region_data_post_2020(feature, area_sqkm, statistic_2_2_filtered, statistic_4_2_filtered, statistic_4_2_1_filtered):
 
@@ -568,6 +608,8 @@ def blend_district_region_data_post_2020(feature, area_sqkm, statistic_2_2_filte
     add_prop(feature, "k11_migration_volume", statistic_4_2_filtered, "k11_wanderungsvolumen")
     add_prop(feature, "k12_balance_of_migration", statistic_4_2_filtered, "k12_wanderungssaldo")
     add_prop(feature, "k13_balance_of_migration_of_children_below_6", statistic_4_2_filtered, "k13_wanderungssaldo_von_kindern_unter_6_jahren")
+
+    return feature
 
 
 def blend_planning_area_data_post_2020(feature, area_sqkm, statistic_1_filtered, statistic_2_1_filtered, statistic_3_filtered, statistic_4_1_filtered, statistic_4_1_1_filtered):
@@ -610,6 +652,8 @@ def blend_planning_area_data_post_2020(feature, area_sqkm, statistic_1_filtered,
     add_prop(feature, "k12_balance_of_migration", statistic_4_1_filtered, "k12_wanderungssaldo")
     add_prop(feature, "k13_balance_of_migration_of_children_below_6", statistic_4_1_filtered, "k13_wanderungssaldo_von_kindern_unter_6_jahren")
 
+    return feature
+
 
 def add_prop(feature, property_name, statistics, statistics_property_name):
     if statistics_property_name in statistics:
@@ -637,10 +681,17 @@ def add_prop_with_modifiers(feature, property_name, statistics, statistics_prope
 # Main
 #
 
-class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
+
+class LorStatisticsMonitoringSocialUrbanDevelopmentDataAggregator:
 
     @TrackingDecorator.track_time
     def run(self, logger, data_path, statistics_path, results_path, clean=False, quiet=False):
+
+        # Results
+        statistics_lor_districts = {}
+        statistics_lor_forecast_areas = {}
+        statistics_lor_district_regions = {}
+        statistics_lor_planning_areas = {}
 
         # Load geojson
         geojson_lor_districts = read_geojson_file(os.path.join(data_path, "bezirksgrenzen.geojson"))
@@ -664,8 +715,9 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
 
             # Extend districts
             extend_districts(logger=logger,
-                             results_path=results_path,
-                             result_file_name=f"bezirksgrenzen_monitoring_social_urban_development_{year}.geojson",
+                             statistics=statistics_lor_districts,
+                             year=year,
+                             half_year=0,
                              statistic=f"bezirksgrenzen_monitoring_social_urban_development_{year}",
                              statistic_2_3=statistic_2_3,
                              statistic_4_3=statistic_4_3,
@@ -677,8 +729,9 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
 
             # Extend district regions
             extend_district_regions(logger=logger,
-                                    results_path=results_path,
-                                    result_file_name=f"lor_bezirksregionen_monitoring_social_urban_development_{year}.geojson",
+                                    statistics=statistics_lor_district_regions,
+                                    year=year,
+                                    half_year=0,
                                     statistic=f"lor_bezirksregionen_monitoring_social_urban_development_{year}",
                                     statistic_2_2=statistic_2_2,
                                     statistic_4_2=statistic_4_2,
@@ -690,9 +743,10 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
 
             # Extend planning areas
             extend_planning_areas(logger=logger,
-                                  results_path=results_path,
-                                  result_file_name=f"lor_planungsraeume_monitoring_social_urban_development_{year}.geojson",
-                                  statistic=f"lor_planungsraeume_monitoring_social_urban_development_{year}",
+                                  statistics=statistics_lor_planning_areas,
+                                  year=year,
+                                  half_year=0,
+                                  statistic=f"lor_planungsraeume_population_monitoring_social_urban_development_{year}",
                                   statistic_1=statistic_1,
                                   statistic_2_1=statistic_2_1,
                                   statistic_3=statistic_3,
@@ -728,44 +782,57 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
 
             # Extend districts
             extend_districts_post_2020(logger=logger,
-                             results_path=results_path,
-                             result_file_name=f"bezirksgrenzen_monitoring_social_urban_development_{year}.geojson",
-                             statistic=f"bezirksgrenzen_monitoring_social_urban_development_{year}",
-                             statistic_2_3=statistic_2_3,
-                             statistic_4_3=statistic_4_3,
-                             statistic_4_3_1=statistic_4_3_1,
-                             id_property="id",
-                             area_property=None,
-                             geojson=geojson_lor_districts,
-                             clean=clean,
-                             quiet=quiet)
+                                       statistics=statistics_lor_districts,
+                                       year=year,
+                                       half_year=0,
+                                       statistic=f"bezirksgrenzen_monitoring_social_urban_development_{year}",
+                                       statistic_2_3=statistic_2_3,
+                                       statistic_4_3=statistic_4_3,
+                                       statistic_4_3_1=statistic_4_3_1,
+                                       id_property="id",
+                                       area_property=None,
+                                       geojson=geojson_lor_districts,
+                                       clean=clean,
+                                       quiet=quiet)
 
             # Extend district regions
             extend_district_regions_post_2020(logger=logger,
-                                    results_path=results_path,
-                                    result_file_name=f"lor_bezirksregionen_monitoring_social_urban_development_{year}.geojson",
-                                    statistic=f"lor_bezirksregionen_monitoring_social_urban_development_{year}",
-                                    statistic_2_2=statistic_2_2,
-                                    statistic_4_2=statistic_4_2,
-                                    statistic_4_2_1=statistic_4_2_1,
-                                    geojson=geojson_lor_district_regions,
-                                    id_property="id",
-                                    area_property="area",
-                                    clean=clean,
-                                    quiet=quiet)
+                                              statistics=statistics_lor_district_regions,
+                                              year=year,
+                                              half_year=0,
+                                              statistic=f"lor_bezirksregionen_monitoring_social_urban_development_{year}",
+                                              statistic_2_2=statistic_2_2,
+                                              statistic_4_2=statistic_4_2,
+                                              statistic_4_2_1=statistic_4_2_1,
+                                              geojson=geojson_lor_district_regions,
+                                              id_property="id",
+                                              area_property="area",
+                                              clean=clean,
+                                              quiet=quiet)
 
             # Extend planning areas
             extend_planning_areas_post_2020(logger=logger,
-                                  results_path=results_path,
-                                  result_file_name=f"lor_planungsraeume_monitoring_social_urban_development_{year}.geojson",
-                                  statistic=f"lor_planungsraeume_monitoring_social_urban_development_{year}",
-                                  statistic_1=statistic_1,
-                                  statistic_2_1=statistic_2_1,
-                                  statistic_3=statistic_3,
-                                  statistic_4_1=statistic_4_1,
-                                  statistic_4_1_1=statistic_4_1_1,
-                                  geojson=geojson_lor_planning_areas,
-                                  id_property="id",
-                                  area_property="area",
-                                  clean=clean,
-                                  quiet=quiet)
+                                            statistics=statistics_lor_planning_areas,
+                                            year=year,
+                                            half_year=0,
+                                            statistic=f"lor_planungsraeume_monitoring_social_urban_development_{year}",
+                                            statistic_1=statistic_1,
+                                            statistic_2_1=statistic_2_1,
+                                            statistic_3=statistic_3,
+                                            statistic_4_1=statistic_4_1,
+                                            statistic_4_1_1=statistic_4_1_1,
+                                            geojson=geojson_lor_planning_areas,
+                                            id_property="id",
+                                            area_property="area",
+                                            clean=clean,
+                                            quiet=quiet)
+
+        # Write json file
+        write_json_file(os.path.join(results_path, "bezirksgrenzen_monitoring_social_urban_development_statistics.json"),
+                        statistics_lor_districts)
+        write_json_file(os.path.join(results_path, "lor_prognoseraeume_monitoring_social_urban_development_statistics.json"),
+                        statistics_lor_forecast_areas)
+        write_json_file(os.path.join(results_path, "lor_bezirksregionen_monitoring_social_urban_development_statistics.json"),
+                        statistics_lor_district_regions)
+        write_json_file(os.path.join(results_path, "lor_planungsraeume_monitoring_social_urban_development_statistics.json"),
+                        statistics_lor_planning_areas)

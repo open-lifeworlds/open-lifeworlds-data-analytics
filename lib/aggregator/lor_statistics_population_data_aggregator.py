@@ -444,7 +444,7 @@ def add_prop(feature, property_name, property_value, total_count, total_area_sqk
 #
 
 
-class DataAggregator:
+class LorStatisticsPopulationDataAggregator:
 
     @TrackingDecorator.track_time
     def run(self, logger, data_path, statistics_path, results_path, clean=False, quiet=False):
