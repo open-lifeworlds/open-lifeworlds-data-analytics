@@ -33,7 +33,6 @@ from geojson_bounding_box_converter import GeojsonBoundingBoxConverter
 from lor_statistics_population_data_blender import LorStatisticsPopulationDataBlender
 from lor_statistics_monitoring_social_urban_development_data_blender import \
     LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender
-from data_aggregator import DataAggregator
 from tracking_decorator import TrackingDecorator
 
 
@@ -76,31 +75,26 @@ def main(argv):
     logger = LoggerFacade(data_path, console=True, file=False)
 
     # Data retrieval: Download data
-    OdisGeoDataLoader().run(logger, os.path.join(raw_path, "lor-odis-geo"), clean=clean, quiet=quiet)
-    LorSenateDataLoader().run(logger, os.path.join(raw_path, "lor-senate"), clean=clean, quiet=quiet)
+    OdisGeoDataLoader().run(logger, os.path.join(raw_path, "lor-odis-geo"), clean, quiet)
+    LorSenateDataLoader().run(logger, os.path.join(raw_path, "lor-senate"), clean, quiet)
 
     # Data retrieval: Download statistics data
-    LorStatisticsPopulationDataLoader().run(logger, os.path.join(raw_path, statistics_population_path), clean=clean,
-                                            quiet=quiet)
+    LorStatisticsPopulationDataLoader().run(logger, os.path.join(raw_path, statistics_population_path), clean, quiet)
     LorStatisticsMonitoringSocialUrbanDevelopmentDataLoader().run(logger, os.path.join(raw_path,
-                                                                               statistics_monitoring_social_urban_development_path),
-                                                                  clean=clean, quiet=quiet)
+                                                                                       statistics_monitoring_social_urban_development_path),
+                                                                  clean, quiet)
 
     # Data preparation: Convert LOR geo data
-    GeojsonCopier().run(logger, os.path.join(raw_path, "lor-odis-geo"), data_path, clean=clean, quiet=quiet)
-    GeojsonCleaner().run(logger, data_path, data_path, clean=clean, quiet=quiet)
-    GeojsonProjectionConverter().run(logger, data_path, data_path, clean=clean, quiet=quiet)
-    GeojsonBoundingBoxConverter().run(logger, data_path, data_path, clean=clean, quiet=quiet)
+    GeojsonCopier().run(logger, os.path.join(raw_path, "lor-odis-geo"), data_path, clean, quiet)
+    GeojsonCleaner().run(logger, data_path, data_path, clean, quiet)
+    GeojsonProjectionConverter().run(logger, data_path, data_path, clean, quiet)
+    GeojsonBoundingBoxConverter().run(logger, data_path, data_path, clean, quiet)
 
     # Data enhancement: Blend data into geojson
-    LorStatisticsPopulationDataBlender().run(logger, data_path=data_path, statistics_path=statistics_population_path,
-                                             results_path=data_path, clean=True, quiet=quiet)
-    LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender().run(logger, data_path=data_path,
-                                                                   statistics_path=statistics_monitoring_social_urban_development_path,
-                                                                   results_path=data_path, clean=True, quiet=quiet)
-    # Aggregate data
-    DataAggregator().run(logger, data_path=data_path, statistics_path=statistics_population_path,
-                         results_path=data_path, clean=True, quiet=quiet)
+    LorStatisticsPopulationDataBlender().run(logger, data_path, statistics_population_path, data_path, clean, quiet)
+    LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender().run(logger, data_path,
+                                                                   statistics_monitoring_social_urban_development_path,
+                                                                   data_path, clean, quiet)
 
 
 if __name__ == "__main__":
