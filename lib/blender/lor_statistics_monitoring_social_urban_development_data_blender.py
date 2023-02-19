@@ -733,10 +733,10 @@ def add_prop(feature, property_name, statistics, statistics_property_name):
 def add_prop_with_modifiers(feature, property_name, statistics, statistics_property_name, total_area_sqkm):
     if statistics_property_name in statistics:
         try:
-            feature["properties"][f"{property_name}"] = float(statistics[statistics_property_name])
+            feature["properties"][f"{property_name}"] = float(statistics[statistics_property_name].sum())
             if total_area_sqkm is not None:
                 feature["properties"][f"{property_name}_per_sqkm"] = round(
-                    float(statistics[statistics_property_name]) / total_area_sqkm)
+                    float(statistics[statistics_property_name].sum()) / total_area_sqkm)
         except ValueError:
             feature["properties"][f"{property_name}"] = 0
 
