@@ -65,11 +65,14 @@ def main(argv):
             quiet = True
 
     # Set paths
-    data_path = os.path.join(script_path, "data")
     raw_path = os.path.join(script_path, "raw")
-    statistics_population_path = os.path.join(raw_path, "lor-statistics-population")
-    statistics_monitoring_social_urban_development_path = os.path.join(raw_path,
-                                                                       "lor-statistics-monitoring-social-urban-development")
+    raw_population_path = os.path.join(raw_path, "lor-statistics-population")
+    raw_monitoring_social_urban_development_path = os.path.join(raw_path,
+                                                                "lor-statistics-monitoring-social-urban-development")
+    data_path = os.path.join(script_path, "data")
+    data_population_path = os.path.join(data_path, "lor-statistics-population")
+    data_monitoring_social_urban_development_path = os.path.join(data_path,
+                                                                 "lor-statistics-monitoring-social-urban-development")
 
     # Initialize logger
     logger = LoggerFacade(data_path, console=True, file=False)
@@ -79,9 +82,9 @@ def main(argv):
     LorSenateDataLoader().run(logger, os.path.join(raw_path, "lor-senate"), clean, quiet)
 
     # Data retrieval: Download statistics data
-    LorStatisticsPopulationDataLoader().run(logger, os.path.join(raw_path, statistics_population_path), clean, quiet)
+    LorStatisticsPopulationDataLoader().run(logger, os.path.join(raw_path, raw_population_path), clean, quiet)
     LorStatisticsMonitoringSocialUrbanDevelopmentDataLoader().run(logger, os.path.join(raw_path,
-                                                                                       statistics_monitoring_social_urban_development_path),
+                                                                                       raw_monitoring_social_urban_development_path),
                                                                   clean, quiet)
 
     # Data preparation: Convert LOR geo data
@@ -91,10 +94,11 @@ def main(argv):
     GeojsonBoundingBoxConverter().run(logger, data_path, data_path, clean, quiet)
 
     # Data enhancement: Blend data into geojson
-    LorStatisticsPopulationDataBlender().run(logger, data_path, statistics_population_path, data_path, clean, quiet)
+    LorStatisticsPopulationDataBlender().run(logger, data_path, raw_population_path, data_population_path, clean, quiet)
     LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender().run(logger, data_path,
-                                                                   statistics_monitoring_social_urban_development_path,
-                                                                   data_path, clean, quiet)
+                                                                   raw_monitoring_social_urban_development_path,
+                                                                   data_monitoring_social_urban_development_path, clean,
+                                                                   quiet)
 
 
 if __name__ == "__main__":
