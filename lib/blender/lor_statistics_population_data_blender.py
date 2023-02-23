@@ -20,7 +20,7 @@ def read_geojson_file(file_path):
 
 
 def write_geojson_file(logger, file_path, statistic_name, geojson_content, clean, quiet):
-    if os.path.exists(file_path) or clean:
+    if not os.path.exists(file_path) or clean:
         file_name = os.path.basename(file_path)
 
         with open(file_path, "w") as geojson_file:
@@ -31,7 +31,7 @@ def write_geojson_file(logger, file_path, statistic_name, geojson_content, clean
 
 
 def write_json_file(logger, file_path, statistic_name, json_content, clean, quiet):
-    if os.path.exists(file_path) or clean:
+    if not os.path.exists(file_path) or clean:
         file_name = os.path.basename(file_path)
 
         with open(file_path, "w") as json_file:
@@ -444,6 +444,8 @@ class LorStatisticsPopulationDataBlender:
 
     @TrackingDecorator.track_time
     def run(self, logger, data_path, statistics_path, results_path, clean=False, quiet=False):
+        # Make results path
+        os.makedirs(os.path.join(results_path), exist_ok=True)
 
         # Statistics
         statistics_lor_districts = {}

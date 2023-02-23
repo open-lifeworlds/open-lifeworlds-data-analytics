@@ -20,7 +20,7 @@ def read_geojson_file(file_path):
 
 
 def write_geojson_file(logger, file_path, statistic_name, geojson_content, clean, quiet):
-    if os.path.exists(file_path) or clean:
+    if not os.path.exists(file_path) or clean:
         file_name = os.path.basename(file_path)
 
         with open(file_path, "w") as geojson_file:
@@ -31,7 +31,7 @@ def write_geojson_file(logger, file_path, statistic_name, geojson_content, clean
 
 
 def write_json_file(logger, file_path, statistic_name, json_content, clean, quiet):
-    if os.path.exists(file_path) or clean:
+    if not os.path.exists(file_path) or clean:
         file_name = os.path.basename(file_path)
 
         with open(file_path, "w") as json_file:
@@ -485,7 +485,7 @@ def blend_district_data(feature, area_sqkm, statistic_2_3_filtered, statistic_4_
     add_prop(feature, "k08_urban_apartments", statistic_4_3_filtered, "k08_staedtische_wohnungen")
     add_prop(feature, "k14_living_rooms", statistic_4_3_filtered, "k14_wohnraeume")
     add_prop(feature, "k15_living_space", statistic_4_3_filtered, "k15_wohnflaeche")
-    add_prop(feature, "k09_einfache_wohnlage", statistic_4_3_filtered, "k09_einfache_wohnlage")
+    add_prop(feature, "k09_simple_residential_area", statistic_4_3_filtered, "k09_einfache_wohnlage")
     add_prop(feature, "k10_duration_of_residence_over_5_years", statistic_4_3_filtered, "k10_wohndauer_ueber_5_jahre")
     add_prop(feature, "k11_migration_volume", statistic_4_3_filtered, "k11_wanderungsvolumen")
     add_prop(feature, "k12_balance_of_migration", statistic_4_3_filtered, "k12_wanderungssaldo")
@@ -524,7 +524,7 @@ def blend_district_region_data(feature, area_sqkm, statistic_2_2_filtered, stati
     add_prop(feature, "k08_urban_apartments", statistic_4_2_filtered, "k08_staedtische_wohnungen")
     add_prop(feature, "k14_living_rooms", statistic_4_2_filtered, "k14_wohnraeume")
     add_prop(feature, "k15_living_space", statistic_4_2_filtered, "k15_wohnflaeche")
-    add_prop(feature, "k09_einfache_wohnlage", statistic_4_2_filtered, "k09_einfache_wohnlage")
+    add_prop(feature, "k09_simple_residential_area", statistic_4_2_filtered, "k09_einfache_wohnlage")
     add_prop(feature, "k10_duration_of_residence_over_5_years", statistic_4_2_filtered, "k10_wohndauer_ueber_5_jahre")
     add_prop(feature, "k11_migration_volume", statistic_4_2_filtered, "k11_wanderungsvolumen")
     add_prop(feature, "k12_balance_of_migration", statistic_4_2_filtered, "k12_wanderungssaldo")
@@ -578,7 +578,7 @@ def blend_planning_area_data(feature, area_sqkm, statistic_1_filtered, statistic
     add_prop(feature, "k08_urban_apartments", statistic_4_1_filtered, "k08_staedtische_wohnungen")
     add_prop(feature, "k14_living_rooms", statistic_4_1_filtered, "k14_wohnraeume")
     add_prop(feature, "k15_living_space", statistic_4_1_filtered, "k15_wohnflaeche")
-    add_prop(feature, "k09_einfache_wohnlage", statistic_4_1_filtered, "k09_einfache_wohnlage")
+    add_prop(feature, "k09_simple_residential_area", statistic_4_1_filtered, "k09_einfache_wohnlage")
     add_prop(feature, "k10_duration_of_residence_over_5_years", statistic_4_1_filtered, "k10_wohndauer_ueber_5_jahre")
     add_prop(feature, "k11_migration_volume", statistic_4_1_filtered, "k11_wanderungsvolumen")
     add_prop(feature, "k12_balance_of_migration", statistic_4_1_filtered, "k12_wanderungssaldo")
@@ -618,7 +618,7 @@ def blend_district_data_post_2020(feature, area_sqkm, statistic_2_3_filtered, st
     add_prop(feature, "k08_urban_apartments", statistic_4_3_1_filtered, "k08_staedtische_wohnungen")
     add_prop(feature, "k14_living_rooms", statistic_4_3_1_filtered, "k14_wohnraeume")
     add_prop(feature, "k15_living_space", statistic_4_3_1_filtered, "k15_wohnflaeche")
-    add_prop(feature, "k09_einfache_wohnlage", statistic_4_3_filtered, "k09_einfache_wohnlage")
+    add_prop(feature, "k09_simple_residential_area", statistic_4_3_filtered, "k09_einfache_wohnlage")
     add_prop(feature, "k10_duration_of_residence_over_5_years", statistic_4_3_filtered, "k10_wohndauer_ueber_5_jahre")
     add_prop(feature, "k11_migration_volume", statistic_4_3_filtered, "k11_wanderungsvolumen")
     add_prop(feature, "k12_balance_of_migration", statistic_4_3_filtered, "k12_wanderungssaldo")
@@ -658,7 +658,7 @@ def blend_district_region_data_post_2020(feature, area_sqkm, statistic_2_2_filte
     add_prop(feature, "k08_urban_apartments", statistic_4_2_1_filtered, "k08_staedtische_wohnungen")
     add_prop(feature, "k14_living_rooms", statistic_4_2_1_filtered, "k14_wohnraeume")
     add_prop(feature, "k15_living_space", statistic_4_2_1_filtered, "k15_wohnflaeche")
-    add_prop(feature, "k09_einfache_wohnlage", statistic_4_2_filtered, "k09_einfache_wohnlage")
+    add_prop(feature, "k09_simple_residential_area", statistic_4_2_filtered, "k09_einfache_wohnlage")
     add_prop(feature, "k10_duration_of_residence_over_5_years", statistic_4_2_filtered, "k10_wohndauer_ueber_5_jahre")
     add_prop(feature, "k11_migration_volume", statistic_4_2_filtered, "k11_wanderungsvolumen")
     add_prop(feature, "k12_balance_of_migration", statistic_4_2_filtered, "k12_wanderungssaldo")
@@ -712,7 +712,7 @@ def blend_planning_area_data_post_2020(feature, area_sqkm, statistic_1_filtered,
     add_prop(feature, "k08_urban_apartments", statistic_4_1_1_filtered, "k08_staedtische_wohnungen")
     add_prop(feature, "k14_living_rooms", statistic_4_1_1_filtered, "k14_wohnraeume")
     add_prop(feature, "k15_living_space", statistic_4_1_1_filtered, "k15_wohnflaeche")
-    add_prop(feature, "k09_einfache_wohnlage", statistic_4_1_filtered, "k09_einfache_wohnlage")
+    add_prop(feature, "k09_simple_residential_area", statistic_4_1_filtered, "k09_einfache_wohnlage")
     add_prop(feature, "k10_duration_of_residence_over_5_years", statistic_4_1_filtered, "k10_wohndauer_ueber_5_jahre")
     add_prop(feature, "k11_migration_volume", statistic_4_1_filtered, "k11_wanderungsvolumen")
     add_prop(feature, "k12_balance_of_migration", statistic_4_1_filtered, "k12_wanderungssaldo")
@@ -752,6 +752,8 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
 
     @TrackingDecorator.track_time
     def run(self, logger, data_path, statistics_path, results_path, clean=False, quiet=False):
+        # Make results path
+        os.makedirs(os.path.join(results_path), exist_ok=True)
 
         # Statistics
         statistics_lor_districts = {}
