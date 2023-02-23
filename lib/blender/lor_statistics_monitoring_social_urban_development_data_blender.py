@@ -768,7 +768,7 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
         # Iterate over statistics
         for statistic_bundle in pre_2020_statistics:
             year = statistic_bundle[0][-4:]
-            half_year = 0
+            half_year = "00"
 
             # Load statistics
             statistic_1 = read_csv_file(os.path.join(statistics_path, f"{statistic_bundle[0]}.csv"))
@@ -786,7 +786,7 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
                 statistics=statistics_lor_districts,
                 year=year,
                 half_year=half_year,
-                statistic=f"bezirksgrenzen_monitoring_social_urban_development_{year}",
+                statistic=f"bezirksgrenzen_monitoring_social_urban_development_{year}_{half_year}",
                 statistic_2_3=statistic_2_3,
                 statistic_4_3=statistic_4_3,
                 id_property="id",
@@ -799,7 +799,7 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
                 statistics=statistics_lor_district_regions,
                 year=year,
                 half_year=half_year,
-                statistic=f"lor_bezirksregionen_monitoring_social_urban_development_{year}",
+                statistic=f"lor_bezirksregionen_monitoring_social_urban_development_{year}_{half_year}",
                 statistic_2_2=statistic_2_2,
                 statistic_4_2=statistic_4_2,
                 geojson=geojson_lor_district_regions,
@@ -813,7 +813,7 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
                 statistics=statistics_lor_planning_areas,
                 year=year,
                 half_year=half_year,
-                statistic=f"lor_planungsraeume_monitoring_social_urban_development_{year}",
+                statistic=f"lor_planungsraeume_monitoring_social_urban_development_{year}_{half_year}",
                 statistic_1=statistic_1,
                 statistic_2_1=statistic_2_1,
                 statistic_3=statistic_3,
@@ -827,8 +827,8 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
             write_geojson_file(
                 logger=logger,
                 file_path=os.path.join(results_path,
-                                       f"lor_bezirksregionen_monitoring_social_urban_development_{year}.geojson"),
-                statistic_name=f"bezirksgrenzen_monitoring_social_urban_development_{year}",
+                                       f"lor_bezirksregionen_monitoring_social_urban_development_{year}_{half_year}.geojson"),
+                statistic_name=f"bezirksgrenzen_monitoring_social_urban_development_{year}_{half_year}",
                 geojson_content=geojson_lor_districts_extended,
                 clean=clean,
                 quiet=quiet
@@ -836,8 +836,8 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
             write_geojson_file(
                 logger=logger,
                 file_path=os.path.join(results_path,
-                                       f"lor_bezirksregionen_monitoring_social_urban_development_{year}.geojson"),
-                statistic_name=f"lor_bezirksregionen_monitoring_social_urban_development_{year}",
+                                       f"lor_bezirksregionen_monitoring_social_urban_development_{year}_{half_year}.geojson"),
+                statistic_name=f"lor_bezirksregionen_monitoring_social_urban_development_{year}_{half_year}",
                 geojson_content=geojson_lor_district_regions_extended,
                 clean=clean,
                 quiet=quiet
@@ -845,8 +845,8 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
             write_geojson_file(
                 logger=logger,
                 file_path=os.path.join(results_path,
-                                       f"lor_planungsraeume_monitoring_social_urban_development_{year}.geojson"),
-                statistic_name=f"lor_planungsraeume_monitoring_social_urban_development_{year}",
+                                       f"lor_planungsraeume_monitoring_social_urban_development_{year}_{half_year}.geojson"),
+                statistic_name=f"lor_planungsraeume_monitoring_social_urban_development_{year}_{half_year}",
                 geojson_content=geojson_lor_planning_areas_extended,
                 clean=clean,
                 quiet=quiet
@@ -860,7 +860,7 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
         # Iterate over statistics
         for statistic_bundle in post_2020_statistics:
             year = statistic_bundle[0][-4:]
-            half_year = 0
+            half_year = "00"
 
             # Load statistics
             statistic_1 = read_csv_file(os.path.join(statistics_path, f"{statistic_bundle[0]}.csv"))
@@ -881,7 +881,7 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
                 statistics=statistics_lor_planning_areas,
                 year=year,
                 half_year=half_year,
-                statistic=f"bezirksgrenzen_monitoring_social_urban_development_{year}",
+                statistic=f"bezirksgrenzen_monitoring_social_urban_development_{year}_{half_year}",
                 statistic_2_3=statistic_2_3,
                 statistic_4_3=statistic_4_3,
                 statistic_4_3_1=statistic_4_3_1,
@@ -895,7 +895,7 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
                 statistics=statistics_lor_planning_areas,
                 year=year,
                 half_year=half_year,
-                statistic=f"lor_bezirksregionen_monitoring_social_urban_development_{year}",
+                statistic=f"lor_bezirksregionen_monitoring_social_urban_development_{year}_{half_year}",
                 statistic_2_2=statistic_2_2,
                 statistic_4_2=statistic_4_2,
                 statistic_4_2_1=statistic_4_2_1,
@@ -910,7 +910,7 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
                 statistics=statistics_lor_planning_areas,
                 year=year,
                 half_year=half_year,
-                statistic=f"lor_planungsraeume_monitoring_social_urban_development_{year}",
+                statistic=f"lor_planungsraeume_monitoring_social_urban_development_{year}_{half_year}",
                 statistic_1=statistic_1,
                 statistic_2_1=statistic_2_1,
                 statistic_3=statistic_3,
@@ -925,8 +925,8 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
             write_geojson_file(
                 logger=logger,
                 file_path=os.path.join(results_path,
-                                       f"lor_bezirksregionen_monitoring_social_urban_development_{year}.geojson"),
-                statistic_name=f"bezirksgrenzen_monitoring_social_urban_development_{year}",
+                                       f"lor_bezirksregionen_monitoring_social_urban_development_{year}_{half_year}.geojson"),
+                statistic_name=f"bezirksgrenzen_monitoring_social_urban_development_{year}_{half_year}",
                 geojson_content=geojson_lor_districts_extended,
                 clean=clean,
                 quiet=quiet
@@ -934,8 +934,8 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
             write_geojson_file(
                 logger=logger,
                 file_path=os.path.join(results_path,
-                                       f"lor_bezirksregionen_monitoring_social_urban_development_{year}.geojson"),
-                statistic_name=f"lor_bezirksregionen_monitoring_social_urban_development_{year}",
+                                       f"lor_bezirksregionen_monitoring_social_urban_development_{year}_{half_year}.geojson"),
+                statistic_name=f"lor_bezirksregionen_monitoring_social_urban_development_{year}_{half_year}",
                 geojson_content=geojson_lor_district_regions_extended,
                 clean=clean,
                 quiet=quiet
@@ -943,8 +943,8 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
             write_geojson_file(
                 logger=logger,
                 file_path=os.path.join(results_path,
-                                       f"lor_planungsraeume_monitoring_social_urban_development_{year}.geojson"),
-                statistic_name=f"lor_planungsraeume_monitoring_social_urban_development_{year}",
+                                       f"lor_planungsraeume_monitoring_social_urban_development_{year}_{half_year}.geojson"),
+                statistic_name=f"lor_planungsraeume_monitoring_social_urban_development_{year}_{half_year}",
                 geojson_content=geojson_lor_planning_areas_extended,
                 clean=clean,
                 quiet=quiet

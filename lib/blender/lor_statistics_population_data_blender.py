@@ -536,32 +536,32 @@ class LorStatisticsPopulationDataBlender:
             # Write geojson files
             write_geojson_file(
                 logger=logger,
-                file_path=os.path.join(results_path, f"lor_bezirksregionen_population_{year}.geojson"),
-                statistic_name=f"bezirksgrenzen_population_{year}",
+                file_path=os.path.join(results_path, f"lor_bezirksregionen_population_{year}_{half_year}.geojson"),
+                statistic_name=f"bezirksgrenzen_population_{year}_{half_year}",
                 geojson_content=geojson_lor_districts_extended,
                 clean=clean,
                 quiet=quiet
             )
             write_geojson_file(
                 logger=logger,
-                file_path=os.path.join(results_path, f"lor_prognoseraeume_population_{year}.geojson"),
-                statistic_name=f"lor_prognoseraeume_population_{year}",
+                file_path=os.path.join(results_path, f"lor_prognoseraeume_population_{year}_{half_year}.geojson"),
+                statistic_name=f"lor_prognoseraeume_population_{year}_{half_year}",
                 geojson_content=geojson_lor_forecast_areas_extended,
                 clean=clean,
                 quiet=quiet
             )
             write_geojson_file(
                 logger=logger,
-                file_path=os.path.join(results_path, f"lor_bezirksregionen_population_{year}.geojson"),
-                statistic_name=f"lor_bezirksregionen_population_{year}",
+                file_path=os.path.join(results_path, f"lor_bezirksregionen_population_{year}_{half_year}.geojson"),
+                statistic_name=f"lor_bezirksregionen_population_{year}_{half_year}",
                 geojson_content=geojson_lor_district_regions_extended,
                 clean=clean,
                 quiet=quiet
             )
             write_geojson_file(
                 logger=logger,
-                file_path=os.path.join(results_path, f"lor_planungsraeume_population_{year}.geojson"),
-                statistic_name=f"lor_planungsraeume_population_{year}",
+                file_path=os.path.join(results_path, f"lor_planungsraeume_population_{year}_{half_year}.geojson"),
+                statistic_name=f"lor_planungsraeume_population_{year}_{half_year}",
                 geojson_content=geojson_lor_planning_areas_extended,
                 clean=clean,
                 quiet=quiet
@@ -644,32 +644,32 @@ class LorStatisticsPopulationDataBlender:
             # Write geojson files
             write_geojson_file(
                 logger=logger,
-                file_path=os.path.join(results_path, f"lor_bezirksregionen_population_{year}.geojson"),
-                statistic_name=f"bezirksgrenzen_population_{year}",
+                file_path=os.path.join(results_path, f"lor_bezirksregionen_population_{year}_{half_year}.geojson"),
+                statistic_name=f"bezirksgrenzen_population_{year}_{half_year}",
                 geojson_content=geojson_lor_districts_extended,
                 clean=clean,
                 quiet=quiet
             )
             write_geojson_file(
                 logger=logger,
-                file_path=os.path.join(results_path, f"lor_prognoseraeume_population_{year}.geojson"),
-                statistic_name=f"lor_prognoseraeume_population_{year}",
+                file_path=os.path.join(results_path, f"lor_prognoseraeume_population_{year}_{half_year}.geojson"),
+                statistic_name=f"lor_prognoseraeume_population_{year}_{half_year}",
                 geojson_content=geojson_lor_forecast_areas_extended,
                 clean=clean,
                 quiet=quiet
             )
             write_geojson_file(
                 logger=logger,
-                file_path=os.path.join(results_path, f"lor_bezirksregionen_population_{year}.geojson"),
-                statistic_name=f"lor_bezirksregionen_population_{year}",
+                file_path=os.path.join(results_path, f"lor_bezirksregionen_population_{year}_{half_year}.geojson"),
+                statistic_name=f"lor_bezirksregionen_population_{year}_{half_year}",
                 geojson_content=geojson_lor_district_regions_extended,
                 clean=clean,
                 quiet=quiet
             )
             write_geojson_file(
                 logger=logger,
-                file_path=os.path.join(results_path, f"lor_planungsraeume_population_{year}.geojson"),
-                statistic_name=f"lor_planungsraeume_population_{year}",
+                file_path=os.path.join(results_path, f"lor_planungsraeume_population_{year}_{half_year}.geojson"),
+                statistic_name=f"lor_planungsraeume_population_{year}_{half_year}",
                 geojson_content=geojson_lor_planning_areas_extended,
                 clean=clean,
                 quiet=quiet
@@ -758,32 +758,32 @@ class LorStatisticsPopulationDataBlender:
             # Write geojson files
             write_geojson_file(
                 logger=logger,
-                file_path=os.path.join(results_path, f"lor_bezirksregionen_population_{year}_new_format.geojson"),
-                statistic_name=f"bezirksgrenzen_population_{year}",
+                file_path=os.path.join(results_path, f"lor_bezirksregionen_population_{year}_{half_year}_new_format.geojson"),
+                statistic_name=f"bezirksgrenzen_population_{year}_{half_year}",
                 geojson_content=geojson_lor_districts_extended,
                 clean=clean,
                 quiet=quiet
             )
             write_geojson_file(
                 logger=logger,
-                file_path=os.path.join(results_path, f"lor_prognoseraeume_population_{year}_new_format.geojson"),
-                statistic_name=f"lor_prognoseraeume_population_{year}",
+                file_path=os.path.join(results_path, f"lor_prognoseraeume_population_{year}_{half_year}_new_format.geojson"),
+                statistic_name=f"lor_prognoseraeume_population_{year}_{half_year}",
                 geojson_content=geojson_lor_forecast_areas_extended,
                 clean=clean,
                 quiet=quiet
             )
             write_geojson_file(
                 logger=logger,
-                file_path=os.path.join(results_path, f"lor_bezirksregionen_population_{year}_new_format.geojson"),
-                statistic_name=f"lor_bezirksregionen_population_{year}",
+                file_path=os.path.join(results_path, f"lor_bezirksregionen_population_{year}_{half_year}_new_format.geojson"),
+                statistic_name=f"lor_bezirksregionen_population_{year}_{half_year}",
                 geojson_content=geojson_lor_district_regions_extended,
                 clean=clean,
                 quiet=quiet
             )
             write_geojson_file(
                 logger=logger,
-                file_path=os.path.join(results_path, f"lor_planungsraeume_population_{year}_new_format.geojson"),
-                statistic_name=f"lor_planungsraeume_population_{year}",
+                file_path=os.path.join(results_path, f"lor_planungsraeume_population_{year}_{half_year}_new_format.geojson"),
+                statistic_name=f"lor_planungsraeume_population_{year}_{half_year}",
                 geojson_content=geojson_lor_planning_areas_extended,
                 clean=clean,
                 quiet=quiet
@@ -866,32 +866,32 @@ class LorStatisticsPopulationDataBlender:
             # Write geojson files
             write_geojson_file(
                 logger=logger,
-                file_path=os.path.join(results_path, f"lor_bezirksregionen_population_{year}.geojson"),
-                statistic_name=f"bezirksgrenzen_population_{year}",
+                file_path=os.path.join(results_path, f"lor_bezirksregionen_population_{year}_{half_year}.geojson"),
+                statistic_name=f"bezirksgrenzen_population_{year}_{half_year}",
                 geojson_content=geojson_lor_districts_extended,
                 clean=clean,
                 quiet=quiet
             )
             write_geojson_file(
                 logger=logger,
-                file_path=os.path.join(results_path, f"lor_prognoseraeume_population_{year}.geojson"),
-                statistic_name=f"lor_prognoseraeume_population_{year}",
+                file_path=os.path.join(results_path, f"lor_prognoseraeume_population_{year}_{half_year}.geojson"),
+                statistic_name=f"lor_prognoseraeume_population_{year}_{half_year}",
                 geojson_content=geojson_lor_forecast_areas_extended,
                 clean=clean,
                 quiet=quiet
             )
             write_geojson_file(
                 logger=logger,
-                file_path=os.path.join(results_path, f"lor_bezirksregionen_population_{year}.geojson"),
-                statistic_name=f"lor_bezirksregionen_population_{year}",
+                file_path=os.path.join(results_path, f"lor_bezirksregionen_population_{year}_{half_year}.geojson"),
+                statistic_name=f"lor_bezirksregionen_population_{year}_{half_year}",
                 geojson_content=geojson_lor_district_regions_extended,
                 clean=clean,
                 quiet=quiet
             )
             write_geojson_file(
                 logger=logger,
-                file_path=os.path.join(results_path, f"lor_planungsraeume_population_{year}.geojson"),
-                statistic_name=f"lor_planungsraeume_population_{year}",
+                file_path=os.path.join(results_path, f"lor_planungsraeume_population_{year}_{half_year}.geojson"),
+                statistic_name=f"lor_planungsraeume_population_{year}_{half_year}",
                 geojson_content=geojson_lor_planning_areas_extended,
                 clean=clean,
                 quiet=quiet
