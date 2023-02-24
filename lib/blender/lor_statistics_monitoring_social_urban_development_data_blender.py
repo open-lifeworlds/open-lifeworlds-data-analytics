@@ -744,6 +744,9 @@ def add_prop_with_modifiers(feature, property_name, statistics, statistics_prope
                 feature["properties"][f"{property_name}_per_sqkm"] = 0
 
 
+key_figure_group = "monitoring_social_urban_development"
+
+
 #
 # Main
 #
@@ -786,7 +789,7 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
                 statistics=statistics_lor_districts,
                 year=year,
                 half_year=half_year,
-                statistic=f"bezirksgrenzen_monitoring_social_urban_development_{year}_{half_year}",
+                statistic=f"bezirksgrenzen_{key_figure_group}_{year}_{half_year}",
                 statistic_2_3=statistic_2_3,
                 statistic_4_3=statistic_4_3,
                 id_property="id",
@@ -799,7 +802,7 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
                 statistics=statistics_lor_district_regions,
                 year=year,
                 half_year=half_year,
-                statistic=f"lor_bezirksregionen_monitoring_social_urban_development_{year}_{half_year}",
+                statistic=f"lor_bezirksregionen_{key_figure_group}_{year}_{half_year}",
                 statistic_2_2=statistic_2_2,
                 statistic_4_2=statistic_4_2,
                 geojson=geojson_lor_district_regions,
@@ -813,7 +816,7 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
                 statistics=statistics_lor_planning_areas,
                 year=year,
                 half_year=half_year,
-                statistic=f"lor_planungsraeume_monitoring_social_urban_development_{year}_{half_year}",
+                statistic=f"lor_planungsraeume_{key_figure_group}_{year}_{half_year}",
                 statistic_1=statistic_1,
                 statistic_2_1=statistic_2_1,
                 statistic_3=statistic_3,
@@ -827,8 +830,8 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
             write_geojson_file(
                 logger=logger,
                 file_path=os.path.join(results_path,
-                                       f"lor_bezirksregionen_monitoring_social_urban_development_{year}_{half_year}.geojson"),
-                statistic_name=f"bezirksgrenzen_monitoring_social_urban_development_{year}_{half_year}",
+                                       f"bezirksgrenzen_{key_figure_group}_{year}_{half_year}.geojson"),
+                statistic_name=f"bezirksgrenzen_{key_figure_group}_{year}_{half_year}",
                 geojson_content=geojson_lor_districts_extended,
                 clean=clean,
                 quiet=quiet
@@ -836,8 +839,8 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
             write_geojson_file(
                 logger=logger,
                 file_path=os.path.join(results_path,
-                                       f"lor_bezirksregionen_monitoring_social_urban_development_{year}_{half_year}.geojson"),
-                statistic_name=f"lor_bezirksregionen_monitoring_social_urban_development_{year}_{half_year}",
+                                       f"lor_bezirksregionen_{key_figure_group}_{year}_{half_year}.geojson"),
+                statistic_name=f"lor_bezirksregionen_{key_figure_group}_{year}_{half_year}",
                 geojson_content=geojson_lor_district_regions_extended,
                 clean=clean,
                 quiet=quiet
@@ -845,8 +848,8 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
             write_geojson_file(
                 logger=logger,
                 file_path=os.path.join(results_path,
-                                       f"lor_planungsraeume_monitoring_social_urban_development_{year}_{half_year}.geojson"),
-                statistic_name=f"lor_planungsraeume_monitoring_social_urban_development_{year}_{half_year}",
+                                       f"lor_planungsraeume_{key_figure_group}_{year}_{half_year}.geojson"),
+                statistic_name=f"lor_planungsraeume_{key_figure_group}_{year}_{half_year}",
                 geojson_content=geojson_lor_planning_areas_extended,
                 clean=clean,
                 quiet=quiet
@@ -881,7 +884,7 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
                 statistics=statistics_lor_planning_areas,
                 year=year,
                 half_year=half_year,
-                statistic=f"bezirksgrenzen_monitoring_social_urban_development_{year}_{half_year}",
+                statistic=f"bezirksgrenzen_{key_figure_group}_{year}_{half_year}",
                 statistic_2_3=statistic_2_3,
                 statistic_4_3=statistic_4_3,
                 statistic_4_3_1=statistic_4_3_1,
@@ -895,7 +898,7 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
                 statistics=statistics_lor_planning_areas,
                 year=year,
                 half_year=half_year,
-                statistic=f"lor_bezirksregionen_monitoring_social_urban_development_{year}_{half_year}",
+                statistic=f"lor_bezirksregionen_{key_figure_group}_{year}_{half_year}",
                 statistic_2_2=statistic_2_2,
                 statistic_4_2=statistic_4_2,
                 statistic_4_2_1=statistic_4_2_1,
@@ -910,7 +913,7 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
                 statistics=statistics_lor_planning_areas,
                 year=year,
                 half_year=half_year,
-                statistic=f"lor_planungsraeume_monitoring_social_urban_development_{year}_{half_year}",
+                statistic=f"lor_planungsraeume_{key_figure_group}_{year}_{half_year}",
                 statistic_1=statistic_1,
                 statistic_2_1=statistic_2_1,
                 statistic_3=statistic_3,
@@ -925,8 +928,8 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
             write_geojson_file(
                 logger=logger,
                 file_path=os.path.join(results_path,
-                                       f"lor_bezirksregionen_monitoring_social_urban_development_{year}_{half_year}.geojson"),
-                statistic_name=f"bezirksgrenzen_monitoring_social_urban_development_{year}_{half_year}",
+                                       f"bezirksgrenzen_{key_figure_group}_{year}_{half_year}.geojson"),
+                statistic_name=f"bezirksgrenzen_{key_figure_group}_{year}_{half_year}",
                 geojson_content=geojson_lor_districts_extended,
                 clean=clean,
                 quiet=quiet
@@ -934,8 +937,8 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
             write_geojson_file(
                 logger=logger,
                 file_path=os.path.join(results_path,
-                                       f"lor_bezirksregionen_monitoring_social_urban_development_{year}_{half_year}.geojson"),
-                statistic_name=f"lor_bezirksregionen_monitoring_social_urban_development_{year}_{half_year}",
+                                       f"lor_bezirksregionen_{key_figure_group}_{year}_{half_year}.geojson"),
+                statistic_name=f"lor_bezirksregionen_{key_figure_group}_{year}_{half_year}",
                 geojson_content=geojson_lor_district_regions_extended,
                 clean=clean,
                 quiet=quiet
@@ -943,8 +946,8 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
             write_geojson_file(
                 logger=logger,
                 file_path=os.path.join(results_path,
-                                       f"lor_planungsraeume_monitoring_social_urban_development_{year}_{half_year}.geojson"),
-                statistic_name=f"lor_planungsraeume_monitoring_social_urban_development_{year}_{half_year}",
+                                       f"lor_planungsraeume_{key_figure_group}_{year}_{half_year}.geojson"),
+                statistic_name=f"lor_planungsraeume_{key_figure_group}_{year}_{half_year}",
                 geojson_content=geojson_lor_planning_areas_extended,
                 clean=clean,
                 quiet=quiet
@@ -953,7 +956,7 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
         # Write json file
         write_json_file(
             logger=logger,
-            file_path=os.path.join(results_path, "bezirksgrenzen_monitoring_social_urban_development_statistics.json"),
+            file_path=os.path.join(results_path, f"bezirksgrenzen_{key_figure_group}_statistics.json"),
             statistic_name=f"bezirksgrenzen_monitoring_social_urban_development",
             json_content=statistics_lor_districts,
             clean=clean,
@@ -962,7 +965,7 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
         write_json_file(
             logger=logger,
             file_path=os.path.join(results_path,
-                                   "lor_bezirksregionen_monitoring_social_urban_development_statistics.json"),
+                                   f"lor_bezirksregionen_{key_figure_group}_statistics.json"),
             statistic_name=f"lor_bezirksregionen_monitoring_social_urban_development",
             json_content=statistics_lor_district_regions,
             clean=clean,
@@ -971,7 +974,7 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
         write_json_file(
             logger=logger,
             file_path=os.path.join(results_path,
-                                   "lor_planungsraeume_monitoring_social_urban_development_statistics.json"),
+                                   f"lor_planungsraeume_{key_figure_group}_statistics.json"),
             statistic_name=f"lor_planungsraeume_monitoring_social_urban_development",
             json_content=statistics_lor_planning_areas,
             clean=clean,
