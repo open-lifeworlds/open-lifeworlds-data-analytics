@@ -101,7 +101,7 @@ post_2020_statistics = [
 
 
 def extend_districts(logger, statistics, year, half_year,
-                     statistic, statistic_2_3, statistic_4_3,
+                     statistic_name, statistic_2_3, statistic_4_3,
                      geojson, id_property):
     geojson_extended = copy.deepcopy(geojson)
 
@@ -118,10 +118,10 @@ def extend_districts(logger, statistics, year, half_year,
 
         # Check for missing data
         if statistic_2_3_filtered is None or statistic_2_3_filtered.shape[0] == 0:
-            logger.log_line(f"✗️ No data in {statistic} (statistic_2_3_filtered) for id={feature_id}")
+            logger.log_line(f"✗️ No data in {statistic_name} (statistic_2_3_filtered) for id={feature_id}")
             continue
         if statistic_4_3_filtered is None or statistic_4_3_filtered.shape[0] == 0:
-            logger.log_line(f"✗️ No data in {statistic} (statistic_4_3_filtered) for id={feature_id}")
+            logger.log_line(f"✗️ No data in {statistic_name} (statistic_4_3_filtered) for id={feature_id}")
             continue
 
         if district_id == "01":
@@ -171,7 +171,7 @@ def extend_districts(logger, statistics, year, half_year,
 
 
 def extend_district_regions(logger, statistics, year, half_year,
-                            statistic, statistic_2_2, statistic_4_2,
+                            statistic_name, statistic_2_2, statistic_4_2,
                             geojson, id_property, area_property):
     geojson_extended = copy.deepcopy(geojson)
 
@@ -189,10 +189,10 @@ def extend_district_regions(logger, statistics, year, half_year,
 
         # Check for missing data
         if statistic_2_2_filtered is None or statistic_2_2_filtered.shape[0] == 0:
-            logger.log_line(f"✗️ No data in {statistic} (statistic_2_2_filtered) for id={feature_id}")
+            logger.log_line(f"✗️ No data in {statistic_name} (statistic_2_2_filtered) for id={feature_id}")
             continue
         if statistic_4_2_filtered is None or statistic_4_2_filtered.shape[0] == 0:
-            logger.log_line(f"✗️ No data in {statistic} (statistic_4_2_filtered) for id={feature_id}")
+            logger.log_line(f"✗️ No data in {statistic_name} (statistic_4_2_filtered) for id={feature_id}")
             continue
 
         # Blend data
@@ -215,7 +215,7 @@ def extend_district_regions(logger, statistics, year, half_year,
 
 
 def extend_planning_areas(logger, statistics, year, half_year,
-                          statistic, statistic_1, statistic_2_1, statistic_3, statistic_4_1,
+                          statistic_name, statistic_1, statistic_2_1, statistic_3, statistic_4_1,
                           geojson, id_property, area_property):
     geojson_extended = copy.deepcopy(geojson)
 
@@ -237,16 +237,16 @@ def extend_planning_areas(logger, statistics, year, half_year,
 
         # Check for missing data
         if statistic_1_filtered is None or statistic_1_filtered.shape[0] == 0:
-            logger.log_line(f"✗️ No data in {statistic} (statistic_1_filtered) for id={feature_id}")
+            logger.log_line(f"✗️ No data in {statistic_name} (statistic_1_filtered) for id={feature_id}")
             continue
         if statistic_2_1_filtered is None or statistic_2_1_filtered.shape[0] == 0:
-            logger.log_line(f"✗️ No data in {statistic} (statistic_2_1_filtered) for id={feature_id}")
+            logger.log_line(f"✗️ No data in {statistic_name} (statistic_2_1_filtered) for id={feature_id}")
             continue
         if statistic_3_filtered is None or statistic_3_filtered.shape[0] == 0:
-            logger.log_line(f"✗️ No data in {statistic} (statistic_3_filtered) for id={feature_id}")
+            logger.log_line(f"✗️ No data in {statistic_name} (statistic_3_filtered) for id={feature_id}")
             continue
         if statistic_4_1_filtered is None or statistic_4_1_filtered.shape[0] == 0:
-            logger.log_line(f"✗️ No data in {statistic} (statistic_4_1_filtered) for id={feature_id}")
+            logger.log_line(f"✗️ No data in {statistic_name} (statistic_4_1_filtered) for id={feature_id}")
             continue
 
         # Blend data
@@ -271,7 +271,7 @@ def extend_planning_areas(logger, statistics, year, half_year,
 
 
 def extend_districts_post_2020(logger, statistics, year, half_year,
-                               statistic, statistic_2_3, statistic_4_3, statistic_4_3_1,
+                               statistic_name, statistic_2_3, statistic_4_3, statistic_4_3_1,
                                geojson, id_property):
     geojson_extended = copy.deepcopy(geojson)
 
@@ -290,13 +290,13 @@ def extend_districts_post_2020(logger, statistics, year, half_year,
 
         # Check for missing data
         if statistic_2_3_filtered is None or statistic_2_3_filtered.shape[0] == 0:
-            logger.log_line(f"✗️ No data in {statistic} (statistic_2_3_filtered) for id={feature_id}")
+            logger.log_line(f"✗️ No data in {statistic_name} (statistic_2_3_filtered) for id={feature_id}")
             continue
         if statistic_4_3_filtered is None or statistic_4_3_filtered.shape[0] == 0:
-            logger.log_line(f"✗️ No data in {statistic} (statistic_4_3_filtered) for id={feature_id}")
+            logger.log_line(f"✗️ No data in {statistic_name} (statistic_4_3_filtered) for id={feature_id}")
             continue
         if statistic_4_3_1_filtered is None or statistic_4_3_1_filtered.shape[0] == 0:
-            logger.log_line(f"✗️ No data in {statistic} (statistic_4_3_1_filtered) for id={feature_id}")
+            logger.log_line(f"✗️ No data in {statistic_name} (statistic_4_3_1_filtered) for id={feature_id}")
             continue
 
         if district_id == "01":
@@ -346,7 +346,7 @@ def extend_districts_post_2020(logger, statistics, year, half_year,
 
 
 def extend_district_regions_post_2020(logger, statistics, year, half_year,
-                                      statistic, statistic_2_2, statistic_4_2, statistic_4_2_1,
+                                      statistic_name, statistic_2_2, statistic_4_2, statistic_4_2_1,
                                       geojson, id_property, area_property):
     geojson_extended = copy.deepcopy(geojson)
 
@@ -366,13 +366,13 @@ def extend_district_regions_post_2020(logger, statistics, year, half_year,
 
         # Check for missing data
         if statistic_2_2_filtered is None or statistic_2_2_filtered.shape[0] == 0:
-            logger.log_line(f"✗️ No data in {statistic} (statistic_2_2_filtered) for id={feature_id}")
+            logger.log_line(f"✗️ No data in {statistic_name} (statistic_2_2_filtered) for id={feature_id}")
             continue
         if statistic_4_2_filtered is None or statistic_4_2_filtered.shape[0] == 0:
-            logger.log_line(f"✗️ No data in {statistic} (statistic_4_2_filtered) for id={feature_id}")
+            logger.log_line(f"✗️ No data in {statistic_name} (statistic_4_2_filtered) for id={feature_id}")
             continue
         if statistic_4_2_1_filtered is None or statistic_4_2_1_filtered.shape[0] == 0:
-            logger.log_line(f"✗️ No data in {statistic} (statistic_4_2_1_filtered) for id={feature_id}")
+            logger.log_line(f"✗️ No data in {statistic_name} (statistic_4_2_1_filtered) for id={feature_id}")
             continue
 
         # Blend data
@@ -396,7 +396,7 @@ def extend_district_regions_post_2020(logger, statistics, year, half_year,
 
 
 def extend_planning_areas_post_2020(logger, statistics, year, half_year,
-                                    statistic, statistic_1, statistic_2_1, statistic_3, statistic_4_1, statistic_4_1_1,
+                                    statistic_name, statistic_1, statistic_2_1, statistic_3, statistic_4_1, statistic_4_1_1,
                                     geojson, id_property, area_property):
     geojson_extended = copy.deepcopy(geojson)
 
@@ -419,19 +419,19 @@ def extend_planning_areas_post_2020(logger, statistics, year, half_year,
 
         # Check for missing data
         if statistic_1_filtered is None or statistic_1_filtered.shape[0] == 0:
-            logger.log_line(f"✗️ No data in {statistic} (statistic_1_filtered) for id={feature_id}")
+            logger.log_line(f"✗️ No data in {statistic_name} (statistic_1_filtered) for id={feature_id}")
             continue
         if statistic_2_1_filtered is None or statistic_2_1_filtered.shape[0] == 0:
-            logger.log_line(f"✗️ No data in {statistic} (statistic_2_1_filtered) for id={feature_id}")
+            logger.log_line(f"✗️ No data in {statistic_name} (statistic_2_1_filtered) for id={feature_id}")
             continue
         if statistic_3_filtered is None or statistic_3_filtered.shape[0] == 0:
-            logger.log_line(f"✗️ No data in {statistic} (statistic_3_filtered) for id={feature_id}")
+            logger.log_line(f"✗️ No data in {statistic_name} (statistic_3_filtered) for id={feature_id}")
             continue
         if statistic_4_1_filtered is None or statistic_4_1_filtered.shape[0] == 0:
-            logger.log_line(f"✗️ No data in {statistic} (statistic_4_1_filtered) for id={feature_id}")
+            logger.log_line(f"✗️ No data in {statistic_name} (statistic_4_1_filtered) for id={feature_id}")
             continue
         if statistic_4_1_1_filtered is None or statistic_4_1_1_filtered.shape[0] == 0:
-            logger.log_line(f"✗️ No data in {statistic} (statistic_4_1_1_filtered) for id={feature_id}")
+            logger.log_line(f"✗️ No data in {statistic_name} (statistic_4_1_1_filtered) for id={feature_id}")
             continue
 
         # Blend data
@@ -789,7 +789,7 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
                 statistics=statistics_lor_districts,
                 year=year,
                 half_year=half_year,
-                statistic=f"bezirksgrenzen_{key_figure_group}_{year}_{half_year}",
+                statistic_name=f"bezirksgrenzen_{key_figure_group}_{year}_{half_year}",
                 statistic_2_3=statistic_2_3,
                 statistic_4_3=statistic_4_3,
                 id_property="id",
@@ -802,7 +802,7 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
                 statistics=statistics_lor_district_regions,
                 year=year,
                 half_year=half_year,
-                statistic=f"lor_bezirksregionen_{key_figure_group}_{year}_{half_year}",
+                statistic_name=f"lor_bezirksregionen_{key_figure_group}_{year}_{half_year}",
                 statistic_2_2=statistic_2_2,
                 statistic_4_2=statistic_4_2,
                 geojson=geojson_lor_district_regions,
@@ -816,7 +816,7 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
                 statistics=statistics_lor_planning_areas,
                 year=year,
                 half_year=half_year,
-                statistic=f"lor_planungsraeume_{key_figure_group}_{year}_{half_year}",
+                statistic_name=f"lor_planungsraeume_{key_figure_group}_{year}_{half_year}",
                 statistic_1=statistic_1,
                 statistic_2_1=statistic_2_1,
                 statistic_3=statistic_3,
@@ -884,7 +884,7 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
                 statistics=statistics_lor_planning_areas,
                 year=year,
                 half_year=half_year,
-                statistic=f"bezirksgrenzen_{key_figure_group}_{year}_{half_year}",
+                statistic_name=f"bezirksgrenzen_{key_figure_group}_{year}_{half_year}",
                 statistic_2_3=statistic_2_3,
                 statistic_4_3=statistic_4_3,
                 statistic_4_3_1=statistic_4_3_1,
@@ -898,7 +898,7 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
                 statistics=statistics_lor_planning_areas,
                 year=year,
                 half_year=half_year,
-                statistic=f"lor_bezirksregionen_{key_figure_group}_{year}_{half_year}",
+                statistic_name=f"lor_bezirksregionen_{key_figure_group}_{year}_{half_year}",
                 statistic_2_2=statistic_2_2,
                 statistic_4_2=statistic_4_2,
                 statistic_4_2_1=statistic_4_2_1,
@@ -913,7 +913,7 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
                 statistics=statistics_lor_planning_areas,
                 year=year,
                 half_year=half_year,
-                statistic=f"lor_planungsraeume_{key_figure_group}_{year}_{half_year}",
+                statistic_name=f"lor_planungsraeume_{key_figure_group}_{year}_{half_year}",
                 statistic_1=statistic_1,
                 statistic_2_1=statistic_2_1,
                 statistic_3=statistic_3,

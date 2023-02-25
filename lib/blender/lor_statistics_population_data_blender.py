@@ -64,7 +64,7 @@ post_2020_statistics = [
 
 
 def extend_districts(logger, statistics, year, half_year,
-                     statistic, statistic_t1, statistic_t2, statistic_t3, statistic_t4,
+                     statistic_name, statistic_t1, statistic_t2, statistic_t3, statistic_t4,
                      geojson, id_property):
     geojson_extended = copy.deepcopy(geojson)
 
@@ -84,7 +84,7 @@ def extend_districts(logger, statistics, year, half_year,
                 statistic_t3_filtered.shape[0] == 0 or statistic_t4_filtered.shape[0] == 0 or \
                 int(statistic_t1_filtered["insgesamt_anzahl"].sum()) == 0 or \
                 int(statistic_t1_filtered["darunter_mit_migrationshintergrund_anzahl"].sum()) == 0:
-            logger.log_line(f"✗️ No data in {statistic} for district={district_id}")
+            logger.log_line(f"✗️ No data in {statistic_name} for district={district_id}")
             continue
 
         if district_id == "01":
@@ -136,7 +136,7 @@ def extend_districts(logger, statistics, year, half_year,
 
 
 def extend_forecast_areas(logger, statistics, year, half_year,
-                          statistic, statistic_t1, statistic_t2, statistic_t3, statistic_t4,
+                          statistic_name, statistic_t1, statistic_t2, statistic_t3, statistic_t4,
                           geojson, id_property, area_property):
     geojson_extended = copy.deepcopy(geojson)
 
@@ -167,7 +167,7 @@ def extend_forecast_areas(logger, statistics, year, half_year,
                 statistic_t1_filtered["insgesamt_anzahl"].sum() == 0 or \
                 statistic_t1_filtered["darunter_mit_migrationshintergrund_anzahl"].sum() == 0:
             logger.log_line(
-                f"✗️ No data in {statistic} for district={district_id}, forecast area={forecast_area_id}")
+                f"✗️ No data in {statistic_name} for district={district_id}, forecast area={forecast_area_id}")
             continue
 
         # Blend data
@@ -192,7 +192,7 @@ def extend_forecast_areas(logger, statistics, year, half_year,
 
 
 def extend_district_regions(logger, statistics, year, half_year,
-                            statistic, statistic_t1, statistic_t2, statistic_t3, statistic_t4,
+                            statistic_name, statistic_t1, statistic_t2, statistic_t3, statistic_t4,
                             geojson, id_property, area_property):
     geojson_extended = copy.deepcopy(geojson)
 
@@ -227,7 +227,7 @@ def extend_district_regions(logger, statistics, year, half_year,
                 statistic_t1_filtered["insgesamt_anzahl"].sum() == 0 or \
                 statistic_t1_filtered["darunter_mit_migrationshintergrund_anzahl"].sum() == 0:
             logger.log_line(
-                f"✗️ No data in {statistic} for district={district_id}, forecast area={forecast_area_id}, "
+                f"✗️ No data in {statistic_name} for district={district_id}, forecast area={forecast_area_id}, "
                 f"district_region_id={district_region_id}")
             continue
 
@@ -253,7 +253,7 @@ def extend_district_regions(logger, statistics, year, half_year,
 
 
 def extend_planning_areas(logger, statistics, year, half_year,
-                          statistic, statistic_t1, statistic_t2, statistic_t3, statistic_t4,
+                          statistic_name, statistic_t1, statistic_t2, statistic_t3, statistic_t4,
                           geojson, id_property, area_property):
     geojson_extended = copy.deepcopy(geojson)
 
@@ -292,7 +292,7 @@ def extend_planning_areas(logger, statistics, year, half_year,
                 statistic_t1_filtered["insgesamt_anzahl"].sum() == 0 or \
                 statistic_t1_filtered["darunter_mit_migrationshintergrund_anzahl"].sum() == 0:
             logger.log_line(
-                f"✗️ No data in {statistic} for district={district_id}, forecast area={forecast_area_id}, "
+                f"✗️ No data in {statistic_name} for district={district_id}, forecast area={forecast_area_id}, "
                 f"district_region_id={district_region_id}, planning_area_id={planning_area_id}")
             continue
 
@@ -463,15 +463,15 @@ class LorStatisticsPopulationDataBlender:
         geojson_lor_planning_areas = read_geojson_file(os.path.join(data_path, "lor_planungsraeume.geojson"))
 
         # Iterate over statistics
-        for statistic in pre_2020_statistics:
-            year = statistic.split(sep="_")[2].split(sep="h")[0]
-            half_year = statistic.split(sep="_")[2].split(sep="h")[1]
+        for statistic_name in pre_2020_statistics:
+            year = statistic_name.split(sep="_")[2].split(sep="h")[0]
+            half_year = statistic_name.split(sep="_")[2].split(sep="h")[1]
 
             # Load statistics
-            statistic_t1 = read_csv_file(os.path.join(statistics_path, f"{statistic}_T1.csv"))
-            statistic_t2 = read_csv_file(os.path.join(statistics_path, f"{statistic}_T2.csv"))
-            statistic_t3 = read_csv_file(os.path.join(statistics_path, f"{statistic}_T3.csv"))
-            statistic_t4 = read_csv_file(os.path.join(statistics_path, f"{statistic}_T4.csv"))
+            statistic_t1 = read_csv_file(os.path.join(statistics_path, f"{statistic_name}_T1.csv"))
+            statistic_t2 = read_csv_file(os.path.join(statistics_path, f"{statistic_name}_T2.csv"))
+            statistic_t3 = read_csv_file(os.path.join(statistics_path, f"{statistic_name}_T3.csv"))
+            statistic_t4 = read_csv_file(os.path.join(statistics_path, f"{statistic_name}_T4.csv"))
 
             # Extend districts
             geojson_lor_districts_extended = extend_districts(
@@ -479,7 +479,7 @@ class LorStatisticsPopulationDataBlender:
                 statistics=statistics_lor_districts,
                 year=year,
                 half_year=half_year,
-                statistic=statistic,
+                statistic_name=statistic_name,
                 statistic_t1=statistic_t1,
                 statistic_t2=statistic_t2,
                 statistic_t3=statistic_t3,
@@ -494,7 +494,7 @@ class LorStatisticsPopulationDataBlender:
                 statistics=statistics_lor_forecast_areas,
                 year=year,
                 half_year=half_year,
-                statistic=statistic,
+                statistic_name=statistic_name,
                 statistic_t1=statistic_t1,
                 statistic_t2=statistic_t2,
                 statistic_t3=statistic_t3,
@@ -510,7 +510,7 @@ class LorStatisticsPopulationDataBlender:
                 statistics=statistics_lor_district_regions,
                 year=year,
                 half_year=half_year,
-                statistic=statistic,
+                statistic_name=statistic_name,
                 statistic_t1=statistic_t1,
                 statistic_t2=statistic_t2,
                 statistic_t3=statistic_t3,
@@ -526,7 +526,7 @@ class LorStatisticsPopulationDataBlender:
                 statistics=statistics_lor_planning_areas,
                 year=year,
                 half_year=half_year,
-                statistic=statistic,
+                statistic_name=statistic_name,
                 statistic_t1=statistic_t1,
                 statistic_t2=statistic_t2,
                 statistic_t3=statistic_t3,
@@ -575,15 +575,15 @@ class LorStatisticsPopulationDataBlender:
             )
 
         # Iterate over statistics
-        for statistic in exactly_2020_statistics:
-            year = statistic.split(sep="_")[2].split(sep="h")[0]
-            half_year = statistic.split(sep="_")[2].split(sep="h")[1]
+        for statistic_name in exactly_2020_statistics:
+            year = statistic_name.split(sep="_")[2].split(sep="h")[0]
+            half_year = statistic_name.split(sep="_")[2].split(sep="h")[1]
 
             # Load statistics
-            statistic_t1 = read_csv_file(os.path.join(statistics_path, f"{statistic}_T1a.csv"))
-            statistic_t2 = read_csv_file(os.path.join(statistics_path, f"{statistic}_T2a.csv"))
-            statistic_t3 = read_csv_file(os.path.join(statistics_path, f"{statistic}_T3a.csv"))
-            statistic_t4 = read_csv_file(os.path.join(statistics_path, f"{statistic}_T4a.csv"))
+            statistic_t1 = read_csv_file(os.path.join(statistics_path, f"{statistic_name}_T1a.csv"))
+            statistic_t2 = read_csv_file(os.path.join(statistics_path, f"{statistic_name}_T2a.csv"))
+            statistic_t3 = read_csv_file(os.path.join(statistics_path, f"{statistic_name}_T3a.csv"))
+            statistic_t4 = read_csv_file(os.path.join(statistics_path, f"{statistic_name}_T4a.csv"))
 
             # Extend districts
             geojson_lor_districts_extended = extend_districts(
@@ -591,7 +591,7 @@ class LorStatisticsPopulationDataBlender:
                 statistics=statistics_lor_districts,
                 year=year,
                 half_year=half_year,
-                statistic=statistic,
+                statistic_name=statistic_name,
                 statistic_t1=statistic_t1,
                 statistic_t2=statistic_t2,
                 statistic_t3=statistic_t3,
@@ -606,7 +606,7 @@ class LorStatisticsPopulationDataBlender:
                 statistics=statistics_lor_forecast_areas,
                 year=year,
                 half_year=half_year,
-                statistic=statistic,
+                statistic_name=statistic_name,
                 statistic_t1=statistic_t1,
                 statistic_t2=statistic_t2,
                 statistic_t3=statistic_t3,
@@ -622,7 +622,7 @@ class LorStatisticsPopulationDataBlender:
                 statistics=statistics_lor_district_regions,
                 year=year,
                 half_year=half_year,
-                statistic=statistic,
+                statistic_name=statistic_name,
                 statistic_t1=statistic_t1,
                 statistic_t2=statistic_t2,
                 statistic_t3=statistic_t3,
@@ -638,7 +638,7 @@ class LorStatisticsPopulationDataBlender:
                 statistics=statistics_lor_planning_areas,
                 year=year,
                 half_year=half_year,
-                statistic=statistic,
+                statistic_name=statistic_name,
                 statistic_t1=statistic_t1,
                 statistic_t2=statistic_t2,
                 statistic_t3=statistic_t3,
@@ -693,15 +693,15 @@ class LorStatisticsPopulationDataBlender:
         geojson_lor_planning_areas = read_geojson_file(os.path.join(data_path, "lor_planungsraeume_2021.geojson"))
 
         # Iterate over statistics
-        for statistic in exactly_2020_statistics:
-            year = statistic.split(sep="_")[2].split(sep="h")[0]
-            half_year = statistic.split(sep="_")[2].split(sep="h")[1]
+        for statistic_name in exactly_2020_statistics:
+            year = statistic_name.split(sep="_")[2].split(sep="h")[0]
+            half_year = statistic_name.split(sep="_")[2].split(sep="h")[1]
 
             # Load statistics
-            statistic_t1 = read_csv_file(os.path.join(statistics_path, f"{statistic}_T1b.csv"))
-            statistic_t2 = read_csv_file(os.path.join(statistics_path, f"{statistic}_T2b.csv"))
-            statistic_t3 = read_csv_file(os.path.join(statistics_path, f"{statistic}_T3b.csv"))
-            statistic_t4 = read_csv_file(os.path.join(statistics_path, f"{statistic}_T4b.csv"))
+            statistic_t1 = read_csv_file(os.path.join(statistics_path, f"{statistic_name}_T1b.csv"))
+            statistic_t2 = read_csv_file(os.path.join(statistics_path, f"{statistic_name}_T2b.csv"))
+            statistic_t3 = read_csv_file(os.path.join(statistics_path, f"{statistic_name}_T3b.csv"))
+            statistic_t4 = read_csv_file(os.path.join(statistics_path, f"{statistic_name}_T4b.csv"))
 
             # Extend districts
             geojson_lor_districts_extended = extend_districts(
@@ -709,7 +709,7 @@ class LorStatisticsPopulationDataBlender:
                 statistics=statistics_lor_districts,
                 year=year,
                 half_year=half_year,
-                statistic=statistic,
+                statistic_name=statistic_name,
                 statistic_t1=statistic_t1,
                 statistic_t2=statistic_t2,
                 statistic_t3=statistic_t3,
@@ -724,7 +724,7 @@ class LorStatisticsPopulationDataBlender:
                 statistics=statistics_lor_forecast_areas,
                 year=year,
                 half_year=half_year,
-                statistic=statistic,
+                statistic_name=statistic_name,
                 statistic_t1=statistic_t1,
                 statistic_t2=statistic_t2,
                 statistic_t3=statistic_t3,
@@ -740,7 +740,7 @@ class LorStatisticsPopulationDataBlender:
                 statistics=statistics_lor_district_regions,
                 year=year,
                 half_year=half_year,
-                statistic=statistic,
+                statistic_name=statistic_name,
                 statistic_t1=statistic_t1,
                 statistic_t2=statistic_t2,
                 statistic_t3=statistic_t3,
@@ -756,7 +756,7 @@ class LorStatisticsPopulationDataBlender:
                 statistics=statistics_lor_planning_areas,
                 year=year,
                 half_year=half_year,
-                statistic=statistic,
+                statistic_name=statistic_name,
                 statistic_t1=statistic_t1,
                 statistic_t2=statistic_t2,
                 statistic_t3=statistic_t3,
@@ -805,15 +805,15 @@ class LorStatisticsPopulationDataBlender:
             )
 
         # Iterate over statistics
-        for statistic in post_2020_statistics:
-            year = statistic.split(sep="_")[2].split(sep="h")[0]
-            half_year = statistic.split(sep="_")[2].split(sep="h")[1]
+        for statistic_name in post_2020_statistics:
+            year = statistic_name.split(sep="_")[2].split(sep="h")[0]
+            half_year = statistic_name.split(sep="_")[2].split(sep="h")[1]
 
             # Load statistics
-            statistic_t1 = read_csv_file(os.path.join(statistics_path, f"{statistic}_T1.csv"))
-            statistic_t2 = read_csv_file(os.path.join(statistics_path, f"{statistic}_T2.csv"))
-            statistic_t3 = read_csv_file(os.path.join(statistics_path, f"{statistic}_T3.csv"))
-            statistic_t4 = read_csv_file(os.path.join(statistics_path, f"{statistic}_T4.csv"))
+            statistic_t1 = read_csv_file(os.path.join(statistics_path, f"{statistic_name}_T1.csv"))
+            statistic_t2 = read_csv_file(os.path.join(statistics_path, f"{statistic_name}_T2.csv"))
+            statistic_t3 = read_csv_file(os.path.join(statistics_path, f"{statistic_name}_T3.csv"))
+            statistic_t4 = read_csv_file(os.path.join(statistics_path, f"{statistic_name}_T4.csv"))
 
             # Extend districts
             geojson_lor_districts_extended = extend_districts(
@@ -821,7 +821,7 @@ class LorStatisticsPopulationDataBlender:
                 statistics=statistics_lor_districts,
                 year=year,
                 half_year=half_year,
-                statistic=statistic,
+                statistic_name=statistic_name,
                 statistic_t1=statistic_t1,
                 statistic_t2=statistic_t2,
                 statistic_t3=statistic_t3,
@@ -836,7 +836,7 @@ class LorStatisticsPopulationDataBlender:
                 statistics=statistics_lor_forecast_areas,
                 year=year,
                 half_year=half_year,
-                statistic=statistic,
+                statistic_name=statistic_name,
                 statistic_t1=statistic_t1,
                 statistic_t2=statistic_t2,
                 statistic_t3=statistic_t3,
@@ -852,7 +852,7 @@ class LorStatisticsPopulationDataBlender:
                 statistics=statistics_lor_district_regions,
                 year=year,
                 half_year=half_year,
-                statistic=statistic,
+                statistic_name=statistic_name,
                 statistic_t1=statistic_t1,
                 statistic_t2=statistic_t2,
                 statistic_t3=statistic_t3,
@@ -868,7 +868,7 @@ class LorStatisticsPopulationDataBlender:
                 statistics=statistics_lor_planning_areas,
                 year=year,
                 half_year=half_year,
-                statistic=statistic,
+                statistic_name=statistic_name,
                 statistic_t1=statistic_t1,
                 statistic_t2=statistic_t2,
                 statistic_t3=statistic_t3,
