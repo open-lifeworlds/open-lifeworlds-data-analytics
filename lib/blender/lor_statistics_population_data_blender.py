@@ -1,9 +1,73 @@
 import copy
 import json
 import os
+import statistics as stats
 
 import pandas as pd
 from tracking_decorator import TrackingDecorator
+
+statistic_t1_fields = {
+    "inhabitants": "insgesamt_anzahl",
+    "inhabitants_with_migration_background": "darunter_mit_migrationshintergrund_anzahl",
+    "inhabitants_germans": "deutsche_zusammen_anzahl",
+    "inhabitants_germans_without_migration_background": "deutsche_ohne_migrationshintergrund_anzahl",
+    "inhabitants_germans_with_migration_background": "deutsche_mit_migrationshintergrund_anzahl",
+    "inhabitants_foreigners": "auslaender_anzahl"
+}
+
+statistic_t2_fields = {
+    "inhabitants_age_below_6": "alter_unter_6",
+    "inhabitants_age_6_15": "alter_6-15",
+    "inhabitants_age_15_18": "alter_15-18",
+    "inhabitants_age_18_27": "alter_18-27",
+    "inhabitants_age_27_45": "alter_27-45",
+    "inhabitants_age_45_55": "alter_45-55",
+    "inhabitants_age_55_65": "alter_55-65",
+    "inhabitants_age_above_65": "alter_65_und_mehr",
+    "inhabitants_female": "weiblich"
+}
+
+statistic_t3_fields = {
+    "inhabitants_with_migration_background_age_below_6": "alter_unter_6",
+    "inhabitants_with_migration_background_age_6_15": "alter_6-15",
+    "inhabitants_with_migration_background_age_15_18": "alter_15-18",
+    "inhabitants_with_migration_background_age_18_27": "alter_18-27",
+    "inhabitants_with_migration_background_age_27_45": "alter_27-45",
+    "inhabitants_with_migration_background_age_45_55": "alter_45-55",
+    "inhabitants_with_migration_background_age_55_65": "alter_55-65",
+    "inhabitants_with_migration_background_age_above_65": "alter_65_und_mehr",
+    "inhabitants_with_migration_background_female": "weiblich",
+}
+
+statistic_t4_fields = {
+    "inhabitants_from_european_union": "europaeische_union",
+    "inhabitants_from_france": "frankreich",
+    "inhabitants_from_greece": "griechenland",
+    "inhabitants_from_italy": "spanien",
+    "inhabitants_from_austria": "oesterreich",
+    "inhabitants_from_spain": "spanien",
+    "inhabitants_from_poland": "polen",
+    "inhabitants_from_bulgaria": "bulgarien",
+    "inhabitants_from_rumania": "rumaenien",
+    "inhabitants_from_croatia": "kroatien",
+    "inhabitants_from_united_kingdom": "vereinigtes_koenigreich",
+    "inhabitants_from_former_yugoslavia": "ehemaliges_jugoslawien",
+    "inhabitants_from_bosnia_herzegovina": "bosnien_und_herzegowina",
+    "inhabitants_from_serbia": "serbien",
+    "inhabitants_from_former_soviet_union": "ehemalige_sowjetunion",
+    "inhabitants_from_russia": "russische_foederation",
+    "inhabitants_from_ukraine": "ukraine",
+    "inhabitants_from_kazakhstan": "kasachstan",
+    "inhabitants_from_islamic_countries": "islamische_laender",
+    "inhabitants_from_turkey": "tuerkei",
+    "inhabitants_from_iran": "iran",
+    "inhabitants_from_arabic_countries": "arabische_laender",
+    "inhabitants_from_lebanon": "libanon",
+    "inhabitants_from_syria": "syrien",
+    "inhabitants_from_vietnam": "vietnam",
+    "inhabitants_from_united_states": "vereinigte_staaten",
+    "inhabitants_from_undefined": "nicht_eindeutig_zuordenbar_ohne_angabe",
+}
 
 
 def read_csv_file(file_path):
@@ -132,7 +196,23 @@ def extend_districts(logger, statistics, year, half_year,
         # Add properties
         statistics[year][half_year][feature_id] = feature["properties"]
 
-    return geojson_extended
+    # Calculate average and median values
+    for year, half_years in statistics.items():
+        for half_year, feature_ids in half_years.items():
+            values = {}
+
+            for feature_id, properties in feature_ids.items():
+                for property_name, property_value in properties.items():
+                    if property_name in list(statistic_t1_fields.keys()) + list(statistic_t2_fields.keys()) + list(
+                            statistic_t3_fields.keys()) + list(statistic_t4_fields.keys()):
+                        if property_name not in values:
+                            values[property_name] = []
+                        values[property_name].append(property_value)
+
+            statistics[year][half_year]["average"] = {key: stats.mean(lst) for key, lst in values.items()}
+            statistics[year][half_year]["median"] = {key: stats.median(lst) for key, lst in values.items()}
+
+    return geojson_extended, statistics
 
 
 def extend_forecast_areas(logger, statistics, year, half_year,
@@ -188,7 +268,23 @@ def extend_forecast_areas(logger, statistics, year, half_year,
         # Add properties
         statistics[year][half_year][feature_id] = feature["properties"]
 
-    return geojson_extended
+    # Calculate average and median values
+    for year, half_years in statistics.items():
+        for half_year, feature_ids in half_years.items():
+            values = {}
+
+            for feature_id, properties in feature_ids.items():
+                for property_name, property_value in properties.items():
+                    if property_name in list(statistic_t1_fields.keys()) + list(statistic_t2_fields.keys()) + list(
+                            statistic_t3_fields.keys()) + list(statistic_t4_fields.keys()):
+                        if property_name not in values:
+                            values[property_name] = []
+                        values[property_name].append(property_value)
+
+            statistics[year][half_year]["average"] = {key: stats.mean(lst) for key, lst in values.items()}
+            statistics[year][half_year]["median"] = {key: stats.median(lst) for key, lst in values.items()}
+
+    return geojson_extended, statistics
 
 
 def extend_district_regions(logger, statistics, year, half_year,
@@ -249,7 +345,23 @@ def extend_district_regions(logger, statistics, year, half_year,
         # Add properties
         statistics[year][half_year][feature_id] = feature["properties"]
 
-    return geojson_extended
+    # Calculate average and median values
+    for year, half_years in statistics.items():
+        for half_year, feature_ids in half_years.items():
+            values = {}
+
+            for feature_id, properties in feature_ids.items():
+                for property_name, property_value in properties.items():
+                    if property_name in list(statistic_t1_fields.keys()) + list(statistic_t2_fields.keys()) + list(
+                            statistic_t3_fields.keys()) + list(statistic_t4_fields.keys()):
+                        if property_name not in values:
+                            values[property_name] = []
+                        values[property_name].append(property_value)
+
+            statistics[year][half_year]["average"] = {key: stats.mean(lst) for key, lst in values.items()}
+            statistics[year][half_year]["median"] = {key: stats.median(lst) for key, lst in values.items()}
+
+    return geojson_extended, statistics
 
 
 def extend_planning_areas(logger, statistics, year, half_year,
@@ -314,7 +426,23 @@ def extend_planning_areas(logger, statistics, year, half_year,
         # Add properties
         statistics[year][half_year][feature_id] = feature["properties"]
 
-    return geojson_extended
+    # Calculate average and median values
+    for year, half_years in statistics.items():
+        for half_year, feature_ids in half_years.items():
+            values = {}
+
+            for feature_id, properties in feature_ids.items():
+                for property_name, property_value in properties.items():
+                    if property_name in list(statistic_t1_fields.keys()) + list(statistic_t2_fields.keys()) + list(
+                            statistic_t3_fields.keys()) + list(statistic_t4_fields.keys()):
+                        if property_name not in values:
+                            values[property_name] = []
+                        values[property_name].append(property_value)
+
+            statistics[year][half_year]["average"] = {key: stats.mean(lst) for key, lst in values.items()}
+            statistics[year][half_year]["median"] = {key: stats.median(lst) for key, lst in values.items()}
+
+    return geojson_extended, statistics
 
 
 def build_ids(combined_id):
@@ -326,85 +454,14 @@ def blend_data(feature, area_sqkm, statistic_t1, statistic_t2, statistic_t3, sta
     inhabitants = statistic_t1["insgesamt_anzahl"].sum()
 
     # Add new properties
-    add_prop_with_modifiers(feature, "inhabitants", statistic_t1, "insgesamt_anzahl", inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_with_migration_background", statistic_t1,
-                            "darunter_mit_migrationshintergrund_anzahl", inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_germans", statistic_t1, "deutsche_zusammen_anzahl", inhabitants,
-                            area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_germans_without_migration_background", statistic_t1,
-                            "deutsche_ohne_migrationshintergrund_anzahl", inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_germans_with_migration_background", statistic_t1,
-                            "deutsche_mit_migrationshintergrund_anzahl", inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_foreigners", statistic_t1, "auslaender_anzahl", inhabitants,
-                            area_sqkm)
-
-    add_prop_with_modifiers(feature, "inhabitants_age_below_6", statistic_t2, "alter_unter_6", inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_age_6_15", statistic_t2, "alter_6-15", inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_age_15_18", statistic_t2, "alter_15-18", inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_age_18_27", statistic_t2, "alter_18-27", inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_age_27_45", statistic_t2, "alter_27-45", inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_age_45_55", statistic_t2, "alter_45-55", inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_age_55_65", statistic_t2, "alter_55-65", inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_age_above_65", statistic_t2, "alter_65_und_mehr", inhabitants,
-                            area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_female", statistic_t2, "weiblich", inhabitants, area_sqkm)
-
-    add_prop_with_modifiers(feature, "inhabitants_with_migration_background_age_below_6", statistic_t3, "alter_unter_6",
-                            inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_with_migration_background_age_6_15", statistic_t3, "alter_6-15",
-                            inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_with_migration_background_age_15_18", statistic_t3, "alter_15-18",
-                            inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_with_migration_background_age_18_27", statistic_t3, "alter_18-27",
-                            inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_with_migration_background_age_27_45", statistic_t3, "alter_27-45",
-                            inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_with_migration_background_age_45_55", statistic_t3, "alter_45-55",
-                            inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_with_migration_background_age_55_65", statistic_t3, "alter_55-65",
-                            inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_with_migration_background_age_above_65", statistic_t3,
-                            "alter_65_und_mehr", inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_with_migration_background_female", statistic_t3, "weiblich",
-                            inhabitants, area_sqkm)
-
-    add_prop_with_modifiers(feature, "inhabitants_from_european_union", statistic_t4, "europaeische_union", inhabitants,
-                            area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_from_france", statistic_t4, "frankreich", inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_from_greece", statistic_t4, "griechenland", inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_from_italy", statistic_t4, "spanien", inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_from_austria", statistic_t4, "oesterreich", inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_from_spain", statistic_t4, "spanien", inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_from_poland", statistic_t4, "polen", inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_from_bulgaria", statistic_t4, "bulgarien", inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_from_rumania", statistic_t4, "rumaenien", inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_from_croatia", statistic_t4, "kroatien", inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_from_united_kingdom", statistic_t4, "vereinigtes_koenigreich",
-                            inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_from_former_yugoslavia", statistic_t4, "ehemaliges_jugoslawien",
-                            inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_from_bosnia_herzegovina", statistic_t4, "bosnien_und_herzegowina",
-                            inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_from_serbia", statistic_t4, "serbien", inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_from_former_soviet_union", statistic_t4, "ehemalige_sowjetunion",
-                            inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_from_russia", statistic_t4, "russische_foederation", inhabitants,
-                            area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_from_ukraine", statistic_t4, "ukraine", inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_from_kazakhstan", statistic_t4, "kasachstan", inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_from_islamic_countries", statistic_t4, "islamische_laender",
-                            inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_from_turkey", statistic_t4, "tuerkei", inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_from_iran", statistic_t4, "iran", inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_from_arabic_countries", statistic_t4, "arabische_laender",
-                            inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_from_lebanon", statistic_t4, "libanon", inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_from_syria", statistic_t4, "syrien", inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_from_vietnam", statistic_t4, "vietnam", inhabitants, area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_from_united_states", statistic_t4, "vereinigte_staaten", inhabitants,
-                            area_sqkm)
-    add_prop_with_modifiers(feature, "inhabitants_from_undefined", statistic_t4,
-                            "nicht_eindeutig_zuordenbar_ohne_angabe", inhabitants, area_sqkm)
+    for target_field_name, source_field_name in statistic_t1_fields.items():
+        add_prop_with_modifiers(feature, target_field_name, statistic_t1, source_field_name, inhabitants, area_sqkm)
+    for target_field_name, source_field_name in statistic_t2_fields.items():
+        add_prop_with_modifiers(feature, target_field_name, statistic_t2, source_field_name, inhabitants, area_sqkm)
+    for target_field_name, source_field_name in statistic_t3_fields.items():
+        add_prop_with_modifiers(feature, target_field_name, statistic_t3, source_field_name, inhabitants, area_sqkm)
+    for target_field_name, source_field_name in statistic_t4_fields.items():
+        add_prop_with_modifiers(feature, target_field_name, statistic_t4, source_field_name, inhabitants, area_sqkm)
 
     return feature
 
@@ -735,7 +792,7 @@ class LorStatisticsPopulationDataBlender:
             )
 
             # Extend district regions
-            geojson_lor_district_regions_extended = extend_district_regions(
+            geojson_lor_district_regions_extended, statistics_lor_district_regions = extend_district_regions(
                 logger=logger,
                 statistics=statistics_lor_district_regions,
                 year=year,
@@ -751,7 +808,7 @@ class LorStatisticsPopulationDataBlender:
             )
 
             # Extend planning areas
-            geojson_lor_planning_areas_extended = extend_planning_areas(
+            geojson_lor_planning_areas_extended, statistics_lor_planning_areas = extend_planning_areas(
                 logger=logger,
                 statistics=statistics_lor_planning_areas,
                 year=year,
@@ -816,7 +873,7 @@ class LorStatisticsPopulationDataBlender:
             statistic_t4 = read_csv_file(os.path.join(statistics_path, f"{statistic_name}_T4.csv"))
 
             # Extend districts
-            geojson_lor_districts_extended = extend_districts(
+            geojson_lor_districts_extended, statistics_lor_districts = extend_districts(
                 logger=logger,
                 statistics=statistics_lor_districts,
                 year=year,
@@ -831,7 +888,7 @@ class LorStatisticsPopulationDataBlender:
             )
 
             # Extend forecast areas
-            geojson_lor_forecast_areas_extended = extend_forecast_areas(
+            geojson_lor_forecast_areas_extended, statistics_lor_forecast_areas = extend_forecast_areas(
                 logger=logger,
                 statistics=statistics_lor_forecast_areas,
                 year=year,
@@ -847,7 +904,7 @@ class LorStatisticsPopulationDataBlender:
             )
 
             # Extend district regions
-            geojson_lor_district_regions_extended = extend_district_regions(
+            geojson_lor_district_regions_extended, statistics_lor_district_regions = extend_district_regions(
                 logger=logger,
                 statistics=statistics_lor_district_regions,
                 year=year,
@@ -863,7 +920,7 @@ class LorStatisticsPopulationDataBlender:
             )
 
             # Extend planning areas
-            geojson_lor_planning_areas_extended = extend_planning_areas(
+            geojson_lor_planning_areas_extended, statistics_lor_planning_areas = extend_planning_areas(
                 logger=logger,
                 statistics=statistics_lor_planning_areas,
                 year=year,
