@@ -1,9 +1,39 @@
 import copy
 import json
 import os
+import statistics as stats
 
 import pandas as pd
 from tracking_decorator import TrackingDecorator
+
+statistic_fields = {
+    "inhabitants": "einwohner",
+    "s1_percentage_unemployed": "s1_anteil_arbeitslose",
+    "s2_percentage_long_term_unemployed": "s2_anteil_langzeitarbeitslose",
+    "s3_percentage_transfer_payments_recipients": "s3_anteil_transferbezieher",
+    "s4_percentage_transfer_payments_recipients_below_15_years": "s4_anteil_transferbezieher_unter_15",
+    "d1_percentage_unemployed": "d1_anteil_arbeitslose",
+    "d2_percentage_long_term_unemployed": "d2_anteil_langzeitarbeitslose",
+    "d3_percentage_transfer_payments_recipients": "d3_anteil_transferbezieher",
+    "d4_percentage_transfer_payments_recipients_below_15_years": "d4_anteil_transferbezieher_unter_15",
+    "k01_youth_unemployment": "k01_jugendarbeitslosigkeit",
+    "k02_single_parent_households": "k02_alleinerziehende_haushalte",
+    "k03_old_age_poverty": "k03_altersarmut",
+    "k04_children_with_migration_background": "k04_kinder_und_jugendliche_mit_migrationshintergrund",
+    "k05_inhabitants_with_migration_background": "k05_einwohnerinnen_und_einwohner_mit_migrationshintergrund",
+    "k16_foreigners": "k16_auslaenderinnen_und_auslaender",
+    "k06_change_proportion_of_foreigner": "k06_veraenderung_auslaenderanteil",
+    "k17_non_eu_foreigners": "k17_nicht_eu_auslaenderinnen_und_auslaender",
+    "k07_foreign_transfer_recipients": "k07_auslaendische_transferbezieher",
+    "k08_urban_apartments": "k08_staedtische_wohnungen",
+    "k14_living_rooms": "k14_wohnraeume",
+    "k15_living_space": "k15_wohnflaeche",
+    "k09_simple_residential_area": "k09_einfache_wohnlage",
+    "k10_duration_of_residence_over_5_years": "k10_wohndauer_ueber_5_jahre",
+    "k11_migration_volume": "k11_wanderungsvolumen",
+    "k12_balance_of_migration": "k12_wanderungssaldo",
+    "k13_balance_of_migration_of_children_below_6": "k13_wanderungssaldo_von_kindern_unter_6_jahren"
+}
 
 
 def read_csv_file(file_path):
@@ -167,7 +197,22 @@ def extend_districts(logger, statistics, year, half_year,
         # Add properties
         statistics[year][half_year][feature_id] = feature["properties"]
 
-    return geojson_extended
+    # Calculate average and median values
+    for year, half_years in statistics.items():
+        for half_year, feature_ids in half_years.items():
+            values = {}
+
+            for feature_id, properties in feature_ids.items():
+                for property_name, property_value in properties.items():
+                    if property_name in list(statistic_fields.keys()):
+                        if property_name not in values:
+                            values[property_name] = []
+                        values[property_name].append(property_value)
+
+            statistics[year][half_year]["average"] = {key: stats.mean(lst) for key, lst in values.items()}
+            statistics[year][half_year]["median"] = {key: stats.median(lst) for key, lst in values.items()}
+
+    return geojson_extended, statistics
 
 
 def extend_district_regions(logger, statistics, year, half_year,
@@ -211,7 +256,22 @@ def extend_district_regions(logger, statistics, year, half_year,
         # Add properties
         statistics[year][half_year][feature_id] = feature["properties"]
 
-    return geojson_extended
+    # Calculate average and median values
+    for year, half_years in statistics.items():
+        for half_year, feature_ids in half_years.items():
+            values = {}
+
+            for feature_id, properties in feature_ids.items():
+                for property_name, property_value in properties.items():
+                    if property_name in list(statistic_fields.keys()):
+                        if property_name not in values:
+                            values[property_name] = []
+                        values[property_name].append(property_value)
+
+            statistics[year][half_year]["average"] = {key: stats.mean(lst) for key, lst in values.items()}
+            statistics[year][half_year]["median"] = {key: stats.median(lst) for key, lst in values.items()}
+
+    return geojson_extended, statistics
 
 
 def extend_planning_areas(logger, statistics, year, half_year,
@@ -267,7 +327,22 @@ def extend_planning_areas(logger, statistics, year, half_year,
         # Add properties
         statistics[year][half_year][feature_id] = feature["properties"]
 
-    return geojson_extended
+    # Calculate average and median values
+    for year, half_years in statistics.items():
+        for half_year, feature_ids in half_years.items():
+            values = {}
+
+            for feature_id, properties in feature_ids.items():
+                for property_name, property_value in properties.items():
+                    if property_name in list(statistic_fields.keys()):
+                        if property_name not in values:
+                            values[property_name] = []
+                        values[property_name].append(property_value)
+
+            statistics[year][half_year]["average"] = {key: stats.mean(lst) for key, lst in values.items()}
+            statistics[year][half_year]["median"] = {key: stats.median(lst) for key, lst in values.items()}
+
+    return geojson_extended, statistics
 
 
 def extend_districts_post_2020(logger, statistics, year, half_year,
@@ -342,7 +417,22 @@ def extend_districts_post_2020(logger, statistics, year, half_year,
         # Add properties
         statistics[year][half_year][feature_id] = feature["properties"]
 
-    return geojson_extended
+    # Calculate average and median values
+    for year, half_years in statistics.items():
+        for half_year, feature_ids in half_years.items():
+            values = {}
+
+            for feature_id, properties in feature_ids.items():
+                for property_name, property_value in properties.items():
+                    if property_name in list(statistic_fields.keys()):
+                        if property_name not in values:
+                            values[property_name] = []
+                        values[property_name].append(property_value)
+
+            statistics[year][half_year]["average"] = {key: stats.mean(lst) for key, lst in values.items()}
+            statistics[year][half_year]["median"] = {key: stats.median(lst) for key, lst in values.items()}
+
+    return geojson_extended, statistics
 
 
 def extend_district_regions_post_2020(logger, statistics, year, half_year,
@@ -392,11 +482,27 @@ def extend_district_regions_post_2020(logger, statistics, year, half_year,
         # Add properties
         statistics[year][half_year][feature_id] = feature["properties"]
 
-    return geojson_extended
+    # Calculate average and median values
+    for year, half_years in statistics.items():
+        for half_year, feature_ids in half_years.items():
+            values = {}
+
+            for feature_id, properties in feature_ids.items():
+                for property_name, property_value in properties.items():
+                    if property_name in list(statistic_fields.keys()):
+                        if property_name not in values:
+                            values[property_name] = []
+                        values[property_name].append(property_value)
+
+            statistics[year][half_year]["average"] = {key: stats.mean(lst) for key, lst in values.items()}
+            statistics[year][half_year]["median"] = {key: stats.median(lst) for key, lst in values.items()}
+
+    return geojson_extended, statistics
 
 
 def extend_planning_areas_post_2020(logger, statistics, year, half_year,
-                                    statistic_name, statistic_1, statistic_2_1, statistic_3, statistic_4_1, statistic_4_1_1,
+                                    statistic_name, statistic_1, statistic_2_1, statistic_3, statistic_4_1,
+                                    statistic_4_1_1,
                                     geojson, id_property, area_property):
     geojson_extended = copy.deepcopy(geojson)
 
@@ -453,7 +559,22 @@ def extend_planning_areas_post_2020(logger, statistics, year, half_year,
         # Add properties
         statistics[year][half_year][feature_id] = feature["properties"]
 
-    return geojson_extended
+    # Calculate average and median values
+    for year, half_years in statistics.items():
+        for half_year, feature_ids in half_years.items():
+            values = {}
+
+            for feature_id, properties in feature_ids.items():
+                for property_name, property_value in properties.items():
+                    if property_name in list(statistic_fields.keys()):
+                        if property_name not in values:
+                            values[property_name] = []
+                        values[property_name].append(property_value)
+
+            statistics[year][half_year]["average"] = {key: stats.mean(lst) for key, lst in values.items()}
+            statistics[year][half_year]["median"] = {key: stats.median(lst) for key, lst in values.items()}
+
+    return geojson_extended, statistics
 
 
 def blend_district_data(feature, area_sqkm, statistic_2_3_filtered, statistic_4_3_filtered):
@@ -784,7 +905,7 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
             statistic_4_3 = read_csv_file(os.path.join(statistics_path, f"{statistic_bundle[7]}.csv"))
 
             # Extend districts
-            geojson_lor_districts_extended = extend_districts(
+            geojson_lor_districts_extended, statistics_lor_districts = extend_districts(
                 logger=logger,
                 statistics=statistics_lor_districts,
                 year=year,
@@ -797,7 +918,7 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
             )
 
             # Extend district regions
-            geojson_lor_district_regions_extended = extend_district_regions(
+            geojson_lor_district_regions_extended, statistics_lor_district_regions = extend_district_regions(
                 logger=logger,
                 statistics=statistics_lor_district_regions,
                 year=year,
@@ -811,7 +932,7 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
             )
 
             # Extend planning areas
-            geojson_lor_planning_areas_extended = extend_planning_areas(
+            geojson_lor_planning_areas_extended, statistics_lor_planning_areas = extend_planning_areas(
                 logger=logger,
                 statistics=statistics_lor_planning_areas,
                 year=year,
@@ -879,7 +1000,7 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
             statistic_4_3_1 = read_csv_file(os.path.join(statistics_path, f"{statistic_bundle[10]}.csv"))
 
             # Extend districts
-            geojson_lor_districts_extended = extend_districts_post_2020(
+            geojson_lor_districts_extended, statistics_lor_planning_areas = extend_districts_post_2020(
                 logger=logger,
                 statistics=statistics_lor_planning_areas,
                 year=year,
@@ -893,7 +1014,7 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
             )
 
             # Extend district regions
-            geojson_lor_district_regions_extended = extend_district_regions_post_2020(
+            geojson_lor_district_regions_extended, statistics_lor_planning_areas = extend_district_regions_post_2020(
                 logger=logger,
                 statistics=statistics_lor_planning_areas,
                 year=year,
@@ -908,7 +1029,7 @@ class LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender:
             )
 
             # Extend planning areas
-            geojson_lor_planning_areas_extended = extend_planning_areas_post_2020(
+            geojson_lor_planning_areas_extended, statistics_lor_planning_areas = extend_planning_areas_post_2020(
                 logger=logger,
                 statistics=statistics_lor_planning_areas,
                 year=year,
