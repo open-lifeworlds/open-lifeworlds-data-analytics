@@ -1,22 +1,22 @@
-[![Issues](https://img.shields.io/github/issues/open-lifeworlds/open-lifeworlds-data)](https://github.com/open-lifeworlds/open-lifeworlds-data/issues)
+[![Issues](https://img.shields.io/github/issues/open-lifeworlds/open-lifeworlds-data-analytics)](https://github.com/open-lifeworlds/open-lifeworlds-data-analytics/issues)
 
 <br />
 <p align="center">
-  <a href="https://github.com/open-lifeworlds/open-lifeworlds-data">
+  <a href="https://github.com/open-lifeworlds/open-lifeworlds-data-analytics">
     <img src="logo_with_text.png" alt="Logo" height="80">
   </a>
 
-  <h1 align="center">Open Lifeworlds (Data)</h1>
+  <h1 align="center">Open Lifeworlds (Data Analytics)</h1>
 
   <p align="center">
-    Data for <a href="https://github.com/open-lifeworlds/open-lifeworlds-data" target="_blank">Open
-     Lifeworlds data</a> 
+    Data for <a href="https://github.com/open-lifeworlds/open-lifeworlds-data-analytics" target="_blank">Open
+     Lifeworlds data analytics</a> 
   </p>
 </p>
 
 ## About The Project
 
-The aim of this project is to provide raw data related to LORs.
+The aim of this project is to provide analytical insights based on data related to LORs.
 
 ### Built With
 
@@ -51,7 +51,7 @@ Examples:
 
 ## Roadmap
 
-See the [open issues](https://github.com/open-lifeworlds/open-lifeworlds-data/issues) for a list of proposed features (and
+See the [open issues](https://github.com/open-lifeworlds/open-lifeworlds-data-analytics/issues) for a list of proposed features (and
  known issues).
 
 ## License
