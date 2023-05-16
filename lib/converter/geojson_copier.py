@@ -13,6 +13,8 @@ class GeojsonCopier:
 
     @TrackingDecorator.track_time
     def run(self, logger, source_path, results_path, clean=False, quiet=False):
+        # Make results path
+        os.makedirs(os.path.join(results_path), exist_ok=True)
 
         for path in Path(source_path).glob("*.geojson"):
 
