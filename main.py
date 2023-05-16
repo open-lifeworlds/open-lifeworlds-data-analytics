@@ -30,6 +30,7 @@ from geojson_copier import GeojsonCopier
 from geojson_cleaner import GeojsonCleaner
 from geojson_projection_converter import GeojsonProjectionConverter
 from geojson_bounding_box_converter import GeojsonBoundingBoxConverter
+from geojson_bounding_box_retriever import GeojsonBoundingBoxRetriever
 from lor_statistics_population_data_blender import LorStatisticsPopulationDataBlender
 from lor_statistics_monitoring_social_urban_development_data_blender import \
     LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender
@@ -92,6 +93,7 @@ def main(argv):
     GeojsonCleaner().run(logger, data_path, data_path, clean, quiet)
     GeojsonProjectionConverter().run(logger, data_path, data_path, clean, quiet)
     GeojsonBoundingBoxConverter().run(logger, data_path, data_path, clean, quiet)
+    GeojsonBoundingBoxRetriever().run(logger, data_path, data_path, clean, quiet)
 
     # Data enhancement: Blend data into geojson
     LorStatisticsPopulationDataBlender().run(logger, data_path, raw_population_path, data_population_path, clean, quiet)
