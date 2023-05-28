@@ -75,6 +75,7 @@ def main(argv):
         raw_path, "lor-statistics-monitoring-social-urban-development")
 
     data_path = os.path.join(script_path, "data-gesobau-mv")
+    data_geodata_path = os.path.join(data_path, "lor-geodata")
     data_population_path = os.path.join(data_path, "lor-statistics-population")
     data_monitoring_social_urban_development_path = os.path.join(
         data_path, "lor-statistics-monitoring-social-urban-development")
@@ -97,16 +98,16 @@ def main(argv):
         clean, quiet)
 
     # Data preparation: Convert LOR geo data
-    GeojsonCopier().run(logger, os.path.join(raw_path, "lor-odis-geo-gesobau-mv"), data_path, clean, quiet)
-    GeojsonCleaner().run(logger, data_path, data_path, clean, quiet)
-    GeojsonProjectionConverter().run(logger, data_path, data_path, clean, quiet)
-    GeojsonBoundingBoxConverter().run(logger, data_path, data_path, clean, quiet)
-    GeojsonBoundingBoxRetriever().run(logger, data_path, data_path, clean, quiet)
+    GeojsonCopier().run(logger, os.path.join(raw_path, "lor-odis-geo-gesobau-mv"), data_geodata_path, clean, quiet)
+    GeojsonCleaner().run(logger, data_geodata_path, data_geodata_path, clean, quiet)
+    GeojsonProjectionConverter().run(logger, data_geodata_path, data_geodata_path, clean, quiet)
+    GeojsonBoundingBoxConverter().run(logger, data_geodata_path, data_geodata_path, clean, quiet)
+    GeojsonBoundingBoxRetriever().run(logger, data_geodata_path, data_geodata_path, clean, quiet)
 
     # Data enhancement: Blend data into geojson
-    LorStatisticsPopulationDataBlender().run(logger, data_path, raw_population_path, data_population_path, clean, quiet)
+    LorStatisticsPopulationDataBlender().run(logger, data_geodata_path, raw_population_path, data_population_path, clean, quiet)
     LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender().run(
-        logger, data_path, raw_monitoring_social_urban_development_path, data_monitoring_social_urban_development_path,
+        logger, data_geodata_path, raw_monitoring_social_urban_development_path, data_monitoring_social_urban_development_path,
         clean, quiet)
 
 
