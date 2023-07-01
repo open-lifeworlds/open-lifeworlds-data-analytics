@@ -1,0 +1,1110 @@
+{
+  "gesobauApartments": [
+    {
+      "id": "residentialGroup914",
+      "description": "A Wohnhausgruppe 914",
+      "buildings": [
+        {"id": "220107225", "boundingBox": [13.3497579395,52.6060716596,13.3499953150,52.6062825995], "description": "Senftenberger Ring 72"},
+        {"id": "37198605",  "boundingBox": [13.3495835959,52.6059999887,13.3498504757,52.6062394343], "description": "Senftenberger Ring 72" },
+        {"id": "220107233", "boundingBox": [13.3496090769,52.6054453496,13.3512532711,52.6060179065], "description": "Senftenberger Ring 74-82" },
+        {"id": "220107234", "boundingBox": [13.3512318134,52.6055202792,13.3524844050,52.6062158156], "description": "Senftenberger Ring 84-90" },
+        {"id": "220107230", "boundingBox": [13.3527070283,52.6063567133,13.3531603217,52.6067606718], "description": "Senftenberger Ring 92-96" },
+
+        {"id": "220107228", "boundingBox": [13.3507463335,52.6065081981,13.3512465655,52.6067443832], "description": "Finsterwalder Straße 98" },
+        {"id": "37198646",  "boundingBox": [13.3511285483,52.6065464765,13.3518500626,52.6067647439], "description": "Finsterwalder Straße 100" },
+        {"id": "220107227", "boundingBox": [13.3517977595,52.6066458372,13.3521330356,52.6068877225], "description": "Finsterwalder Straße 102" },
+        {"id": "220257272", "boundingBox": [13.3519144356,52.6068282693,13.3521075546,52.6069740516], "description": "Finsterwalder Straße 102" },
+
+        {"id": "220095362", "boundingBox": [13.3510762453,52.6042497159,13.3513551950,52.6043727016], "description": "Senftenberger Ring 70" },
+        {"id": "220095340", "boundingBox": [13.3508375287,52.6041185852,13.3512921631,52.6043042858], "description": "Senftenberger Ring 70" },
+        {"id": "220095344", "boundingBox": [13.3504821360,52.6041291734,13.3509032428,52.6042627475], "description": "Senftenberger Ring 68" },
+        {"id": "220095347", "boundingBox": [13.3501696586,52.6041055536,13.3505800366,52.6042651910], "description": "Senftenberger Ring 68" },
+        {"id": "220095341", "boundingBox": [13.3500207960,52.6042317975,13.3503882586,52.6044704382], "description": "Senftenberger Ring 66" },
+        {"id": "220095352", "boundingBox": [13.3499014377,52.6043645568,13.3501455187,52.6046349611], "description": "Senftenberger Ring 64" },
+        {"id": "220095353", "boundingBox": [13.3499671518,52.6045396682,13.3518339693,52.6051692491], "description": "Senftenberger Ring 58-62" },
+        {"id": "37198568",  "boundingBox": [13.3517199754,52.6049811088,13.3521813154,52.6051619190], "description": "Senftenberger Ring 56" },
+        {"id": "220095363", "boundingBox": [13.3519680798,52.6051040924,13.3522711694,52.6052734996], "description": "Senftenberger Ring 54" },
+        {"id": "277208725", "boundingBox": [13.3522604405,52.6051171237,13.3526010811,52.6052482515], "description": "Ribbeckhaus" },
+
+        {"id": "2985153398224875", "boundingBox": [13.3507718145,52.6043197608,13.3508683741,52.6043604845], "description": "Senftenberger Ring 68" }
+      ]
+    },
+    {
+      "id": "residentialGroup962",
+      "description": "B Wohnhausgruppe 962",
+      "buildings": [
+        {"id":  "42407760", "boundingBox": [13.3536350727,52.6068584032,13.3539260924,52.6071190190], "description": "Finsterwalder Straße 102a" }
+      ]
+    },
+    {
+      "id": "residentialGroup919",
+      "description": "C Wohnhausgruppe 919",
+      "buildings": [
+        {"id": "243122493", "boundingBox": [13.3566807210,52.6060236076,13.3570280671,52.6062109290], "description": "Senftenberger Ring 42p"},
+        {"id": "243122494", "boundingBox": [13.3564299345,52.6062068568,13.3568523824,52.6064104661], "description": "Senftenberger Ring 42n"},
+        {"id": "243122956", "boundingBox": [13.3562502265,52.6064169816,13.3566029370,52.6067932490], "description": "Senftenberger Ring 42m"},
+        {"id": "220257255", "boundingBox": [13.3565707505,52.6067109917,13.3567665517,52.6067883624], "description": "Senftenberger Ring 42l"},
+        {"id": "220257262", "boundingBox": [13.3565492928,52.6063567133,13.3589257300,52.6069862680], "description": "Senftenberger Ring 42b-k"},
+        {"id": "4858260594121765", "boundingBox": [13.3586682379,52.6064291981,13.3588519692,52.6064568889], "description": "Senftenberger Ring 42b-k"},
+        {"id": "220134852", "boundingBox": [13.3588989079,52.6059095855,13.3593481779,52.6063998784], "description": "Senftenberger Ring 42a"},
+        {"id": "220257261", "boundingBox": [13.3593307436,52.6059747410,13.3594997227,52.6061001651], "description": "Senftenberger Ring 42"},
+        {"id": "220134838", "boundingBox": [13.3573539555,52.6055096914,13.3593642712,52.6059193588], "description": "Senftenberger Ring 44-44f"},
+        {"id": "37198692",  "boundingBox": [13.3572399616,52.6053614609,13.3575966954,52.6055495995]},
+        {"id": "220134833", "boundingBox": [13.3569395542,52.6053443573,13.3572600782,52.6057678719]},
+        {"id": "545499541", "boundingBox": [13.3566445112,52.6052857165,13.3569113910,52.6054999180]},
+        {"id": "37198703",  "boundingBox": [13.3566632867,52.6054901445,13.3568832278,52.6057572841]},
+        {"id": "220134832", "boundingBox": [13.3563856781,52.6057483252,13.3568443358,52.6059503077]}
+      ]
+    },
+    {
+      "id": "residentialGroup961",
+      "description": "D Wohnhausgruppe 961 / Parkhaus",
+      "buildings": [
+        {"id": "720880576", "boundingBox": [13.3586427569,52.6065969713,13.3594635129,52.6069178563], "description": "Senftenberger Ring 42q"}
+      ]
+    },
+    {
+      "id": "residentialGroup918",
+      "description": "E Wohnhausgruppe 918",
+      "buildings": [
+        {"id": "37198710",         "boundingBox": [13.3599784970,52.6063567133,13.3631448448,52.6068217539], "description": "Quickborner Straße 85-93 / Senftenberger Ring 40–40h"} ,
+        {"id": "533166059817435",  "boundingBox": [13.3599758148,52.6054722266,13.3600831032,52.6055724042], "description": "Smaller building in front starting from West"} ,
+        {"id": "5375686447513715", "boundingBox": [13.3610004187,52.6053622753,13.3611667156,52.6054241738], "description": "Smaller building in front starting from West"} ,
+        {"id": "3073493701031625", "boundingBox": [13.3616723120,52.6048711564,13.3618600667,52.6049835522], "description": "Smaller building in front starting from West"} ,
+        {"id": "449341056",        "boundingBox": [13.3620639145,52.6055781053,13.3624005318,52.6058802655], "description": "Smaller building in front starting from West"} ,
+        {"id": "316145120",        "boundingBox": [13.3634170890,52.6056481480,13.3638355136,52.6058322132], "description": "Quickborner Straße 79"} ,
+        {"id": "316145121",        "boundingBox": [13.3629544079,52.6056709526,13.3634801209,52.6060073188], "description": "Quickborner Straße 81"} ,
+        {"id": "37198722",         "boundingBox": [13.3631488681,52.6059975454,13.3633808792,52.6062402488], "description": "Quickborner Straße 83"}
+    ]},
+    {
+      "id": "residentialGroup915",
+      "description": "F Wohnhausgruppe 915",
+      "buildings": [
+        {"id": "220095358", "boundingBox": [13.3503681421,52.6035965018,13.3505505323,52.6037374079], "description": "Senftenberger Ring 72"},
+        {"id": "220095333", "boundingBox": [13.3502997458,52.6034042823,13.3506779373,52.6036046467], "description": "Senftenberger Ring 72"},
+        {"id": "37198576",  "boundingBox": [13.3505599201,52.6034857314,13.3507879078,52.6035867280], "description": "Senftenberger Ring 72"},
+        {"id": "220095335", "boundingBox": [13.3500623703,52.6031868126,13.3503560722,52.6034303460], "description": "Senftenberger Ring 74"},
+        {"id": "220095336", "boundingBox": [13.3498142660,52.6031998446,13.3501428366,52.6034433779], "description": "Senftenberger Ring 74"},
+        {"id": "220095356", "boundingBox": [13.3501937985,52.6033383085,13.3504217863,52.6034759575], "description": "Senftenberger Ring 74"},
+        {"id": "220095327", "boundingBox": [13.3500610292,52.6030206553,13.3503654599,52.6032031025], "description": "Senftenberger Ring 76"},
+        {"id": "220095342", "boundingBox": [13.3497887850,52.6028585698,13.3502045274,52.6030744121], "description": "Senftenberger Ring 76"},
+        {"id": "220095350", "boundingBox": [13.3502031863,52.6026712341,13.3506564796,52.6029774869], "description": "Senftenberger Ring 78"},
+        {"id": "220257271", "boundingBox": [13.3526091278,52.6046854582,13.3528237045,52.6047546879], "description": "Senftenberger Ring 71"},
+        {"id": "37198593",  "boundingBox": [13.3525635302,52.6046610242,13.3528009057,52.6047269960], "description": "Senftenberger Ring 71"},
+        {"id": "220257267", "boundingBox": [13.3525340259,52.6045022027,13.3528277278,52.6046895305], "description": "Senftenberger Ring 71"},
+        {"id": "220257239", "boundingBox": [13.3525192738,52.6042521594,13.3527727425,52.6043710727], "description": "Senftenberger Ring 73"},
+        {"id": "220257259", "boundingBox": [13.3526547253,52.6043010279,13.3529993892,52.6045241934], "description": "Senftenberger Ring 73"},
+        {"id": "220257264", "boundingBox": [13.3524307609,52.6041128839,13.3527110517,52.6043450095], "description": "Senftenberger Ring 75"},
+        {"id": "220257273", "boundingBox": [13.3523851633,52.6038872729,13.3526694775,52.6041413906], "description": "Senftenberger Ring 77"},
+        {"id": "220257243", "boundingBox": [13.3525259793,52.6036909823,13.3527901769,52.6039174087], "description": "Senftenberger Ring 79"},
+        {"id": "220257236", "boundingBox": [13.3527030051,52.6036600318,13.3529403806,52.6038009377], "description": "Senftenberger Ring 79"},
+        {"id": "37198586",  "boundingBox": [13.3531697094,52.6030206553,13.3537115157,52.6036730636], "description": "Senftenberger Ring 81-85"},
+        {"id": "220095355", "boundingBox": [13.3523972332,52.6023633502,13.3525702357,52.6024757525], "description": "Senftenberger Ring 87"},
+        {"id": "220095354", "boundingBox": [13.3523449302,52.6023332133,13.3525702357,52.6024162934], "description": "Senftenberger Ring 87"},
+        {"id": "220095338", "boundingBox": [13.3523234725,52.6021914882,13.3526614308,52.6023690518], "description": "Senftenberger Ring 87"},
+        {"id": "37198585",  "boundingBox": [13.3525688946,52.6020636093,13.3529484272,52.6022818991], "description": "Senftenberger Ring 89"},
+        {"id": "9535791",   "boundingBox": [13.3527915180,52.6018632379,13.3532206714,52.6020741980], "description": "Senftenberger Ring 89 // Ignored because it causes flickering", "ignore": "true"},
+        {"id": "220095337", "boundingBox": [13.3529403806,52.6020570932,13.3533614874,52.6022599073], "description": "Senftenberger Ring 91"},
+        {"id": "220095339", "boundingBox": [13.3532823622,52.6021670527,13.3536323905,52.6023397294], "description": "Senftenberger Ring 93"},
+        {"id": "220095360", "boundingBox": [13.3534151316,52.6022957458,13.3536565304,52.6024276965], "description": "Senftenberger Ring 93"},
+        {"id": "9535792",   "boundingBox": [13.3535505831,52.6020774561,13.3539260924,52.6024016322], "description": "Senftenberger Ring 93 // Ignored because it causes flickering", "ignore": "true"},
+        {"id": "220095365", "boundingBox": [13.3535090089,52.6023706808,13.3538295329,52.6025629049], "description": "Senftenberger Ring 95"},
+        {"id": "220095359", "boundingBox": [13.3535438776,52.6025482437,13.3537919819,52.6026353959], "description": "Senftenberger Ring 95"},
+        {"id": "220095357", "boundingBox": [13.3535492420,52.6026223638,13.3536538482,52.6026744921], "description": "Senftenberger Ring 95"}
+      ]
+    },
+    {
+      "id": "residentialGroup855",
+      "description": "G Wohnhausgruppe 855 (Theodor-Quartier)",
+      "buildings": [
+        {"id": "923530872", "boundingBox": [13.3580982685,52.6046602097,13.3585488796,52.6049892535], "description": "Senftenberger Ring 45"},
+        {"id": "923530869", "boundingBox": [13.3581894636,52.6040982233,13.3587232232,52.6043735161], "description": "Senftenberger Ring 45a"},
+        {"id": "923530868", "boundingBox": [13.3580687642,52.6035085371,13.3585193753,52.6038375895], "description": "Senftenberger Ring 45b"},
+        {"id": "923530871", "boundingBox": [13.3571487665,52.6047921533,13.3576610684,52.6050592971], "description": "Senftenberger Ring 47a"},
+        {"id": "923530870", "boundingBox": [13.3572748303,52.6042432002,13.3577468991,52.6045673603], "description": "Senftenberger Ring 47b"},
+        {"id": "923530867", "boundingBox": [13.3573043346,52.6035916149,13.3578380942,52.6038685398], "description": "Senftenberger Ring 47c"}
+      ]
+    },
+    {
+      "id": "residentialGroup934",
+      "description": "H Wohnhausgruppe 934",
+      "buildings": [
+        {"id": "4626289341868325", "boundingBox": [13.3606289327,52.6052042708,13.3607053757,52.6052612828], "description": "Senftenberger Ring 35"},
+        {"id": "1593290280839205", "boundingBox": [13.3606624603,52.6049566750,13.3607751131,52.6051757648], "description": "Senftenberger Ring 35"},
+        {"id": "957221049",        "boundingBox": [13.3607281744,52.6045950522,13.3610352874,52.6049477159], "description": "Senftenberger Ring 35"},
+        {"id": "1977572518904075", "boundingBox": [13.3607590199,52.6042936976,13.3608810604,52.6044981303], "description": "Senftenberger Ring 35a"},
+        {"id": "957221050",        "boundingBox": [13.3612659574,52.6042146935,13.3615556359,52.6045567722], "description": "Senftenberger Ring 35a"}
+      ]
+    },
+    {
+      "id": "residentialGroup929",
+      "description": "H Wohnhausgruppe 929",
+      "buildings": [
+        {"id": "598577158", "boundingBox": [13.3602024615,52.6049135085,13.3605149388,52.6052702418], "description": "Senftenberger Ring 37"},
+        {"id": "598577157", "boundingBox": [13.3603017032,52.6042269107,13.3606141806,52.6045820207], "description": "Senftenberger Ring 39"}
+      ]
+    },
+    {
+      "id": "residentialGroup917",
+      "description": "I Wohnhausgruppe 917",
+      "buildings": [
+        {"id": "42407644", "boundingBox": [13.3644524217,52.6029937768,13.3661073446,52.6053036345], "description": "Treuenbrietzener Straße 29-31 / Quickborner Straße 69–77"}
+      ]
+    },
+    {
+      "id": "residentialGroup916",
+      "description": "J Wohnhausgruppe 916",
+      "buildings": [
+        {"id": "220134830", "boundingBox": [13.3629235625,52.6009175702,13.3631783724,52.6012490856], "description": "Wesendorfer Straße 2"},
+        {"id": "220134855", "boundingBox": [13.3630388975,52.6009721441,13.3633728325,52.6010609285], "description": "Wesendorfer Straße 2"},
+        {"id": "220134842", "boundingBox": [13.3629624546,52.6012409403,13.3631528914,52.6014494599], "description": "Wesendorfer Straße 4"},
+        {"id": "220134840", "boundingBox": [13.3629544079,52.6014413146,13.3631260693,52.6015138075], "description": "Wesendorfer Straße 4"},
+        {"id": "220134845", "boundingBox": [13.3629342914,52.6015056622,13.3631180227,52.6016620510], "description": "Wesendorfer Straße 6"},
+        {"id": "220134828", "boundingBox": [13.3622114360,52.6015659372,13.3631917834,52.6017744552], "description": "Wesendorfer Straße 6"},
+        {"id": "220134846", "boundingBox": [13.3623361588,52.6016962610,13.3624850214,52.6018127376], "description": "Wesendorfer Straße 8"},
+        {"id": "220134851", "boundingBox": [13.3623321354,52.6018062215,13.3624944091,52.6018453185], "description": "Wesendorfer Straße 8"},
+        {"id": "29129490",  "boundingBox": [13.3623254299,52.6018371733,13.3624903858,52.6021409883], "description": "Wesendorfer Straße 10"},
+        {"id": "220134836", "boundingBox": [13.3615851402,52.6021320286,13.3625681698,52.6024464302], "description": "Wesendorfer Straße 12"},
+        {"id": "220134847", "boundingBox": [13.3617138863,52.6023503181,13.3618493378,52.6024773816], "description": "Wesendorfer Straße 14"},
+        {"id": "29153732",  "boundingBox": [13.3639615774,52.6014014027,13.3644537628,52.6020261416], "description": "Treuenbrietzener Straße 17-19"},
+        {"id": "220134827", "boundingBox": [13.3639213443,52.6020171819,13.3644121885,52.6026435410], "description": "Treuenbrietzener Straße 21-23"},
+        {"id": "220134835", "boundingBox": [13.3644054830,52.6025115909,13.3649124205,52.6029880753], "description": "Treuenbrietzener Straße 25-27"},
+        {"id": "466665344", "boundingBox": [13.3632414043,52.6030703397,13.3637309074,52.6033317925], "description": "Senftenberger Ring 36"},
+        {"id": "29153729",  "boundingBox": [13.3632977307,52.6033236476,13.3642753959,52.6040387663], "description": "Senftenberger Ring 36a-36c"},
+        {"id": "220257238", "boundingBox": [13.3633285761,52.6040314360,13.3638006449,52.6046431059], "description": "Senftenberger Ring 38-38a"},
+        {"id": "29153731",  "boundingBox": [13.3627653122,52.6044313436,13.3633379638,52.6052832731], "description": "Senftenberger Ring 38b"}
+      ]
+    },
+    {
+      "id": "residentialGroup905",
+      "description": "K Wohnhausgruppe 905",
+      "buildings": [
+        {"id": "220257248", "boundingBox": [13.3387246728,52.5960536973,13.3391430974,52.5962532806], "description": "Finsterwalder Straße 1"},
+        {"id": "220257250", "boundingBox": [13.3383692801,52.5963477769,13.3387783170,52.5964227221], "description": "Finsterwalder Straße 3"},
+        {"id": "220257247", "boundingBox": [13.3380125463,52.5964056151,13.3384390175,52.5965929776], "description": "Finsterwalder Straße 5"},
+        {"id": "220257253", "boundingBox": [13.3376625180,52.5965212912,13.3380179107,52.5969717732], "description": "Finsterwalder Straße 7-9"},
+        {"id": "293130364", "boundingBox": [13.3379334211,52.5970556781,13.3384658396,52.5973350881], "description": "Finsterwalder Straße 11"},
+        {"id": "220257241", "boundingBox": [13.3377335966,52.5969636271,13.3379696310,52.5972674760], "description": "Finsterwalder Straße 13"},
+        {"id": "220257249", "boundingBox": [13.3373580873,52.5972120828,13.3377403021,52.5974002564], "description": "Finsterwalder Straße 15"},
+        {"id": "293130355", "boundingBox": [13.3370094001,52.5970964085,13.3372454345,52.5972829535], "description": "Finsterwalder Straße 17"},
+        {"id": "293130368", "boundingBox": [13.3368471265,52.5971045546,13.3370228112,52.5971892738], "description": "Finsterwalder Straße 17"},
+        {"id": "40936814",  "boundingBox": [13.3368739486,52.5971835715,13.3370161057,52.5972992456], "description":  "Finsterwalder Straße 17"},
+        {"id": "220257242", "boundingBox": [13.3365172148,52.5969318573,13.3368900418,52.5971363243], "description": "Finsterwalder Straße 19"},
+        {"id": "220257263", "boundingBox": [13.3373580873,52.5973961834,13.3376491070,52.5976503388], "description": "Finsterwalder Straße 21"},
+        {"id": "220257258", "boundingBox": [13.3375565708,52.5976462658,13.3381547034,52.5980136480], "description": "Finsterwalder Straße 23-25"},
+        {"id": "220257268", "boundingBox": [13.3386066556,52.5977171358,13.3389446139,52.5979533682], "description": "Finsterwalder Straße 27"},
+        {"id": "293130366", "boundingBox": [13.3381399512,52.5978930883,13.3386804163,52.5983940606], "description": "Finsterwalder Straße 29-31"},
+        {"id": "220257245", "boundingBox": [13.3385717869,52.5983891731,13.3389405906,52.5986530976], "description": "Finsterwalder Straße 33"},
+        {"id": "220257270", "boundingBox": [13.3387394249,52.5986449518,13.3389405906,52.5988290465], "description": "Finsterwalder Straße 33"},
+        {"id": "220257251", "boundingBox": [13.3372735977,52.5963477769,13.3374466002,52.5965880899], "description": "Wilhelmsruher Damm 224"},
+        {"id": "220257254", "boundingBox": [13.3374130726,52.5959363907,13.3374466002,52.5960243707], "description": "Wilhelmsruher Damm 226-228"}
+      ]
+    },
+    {
+      "id": "residentialGroup913",
+      "description": "L Wohnhausgruppe 913 (Seniorenwohnungen)",
+      "buildings": [
+        {"id": "37198499", "boundingBox": [13.3431784809,52.5990913392,13.3434869349,52.5995597153], "description": "Eichhorster Weg 44"}
+      ]
+    },
+    {
+      "id": "residentialGroup908",
+      "description": "M Wohnhausgruppe 908",
+      "buildings": [
+        {"id": "291227994", "boundingBox": [13.3436948061,52.5987622512,13.3453819156,52.5992184122], "description": "Eichhorster Weg 32-38"},
+        {"id": "291227995", "boundingBox": [13.3432535827,52.5991483592,13.3448146284,52.5997381041], "description": "Eichhorster Weg 40–44b"}
+      ]
+    },
+    {
+      "id": "residentialGroup909",
+      "description": "N Wohnhausgruppe 909",
+      "buildings": [
+        {"id": "37198538",  "boundingBox": [13.3446282148,52.5971387681,13.3484329283,52.5988510400], "description": "Eichhorster Weg 4-30 / Wilhelmsruher Damm 152–158"}
+      ]
+    },
+    {
+      "id": "residentialGroup920",
+      "description": "O Wohnhausgruppe 920 (Seniorenwohnungen)",
+      "buildings": [
+        {"id": "363763456", "boundingBox": [13.3510936797,52.5966532593,13.3521947265,52.5972039367], "description": "Wilhelmsruher Damm 148"},
+        {"id": "363763455", "boundingBox": [13.3514866233,52.5965978653,13.3516260982,52.5967159847]},
+        {"id": "363763454", "boundingBox": [13.3516448736,52.5966051969,13.3517843485,52.5967233162]},
+        {"id": "363763453", "boundingBox": [13.3518098295,52.5966125284,13.3519493043,52.5967314624]},
+        {"id": "363763452", "boundingBox": [13.3519761264,52.5966190454,13.3521156013,52.5967387939]}
+      ]
+    },
+    {
+      "id": "residentialGroup911",
+      "description": "P Wohnhausgruppe 911",
+      "buildings": [
+        {"id": "29127811", "boundingBox": [13.3562381566,52.5990375775,13.3564674854,52.5997381041], "description": "Main part West"},
+        {"id": "29128223", "boundingBox": [13.3565855026,52.5982067058,13.3567129076,52.5984339752], "description": "Senftenberger Ring 2"},
+        {"id": "29128222", "boundingBox": [13.3564125001,52.5981496846,13.3566364646,52.5984510814], "description": "Senftenberger Ring 2"},
+        {"id": "29127878", "boundingBox": [13.3567665517,52.5986188853,13.3568872511,52.5988143841], "description": "Senftenberger Ring 4"},
+        {"id": "29127879", "boundingBox": [13.3568577468,52.5985683813,13.3570092916,52.5988754773], "description": "Senftenberger Ring 4"},
+        {"id": "220134834", "boundingBox": [13.3563347161,52.5977098044,13.3569274843,52.5990440941], "description": "enftenberger Ring 6"},
+        {"id": "29128207", "boundingBox": [13.3562099934,52.5991410281,13.3563199639,52.5993316371], "description": "Senftenberger Ring 8"},
+        {"id": "29128208", "boundingBox": [13.3560825884,52.5990799352,13.3562368155,52.5993870276], "description": "Senftenberger Ring 8"},
+        {"id": "29127876", "boundingBox": [13.3563588560,52.5995776356,13.3564808965,52.5997381041], "description": "Senftenberger Ring 10"},
+        {"id": "29127877", "boundingBox": [13.3564621210,52.5994969939,13.3566136658,52.5997381041], "description": "Senftenberger Ring 10"},
+        {"id": "29127812", "boundingBox": [13.3579185605,52.5969848070,13.3584040403,52.5994481200], "description": "Main part middle"},
+        {"id": "29128209", "boundingBox": [13.3579118550,52.5986816079,13.3580271900,52.5988746627], "description": "Senftenberger Ring 14"},
+        {"id": "29128210", "boundingBox": [13.3577777445,52.5986213290,13.3579480648,52.5989308684], "description": "Senftenberger Ring 14"},
+        {"id": "29127880", "boundingBox": [13.3581840992,52.5982946812,13.3583074808,52.5984885523], "description": "Senftenberger Ring 16"},
+        {"id": "29127881", "boundingBox": [13.3582712710,52.5982409185,13.3584322035,52.5985496459], "description": "Senftenberger Ring 16"},
+        {"id": "29128218", "boundingBox": [13.3594447374,52.5975574745,13.3595600724,52.5977521634], "description": "Wilhelmsruher Damm 114"},
+        {"id": "29128217", "boundingBox": [13.3583839238,52.5974442449,13.3594192564,52.5977920786], "description": "Wilhelmsruher Damm 116"},
+        {"id": "29128219", "boundingBox": [13.3583021164,52.5974971940,13.3584174514,52.5976886249], "description": "Wilhelmsruher Damm 118"},
+        {"id": "29128211", "boundingBox": [13.3581425250,52.5970866332,13.3582524955,52.5972772512], "description": "Wilhelmsruher Damm 120"},
+        {"id": "29128212", "boundingBox": [13.3580097556,52.5970263521,13.3581760526,52.5973318297], "description": "Wilhelmsruher Damm 120"},
+        {"id": "29128215", "boundingBox": [13.3580271900,52.5978857570,13.3581411839,52.5980796299], "description": "Wilhelmsruher Damm 122"},
+        {"id": "29128214", "boundingBox": [13.3569690585,52.5977717137,13.3580620587,52.5981268761], "description": "Wilhelmsruher Damm 124"},
+        {"id": "29128216", "boundingBox": [13.3568818867,52.5978279208,13.3570025861,52.5980193502], "description": "Wilhelmsruher Damm 126"},
+        {"id": "29127886", "boundingBox": [13.3596123755,52.5979721039,13.3597223461,52.5981594597], "description": "Treuenbrietzener Straße 1"},
+        {"id": "29127887", "boundingBox": [13.3596874774,52.5979126386,13.3598497510,52.5982254413], "description": "Treuenbrietzener Straße 1"},
+        {"id": "29128221", "boundingBox": [13.3593334258,52.5983590334,13.3594192564,52.5985488313], "description": "Treuenbrietzener Straße 3"},
+        {"id": "29128220", "boundingBox": [13.3592019975,52.5982938666,13.3593669534,52.5986050374], "description": "Treuenbrietzener Straße 3"},
+        {"id": "29127813", "boundingBox": [13.3593937755,52.5974580932,13.3597961068,52.5992216705], "description": "Treuenbrietzener Straße 5"},
+        {"id": "29127884", "boundingBox": [13.3597397804,52.5989267955,13.3598484099,52.5991174055], "description": "Treuenbrietzener Straße 7"},
+        {"id": "29127885", "boundingBox": [13.3598229289,52.5988722190,13.3599744737,52.5991825711], "description":  "Treuenbrietzener Straße 7"}
+      ]
+    },
+    {
+      "id": "residentialGroup922",
+      "description": "Q Wohnhausgruppe 922 (Seniorenwohnungen)",
+      "buildings": [
+        {"id": "29127882", "boundingBox": [13.3580633998,52.5991092598,13.3581827581,52.5993275643], "description": "Senftenberger Ring 12"},
+        {"id": "29127883", "boundingBox": [13.3581505716,52.5990538689,13.3582846820,52.5993943587], "description": "Senftenberger Ring 12"},
+        {"id": "2691189120302205", "boundingBox": [13.3580808342,52.5993300080,13.3581519127,52.5993585178], "description": "Senftenberger Ring 12"}
+      ]
+    },
+    {
+      "id": "residentialGroup912",
+      "description": "R Wohnhausgruppe 912",
+      "buildings": [
+        {"id": "29128140", "boundingBox": [13.3572010696,52.6003864886,13.3573029935,52.6005819795], "description": "Senftenberger Ring 18"},
+        {"id": "29127816", "boundingBox": [13.3570522070,52.6002797827,13.3572399616,52.6006846119], "description": "Senftenberger Ring 18"},
+        {"id": "29128139", "boundingBox": [13.3572681248,52.6003278411,13.3583410084,52.6006797246], "description": "Senftenberger Ring 20"},
+        {"id": "29128141", "boundingBox": [13.3583141863,52.6004940087,13.3584496379,52.6006854264], "description": "Senftenberger Ring 22"},
+        {"id": "29127815", "boundingBox": [13.3583383262,52.5999751402,13.3586736023,52.6011993992], "description": "Middle part West"},
+        {"id": "60108708", "boundingBox": [13.3586293459,52.6000346027,13.3587634563,52.6002651208], "description": "Senftenberger Ring 24"},
+        {"id": "60108655", "boundingBox": [13.3587151766,52.5999800276,13.3588626981,52.6003319139], "description": "Senftenberger Ring 24"},
+        {"id": "29128143", "boundingBox": [13.3585059643,52.6008654398,13.3586789668,52.6010829210], "description": "Senftenberger Ring 26"},
+        {"id": "29128142", "boundingBox": [13.3586440980,52.6007758404,13.3594192564,52.6011195750], "description": "Senftenberger Ring 28"},
+        {"id": "29128144", "boundingBox": [13.3598926663,52.6009574825,13.3600468934,52.6011505273], "description": "Senftenberger Ring 30"},
+        {"id": "29128080", "boundingBox": [13.3600763977,52.6013142481,13.3602051437,52.6015455740], "description": "Senftenberger Ring 32"},
+        {"id": "29128081", "boundingBox": [13.3601582050,52.6012604891,13.3603043854,52.6016115506], "description": "Senftenberger Ring 32"},
+        {"id": "29127814", "boundingBox": [13.3599530160,52.6000875487,13.3603003621,52.6016400589], "description": "Middle part middle"},
+        {"id": "29128206", "boundingBox": [13.3600334823,52.6001160580,13.3601608872,52.6003457612], "description": "Treuenbrietzener Straße 9"},
+        {"id": "29128205", "boundingBox": [13.3599342406,52.6000500792,13.3600723743,52.6004019650], "description": "Treuenbrietzener Straße 9"},
+        {"id": "29128086", "boundingBox": [13.3601930737,52.6005583577,13.3603674173,52.6007750259], "description": "Treuenbrietzener Straße 11"},
+        {"id": "29128085", "boundingBox": [13.3603325486,52.6004679432,13.3614107966,52.6008222692], "description": "Treuenbrietzener Straße 13"},
+        {"id": "29128087", "boundingBox": [13.3613584936,52.6006373684,13.3615127206,52.6008279710], "description": "Treuenbrietzener Straße 13"},
+        {"id": "29128082", "boundingBox": [13.3614175022,52.6004826050,13.3616615832,52.6012767797], "description": "Middle part East"},
+        {"id": "29128083", "boundingBox": [13.3615542948,52.6009802895,13.3616816998,52.6012099881], "description": "Wesendorfer Straße 1"},
+        {"id": "29128084", "boundingBox": [13.3616361022,52.6009249010,13.3617809415,52.6012767797], "description": "Wesendorfer Straße 1"}
+      ]
+    },
+    {
+      "id": "residentialGroup910",
+      "description": "S Wohnhausgruppe 910",
+      "buildings": [
+        {"id": "49221828",  "boundingBox": [13.3610634506,52.5945669762,13.3615221083,52.5948667684], "description": "Dannenwalder Weg 188"},
+        {"id": "49221683",  "boundingBox": [13.3614698052,52.5946753253,13.3622141182,52.5954728638], "description": "Dannenwalder Weg 190–194"},
+        {"id": "49182757",  "boundingBox": [13.3608797193,52.5959046201,13.3613343537,52.5961946277], "description": "Dannenwalder Weg 196"},
+        {"id": "48460090",  "boundingBox": [13.3620840311,52.5954858980,13.3627156913,52.5960528826], "description": "Tiefenseer Straße 2-4"},
+        {"id": "731831420", "boundingBox": [13.3640031517,52.5952830525,13.3644028008,52.5958818105], "description": "Tiefenseer Straße 3-5"},
+        {"id": "43304042",  "boundingBox": [13.3636625111,52.5950614693,13.3641117811,52.5953514824], "description": "Tiefenseer Straße 7"},
+        {"id": "49220361",  "boundingBox": [13.3618104458,52.5974312113,13.3624407649,52.5979949124], "description": "Treuenbrietzener Straße 2-4"},
+        {"id": "49185620",  "boundingBox": [13.3606061339,52.5978474711,13.3610567451,52.5981390949], "description": "Treuenbrietzener Straße 6"},
+        {"id": "220257257", "boundingBox": [13.3608797193,52.5959046201,13.3613343537,52.5961946277], "description": "Treuenbrietzener Straße 8"},
+        {"id": "220257246", "boundingBox": [13.3612820506,52.5979558120,13.3617474139,52.5982229975], "description": "Treuenbrietzener Straße 8"},
+        {"id": "49185618",  "boundingBox": [13.3609709144,52.5981407241,13.3614188433,52.5990139549], "description": "Treuenbrietzener Straße 10-14"},
+        {"id": "29128233",  "boundingBox": [13.3625051379,52.5980103897,13.3630201221,52.5994342724], "description": "Treuenbrietzener Straße 16-24"},
+        {"id": "72546340",  "boundingBox": [13.3631542325,52.5947453854,13.3636115491,52.5950468057], "description": "Treuenbrietzener Straße 7"},
+        {"id": "72546065",  "boundingBox": [13.3625400066,52.5942011944,13.3632507920,52.5947396828], "description": "Treuenbrietzener Straße 11-13"},
+        {"id": "43303388",  "boundingBox": [13.3648239076,52.5953319310,13.3652101457,52.5964015420], "description": "Wilhelmsruher Damm 81-91"},
+        {"id": "731408526", "boundingBox": [13.3635136485,52.5961131651,13.3639629185,52.5964015420], "description": "Tiefenseer Straße 1"},
+        {"id": "43304045",  "boundingBox": [13.3638542891,52.5963477769,13.3642566204,52.5969334865], "description": "Wilhelmsruher Damm 93-95"},
+        {"id": "49182629",  "boundingBox": [13.3612874150,52.5963477769,13.3616910875,52.5967974462], "description": "Wilhelmsruher Damm 97-101"},
+        {"id": "49220344",  "boundingBox": [13.3610795438,52.5971167737,13.3614470065,52.5974116609], "description": "Wilhelmsruher Damm 100"}
+      ]
+    },
+    {
+      "id": "residentialGroup926",
+      "description": "T Wohnhausgruppe 926",
+      "buildings": [
+        {"id": "33729754",  "boundingBox": [13.3396084607,52.5955339616,13.3409549296,52.5956993327], "description": "Wilhelmsruher Damm 215a-219"},
+        {"id": "220376483", "boundingBox": [13.3406706154,52.5953954730,13.3408744633,52.5955975033], "description": "Wilhelmsruher Damm 215a"},
+        {"id": "220376484", "boundingBox": [13.3400563896,52.5953661460,13.3402830362,52.5955649178], "description": "Wilhelmsruher Damm 217a"},
+        {"id": "220376486", "boundingBox": [13.3396111429,52.5953351896,13.3398096263,52.5955429226], "description": "Wilhelmsruher Damm 219"},
+        {"id": "220376485", "boundingBox": [13.3386750519,52.5953074918,13.3388708532,52.5955135957], "description": "Wilhelmsruher Damm 221"},
+        {"id": "33729753",  "boundingBox": [13.3386147022,52.5955070786,13.3391819894,52.5956276448], "description": "Wilhelmsruher Damm 221 / Dannenwalder Weg 2"},
+        {"id": "220376481", "boundingBox": [13.3390438557,52.5953262286,13.3392651379,52.5955233713], "description": "Dannenwalder Weg 2a-2c"}
+      ]
+    },
+    {
+      "id": "residentialGroup906",
+      "description": "U Wohnhausgruppe 906",
+      "buildings": [
+        {"id": "42885817", "boundingBox": [13.3527043462,52.5960504388,13.3534741402,52.5963388161], "description": "Haus der Familie"},
+        {"id": "42885816", "boundingBox": [13.3518527448,52.5959013616,13.3525662124,52.5962915680], "description": "Wilhelmsruher Damm 163"},
+        {"id": "42885813", "boundingBox": [13.3504901826,52.5959657174,13.3518634737,52.5961367892], "description": "Wilhelmsruher Damm 165-171"},
+        {"id": "42885814", "boundingBox": [13.3504472673,52.5958036058,13.3509032428,52.5959860831], "description": "Wilhelmsruher Damm 171"},
+        {"id": "39270166", "boundingBox": [13.3483444154,52.5954916004,13.3504982293,52.5964015420], "description": "Wilhelmsruher Damm 173–185"},
+        {"id": "42885966", "boundingBox": [13.3491396904,52.5952626865,13.3496546745,52.5955812106], "description": "Familienzentrum Horizonte"}
+      ]
+    },
+    {
+      "id": "residentialGroup907",
+      "description": "V Wohnhausgruppe 907",
+      "buildings": [
+        {"id": "220134837", "boundingBox": [13.3583343029,52.5960056342,13.3594192564,52.5961693743], "desription": "Wilhelmsruher Damm 103–109"},
+        {"id": "29128247",  "boundingBox": [13.3581063151,52.5960040049,13.3583463728,52.5962557245], "desription": "Wilhelmsruher Damm 111"},
+        {"id": "220134857", "boundingBox": [13.3552095294,52.5960520680,13.3583343029,52.5963942104], "desription": "Wilhelmsruher Damm 113-125"},
+        {"id": "136021208", "boundingBox": [13.3551934361,52.5961807790,13.3553986251,52.5963208944], "desription": "Wilhelmsruher Damm 127"},
+        {"id": "136021209", "boundingBox": [13.3551800251,52.5963103043,13.3555528522,52.5964015420], "desription": "Wilhelmsruher Damm 127"},
+        {"id": "699167745", "boundingBox": [13.3538375795,52.5964153905,13.3555407822,52.5975281489], "desription": "Wilhelmsruher Damm 129"},
+        {"id": "220134858", "boundingBox": [13.3552725613,52.5955689910,13.3555300534,52.5960602143], "desription": "Wilhelmsruher Damm 131-133"},
+        {"id": "731619119", "boundingBox": [13.3548876643,52.5955307031,13.3553248644,52.5956846693], "desription": "Wilhelmsruher Damm 135"},
+        {"id": "731619120", "boundingBox": [13.3544611931,52.5955087078,13.3548983932,52.5956618595], "desription": "Wilhelmsruher Damm 137"},
+        {"id": "731619121", "boundingBox": [13.3540347219,52.5954867126,13.3544732630,52.5956398644], "desription": "Wilhelmsruher Damm 139"},
+        {"id": "731619122", "boundingBox": [13.3536082506,52.5954639027,13.3539260924,52.5956178692], "desription": "Wilhelmsruher Damm 141"},
+        {"id": "731619126", "boundingBox": [13.3531817794,52.5954410928,13.3536203206,52.5955950594], "desription": "Wilhelmsruher Damm 143"},
+        {"id": "731619127", "boundingBox": [13.3527539670,52.5954182829,13.3531938493,52.5955722496], "desription": "Wilhelmsruher Damm 145"},
+        {"id": "731619134", "boundingBox": [13.3523288369,52.5953946584,13.3527660370,52.5955494397], "desription": "Wilhelmsruher Damm 147"},
+        {"id": "220134843", "boundingBox": [13.3518996835,52.5953718484,13.3523395658,52.5955266299], "desription": "Wilhelmsruher Damm 149"},
+        {"id": "731619125", "boundingBox": [13.3514718711,52.5953498531,13.3519117534,52.5955038200], "desription": "Wilhelmsruher Damm 151"},
+        {"id": "731619124", "boundingBox": [13.3510467410,52.5953286725,13.3514839411,52.5954810101], "desription": "Wilhelmsruher Damm 153"},
+        {"id": "731619135", "boundingBox": [13.3506202698,52.5953058625,13.3510574698,52.5954582003], "desription": "Wilhelmsruher Damm 155"},
+        {"id": "220134854", "boundingBox": [13.3504150808,52.5953115650,13.3506605029,52.5955714349], "desription": "Wilhelmsruher Damm 157"}
+      ]
+    },
+    {
+      "id": "residentialGroup924",
+      "description": "W Wohnhausgruppe 924",
+      "buildings": [
+        {"id": "26655224", "boundingBox": [13.3464011550,52.5910369317,13.3466546237,52.5911974315], "description": "Dannenwalder Weg 70"},
+        {"id": "26655223", "boundingBox": [13.3464346826,52.5905839445,13.3478857577,52.5913294157], "description": "Dannenwalder Weg 70–72c"}
+      ]
+    },
+    {
+      "id": "residentialGroup928",
+      "description": "X Wohnhausgruppe 928",
+      "buildings": [
+        {"id": "220518988", "boundingBox": [13.3582136035,52.5917734335,13.3594635129,52.5923355780], "decsdcription": "Dannenwalder Weg 156-162 / Tramper Weg 1"},
+        {"id": "72597236",  "boundingBox": [13.3583919704,52.5915999004,13.3588224649,52.5917799511], "decsdcription": "Tramper Weg 3"},
+        {"id": "72597565",  "boundingBox": [13.3593079448,52.5916414507,13.3605444431,52.5920113274], "decsdcription": "Dannenwalder Weg 164-168"},
+        {"id": "78140118",  "boundingBox": [13.3606718481,52.5918769012,13.3612914383,52.5927991381], "decsdcription": "Dannenwalder Weg 170-172"},
+        {"id": "78140036",  "boundingBox": [13.3615757525,52.5930109566,13.3624354005,52.5941539439], "decsdcription": "Dannenwalder Weg 174-178"},
+        {"id": "72597225",  "boundingBox": [13.3608086407,52.5929245999,13.3610258996,52.5930647257], "decsdcription": "Dannenwalder Weg 182"},
+        {"id": "72597228",  "boundingBox": [13.3610849082,52.5934345904,13.3613437414,52.5937237997], "decsdcription": "Dannenwalder Weg 184"},
+        {"id": "72597231",  "boundingBox": [13.3611452579,52.5939584243,13.3613987267,52.5942476301], "decsdcription": "Dannenwalder Weg 186"}
+      ]
+    },
+    {
+      "id": "residentialGroup980",
+      "description": "Y Wohnhausgruppe 980",
+      "buildings": [
+        {"id": "39036042", "boundingBox": [13.3531174064,52.5966882878,13.3536337316,52.5974287675], "decscription": "Wilhelmsruher Damm 142"},
+        {"id": "27264121", "boundingBox": [13.3521813154,52.5967192432,13.3529376984,52.5971403973], "decscription": "Wilhelmsruher Damm 144-144b"}
+      ]
+    },
+    {
+      "id": "residentialGroup936",
+      "description": "Z Wohnhausgruppe 936",
+      "buildings": [
+        {"id": "328774933", "boundingBox": [13.3656151593,52.5957351766,13.3666169643,52.5964015420], "description": "Wilhelmsruher Damm 65–79"}
+      ]
+    }
+  ],
+  "privatizationObjects": [
+    {
+      "id": "residentialGroup902",
+      "description": "I Wohnhausgruppe 902",
+      "buildings": [
+        {"id": "40917186",  "boundingBox": [13.3308738470,52.6031053630,13.3314920962,52.6039475446], "description": "Wittenauer Straße 1-5"},
+        {"id": "393600988", "boundingBox": [13.3307665586,52.6039084495,13.3310709894,52.6043384937], "description": "Wittenauer Straße 7"},
+        {"id": "40936072",  "boundingBox": [13.3318649232,52.6042073633,13.3321881294,52.6047172224], "description": "Bernshausener Ring 3-5"},
+        {"id": "40936074",  "boundingBox": [13.3326749504,52.6043792174,13.3330571651,52.6048858167], "description": "Bernshausener Ring 7-9"},
+        {"id": "40936075",  "boundingBox": [13.3335641026,52.6044940579,13.3339570463,52.6050030993], "description": "Bernshausener Ring 11-13"},
+        {"id": "40936076",  "boundingBox": [13.3345068991,52.6045421117,13.3348904550,52.6050519670], "description": "Bernshausener Ring 15-17"},
+        {"id": "40916795",  "boundingBox": [13.3322229981,52.6032641896,13.3339127898,52.6042684489], "description": "Bernshausener Ring 2-20"},
+        {"id": "40916794",  "boundingBox": [13.3332610130,52.6034849169,13.3346611261,52.6041527933], "description": "Bernshausener Ring 11-23"},
+        {"id": "32036219",  "boundingBox": [13.3351559937,52.6042423857,13.3362838626,52.6051334129], "description": "Bernshausener Ring 25-41"}
+      ]
+    },
+    {
+      "id": "residentialGroup904",
+      "description": "II Wohnhausgruppe 904",
+      "buildings": [
+        {"id": "48459540",  "boundingBox": [13.3397144079,52.5980999946,13.3403474092,52.5982596540], "description": "Finsterwalder Straße 20-22"},
+        {"id": "48459541",  "boundingBox": [13.3395011723,52.5982677998,13.3400148153,52.5987402576], "description": "Finsterwalder Straße 20-28"},
+        {"id": "48458917",  "boundingBox": [13.3402991295,52.5982498789,13.3406384289,52.5987036015], "description": "Finsterwalder Straße 30-32"},
+        {"id": "48459542",  "boundingBox": [13.3398431540,52.5987695824,13.3401851356,52.5992249287], "description": "Finsterwalder Straße 34-36"},
+        {"id": "293130365", "boundingBox": [13.3400590718,52.5991768691,13.3407121897,52.5993348954], "description": "Finsterwalder Straße 38-40"},
+        {"id": "293130360", "boundingBox": [13.3407068253,52.5990612001,13.3409455419,52.5992868359], "description": "Finsterwalder Straße 42"},
+        {"id": "293130359", "boundingBox": [13.3408476412,52.5988485963,13.3411011100,52.5990766769], "description": "Finsterwalder Straße 44"},
+        {"id": "293130356", "boundingBox": [13.3409388363,52.5986221436,13.3411936462,52.5988608149], "description": "Finsterwalder Straße 46"},
+        {"id": "48457972",  "boundingBox": [13.3406545222,52.5994196103,13.3408597112,52.5996183637], "description": "Finsterwalder Straße 48"},
+        {"id": "293130367", "boundingBox": [13.3408288658,52.5994676696,13.3416952193,52.5997381041], "description": "Finsterwalder Straße 50 / Eichhorster Weg 41-43"},
+        {"id": "48458916",  "boundingBox": [13.3412365615,52.5984022064,13.3420814574,52.5986677601], "description": "Eichhorster Weg 27-29a"},
+        {"id": "293130362", "boundingBox": [13.3424730599,52.5988306756,13.3427090943,52.5990383921], "description": "Eichhorster Weg 31"},
+        {"id": "293130363", "boundingBox": [13.3418534696,52.5989349412,13.3424784243,52.5990945975], "description": "Eichhorster Weg 33-35"},
+        {"id": "293130357", "boundingBox": [13.3416844904,52.5990326900,13.3419366181,52.5992689154], "description": "Eichhorster Weg 33"},
+        {"id": "293130358", "boundingBox": [13.3415919542,52.5992542532,13.3418440819,52.5994823317], "description": "Eichhorster Weg 39"}
+      ]
+    },
+    {
+      "id": "residentialGroup903",
+      "description": "III Wohnhausgruppe 903",
+      "buildings": [
+        {"id": "39267799",  "boundingBox": [13.3440314233,52.5956553424,13.3473949134,52.5960431071], "description": "Wilhelmsruher Damm 187-203"},
+        {"id": "220376465", "boundingBox": [13.3432643116,52.5955461812,13.3436076343,52.5956789669], "description": "Wilhelmsruher Damm 205"},
+        {"id": "39254028",  "boundingBox": [13.3428512514,52.5955461812,13.3432736993,52.5957278449], "description": "Wilhelmsruher Damm 207"},
+        {"id": "220376489", "boundingBox": [13.3429142833,52.5954810101,13.3431369066,52.5956007618], "description": "Wilhelmsruher Damm 207"},
+        {"id": "220376454", "boundingBox": [13.3427815139,52.5956121667,13.3429397643,52.5957530986], "description": "Wilhelmsruher Damm 207"},
+        {"id": "220376477", "boundingBox": [13.3417877555,52.5955347763,13.3427949250,52.5957058498], "description": "Wilhelmsruher Damm 209-213"},
+        {"id": "220376468", "boundingBox": [13.3414055407,52.5954793809,13.3417958021,52.5957180693], "description": "Wilhelmsruher Damm 215"},
+        {"id": "220376456", "boundingBox": [13.3413049579,52.5955673617,13.3415329456,52.5956822254], "description": "Wilhelmsruher Damm 215"},
+        {"id": "220376488", "boundingBox": [13.3410729468,52.5955763227,13.3413089812,52.5957034059], "description": "Wilhelmsruher Damm 215"}
+      ]
+    },
+    {
+      "id": "residentialGroup901",
+      "description": "IV Wohnhausgruppe 901",
+      "buildings": [
+        {"id": "220376473", "boundingBox": [13.3481043577,52.5907085979,13.3484329283,52.5915779032], "description": "Dannenwalder Weg 74–82"},
+        {"id": "220376455", "boundingBox": [13.3484798670,52.5915233176,13.3494722843,52.5916634478], "description": "Dannenwalder Weg 84-88"},
+        {"id": "78140204",  "boundingBox": [13.3494642377,52.5915143557,13.3496667445,52.5916064181], "description": "Dannenwalder Weg 90"},
+        {"id": "220376459", "boundingBox": [13.3496493101,52.5911151449,13.3499443531,52.5916691508], "description": "Dannenwalder Weg 92"},
+        {"id": "220376487", "boundingBox": [13.3497579396,52.5916650772,13.3499577641,52.5918728277], "description": "Dannenwalder Weg 94"},
+        {"id": "220376482", "boundingBox": [13.3499336243,52.5911892843,13.3501991630,52.5912813474], "description": "Dannenwalder Weg 94"},
+        {"id": "220376480", "boundingBox": [13.3499161899,52.5911224774,13.3512827754,52.5920023656], "description": "Dannenwalder Weg 96-110"},
+        {"id": "548184316", "boundingBox": [13.3513283730,52.5919274129,13.3515603840,52.5919925892], "description": "Parkhaus"},
+        {"id": "548184315", "boundingBox": [13.3515603840,52.5919062306,13.3522577584,52.5920308803], "description": "Parkhaus"},
+        {"id": "57933362",  "boundingBox": [13.3523999155,52.5913758544,13.3526855707,52.5917766923], "description": "Dannenwalder Weg 112-114"},
+        {"id": "57933359",  "boundingBox": [13.3524227142,52.5917701746,13.3530007303,52.5920683566], "description": "Dannenwalder Weg 116-118"},
+        {"id": "57933392",  "boundingBox": [13.3529685438,52.5919909598,13.3532501757,52.5921156092], "description": "Dannenwalder Weg 120"},
+        {"id": "57933361",  "boundingBox": [13.3532314003,52.5920276214,13.3535143733,52.5921530855], "description": "Dannenwalder Weg 122"},
+        {"id": "57933379",  "boundingBox": [13.3535023034,52.5920219185,13.3537812531,52.5921433091], "description": "Dannenwalder Weg 124"},
+        {"id": "72598410",  "boundingBox": [13.3538375795,52.5912634236,13.3543311059,52.5921278298], "description": "Dannenwalder Weg 126-134"}
+      ]
+    },
+    {
+      "id": "tenantCooperativeMax",
+      "description": "V Mietergenossenschaft „maX“",
+      "buildings": [
+        {"id": "220257274", "boundingBox": [13.3544397354,52.6052792009,13.3560383320,52.6057654286], "description": "Senftenberger Ring 48"},
+        {"id": "37198642",  "boundingBox": [13.3552873135,52.6055772909,13.3560061455,52.6064104661], "description": "Senftenberger Ring 48a-d"},
+        {"id": "220257252", "boundingBox": [13.3549171686,52.6067549708,13.3553342521,52.6070481642], "description": "Senftenberger Ring 48e"},
+        {"id": "220257274", "boundingBox": [13.3544397354,52.6052792009,13.3560383320,52.6057654286], "description": "Senftenberger Ring 50-50b"},
+        {"id": "545504651", "boundingBox": [13.3539703488,52.6052352202,13.3541755378,52.6053663476], "description": "Senftenberger Ring 50c"},
+        {"id": "37198619",  "boundingBox": [13.3532287180,52.6051513310,13.3539260924,52.6062125579], "description": "Senftenberger Ring 52-52d"}
+      ]
+    },
+    {
+      "id": "degewo1",
+      "description": "VI Degewo",
+      "buildings": [
+        {"id": "220095361", "boundingBox": [13.3505558968,52.6022338429,13.3507221937,52.6022867862], "description": "Senftenberger Ring 80"},
+        {"id": "220095364", "boundingBox": [13.3505384624,52.6021963752,13.3507597446,52.6022802701], "description": "Senftenberger Ring 80"},
+        {"id": "220095326", "boundingBox": [13.3505290747,52.6020228835,13.3508589864,52.6022199961], "description": "Senftenberger Ring 80"},
+        {"id": "9535864",   "boundingBox": [13.3502313495,52.6019569076,13.3506216109,52.6022843426], "description": "Senftenberger Ring 80"},
+        {"id": "37198582",  "boundingBox": [13.3507463336,52.6018860445,13.3510950208,52.6020913029], "description": "Senftenberger Ring 82"},
+        {"id": "220095348", "boundingBox": [13.3507610857,52.6014160642,13.3513149619,52.6019112945], "description": "Senftenberger Ring 84-86"},
+        {"id": "9535863",   "boundingBox": [13.3504928648,52.6015529048,13.3508670330,52.6018787138], "description": "Senftenberger Ring 84 // Ignored because it causes flickering", "ignore": "true" },
+        {"id": "9535862",   "boundingBox": [13.3506591618,52.6012556019,13.3511339128,52.6015072913], "description": "Senftenberger Ring 86 // Ignored because it causes flickering", "ignore": "true"},
+        {"id": "220095328", "boundingBox": [13.3512009680,52.6012759652,13.3516609669,52.6014910008], "description": "Senftenberger Ring 88"},
+        {"id": "9535861",   "boundingBox": [13.3510749042,52.6011081715,13.3516596258,52.6013077319], "description": "Senftenberger Ring 88 // Ignored because it causes flickering", "ignore": "true"},
+        {"id": "220095332", "boundingBox": [13.3516193926,52.6012702635,13.3520016074,52.6014242095], "description": "Senftenberger Ring 90"},
+        {"id": "9535860",   "boundingBox": [13.3517427742,52.6010682593,13.3522832394,52.6013093609], "description": "Senftenberger Ring 90 // Ignored because it causes flickering", "ignore": "true"},
+        {"id": "220095334", "boundingBox": [13.3519399166,52.6013093609,13.3523690701,52.6015048477], "description": "Senftenberger Ring 92"},
+        {"id": "220095330", "boundingBox": [13.3521772921,52.6014290967,13.3524253964,52.6015822277], "description": "Senftenberger Ring 92"},
+        {"id": "220095325", "boundingBox": [13.3523690701,52.6012922558,13.3527351916,52.6015903729], "description": "Senftenberger Ring 92"},
+        {"id": "3395188370816195", "boundingBox": [13.3525340259,52.6015700098,13.3526346087,52.6016310991], "description": "Senftenberger Ring 92"}
+      ]
+    },
+    {
+      "id": "degewo2",
+      "description": "VII Degewo",
+      "buildings": [
+        {"id": "919827634", "boundingBox": [13.3572855592,52.5915779032,13.3576074243,52.5917278098], "description": "Tramper Weg 6"},
+        {"id": "919827635", "boundingBox": [13.3573378623,52.5914434757,13.3576637506,52.5915958269], "description": "Tramper Weg 6"},
+        {"id": "78140031",  "boundingBox": [13.3551773429,52.5912976417,13.3558103442,52.5921848588], "description": "Dannenwalder Weg 136-144"},
+        {"id": "220376462", "boundingBox": [13.3557902277,52.5920096980,13.3568859100,52.5922345554], "description": "Dannenwalder Weg 146-152"}
+      ]
+    }
+  ],
+  "buildingsWithoutResidentialUse": [
+    {
+      "id": "fontanehaus",
+      "description": "Fontanehaus",
+      "buildings": [
+        {"id": "49223741", "boundingBox": [13.3518674970,52.5975346657,13.3527955413,52.5983069000], "description": "Königshorster Str. 6"}
+      ]
+    },
+    {
+      "id": "postalOffice",
+      "description": "Post",
+      "buildings": [
+        {"id": "27264120", "boundingBox": [13.3502729237,52.5965302520,13.3507932723,52.5966972485], "description": "Senftenberger Ring 17"}
+      ]
+    },
+    {
+      "id": "school.lauterbach",
+      "description": "Lauterbach-Grundschule",
+      "buildings": [
+        {"id": "37198655",  "boundingBox": [13.3593307436,52.6031672647,13.3598349988,52.6040208478], "description": "Senftenberger Ring 41"}
+      ]
+    },
+    {
+      "id": "school.vonArnim",
+      "description": "Bettina-von-Arnim Oberschule",
+      "buildings": [
+        {"id": "37198655",  "boundingBox": [13.3593307436,52.6031672647,13.3598349988,52.6040208478], "description": "Senftenberger Ring 49"},
+        {"id": "27263353",  "boundingBox": [13.3540669084,52.6033016563,13.3543565869,52.6036641042], "description": "Senftenberger Ring 49"},
+        {"id": "27263355",  "boundingBox": [13.3545067906,52.6033529693,13.3553047478,52.6036437421], "description": "Senftenberger Ring 49"},
+        {"id": "27263356",  "boundingBox": [13.3555085957,52.6033122447,13.3564111590,52.6037781322], "description": "Senftenberger Ring 49"},
+        {"id": "27263357",  "boundingBox": [13.3543190360,52.6030206553,13.3547146618,52.6032039170], "description": "Senftenberger Ring 49"},
+        {"id": "21276951",  "boundingBox": [13.3552068472,52.6030206553,13.3556038141,52.6032519722], "description": "Senftenberger Ring 49"},
+        {"id": "27263360",  "boundingBox": [13.3544826508,52.6025490582,13.3548849821,52.6028170302], "description": "Senftenberger Ring 49"},
+        {"id": "27263358",  "boundingBox": [13.3551585674,52.6025832675,13.3555582166,52.6028528683], "description": "Senftenberger Ring 49"},
+        {"id": "27263359",  "boundingBox": [13.3545041084,52.6022411735,13.3556413651,52.6024586479], "description": "Senftenberger Ring 49"}
+      ]
+    },
+    {
+      "id": "school.maerkische",
+      "description": "Märkische Grundschule",
+      "buildings": [
+        {"id": "15330439",  "boundingBox": [13.3594782650,52.5946851011,13.3606021106,52.5954736784], "description": "Dannenwalder Weg 65"},
+        {"id": "1543198963811485", "boundingBox": [13.3602748811,52.5952757208,13.3603593707,52.5954362050], "description": "Dannenwalder Weg 65"},
+        {"id": "3478182075035495", "boundingBox": [13.3604116738,52.5952838672,13.3605055511,52.5954598295], "description": "Dannenwalder Weg 65"},
+        {"id": "220134850", "boundingBox": [13.3594956994,52.5946793985,13.3606007695,52.5954614588], "description": "Dannenwalder Weg 65"},
+        {"id": "77968672",  "boundingBox": [13.3589632809,52.5946696227,13.3592556417,52.5949270525], "description": "Dannenwalder Weg 65"},
+        {"id": "919827626", "boundingBox": [13.3596807718,52.5945881572,13.3597894013,52.5946728813], "description": "Dannenwalder Weg 65"},
+        {"id": "919827625", "boundingBox": [13.3598390222,52.5945457952,13.3599624038,52.5946867304], "description": "Dannenwalder Weg 65"},
+        {"id": "919827627", "boundingBox": [13.3592435718,52.5949857071,13.3594192564,52.5954801955], "description": "Dannenwalder Weg 65"},
+        {"id": "220134853", "boundingBox": [13.3598309755,52.5951804075,13.3599811792,52.5953677752], "description": "Dannenwalder Weg 65"},
+        {"id": "1132990107",       "boundingBox": [13.3595292270,52.5953303018,13.3599355817,52.5955518836], "description": "Dannenwalder Weg 65"}
+      ]
+    },
+    {
+      "id": "school.vonArnim",
+      "description": "3 Schule",
+      "buildings": [
+        {"id": "49220322",  "boundingBox": [13.3634492755,52.5973741891,13.3636853099,52.5977578656], "description": "Wilhelmsruher Damm 96 / Tanzschule Peter Steirl"},
+        {"id": "49220321",  "boundingBox": [13.3638824522,52.5974426157,13.3643558621,52.5977594948], "description": "Wilhelmsruher Damm 96 / Tanzschule Peter Steirl"}
+      ]
+    },
+    {
+      "id": "school.steirl",
+      "description": "Tanzschule Peter Steirl",
+      "buildings": [
+        {"id": "49220322",  "boundingBox": [13.3634492755,52.5973741891,13.3636853099,52.5977578656], "description": "Wilhelmsruher Damm 96 / Tanzschule Peter Steirl"},
+        {"id": "49220321",  "boundingBox": [13.3638824522,52.5974426157,13.3643558621,52.5977594948], "description": "Wilhelmsruher Damm 96 / Tanzschule Peter Steirl"}
+      ]
+    },
+    {
+      "id": "school.chaplin",
+      "description": "Charlie-Chaplin-Grundschule",
+      "buildings": [
+        {"id": "380790",    "boundingBox": [13.3646187186,52.5974018856,13.3649124205,52.5978922738], "description": "Wilhelmsruher Damm 94"}
+      ]
+    },
+    {
+      "id": "school.hort",
+      "description": "EKT - Hort im Märkischen Viertel e.V.",
+      "buildings": [
+        {"id": "164827912", "boundingBox": [13.3647944033,52.6000704431,13.3649124205,52.6001958841], "description": "Senftenberger Ring 29"}
+      ]
+    },
+    {
+      "id": "school.waldorf",
+      "description": "Waldorfschule Märkisches Viertel Berlin",
+      "buildings": [
+        {"id": "454421",    "boundingBox": [13.3628444374,52.6000940651,13.3649124205,52.6007318553], "description": "Treuenbrietzener Straße 28"},
+        {"id": "905346123939575", "boundingBox": [13.3636142313,52.6004296595,13.3637630939,52.6005094850], "description": "Treuenbrietzener Straße 28"},
+        {"id": "896126262", "boundingBox": [13.3646656573,52.6006797246,13.3648158610,52.6007383716], "description": "Treuenbrietzener Straße 28"},
+        {"id": "164827911", "boundingBox": [13.3644215763,52.6007986476,13.3648627996,52.6009599261], "description": "Treuenbrietzener Straße 28"},
+        {"id": "52722130",  "boundingBox": [13.3638180792,52.6005477686,13.3641211689,52.6008678834], "description": "Treuenbrietzener Straße 28"}
+      ]
+    },
+    {
+      "id": "school.atrium",
+      "description": "Jungendkunstschule ATRIUM",
+      "buildings": [
+        {"id": "687383617", "boundingBox": [13.3535733819,52.6018143667,13.3536484838,52.6018705686], "description": "Senftenberger Ring 97"},
+        {"id": "687383618", "boundingBox": [13.3537262678,52.6017809713,13.3539207280,52.6018998913], "description": "Senftenberger Ring 97"},
+        {"id": "687383619", "boundingBox": [13.3533480763,52.6016555349,13.3536471426,52.6018216974], "description": "Senftenberger Ring 97"}
+      ]
+    },
+    {
+      "id": "school.mann",
+      "description": "Thomas-Mann-Oberschule",
+      "buildings": [
+        {"id": "59892",            "boundingBox": [13.3516609669,52.5982979395,13.3527620137,52.5993014981], "description": "Königshorster Straße 10"},
+        {"id": "42273661",         "boundingBox": [13.3510453999,52.5978776111,13.3517642319,52.5984510814], "description": "Königshorster Straße 10"},
+        {"id": "1708124233423515", "boundingBox": [13.3509434760,52.5984755189,13.3511996269,52.5992257433], "description": "Königshorster Straße 10"},
+        {"id": "4838879431355435", "boundingBox": [13.3512224257,52.5987972780,13.3513176441,52.5988852522], "description": "Königshorster Straße 10"},
+        {"id": "4785148840957835", "boundingBox": [13.3512599766,52.5986710184,13.3513297141,52.5987321118], "description": "Königshorster Straße 10"},
+        {"id": "1299396885140825", "boundingBox": [13.3513578773,52.5988037946,13.3514490724,52.5988917688], "description": "Königshorster Straße 10"},
+        {"id": "2815196580660665", "boundingBox": [13.3513739705,52.5986645017,13.3514665067,52.5987516616], "description": "Königshorster Straße 10"}
+      ]
+    },
+    {
+      "id": "school.peckwisch",
+      "description": "Grundschule an der Peckwisch",
+      "buildings": [
+        {"id": "67266858",         "boundingBox": [13.3472929895,52.5919200806,13.3484329283,52.5930305090], "description": "Tornower Weg 26-34"},
+        {"id": "477747695",        "boundingBox": [13.3471816778,52.5915616090,13.3479514718,52.5918923806], "description": "Tornower Weg 26-34"},
+        {"id": "694365430416185",  "boundingBox": [13.3475182950,52.5921734530,13.3476094902,52.5922581817], "description": "Tornower Weg 26-34"},
+        {"id": "3357599798532495", "boundingBox": [13.3472701907,52.5921335327,13.3474297822,52.5922011528], "description": "Tornower Weg 26-34"},
+        {"id": "2740027111469395", "boundingBox": [13.3474217355,52.5920422861,13.3476094902,52.5921310886], "description": "Tornower Weg 26-34"},
+        {"id": "4723051790260435", "boundingBox": [13.3470690250,52.5918663100,13.3472500741,52.5919551128], "description": "Tornower Weg 26-34"}
+      ]
+    },
+    {
+      "id": "school.chamisso",
+      "description": "Chamisso-Grundschule",
+      "buildings": [
+        {"id": "7790945",   "boundingBox": [13.3575470746,52.6016123651,13.3586668968,52.6024513173], "description": "Senftenberger Ring 27"},
+        {"id": "277206135", "boundingBox": [13.3587031066,52.6018485765,13.3591094613,52.6020913029], "description": "Senftenberger Ring 27"}
+      ]
+    },
+    {
+      "id": "school.todo",
+      "description": "Schule (TODO)",
+      "buildings": [
+        {"id": "206178430", "boundingBox": [13.3542144299,52.6018102941,13.3545322716,52.6021222544], "description":  "???"},
+        {"id": "687383615", "boundingBox": [13.3540964127,52.6015561629,13.3546046913,52.6016897448], "description":  "???"},
+        {"id": "687383616", "boundingBox": [13.3541406691,52.6012572310,13.3550767601,52.6016661237], "description":  "???"},
+        {"id": "50838597",  "boundingBox": [13.3538375795,52.6014307257,13.3541661501,52.6017540921], "description":  "???"},
+        {"id": "50838601",  "boundingBox": [13.3538965881,52.6011448255,13.3542908728,52.6014331693], "description":  "???"}
+      ]
+    },
+    {
+      "id": "dayCareCenter.municipal",
+      "description": "Städtische Kita",
+      "buildings": [
+        {"id": "49220411",  "boundingBox": [13.3631756902,52.5973481218,13.3633916080,52.5976845519], "description": "Wilhelmsruher Damm 98"},
+        {"id": "220257265", "boundingBox": [13.3628739417,52.5976641869,13.3633553982,52.5978442127], "description": "Wilhelmsruher Damm 98"}
+      ]
+    },
+    {
+      "id": "dayCareCenter.schlitzer",
+      "description": "Kita Schlitzer Straße",
+      "buildings": [
+        {"id": "79675381",  "boundingBox": [13.3445960283,52.6038457343,13.3452075720,52.6042399423], "description": "Schlitzer Straße 97"}
+      ]
+    },
+    {
+      "id": "dayCareCenter.kruemelkiste",
+      "description": "Kita Krümelkiste",
+      "buildings": [
+        {"id": "37198703",  "boundingBox": [13.3566632867,52.6054901445,13.3568832278,52.6057572841], "description": "Senftenberger Ring 46a"},
+        {"id": "545499541", "boundingBox": [13.3566445112,52.6052857165,13.3569113910,52.6054999180], "description": "Senftenberger Ring 46a"},
+        {"id": "545499527", "boundingBox": [13.3568832278,52.6054233594,13.3569476008,52.6055039902], "description": "Senftenberger Ring 46a"},
+        {"id": "220134832", "boundingBox": [13.3563856781,52.6057483252,13.3568443358,52.6059503077], "description": "Senftenberger Ring 46a"}
+      ]
+    },
+    {
+      "id": "dayCareCenter.horizonte",
+      "description": "Kita Horizonte Kids",
+      "buildings": [
+        {"id": "567697457339395", "boundingBox": [13.3571554720,52.6050812875,13.3572627604,52.6051342274], "description": "Sentenberger Ring 47"}
+      ]
+    },
+    {
+      "id": "dayCareCenter.senftenberger",
+      "description": "Kita Senftenberger Ring",
+      "buildings": [
+        {"id": "206178428", "boundingBox": [13.3534191549,52.6005453250,13.3539260924,52.6009827331], "description": "Senftenberger Ring 99"}
+      ]
+    },
+    {
+      "id": "dayCareCenter.kinderinsel",
+      "description": "Kinderinsel",
+      "buildings": [
+        {"id": "220376471", "boundingBox": [13.3568657935,52.5919705922,13.3576087654,52.5921742677], "description": "Tramper Weg 6"}
+      ]
+    },
+    {
+      "id": "dayCareCenter.lavita",
+      "description": "Kita La Vita",
+      "buildings": [
+        {"id": "293130361", "boundingBox": [13.3424650133,52.5984201273,13.3429397643,52.5986384352], "description": "Eichhorster Weg 23"}
+      ]
+    },
+    {
+      "id": "dayCareCenter.stmartin",
+      "description": "Kita Sankt Martin",
+      "buildings": [
+        {"id": "363763451", "boundingBox": [13.3522363007,52.5970678972,13.3525836468,52.5972968017], "description": "Königshorster Straße 2"},
+        {"id": "363763458", "boundingBox": [13.3516435325,52.5971086276,13.3522550762,52.5972821389], "description": "Königshorster Straße 4"}
+      ]
+    },
+    {
+      "id": "dayCareCenter.tornower",
+      "description": "Kita Tornower Weg",
+      "buildings": [
+        {"id": "362283450", "boundingBox": [13.3484181762,52.5949653409,13.3491571248,52.5952423204], "description": "Tornower Weg 8"}
+      ]
+    },
+    {
+      "id": "dayCareCenter.regenbogen",
+      "description": "Evangelische Kita Regenbogen",
+      "buildings": [
+        {"id": "512374623", "boundingBox": [13.3593951166,52.6023739389,13.3601890504,52.6026028157], "description": "Senftenberger Ring 29"},
+        {"id": "512374619", "boundingBox": [13.3596137166,52.6021393593,13.3597129583,52.6021849721], "description": "Senftenberger Ring 29"}
+      ]
+    },
+    {
+      "id": "dayCareCenter.senftenberger34",
+      "description": "Kita Senftenberger Ring 34-34a",
+      "buildings": [
+        {"id": "277206136", "boundingBox": [13.3622087538,52.6028585698,13.3630603552,52.6030190263], "description": "Senftenberger Ring 34"},
+        {"id": "466665345", "boundingBox": [13.3630482852,52.6028764889,13.3634747565,52.6030744121], "description": "Senftenberger Ring 34a"}
+      ]
+    },
+    {
+      "id": "youthRecreationCenter.tsvBerlinWittenau1896",
+      "description": "TSV Berlin Wittenau 1896 e.V.",
+      "buildings": [
+        {"id": "80534551",  "boundingBox": [13.3539126813,52.6039068205,13.3549734950,52.6047196658], "description": "Senftenberger Ring 63"}
+      ]
+    },
+    {
+      "id": "youthRecreationCenter.formNaturfreunde",
+      "description": "Forum NaturFreundeJugend Berlin e.V.",
+      "buildings": [
+        {"id": "25683838",  "boundingBox": [13.3500637114,52.5973497510,13.3506095409,52.5977725283], "description": "Königshorster Straße 9"},
+        {"id": "261835598", "boundingBox": [13.3504673839,52.5973497510,13.3506350219,52.5977098044], "description": "Königshorster Straße 9"},
+        {"id": "261835599", "boundingBox": [13.3499470353,52.5976935125,13.3502219617,52.5978116289], "description": "Königshorster Straße 9"},
+        {"id": "3912515278085905", "boundingBox": [13.3497592807,52.5978075559,13.3498732746,52.5978857570], "description": "Königshorster Straße 9"}
+      ]
+    },
+    {
+      "id": "youthRecreationCenter.flotteLotte",
+      "description": "Flotte Lotte",
+      "buildings": [
+        {"id": "60108643",  "boundingBox": [13.3569556475,52.6010226454,13.3573257923,52.6012295369], "description": "Senftenberger Ring 25"},
+        {"id": "466886662", "boundingBox": [13.3572761714,52.6013272806,13.3573338389,52.6013696361], "description": "Senftenberger Ring 25"}
+      ]
+    },
+    {
+      "id": "youthRecreationCenter.ymcaYouthHouse",
+      "description": "CVJM Jugendhaus Märkisches Viertel",
+      "buildings": [
+        {"id": "72545197",  "boundingBox": [13.3638516068,52.5944439631,13.3642297983,52.5945677909], "description": "Tiefenseer Straße 13a"}
+      ]
+    },
+    {
+      "id": "church.johannes",
+      "description": "Evangelisch Apostolische Johannes Gemeinde",
+      "buildings": [
+        {"id": "77968541",  "boundingBox": [13.3596204221,52.5955372202,13.3602668345,52.5959339468], "description": "Dannenwalder Weg 167"}
+      ]
+    },
+    {
+      "id": "church.al-kzyr",
+      "description": "Al-Kzyr Moschee",
+      "buildings": [
+        {"id": "293130353", "boundingBox": [13.3430363238,52.5985577917,13.3434292674,52.5987777281], "description": "Eichhorster Weg 25"}
+      ]
+    },
+    {
+      "id": "church.seggeluchbecken",
+      "description": "Evangelische Kirchengemeinde am Seggeluchbecken",
+      "buildings": [
+        {"id": "9535800",   "boundingBox": [13.3485603333,52.6027331364,13.3493234217,52.6030084378], "description": "Finsterwalder Straße"},
+        {"id": "50286996",  "boundingBox": [13.3491973579,52.6026541295,13.3496667445,52.6030744121], "description": "Finsterwalder Straße"},
+        {"id": "9535799",   "boundingBox": [13.3491973579,52.6026117752,13.3496707678,52.6030744121], "description": "Finsterwalder Straße"}
+      ]
+    },
+    {
+      "id": "church.stmartin",
+      "description": "Sankt Martin Kirche",
+      "buildings": [
+        {"id": "363763450", "boundingBox": [13.3524025977,52.5970801163,13.3528853953,52.5974466888], "description": "Wilhelmsruher Damm 144"}
+      ]
+    },
+    {
+      "id": "church.felsen",
+      "description": "Evangelische Felsen-Kirchengemeinde",
+      "buildings": [
+        {"id": "291687008", "boundingBox": [13.3391296864,52.6011660034,13.3394569159,52.6013272806], "description": "Eichhorster Weg 46"}
+      ]
+    },
+    {
+      "id": "seniorCenter.vitanas",
+      "description": "Vitanas Senioren Centrum",
+      "buildings": [
+        {"id": "37198660",  "boundingBox": [13.3552363515,52.6040037437,13.3566364646,52.6050829165], "description": "Sentenberger Ring 51"}
+      ]
+    },
+    {
+      "id": "seniorCenter.alloheim",
+      "description": "Alloheim Senioren-Residenz Märkisches Viertel",
+      "buildings": [
+        {"id": "12194631",  "boundingBox": [13.3562891185,52.5968894975,13.3573123813,52.5974426157], "description": "Senftenberger Ring 2a"}
+      ]
+    },
+    {
+      "id": "swimmingHall.public",
+      "description": "Stadtbad Märkisches Viertel",
+      "buildings": [
+        {"id": "37142666",  "boundingBox": [13.3530221879,52.5981944870,13.3534821868,52.5989952197], "description":  "Stadtbad Märkisches Viertel"}
+      ]
+    },
+    {
+      "id": "sportsFacility.residentialGroupH",
+      "description": "Sportanlage Wohngruppe H",
+      "buildings": [
+        {"id": "37198649",  "boundingBox": [13.3593307436,52.6041959606,13.3598765731,52.6050886177], "description": "Wohngruppe H"},
+        {"id": "466891615", "boundingBox": [13.3589740098,52.6049306122,13.3590933681,52.6050552248], "description": "Wohngruppe H"}
+      ]
+    },
+    {
+      "id": "sportsFacility.squashTennisSoccer",
+      "description": "Squash-Tennis-Fußballwelt-Nord",
+      "buildings": [
+        {"id": "52722322",  "boundingBox": [13.3673425019,52.6014730812,13.3682169020,52.6021377302], "description": "Squash-Tennis-Fußballwelt-Nord"},
+        {"id": "72595264",  "boundingBox": [13.3677019179,52.6016864867,13.3687251806,52.6023641647], "description": "Squash-Tennis-Fußballwelt-Nord"},
+        {"id": "72595265",  "boundingBox": [13.3672901988,52.6020033351,13.3679848909,52.6023560196], "description": "Squash-Tennis-Fußballwelt-Nord"},
+        {"id": "72595267",  "boundingBox": [13.3673733473,52.6022102220,13.3681511879,52.6026020012], "description": "Squash-Tennis-Fußballwelt-Nord"}
+      ]
+    },
+    {
+      "id": "sportsFacility.todo",
+      "description": "Sportanlage/-platz (TODO)",
+      "buildings": [
+        {"id": "1612809",   "boundingBox": [13.3422209322,52.5998896119,13.3429397643,52.6005852377], "description":  "??"},
+        {"id": "363799590", "boundingBox": [13.3433729410,52.6004141832,13.3438718319,52.6006170048], "description":  "??"},
+        {"id": "363799592", "boundingBox": [13.3432683349,52.6002227643,13.3435124159,52.6003921904], "description":  "??"},
+        {"id": "319230343", "boundingBox": [13.3438798785,52.6008458908,13.3443184197,52.6010250890], "description":  "??"},
+        {"id": "49223030",  "boundingBox": [13.3447194099,52.6001258327,13.3454020321,52.6004231432], "description":  "??"},
+        {"id": "37198552",  "boundingBox": [13.3444605768,52.6007457024,13.3452183008,52.6012083591], "description":  "??"},
+        {"id": "49222918",  "boundingBox": [13.3455106616,52.6006259648,13.3457279205,52.6010674448], "description":  "??"},
+        {"id": "1673942745638525",  "boundingBox": [13.3455951512,52.6011806650,13.3457869291,52.6012792233], "description":  "??"},
+        {"id": "319230647",  "boundingBox": [13.3440193534,52.6003604230,13.3443948627,52.6007872440], "description":  "??"}
+      ]
+    },
+    {
+      "id": "shoppingCenter.bernshausenerRing",
+      "description": "Bernshausener Ring 1+7",
+      "buildings": [
+        {"id": "49223337",   "boundingBox": [13.3316744864,52.6030385743,13.3319534361,52.6032234649], "description": "Bernshausener Ring 1+7"}
+      ]
+    },
+    {
+      "id": "shoppingCenter.penny",
+      "description": "Penny",
+      "buildings": [
+        {"id": "79308490",   "boundingBox": [13.3307974041,52.6019764560,13.3315980434,52.6023723098], "description": "Wittenauer Straße 116"}
+      ]
+    },
+    {
+      "id": "shoppingCenter.kaufland",
+      "description": "Kaufland",
+      "buildings": [
+        {"id": "40916785",   "boundingBox": [13.3347630501,52.6032430128,13.3361417055,52.6038783136], "description": "Wittenauer Straße 96"}
+      ]
+    },
+    {
+      "id": "shoppingCenter.netto",
+      "description": "Netto",
+      "buildings": [
+        {"id": "40914615",   "boundingBox": [13.3331188560,52.5957449522,13.3342427015,52.5960471802], "description": "Wilhelmsruher Damm 242"},
+        {"id": "40459768",   "boundingBox": [13.3345471323,52.5945653469,13.3362436295,52.5954948590], "description": "Wilhelmsruher Damm 242"},
+        {"id": "33729602",   "boundingBox": [13.3345967531,52.5940635162,13.3364903927,52.5946785839], "description": "Wilhelmsruher Damm 242"}
+      ]
+    },
+    {
+      "id": "shoppingCenter.nahkauf",
+      "description": "Nahkauf",
+      "buildings": [
+        {"id": "37198692",   "boundingBox": [13.3572399616,52.6053614609,13.3575966954,52.6055495995], "description": "Senftenberger Ring 46"},
+        {"id": "220134833",  "boundingBox": [13.3569395542,52.6053443573,13.3572600782,52.6057678719], "description": "Senftenberger Ring 46"}
+      ]
+    },
+    {
+      "id": "shoppingCenter.picasso",
+      "description": "Picasso Friseure",
+      "buildings": [
+        {"id": "1172460779", "boundingBox": [13.3573915064,52.5921856735,13.3575926721,52.5923062489], "description": "Tramper Weg 2"}
+      ]
+    },
+    {
+      "id": "shoppingCenter.roske",
+      "description": "G.U.T Roske Fachgroßhandel",
+      "buildings": [
+        {"id": "1172460781", "boundingBox": [13.3569020033,52.5921978940,13.3574008942,52.5924178623], "description": "Dannenwalder Weg 154"}
+      ]
+    },
+    {
+      "id": "shoppingCenter.penny",
+      "description": "Penny",
+      "buildings": [
+        {"id": "264254885",  "boundingBox": [13.3602131903,52.5937669772,13.3607228100,52.5940366323], "description": "Dannenwalder Weg 159"}
+      ]
+    },
+    {
+      "id": "shoppingCenter.holland",
+      "description": "Gartencenter Holland",
+      "buildings": [
+        {"id": "72546062",   "boundingBox": [13.3659571409,52.5967835977,13.3667819202,52.5970768579], "description": "Wilhelmsruher Damm 61"}
+      ]
+    },
+    {
+      "id": "shoppingCenter.netto",
+      "description": "Netto",
+      "buildings": [
+        {"id": "42272845",   "boundingBox": [13.3711150289,52.5968927559,13.3717989922,52.5971680940], "description": "Wilhelmsruher Damm 13"}
+      ]
+    },
+    {
+      "id": "shoppingCenter.action",
+      "description": "Action",
+      "buildings": [
+        {"id": "51519861",   "boundingBox": [13.3661730587,52.6042513449,13.3669763803,52.6047612036], "description": "Quickborner Straße 76"}
+      ]
+    },
+    {
+      "id": "shoppingCenter.lidl",
+      "description": "Lidl",
+      "buildings": [
+        {"id": "720882117",  "boundingBox": [13.3666357398,52.6037610280,13.3673116565,52.6043604845], "description": "Quickborner Straße 72"}
+      ]
+    },
+    {
+      "id": "shoppingCenter.todo",
+      "description": "Shopping (TODO)",
+      "buildings": [
+        {"id": "293130354",  "boundingBox": [13.3423215151,52.5986237728,13.3429397643,52.5988477817], "description":  "??"}
+      ]
+    },
+    {
+      "id": "shoppingCenter.selfCare",
+      "description": "Selbsthilfe Stadtteilzentrum Reinickendorf",
+      "buildings": [
+        {"id": "291228383",  "boundingBox": [13.3437229693,52.5987125619,13.3442178369,52.5988469671], "description": "Eichhorster Weg 32"}
+      ]
+    },
+    {
+      "id": "shoppingCenter.maerkischeZeile",
+      "description": "Märkische Zeile",
+      "buildings": [
+        {"id": "998233719",  "boundingBox": [13.3536954224,52.5996362841,13.3537986875,52.5996753830], "description": "Senftenberger Ring 17 / Märkische Zeile"},
+        {"id": "699167714",  "boundingBox": [13.3535398543,52.5995540133,13.3536726236,52.5996273239], "description": "Senftenberger Ring 17 / Märkische Zeile"},
+        {"id": "699167715",  "boundingBox": [13.3534567058,52.5994823317,13.3535599709,52.5996004434], "description": "Senftenberger Ring 17 / Märkische Zeile"},
+        {"id": "699167724",  "boundingBox": [13.3534875512,52.5986978995,13.3556681871,52.5997095945], "description": "Senftenberger Ring 17 / Märkische Zeile"},
+        {"id": "1796656070941715", "boundingBox": [13.3536846936,52.5982278851,13.3539260924,52.5986392498], "description": "Senftenberger Ring 17 / Märkische Zeile"}
+      ]
+    },
+    {
+      "id": "shoppingCenter.maerkischesZentrum",
+      "description": "Märkisches Zentrum",
+      "buildings": [
+        {"id": "542968659184075",  "boundingBox": [13.3547401428,52.5978042976,13.3551760018,52.5978841278], "description": "Senftenberger Ring 3a"},
+        {"id": "5543195802494045", "boundingBox": [13.3543217182,52.5975371095,13.3552645147,52.5982091495], "description": "Senftenberger Ring 3a"},
+        {"id": "699167745",   "boundingBox": [13.3538375795,52.5964153905,13.3555407822,52.5975281489], "description": "Senftenberger Ring 3a"},
+        {"id": "1024692468",  "boundingBox": [13.3552269638,52.5975721373,13.3558867872,52.5986612434], "description": "Senftenberger Ring 3a"},
+        {"id": "699167743",   "boundingBox": [13.3556909859,52.5971526165,13.3559471369,52.5975941315], "description": "Senftenberger Ring 3a"}
+      ]
+    },
+    {
+      "id": "shoppingCenter.senftenbergerRing",
+      "description": "Senftenberger Ring 34",
+      "buildings": [
+         {"id": "466665343",   "boundingBox": [13.3625158668,52.6030621947,13.3632494509,52.6032478997], "description": "Senftenberger Ring 34"}
+      ]
+    },
+    {
+      "id": "doctor",
+      "description": "Arzt",
+      "buildings": []
+    },
+    {
+      "id": "parkingGarage",
+      "description": "Parkhaus",
+      "buildings": []
+    },
+    {
+      "id": "petrolStation.esso",
+      "description": "Esso",
+      "buildings": [
+        {"id": "285278318", "boundingBox": [13.3469523489,52.5964080590,13.3472205698,52.5966361523], "description": "Wilhelmsruher Damm 160"}
+      ]
+    },
+    {
+      "id": "petrolStation.agip",
+      "description": "Agip",
+      "buildings": [
+        {"id": "67266869",  "boundingBox": [13.3464722335,52.5915950122,13.3468356729,52.5918255747], "description": "Dannenwalder Weg 69"}
+      ]
+    },
+    {
+      "id": "hotel.rheinsbergerSee",
+      "description": "Hotel am Rheinsberger See",
+      "buildings": [
+        {"id": "50286994", "boundingBox": [13.3483444154,52.6022371009,13.3493113518,52.6026614601], "description": "Hotel am Rheinsberger See"}
+      ]
+    }
+  ],
+  "customMarkers": [
+    {"name": "residentialGroup914", "lon": 13.3504621362, "lat": 52.6059541933, "icon": "residential-group-a.svg"},
+    {"name": "residentialGroup914", "lon": 13.3506965174, "lat": 52.6045599727, "icon": "residential-group-a.svg"},
+    {"name": "residentialGroup962", "lon": 13.3543940571, "lat": 52.6071141936, "icon": "residential-group-b.svg"},
+    {"name": "residentialGroup919", "lon": 13.3577021961, "lat": 52.6061509335, "icon": "residential-group-c.svg"},
+    {"name": "residentialGroup961", "lon": 13.3586889816, "lat": 52.6068747590, "icon": "residential-group-d.svg"},
+    {"name": "residentialGroup918", "lon": 13.3615441017, "lat": 52.6058729623, "icon": "residential-group-e.svg"},
+    {"name": "residentialGroup915", "lon": 13.3507033730, "lat": 52.6031481778, "icon": "residential-group-f.svg"},
+    {"name": "residentialGroup855", "lon": 13.3527818075, "lat": 52.6034451886, "icon": "residential-group-f.svg"},
+    {"name": "residentialGroup934", "lon": 13.3578037698, "lat": 52.6047086579, "icon": "residential-group-g.svg"},
+    {"name": "residentialGroup929", "lon": 13.3617857685, "lat": 52.6041681358, "icon": "residential-group-h.svg"},
+    {"name": "residentialGroup917", "lon": 13.3643846695, "lat": 52.6047837632, "icon": "residential-group-i.svg"},
+    {"name": "residentialGroup916", "lon": 13.3631425600, "lat": 52.6041875390, "icon": "residential-group-j.svg"},
+    {"name": "residentialGroup916", "lon": 13.3629063039, "lat": 52.6022242114, "icon": "residential-group-j.svg"},
+    {"name": "residentialGroup916", "lon": 13.3629063039, "lat": 52.6022242114, "icon": "residential-group-j.svg"},
+    {"name": "residentialGroup916", "lon": 13.3647146081, "lat": 52.6022385678, "icon": "residential-group-j.svg"},
+    {"name": "residentialGroup905", "lon": 13.3372325122, "lat": 52.5968617845, "icon": "residential-group-k.svg"},
+    {"name": "residentialGroup913", "lon": 13.3427692628, "lat": 52.5996430276, "icon": "residential-group-l.svg"},
+    {"name": "residentialGroup908", "lon": 13.3438429834, "lat": 52.5993815336, "icon": "residential-group-m.svg"},
+    {"name": "residentialGroup909", "lon": 13.3473477273, "lat": 52.5979569384, "icon": "residential-group-n.svg"},
+    {"name": "residentialGroup920", "lon": 13.3519979761, "lat": 52.5970908924, "icon": "residential-group-o.svg"},
+    {"name": "residentialGroup911", "lon": 13.3574581643, "lat": 52.5983904916, "icon": "residential-group-p.svg"},
+    {"name": "residentialGroup922", "lon": 13.3586227239, "lat": 52.5990924025, "icon": "residential-group-q.svg"},
+    {"name": "residentialGroup912", "lon": 13.3593131258, "lat": 52.6007366614, "icon": "residential-group-r.svg"},
+    {"name": "residentialGroup910", "lon": 13.3619680929, "lat": 52.5989183591, "icon": "residential-group-s.svg"},
+    {"name": "residentialGroup910", "lon": 13.3625067901, "lat": 52.5964366356, "icon": "residential-group-s.svg"},
+    {"name": "residentialGroup910", "lon": 13.3642435979, "lat": 52.5961728896, "icon": "residential-group-s.svg"},
+    {"name": "residentialGroup926", "lon": 13.3405383799, "lat": 52.5953134584, "icon": "residential-group-t.svg"},
+    {"name": "residentialGroup906", "lon": 13.3500609828, "lat": 52.5956809800, "icon": "residential-group-u.svg"},
+    {"name": "residentialGroup907", "lon": 13.3588924601, "lat": 52.5964428656, "icon": "residential-group-v.svg"},
+    {"name": "residentialGroup924", "lon": 13.3471724286, "lat": 52.5908558726, "icon": "residential-group-w.svg"},
+    {"name": "residentialGroup928", "lon": 13.3618165249, "lat": 52.5942792826, "icon": "residential-group-x.svg"},
+    {"name": "residentialGroup980", "lon": 13.3533268988, "lat": 52.5976465586, "icon": "residential-group-y.svg"},
+    {"name": "residentialGroup936", "lon": 13.3671048771, "lat": 52.5965583640, "icon": "residential-group-z.svg"},
+    {"name": "residentialGroup902", "lon": 13.3312347103, "lat": 52.6047986241, "icon": "privatization-objects-I.svg"},
+    {"name": "residentialGroup904", "lon": 13.3420748799, "lat": 52.5987854433, "icon": "privatization-objects-II.svg"},
+    {"name": "residentialGroup903", "lon": 13.3427119291, "lat": 52.5954356516, "icon": "privatization-objects-III.svg"},
+    {"name": "residentialGroup903", "lon": 13.3458202022, "lat": 52.5956139557, "icon": "privatization-objects-III.svg"},
+    {"name": "residentialGroup901", "lon": 13.3490559045, "lat": 52.5910694022, "icon": "privatization-objects-IV.svg"},
+    {"name": "residentialGroup901", "lon": 13.3533516913, "lat": 52.5916048523, "icon": "privatization-objects-IV.svg"},
+    {"name": "tenantCooperativeMax", "lon": 13.3548973014, "lat": 52.6059626131, "icon": "privatization-objects-V.svg"},
+    {"name": "degewo1", "lon": 13.3516272738, "lat": 52.6017717281, "icon": "privatization-objects-VI.svg"},
+    {"name": "degewo2", "lon": 13.3560885056, "lat": 52.5916649984, "icon": "privatization-objects-VII.svg"},
+    {"name": "janitorApartment", "description": "janitor-Eichhorster-Weg-44",     "lon": 13.3432630842, "lat": 52.599128400, "icon": "gesobau.png"},
+    {"name": "janitorApartment", "description": "janitor-Finsterwalder-Straße-1", "lon": 13.3388372827, "lat": 52.596651061, "icon": "gesobau.png"},
+    {"name": "janitorApartment", "description": "janitor-Wilhelmsruher-Damm-97",  "lon": 13.3620640657, "lat": 52.596928864, "icon": "gesobau.png"},
+    {"name": "janitorApartment", "description": "janitor-Wilhelmsruher-Damm-127", "lon": 13.3548500233, "lat": 52.596205069, "icon": "gesobau.png"},
+    {"name": "janitorApartment", "description": "janitor-Wilhelmsruher-Damm-173", "lon": 13.3498108871, "lat": 52.596354161, "icon": "gesobau.png"},
+    {"name": "janitorApartment", "description": "janitor-Senftenberger-Ring-12",  "lon": 13.3585999750, "lat": 52.599568872, "icon": "gesobau.png"},
+    {"name": "janitorApartment", "description": "janitor-Senftenberger-Ring-34a", "lon": 13.3641164117, "lat": 52.603104370, "icon": "gesobau.png"},
+    {"name": "janitorApartment", "description": "janitor-Senftenberger-Ring-40a", "lon": 13.3609749050, "lat": 52.605237811, "icon": "gesobau.png"},
+    {"name": "janitorApartment", "description": "janitor-Senftenberger-Ring-42n", "lon": 13.3563893943, "lat": 52.606051021, "icon": "gesobau.png"},
+    {"name": "janitorApartment", "description": "janitor-Senftenberger-Ring-95",  "lon": 13.3530793157, "lat": 52.602744699, "icon": "gesobau.png"},
+    {"name": "janitorApartment", "description": "janitor-Dannenwalder-Weg-184",   "lon": 13.3615260481, "lat": 52.593703228, "icon": "gesobau.png"}
+  ]
+}

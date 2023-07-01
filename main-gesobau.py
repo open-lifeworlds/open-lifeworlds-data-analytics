@@ -13,7 +13,6 @@ library_paths = [
     os.path.join(script_path, "lib", "converter"),
     os.path.join(script_path, "lib", "blender"),
     os.path.join(script_path, "lib", "aggregator"),
-    os.path.join(script_path, "lib", "gesobau")
 ]
 
 for p in library_paths:
@@ -79,9 +78,14 @@ def main(argv):
     data_population_path = os.path.join(data_path, "lor-statistics-population")
     data_monitoring_social_urban_development_path = os.path.join(
         data_path, "lor-statistics-monitoring-social-urban-development")
+    data_buildings_path = os.path.join(data_path, "buildings")
 
     # Initialize logger
     logger = LoggerFacade(data_path, console=True, file=False)
+
+    #
+    # LOR
+    #
 
     # Data retrieval: Download data
     OdisGeoDataLoader().run(logger, os.path.join(raw_path, "lor-odis-geo"), clean, quiet)
@@ -110,6 +114,12 @@ def main(argv):
         logger, data_geodata_path, raw_monitoring_social_urban_development_path, data_monitoring_social_urban_development_path,
         clean, quiet)
 
+    #
+    # Gesobau buildings
+    #
+
+    # Data preparation:
+    JsonCopier().run(logger, os.path.join(raw_path, "gesobau"), data_buildings_path, clean, quiet)
 
 if __name__ == "__main__":
     main(sys.argv[1:])

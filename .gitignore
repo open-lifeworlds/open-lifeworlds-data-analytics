@@ -9,5 +9,6 @@
 **/*.zip
 
 /raw
+!/raw/gesobau/*
 /data
 /data-gesobau-mv
