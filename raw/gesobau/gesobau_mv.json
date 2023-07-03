@@ -562,7 +562,6 @@
       "id": "school.vonArnim",
       "description": "Bettina-von-Arnim Oberschule",
       "buildings": [
-        {"id": "37198655",  "boundingBox": [13.3593307436,52.6031672647,13.3598349988,52.6040208478], "description": "Senftenberger Ring 49"},
         {"id": "27263353",  "boundingBox": [13.3540669084,52.6033016563,13.3543565869,52.6036641042], "description": "Senftenberger Ring 49"},
         {"id": "27263355",  "boundingBox": [13.3545067906,52.6033529693,13.3553047478,52.6036437421], "description": "Senftenberger Ring 49"},
         {"id": "27263356",  "boundingBox": [13.3555085957,52.6033122447,13.3564111590,52.6037781322], "description": "Senftenberger Ring 49"},
