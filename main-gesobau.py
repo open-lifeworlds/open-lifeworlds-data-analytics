@@ -34,9 +34,12 @@ from geojson_bounding_box_retriever import GeojsonBoundingBoxRetriever
 from lor_statistics_population_data_blender import LorStatisticsPopulationDataBlender
 from lor_statistics_monitoring_social_urban_development_data_blender import \
     LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender
-from tracking_decorator import TrackingDecorator
 
+from json_copier import JsonCopier
 from gesobau_geodata_filter import GesobauGeodataFilter
+from gesobau_bounding_box_retriever import GesobauBoundingBoxRetriever
+
+from tracking_decorator import TrackingDecorator
 
 
 #
@@ -109,9 +112,11 @@ def main(argv):
     GeojsonBoundingBoxRetriever().run(logger, data_geodata_path, data_geodata_path, clean, quiet)
 
     # Data enhancement: Blend data into geojson
-    LorStatisticsPopulationDataBlender().run(logger, data_geodata_path, raw_population_path, data_population_path, clean, quiet)
+    LorStatisticsPopulationDataBlender().run(logger, data_geodata_path, raw_population_path, data_population_path,
+                                             clean, quiet)
     LorStatisticsMonitoringSocialUrbanDevelopmentDataBlender().run(
-        logger, data_geodata_path, raw_monitoring_social_urban_development_path, data_monitoring_social_urban_development_path,
+        logger, data_geodata_path, raw_monitoring_social_urban_development_path,
+        data_monitoring_social_urban_development_path,
         clean, quiet)
 
     #
@@ -120,6 +125,10 @@ def main(argv):
 
     # Data preparation:
     JsonCopier().run(logger, os.path.join(raw_path, "gesobau"), data_buildings_path, clean, quiet)
+
+    # Data enhancement:
+    GesobauBoundingBoxRetriever().run(logger, data_buildings_path, data_buildings_path, clean, quiet)
+
 
 if __name__ == "__main__":
     main(sys.argv[1:])
