@@ -82,4 +82,4 @@ class GesobauBoundingBoxRetriever:
 
         # Write json file
         with open(gesobau_mv_file, "w") as json_file:
-            json.dump(gesobau_mv, json_file)
+            json.dump(gesobau_mv, json_file, indent=2)

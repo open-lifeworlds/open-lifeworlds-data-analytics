@@ -3,42 +3,58 @@
     {
       "id": "residentialGroup914",
       "description": "A Wohnhausgruppe 914",
+      "metadata": {
+        "addresses": "Senftenberger Ring 54-70, Finsterwalder Str. 72-102",
+        "apartments": "980",
+        "architect": "Heinz Schudnagis",
+        "image": "https://www.gesobau.de/fileadmin/_processed_/f/8/csm_Hochh%C3%A4user_im_M%C3%A4rkischen_Viertel_1507_216_whg914_1ff59a88a2.jpg"
+      },
       "buildings": [
         {"id": "220107225", "boundingBox": [13.3497579395,52.6060716596,13.3499953150,52.6062825995], "description": "Senftenberger Ring 72"},
-        {"id": "37198605",  "boundingBox": [13.3495835959,52.6059999887,13.3498504757,52.6062394343], "description": "Senftenberger Ring 72" },
-        {"id": "220107233", "boundingBox": [13.3496090769,52.6054453496,13.3512532711,52.6060179065], "description": "Senftenberger Ring 74-82" },
-        {"id": "220107234", "boundingBox": [13.3512318134,52.6055202792,13.3524844050,52.6062158156], "description": "Senftenberger Ring 84-90" },
-        {"id": "220107230", "boundingBox": [13.3527070283,52.6063567133,13.3531603217,52.6067606718], "description": "Senftenberger Ring 92-96" },
+        {"id": "37198605",  "boundingBox": [13.3495835959,52.6059999887,13.3498504757,52.6062394343], "description": "Senftenberger Ring 72"},
+        {"id": "220107233", "boundingBox": [13.3496090769,52.6054453496,13.3512532711,52.6060179065], "description": "Senftenberger Ring 74-82"},
+        {"id": "220107234", "boundingBox": [13.3512318134,52.6055202792,13.3524844050,52.6062158156], "description": "Senftenberger Ring 84-90"},
+        {"id": "220107230", "boundingBox": [13.3527070283,52.6063567133,13.3531603217,52.6067606718], "description": "Senftenberger Ring 92-96"},
 
-        {"id": "220107228", "boundingBox": [13.3507463335,52.6065081981,13.3512465655,52.6067443832], "description": "Finsterwalder Straße 98" },
-        {"id": "37198646",  "boundingBox": [13.3511285483,52.6065464765,13.3518500626,52.6067647439], "description": "Finsterwalder Straße 100" },
-        {"id": "220107227", "boundingBox": [13.3517977595,52.6066458372,13.3521330356,52.6068877225], "description": "Finsterwalder Straße 102" },
-        {"id": "220257272", "boundingBox": [13.3519144356,52.6068282693,13.3521075546,52.6069740516], "description": "Finsterwalder Straße 102" },
+        {"id": "220107228", "boundingBox": [13.3507463335,52.6065081981,13.3512465655,52.6067443832], "description": "Finsterwalder Straße 98"},
+        {"id": "37198646",  "boundingBox": [13.3511285483,52.6065464765,13.3518500626,52.6067647439], "description": "Finsterwalder Straße 100"},
+        {"id": "220107227", "boundingBox": [13.3517977595,52.6066458372,13.3521330356,52.6068877225], "description": "Finsterwalder Straße 102"},
+        {"id": "220257272", "boundingBox": [13.3519144356,52.6068282693,13.3521075546,52.6069740516], "description": "Finsterwalder Straße 102"},
 
-        {"id": "220095362", "boundingBox": [13.3510762453,52.6042497159,13.3513551950,52.6043727016], "description": "Senftenberger Ring 70" },
-        {"id": "220095340", "boundingBox": [13.3508375287,52.6041185852,13.3512921631,52.6043042858], "description": "Senftenberger Ring 70" },
-        {"id": "220095344", "boundingBox": [13.3504821360,52.6041291734,13.3509032428,52.6042627475], "description": "Senftenberger Ring 68" },
-        {"id": "220095347", "boundingBox": [13.3501696586,52.6041055536,13.3505800366,52.6042651910], "description": "Senftenberger Ring 68" },
-        {"id": "220095341", "boundingBox": [13.3500207960,52.6042317975,13.3503882586,52.6044704382], "description": "Senftenberger Ring 66" },
-        {"id": "220095352", "boundingBox": [13.3499014377,52.6043645568,13.3501455187,52.6046349611], "description": "Senftenberger Ring 64" },
-        {"id": "220095353", "boundingBox": [13.3499671518,52.6045396682,13.3518339693,52.6051692491], "description": "Senftenberger Ring 58-62" },
-        {"id": "37198568",  "boundingBox": [13.3517199754,52.6049811088,13.3521813154,52.6051619190], "description": "Senftenberger Ring 56" },
-        {"id": "220095363", "boundingBox": [13.3519680798,52.6051040924,13.3522711694,52.6052734996], "description": "Senftenberger Ring 54" },
-        {"id": "277208725", "boundingBox": [13.3522604405,52.6051171237,13.3526010811,52.6052482515], "description": "Ribbeckhaus" },
+        {"id": "220095362", "boundingBox": [13.3510762453,52.6042497159,13.3513551950,52.6043727016], "description": "Senftenberger Ring 70"},
+        {"id": "220095340", "boundingBox": [13.3508375287,52.6041185852,13.3512921631,52.6043042858], "description": "Senftenberger Ring 70"},
+        {"id": "220095344", "boundingBox": [13.3504821360,52.6041291734,13.3509032428,52.6042627475], "description": "Senftenberger Ring 68"},
+        {"id": "220095347", "boundingBox": [13.3501696586,52.6041055536,13.3505800366,52.6042651910], "description": "Senftenberger Ring 68"},
+        {"id": "220095341", "boundingBox": [13.3500207960,52.6042317975,13.3503882586,52.6044704382], "description": "Senftenberger Ring 66"},
+        {"id": "220095352", "boundingBox": [13.3499014377,52.6043645568,13.3501455187,52.6046349611], "description": "Senftenberger Ring 64"},
+        {"id": "220095353", "boundingBox": [13.3499671518,52.6045396682,13.3518339693,52.6051692491], "description": "Senftenberger Ring 58-62"},
+        {"id": "37198568",  "boundingBox": [13.3517199754,52.6049811088,13.3521813154,52.6051619190], "description": "Senftenberger Ring 56"},
+        {"id": "220095363", "boundingBox": [13.3519680798,52.6051040924,13.3522711694,52.6052734996], "description": "Senftenberger Ring 54"},
+        {"id": "277208725", "boundingBox": [13.3522604405,52.6051171237,13.3526010811,52.6052482515], "description": "Ribbeckhaus"},
 
-        {"id": "2985153398224875", "boundingBox": [13.3507718145,52.6043197608,13.3508683741,52.6043604845], "description": "Senftenberger Ring 68" }
+        {"id": "2985153398224875", "boundingBox": [13.3507718145,52.6043197608,13.3508683741,52.6043604845], "description": "Senftenberger Ring 68"}
       ]
     },
     {
       "id": "residentialGroup962",
       "description": "B Wohnhausgruppe 962",
+      "metadata": {
+        "addresses": "Finsterwalder Straße 102a",
+        "apartments": "84",
+        "architect": "DMWS Architekten Partnerschaft mbH"
+      },
       "buildings": [
-        {"id":  "42407760", "boundingBox": [13.3536350727,52.6068584032,13.3539260924,52.6071190190], "description": "Finsterwalder Straße 102a" }
+        {"id":  "42407760", "boundingBox": [13.3536350727,52.6068584032,13.3539260924,52.6071190190], "description": "Finsterwalder Straße 102a"}
       ]
     },
     {
       "id": "residentialGroup919",
       "description": "C Wohnhausgruppe 919",
+      "metadata": {
+        "addresses": "Senftenberger Ring 42–42p, 44–44g",
+        "apartments": "499",
+        "architect": "Jo Zimmermann"
+      },
       "buildings": [
         {"id": "243122493", "boundingBox": [13.3566807210,52.6060236076,13.3570280671,52.6062109290], "description": "Senftenberger Ring 42p"},
         {"id": "243122494", "boundingBox": [13.3564299345,52.6062068568,13.3568523824,52.6064104661], "description": "Senftenberger Ring 42n"},
@@ -59,6 +75,9 @@
     {
       "id": "residentialGroup961",
       "description": "D Wohnhausgruppe 961 / Parkhaus",
+      "metadata": {
+        "addresses": "Senftenberger Ring 42q"
+      },
       "buildings": [
         {"id": "720880576", "boundingBox": [13.3586427569,52.6065969713,13.3594635129,52.6069178563], "description": "Senftenberger Ring 42q"}
       ]
@@ -66,6 +85,11 @@
     {
       "id": "residentialGroup918",
       "description": "E Wohnhausgruppe 918",
+      "metadata": {
+        "addresses": "Senftenberger Ring 40–40h, Quickborner Straße 79–93 (ungerade)",
+        "apartments": "621",
+        "architect": "Shadrach Woods"
+      },
       "buildings": [
         {"id": "37198710",         "boundingBox": [13.3599784970,52.6063567133,13.3631448448,52.6068217539], "description": "Quickborner Straße 85-93 / Senftenberger Ring 40–40h"} ,
         {"id": "533166059817435",  "boundingBox": [13.3599758148,52.6054722266,13.3600831032,52.6055724042], "description": "Smaller building in front starting from West"} ,
@@ -79,6 +103,11 @@
     {
       "id": "residentialGroup915",
       "description": "F Wohnhausgruppe 915",
+      "metadata": {
+        "addresses": "Senftenberger Ring 72–78 (gerade), Senftenberger Ring 71–95 (ungerade)",
+        "apartments": "824",
+        "architect": "Chen Kuen Lee"
+      },
       "buildings": [
         {"id": "220095358", "boundingBox": [13.3503681421,52.6035965018,13.3505505323,52.6037374079], "description": "Senftenberger Ring 72"},
         {"id": "220095333", "boundingBox": [13.3502997458,52.6034042823,13.3506779373,52.6036046467], "description": "Senftenberger Ring 72"},
@@ -116,6 +145,11 @@
     {
       "id": "residentialGroup855",
       "description": "G Wohnhausgruppe 855 (Theodor-Quartier)",
+      "metadata": {
+        "addresses": "Senftenberger Ring 45–47c",
+        "apartments": "388",
+        "architect": "Arnold und Gladisch, DMWS Architekten Partnerschaft mbH"
+      },
       "buildings": [
         {"id": "923530872", "boundingBox": [13.3580982685,52.6046602097,13.3585488796,52.6049892535], "description": "Senftenberger Ring 45"},
         {"id": "923530869", "boundingBox": [13.3581894636,52.6040982233,13.3587232232,52.6043735161], "description": "Senftenberger Ring 45a"},
@@ -128,6 +162,11 @@
     {
       "id": "residentialGroup934",
       "description": "H Wohnhausgruppe 934",
+        "metadata": {
+        "addresses": "Senftenberger Ring 35–35a",
+        "apartments": "140",
+        "architect": "BE Architekten Berlin"
+      },
       "buildings": [
         {"id": "4626289341868325", "boundingBox": [13.3606289327,52.6052042708,13.3607053757,52.6052612828], "description": "Senftenberger Ring 35"},
         {"id": "1593290280839205", "boundingBox": [13.3606624603,52.6049566750,13.3607751131,52.6051757648], "description": "Senftenberger Ring 35"},
@@ -139,6 +178,10 @@
     {
       "id": "residentialGroup929",
       "description": "H Wohnhausgruppe 929",
+      "metadata": {
+        "addresses": "Senftenberger Ring 37, 39",
+        "apartments": "109"
+      },
       "buildings": [
         {"id": "598577158", "boundingBox": [13.3602024615,52.6049135085,13.3605149388,52.6052702418], "description": "Senftenberger Ring 37"},
         {"id": "598577157", "boundingBox": [13.3603017032,52.6042269107,13.3606141806,52.6045820207], "description": "Senftenberger Ring 39"}
@@ -147,6 +190,12 @@
     {
       "id": "residentialGroup917",
       "description": "I Wohnhausgruppe 917",
+      "metadata": {
+        "addresses": "Quickborner Straße 69–77, Treuenbrietzener Straße 29–31",
+        "apartments": "621",
+        "architect": "Volker Theißen, René Gagès",
+        "image": "https://www.gesobau.de/fileadmin/_processed_/9/f/csm_Hochh%C3%A4user_im_M%C3%A4rkischen_Viertel_1904_077_whg_916_web_59d32fa8e1.jpg"
+      },
       "buildings": [
         {"id": "42407644", "boundingBox": [13.3644524217,52.6029937768,13.3661073446,52.6053036345], "description": "Treuenbrietzener Straße 29-31 / Quickborner Straße 69–77"}
       ]
@@ -154,6 +203,12 @@
     {
       "id": "residentialGroup916",
       "description": "J Wohnhausgruppe 916",
+      "metadata": {
+        "addresses": "Wesendorfer Straße 2–14, Treuenbrietzener Straße 17–27, Senftenberger Ring 34a, 36–36c, 38–38d",
+        "apartments": "1148",
+        "architect": "Astra Zarina",
+        "image": "https://www.gesobau.de/fileadmin/_processed_/9/f/csm_Hochh%C3%A4user_im_M%C3%A4rkischen_Viertel_1904_077_whg_916_web_59d32fa8e1.jpg"
+      },
       "buildings": [
         {"id": "220134830", "boundingBox": [13.3629235625,52.6009175702,13.3631783724,52.6012490856], "description": "Wesendorfer Straße 2"},
         {"id": "220134855", "boundingBox": [13.3630388975,52.6009721441,13.3633728325,52.6010609285], "description": "Wesendorfer Straße 2"},
@@ -178,6 +233,11 @@
     {
       "id": "residentialGroup905",
       "description": "K Wohnhausgruppe 905",
+      "metadata": {
+        "addresses": "Finsterwalder Straße 1–33, Wilhelmsruher Damm 224–228",
+        "apartments": "634",
+        "architect": "Herbert Stranz"
+      },
       "buildings": [
         {"id": "220257248", "boundingBox": [13.3387246728,52.5960536973,13.3391430974,52.5962532806], "description": "Finsterwalder Straße 1"},
         {"id": "220257250", "boundingBox": [13.3383692801,52.5963477769,13.3387783170,52.5964227221], "description": "Finsterwalder Straße 3"},
@@ -203,6 +263,11 @@
     {
       "id": "residentialGroup913",
       "description": "L Wohnhausgruppe 913 (Seniorenwohnungen)",
+      "metadata": {
+        "addresses": "Eichhorster Weg 44",
+        "apartments": "144",
+        "architect": "Oswald M. Ungers"
+      },
       "buildings": [
         {"id": "37198499", "boundingBox": [13.3431784809,52.5990913392,13.3434869349,52.5995597153], "description": "Eichhorster Weg 44"}
       ]
@@ -210,6 +275,11 @@
     {
       "id": "residentialGroup908",
       "description": "M Wohnhausgruppe 908",
+      "metadata": {
+        "addresses": "Eichhorster Weg 32–44b",
+        "apartments": "392",
+        "architect": "Oswald M. Ungers"
+      },
       "buildings": [
         {"id": "291227994", "boundingBox": [13.3436948061,52.5987622512,13.3453819156,52.5992184122], "description": "Eichhorster Weg 32-38"},
         {"id": "291227995", "boundingBox": [13.3432535827,52.5991483592,13.3448146284,52.5997381041], "description": "Eichhorster Weg 40–44b"}
@@ -218,6 +288,12 @@
     {
       "id": "residentialGroup909",
       "description": "N Wohnhausgruppe 909",
+      "metadata": {
+        "addresses": "Eichhorster Weg 4–30, Wilhelmsruher Damm 152–158",
+        "apartments": "913",
+        "architect": "Oswald M. Ungers",
+        "image": "https://www.gesobau.de/fileadmin/_processed_/8/6/csm_Hochh%C3%A4user_im_M%C3%A4rkischen_Viertel_1210_026_WHG909_a64e30ae89.jpg"
+      },
       "buildings": [
         {"id": "37198538",  "boundingBox": [13.3446282148,52.5971387681,13.3484329283,52.5988510400], "description": "Eichhorster Weg 4-30 / Wilhelmsruher Damm 152–158"}
       ]
@@ -225,6 +301,11 @@
     {
       "id": "residentialGroup920",
       "description": "O Wohnhausgruppe 920 (Seniorenwohnungen)",
+      "metadata": {
+        "addresses": "Wilhelmsruher Damm 148",
+        "apartments": "134",
+        "architect": "Werner Düttmann"
+      },
       "buildings": [
         {"id": "363763456", "boundingBox": [13.3510936797,52.5966532593,13.3521947265,52.5972039367], "description": "Wilhelmsruher Damm 148"},
         {"id": "363763455", "boundingBox": [13.3514866233,52.5965978653,13.3516260982,52.5967159847]},
@@ -236,6 +317,11 @@
     {
       "id": "residentialGroup911",
       "description": "P Wohnhausgruppe 911",
+      "metadata": {
+        "addresses": "Senftenberger Ring 2–10, 14–16, Wilhelmsruher Damm 114–126 (gerade), Treuenbrietzener Straße 1–7 (ungerade)",
+        "apartments": "1282",
+        "architect": "Hans Müller, Georg Heinrichs"
+      },
       "buildings": [
         {"id": "29127811", "boundingBox": [13.3562381566,52.5990375775,13.3564674854,52.5997381041], "description": "Main part West"},
         {"id": "29128223", "boundingBox": [13.3565855026,52.5982067058,13.3567129076,52.5984339752], "description": "Senftenberger Ring 2"},
@@ -272,6 +358,11 @@
     {
       "id": "residentialGroup922",
       "description": "Q Wohnhausgruppe 922 (Seniorenwohnungen)",
+      "metadata": {
+        "addresses": "Senftenberger Ring 12",
+        "apartments": "208",
+        "architect": "Hans Müller, Georg Heinrichs"
+      },
       "buildings": [
         {"id": "29127882", "boundingBox": [13.3580633998,52.5991092598,13.3581827581,52.5993275643], "description": "Senftenberger Ring 12"},
         {"id": "29127883", "boundingBox": [13.3581505716,52.5990538689,13.3582846820,52.5993943587], "description": "Senftenberger Ring 12"},
@@ -281,6 +372,12 @@
     {
       "id": "residentialGroup912",
       "description": "R Wohnhausgruppe 912",
+      "metadata": {
+        "addresses": "Senftenberger Ring 18-32, Treuenbrietzener Straße 9-15, Wesendorfer Straße 1",
+        "apartments": "1117",
+        "architect": "Hans Müller/Georg Heinrichs",
+        "image": "https://www.gesobau.de/fileadmin/_processed_/e/3/csm_Hochh%C3%A4user_im_M%C3%A4rkischen_Viertel_WHG911_922_SBR12-16__1__6f06f45a0a.jpg"
+      },
       "buildings": [
         {"id": "29128140", "boundingBox": [13.3572010696,52.6003864886,13.3573029935,52.6005819795], "description": "Senftenberger Ring 18"},
         {"id": "29127816", "boundingBox": [13.3570522070,52.6002797827,13.3572399616,52.6006846119], "description": "Senftenberger Ring 18"},
@@ -308,6 +405,12 @@
     {
       "id": "residentialGroup910",
       "description": "S Wohnhausgruppe 910",
+      "metadata": {
+        "addresses": "Dannenwalder Weg 188–196, Tiefenseer Straße 1–13, Treuenbrietzener Straße 2–24, Wilhelmsruher Damm 81–101",
+        "apartments": "1746",
+        "architect": "Ernst Isel",
+        "image": "https://www.gesobau.de/fileadmin/_processed_/0/5/csm_Hochh%C3%A4user_im_M%C3%A4rkischen_Viertel_WHG910_Luftaufnahmen_2014__37__02f2142685.jpg"
+      },
       "buildings": [
         {"id": "49221828",  "boundingBox": [13.3610634506,52.5945669762,13.3615221083,52.5948667684], "description": "Dannenwalder Weg 188"},
         {"id": "49221683",  "boundingBox": [13.3614698052,52.5946753253,13.3622141182,52.5954728638], "description": "Dannenwalder Weg 190–194"},
@@ -333,6 +436,11 @@
     {
       "id": "residentialGroup926",
       "description": "T Wohnhausgruppe 926",
+      "metadata": {
+        "addresses": "Wilhelmsruher Damm 215a–221 (ungerade), Dannenwalder Weg 2–2c",
+        "apartments": "79",
+        "architect": "Büro Physall, Stahrenberg und Partner"
+      },
       "buildings": [
         {"id": "33729754",  "boundingBox": [13.3396084607,52.5955339616,13.3409549296,52.5956993327], "description": "Wilhelmsruher Damm 215a-219"},
         {"id": "220376483", "boundingBox": [13.3406706154,52.5953954730,13.3408744633,52.5955975033], "description": "Wilhelmsruher Damm 215a"},
@@ -346,6 +454,12 @@
     {
       "id": "residentialGroup906",
       "description": "U Wohnhausgruppe 906",
+      "metadata": {
+        "addresses": "Wilhelmsruher Damm 165–185",
+        "apartments": "351",
+        "architect": "Ludwig Leo",
+        "image": "https://www.gesobau.de/fileadmin/_processed_/f/1/csm_Hochh%C3%A4user_im_M%C3%A4rkischen_Viertel_WHG907_062013_990dbf2214.jpg"
+      },
       "buildings": [
         {"id": "42885817", "boundingBox": [13.3527043462,52.5960504388,13.3534741402,52.5963388161], "description": "Haus der Familie"},
         {"id": "42885816", "boundingBox": [13.3518527448,52.5959013616,13.3525662124,52.5962915680], "description": "Wilhelmsruher Damm 163"},
@@ -358,6 +472,12 @@
     {
       "id": "residentialGroup907",
       "description": "V Wohnhausgruppe 907",
+      "metadata": {
+        "addresses": "Wilhelmsruher Damm 103–157",
+        "apartments": "977",
+        "architect": "René Gagès, Volker Theißen, Werner Weber",
+        "image": "https://www.gesobau.de/fileadmin/_processed_/f/1/csm_Hochh%C3%A4user_im_M%C3%A4rkischen_Viertel_WHG907_062013_990dbf2214.jpg"
+      },
       "buildings": [
         {"id": "220134837", "boundingBox": [13.3583343029,52.5960056342,13.3594192564,52.5961693743], "desription": "Wilhelmsruher Damm 103–109"},
         {"id": "29128247",  "boundingBox": [13.3581063151,52.5960040049,13.3583463728,52.5962557245], "desription": "Wilhelmsruher Damm 111"},
@@ -383,6 +503,11 @@
     {
       "id": "residentialGroup924",
       "description": "W Wohnhausgruppe 924",
+      "metadata": {
+        "addresses": "Dannenwalder Weg 70–72c",
+        "apartments": "78",
+        "architect": "Stefan Scholz"
+      },
       "buildings": [
         {"id": "26655224", "boundingBox": [13.3464011550,52.5910369317,13.3466546237,52.5911974315], "description": "Dannenwalder Weg 70"},
         {"id": "26655223", "boundingBox": [13.3464346826,52.5905839445,13.3478857577,52.5913294157], "description": "Dannenwalder Weg 70–72c"}
@@ -391,6 +516,11 @@
     {
       "id": "residentialGroup928",
       "description": "X Wohnhausgruppe 928",
+      "metadata": {
+        "addresses": "Dannenwalder Weg 156–186, Tramper Weg 1–3",
+        "apartments": "821",
+        "architect": "Werner Düttmann"
+      },
       "buildings": [
         {"id": "220518988", "boundingBox": [13.3582136035,52.5917734335,13.3594635129,52.5923355780], "decsdcription": "Dannenwalder Weg 156-162 / Tramper Weg 1"},
         {"id": "72597236",  "boundingBox": [13.3583919704,52.5915999004,13.3588224649,52.5917799511], "decsdcription": "Tramper Weg 3"},
@@ -405,6 +535,11 @@
     {
       "id": "residentialGroup980",
       "description": "Y Wohnhausgruppe 980",
+      "metadata": {
+        "addresses": "Wilhelmsruher Damm 142–142b",
+        "apartments": "72",
+        "architect": "Büro SPP, Anne Lampen Architekten"
+      },
       "buildings": [
         {"id": "39036042", "boundingBox": [13.3531174064,52.5966882878,13.3536337316,52.5974287675], "decscription": "Wilhelmsruher Damm 142"},
         {"id": "27264121", "boundingBox": [13.3521813154,52.5967192432,13.3529376984,52.5971403973], "decscription": "Wilhelmsruher Damm 144-144b"}
@@ -413,6 +548,11 @@
     {
       "id": "residentialGroup936",
       "description": "Z Wohnhausgruppe 936",
+      "metadata": {
+        "addresses": "Wilhelmsruher Damm 65–79",
+        "apartments": "111",
+        "architect": "J. Meier, D. Punkt"
+      },
       "buildings": [
         {"id": "328774933", "boundingBox": [13.3656151593,52.5957351766,13.3666169643,52.5964015420], "description": "Wilhelmsruher Damm 65–79"}
       ]
@@ -422,6 +562,11 @@
     {
       "id": "residentialGroup902",
       "description": "I Wohnhausgruppe 902",
+      "metadata": {
+        "addresses": "Bernshausener Ring 3–41 (ungerade), Bernshausener Ring 2–20 (gerade), Wittenauer Straße 1–7 (ungerade)",
+        "apartments": "656",
+        "architect": "Planungsabteilung degewo"
+      },
       "buildings": [
         {"id": "40917186",  "boundingBox": [13.3308738470,52.6031053630,13.3314920962,52.6039475446], "description": "Wittenauer Straße 1-5"},
         {"id": "393600988", "boundingBox": [13.3307665586,52.6039084495,13.3310709894,52.6043384937], "description": "Wittenauer Straße 7"},
@@ -437,6 +582,11 @@
     {
       "id": "residentialGroup904",
       "description": "II Wohnhausgruppe 904",
+      "metadata": {
+        "addresses": "Finsterwalder Straße 22–50 (gerade), Eichhorster Weg 31–43 (ungerade)",
+        "apartments": "382",
+        "architect": "Jo Zimmermann"
+      },
       "buildings": [
         {"id": "48459540",  "boundingBox": [13.3397144079,52.5980999946,13.3403474092,52.5982596540], "description": "Finsterwalder Straße 20-22"},
         {"id": "48459541",  "boundingBox": [13.3395011723,52.5982677998,13.3400148153,52.5987402576], "description": "Finsterwalder Straße 20-28"},
@@ -458,6 +608,11 @@
     {
       "id": "residentialGroup903",
       "description": "III Wohnhausgruppe 903",
+      "metadata": {
+        "addresses": "Wilhelmsruher Damm 187–215",
+        "apartments": "283",
+        "architect": "Karl Fleig"
+      },
       "buildings": [
         {"id": "39267799",  "boundingBox": [13.3440314233,52.5956553424,13.3473949134,52.5960431071], "description": "Wilhelmsruher Damm 187-203"},
         {"id": "220376465", "boundingBox": [13.3432643116,52.5955461812,13.3436076343,52.5956789669], "description": "Wilhelmsruher Damm 205"},
@@ -473,6 +628,11 @@
     {
       "id": "residentialGroup901",
       "description": "IV Wohnhausgruppe 901",
+      "metadata": {
+        "addresses": "Dannenwalder Weg 74–134",
+        "apartments": "579",
+        "architect": "Planungsabteilung degewo"
+      },
       "buildings": [
         {"id": "220376473", "boundingBox": [13.3481043577,52.5907085979,13.3484329283,52.5915779032], "description": "Dannenwalder Weg 74–82"},
         {"id": "220376455", "boundingBox": [13.3484798670,52.5915233176,13.3494722843,52.5916634478], "description": "Dannenwalder Weg 84-88"},
@@ -513,7 +673,7 @@
         {"id": "9535864",   "boundingBox": [13.3502313495,52.6019569076,13.3506216109,52.6022843426], "description": "Senftenberger Ring 80"},
         {"id": "37198582",  "boundingBox": [13.3507463336,52.6018860445,13.3510950208,52.6020913029], "description": "Senftenberger Ring 82"},
         {"id": "220095348", "boundingBox": [13.3507610857,52.6014160642,13.3513149619,52.6019112945], "description": "Senftenberger Ring 84-86"},
-        {"id": "9535863",   "boundingBox": [13.3504928648,52.6015529048,13.3508670330,52.6018787138], "description": "Senftenberger Ring 84 // Ignored because it causes flickering", "ignore": "true" },
+        {"id": "9535863",   "boundingBox": [13.3504928648,52.6015529048,13.3508670330,52.6018787138], "description": "Senftenberger Ring 84 // Ignored because it causes flickering", "ignore": "true"},
         {"id": "9535862",   "boundingBox": [13.3506591618,52.6012556019,13.3511339128,52.6015072913], "description": "Senftenberger Ring 86 // Ignored because it causes flickering", "ignore": "true"},
         {"id": "220095328", "boundingBox": [13.3512009680,52.6012759652,13.3516609669,52.6014910008], "description": "Senftenberger Ring 88"},
         {"id": "9535861",   "boundingBox": [13.3510749042,52.6011081715,13.3516596258,52.6013077319], "description": "Senftenberger Ring 88 // Ignored because it causes flickering", "ignore": "true"},
