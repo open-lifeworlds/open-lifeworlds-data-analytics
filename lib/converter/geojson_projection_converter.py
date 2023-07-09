@@ -80,8 +80,8 @@ class GeojsonProjectionConverter:
                             target_projection=pyproj.Proj(init=f"epsg:{target_projection_number}")
                         )
 
-                        with open(results_file_path, "w") as geojson_polar_file:
-                            json.dump(geojson_polar, geojson_polar_file)
+                        with open(results_file_path, "w", encoding="utf-8") as geojson_polar_file:
+                            json.dump(geojson_polar, geojson_polar_file, ensure_ascii=False)
 
                     if not quiet:
                         logger.log_line(f"✓ Convert {file_name}")

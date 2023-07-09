@@ -74,8 +74,8 @@ class GeojsonBoundingBoxConverter:
                     if projection_number == target_projection_number or projection_number == "CRS84":
                         geojson_with_bounding_box = extend_by_bounding_box(geojson, clean)
 
-                        with open(results_file_path, "w") as geojson_file:
-                            json.dump(geojson_with_bounding_box, geojson_file)
+                        with open(results_file_path, "w", encoding="utf-8") as geojson_file:
+                            json.dump(geojson_with_bounding_box, geojson_file, ensure_ascii=False)
 
                     if not quiet:
                         logger.log_line(f"✓ Convert {file_name}")

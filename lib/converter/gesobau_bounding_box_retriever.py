@@ -81,5 +81,5 @@ class GesobauBoundingBoxRetriever:
                     logger.log_line(f"✓ Already added bounding box to {building_group['id']}")
 
         # Write json file
-        with open(gesobau_mv_file, "w") as json_file:
-            json.dump(gesobau_mv, json_file, indent=2)
+        with open(gesobau_mv_file, "w", encoding="utf-8") as json_file:
+            json.dump(gesobau_mv, json_file, indent=2, ensure_ascii=False)

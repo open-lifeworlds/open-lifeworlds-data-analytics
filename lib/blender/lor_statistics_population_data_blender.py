@@ -23,8 +23,8 @@ def write_geojson_file(logger, file_path, statistic_name, geojson_content, clean
     if not os.path.exists(file_path) or clean:
         file_name = os.path.basename(file_path)
 
-        with open(file_path, "w") as geojson_file:
-            json.dump(geojson_content, geojson_file)
+        with open(file_path, "w", encoding="utf-8") as geojson_file:
+            json.dump(geojson_content, geojson_file, ensure_ascii=False)
 
             if not quiet:
                 logger.log_line(f"✓ Blend data from {statistic_name} into {file_name}")
@@ -34,8 +34,8 @@ def write_json_file(logger, file_path, statistic_name, json_content, clean, quie
     if not os.path.exists(file_path) or clean:
         file_name = os.path.basename(file_path)
 
-        with open(file_path, "w") as json_file:
-            json.dump(json_content, json_file)
+        with open(file_path, "w", encoding="utf-8") as json_file:
+            json.dump(json_content, json_file, ensure_ascii=False)
 
             if not quiet:
                 logger.log_line(f"✓ Aggregate data from {statistic_name} into {file_name}")

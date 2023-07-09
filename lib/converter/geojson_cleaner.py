@@ -120,8 +120,8 @@ class GeojsonCleaner:
                 changed |= clean_geometry(logger, geojson, quiet)
 
                 if changed:
-                    with open(results_file_path, "w") as geojson_file:
-                        json.dump(geojson, geojson_file)
+                    with open(results_file_path, "w", encoding="utf-8") as geojson_file:
+                        json.dump(geojson, geojson_file, ensure_ascii=False)
 
                         if not quiet:
                             logger.log_line(f"✓ Clean {results_file_path}")

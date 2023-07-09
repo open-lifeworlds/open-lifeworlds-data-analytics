@@ -66,8 +66,8 @@ class GesobauGeodataFilter:
                             filtered_features.append(feature)
                     geojson["features"] = filtered_features
 
-                    with open(results_file_path, "w") as geojson_file:
-                        json.dump(geojson, geojson_file)
+                    with open(results_file_path, "w", encoding="utf-8") as geojson_file:
+                        json.dump(geojson, geojson_file, ensure_ascii=False)
 
                     if not quiet:
                         logger.log_line(f"✓ Filter {file_name} ({len(filtered_features)} features remaining)")

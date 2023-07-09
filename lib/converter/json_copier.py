@@ -29,8 +29,8 @@ class JsonCopier:
                     with open(source_file_path, "r") as geojson_file:
                         geojson = json.load(geojson_file)
 
-                    with open(results_file_path, "w") as geojson_file:
-                        json.dump(geojson, geojson_file)
+                    with open(results_file_path, "w", encoding="utf-8") as geojson_file:
+                        json.dump(geojson, geojson_file, ensure_ascii=False)
 
                         if not quiet:
                             logger.log_line(f"✓ Copy {results_file_path}")
