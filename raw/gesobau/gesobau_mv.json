@@ -1216,6 +1216,105 @@
       ]
     },
     {
+      "id": "janitorApartment.eichhorsterWeg44",
+      "description": "Hausmeisterwohnung Eichhorster Weg 44",
+      "metadata": {
+        "addresses": "Eichhorster Weg 44"
+      },
+      "buildings": [],
+      "boundingBox": [13.3431784809,52.5990913392,13.3434869349,52.5995597153]
+    },
+    {
+      "id": "janitorApartment.finsterwalderStraße1",
+      "description": "Hausmeisterwohnung Finsterwalder Straße 1",
+      "metadata": {
+        "addresses": "Finsterwalder Straße 1"
+      },
+      "buildings": [],
+      "boundingBox": [13.3387246728,52.5960536973,13.3391430974,52.5962532806]
+    },
+    {
+      "id": "janitorApartment.wilhelmsruherDamm97",
+      "description": "Hausmeisterwohnung Wilhelmsruher Damm 97",
+      "metadata": {
+        "addresses": "Wilhelmsruher Damm 97"
+      },
+      "buildings": [],
+      "boundingBox": [13.3612874150,52.5963477769,13.3616910875,52.5967974462]
+    },
+    {
+      "id": "janitorApartment.wilhelmsruherDamm127",
+      "description": "Hausmeisterwohnung Wilhelmsruher Damm 127",
+      "metadata": {
+        "addresses": "Wilhelmsruher Damm 127"
+      },
+      "buildings": [],
+      "boundingBox": [13.3551934361,52.5961807790,13.3553986251,52.5963208944]
+    },
+    {
+      "id": "janitorApartment.wilhelmsruherDamm173",
+      "description": "Hausmeisterwohnung Wilhelmsruher Damm 173",
+      "metadata": {
+        "addresses": "Wilhelmsruher Damm 173"
+      },
+      "buildings": [],
+      "boundingBox": [13.3483444154,52.5954916004,13.3504982293,52.5964015420]
+    },
+    {
+      "id": "janitorApartment.senftenbergerRing12",
+      "description": "Hausmeisterwohnung Senftenberger Ring 12",
+      "metadata": {
+        "addresses": "Senftenberger Ring 12"
+      },
+      "buildings": [],
+      "boundingBox": [13.3581505716,52.5990538689,13.3582846820,52.5993943587]
+    },
+    {
+      "id": "janitorApartment.senftenbergerRing34a",
+      "description": "Hausmeisterwohnung Senftenberger Ring 34a",
+      "metadata": {
+        "addresses": "Senftenberger Ring 34a"
+      },
+      "buildings": [],
+      "boundingBox": [13.3630482852,52.6028764889,13.3634747565,52.6030744121]
+    },
+    {
+      "id": "janitorApartment.senftenbergerRing40a",
+      "description": "Hausmeisterwohnung Senftenberger Ring 40a",
+      "metadata": {
+        "addresses": "Senftenberger Ring 40a"
+      },
+      "buildings": [],
+      "boundingBox": [13.3599784970,52.6049916968,13.3619713783,52.6064104661]
+    },
+    {
+      "id": "janitorApartment.senftenbergerRing42n",
+      "description": "Hausmeisterwohnung Senftenberger Ring 42n",
+      "metadata": {
+        "addresses": "Senftenberger Ring 42n"
+      },
+      "buildings": [],
+      "boundingBox": [13.3564299345,52.6062068568,13.3568523824,52.6064104661]
+    },
+    {
+      "id": "janitorApartment.senftenbergerRing95",
+      "description": "Hausmeisterwohnung Senftenberger Ring 95",
+      "metadata": {
+        "addresses": "Senftenberger Ring 95"
+      },
+      "buildings": [],
+      "boundingBox": [13.3535090089,52.6023706808,13.3538295329,52.6025629049]
+    },
+    {
+      "id": "janitorApartment.dannenwalderWeg184",
+      "description": "Hausmeisterwohnung Dannenwalder Weg 184",
+      "metadata": {
+        "addresses": "Dannenwalder Weg 184"
+      },
+      "buildings": [],
+      "boundingBox": [13.3610849082,52.5934345904,13.3613437414,52.5937237997]
+    },
+    {
       "id": "gesobau.familientreff",
       "description": "Gesobau Familientreff",
       "metadata": {
@@ -1323,17 +1422,17 @@
     {"name": "tenantCooperativeMax", "lon": 13.3548973014, "lat": 52.6059626131, "icon": "privatization-objects-V.svg"},
     {"name": "degewo1", "lon": 13.3516272738, "lat": 52.6017717281, "icon": "privatization-objects-VI.svg"},
     {"name": "degewo2", "lon": 13.3560885056, "lat": 52.5916649984, "icon": "privatization-objects-VII.svg"},
-    {"name": "janitorApartmentEichhorsterWeg44",     "description": "Eichhorster Weg 44",     "lon": 13.343263, "lat": 52.599128, "cssClass": "marker-circle", "icon": "gesobau.png"},
-    {"name": "janitorApartmentFinsterwalderStraße1", "description": "Finsterwalder Straße 1", "lon": 13.338920, "lat": 52.596196, "cssClass": "marker-circle", "icon": "gesobau.png"},
-    {"name": "janitorApartmentWilhelmsruherDamm97",  "description": "Wilhelmsruher Damm 97",  "lon": 13.361504, "lat": 52.596668, "cssClass": "marker-circle", "icon": "gesobau.png"},
-    {"name": "janitorApartmentWilhelmsruherDamm127", "description": "Wilhelmsruher Damm 127", "lon": 13.355345, "lat": 52.596274, "cssClass": "marker-circle", "icon": "gesobau.png"},
-    {"name": "janitorApartmentWilhelmsruherDamm173", "description": "Wilhelmsruher Damm 173", "lon": 13.350369, "lat": 52.596006, "cssClass": "marker-circle", "icon": "gesobau.png"},
-    {"name": "janitorApartmentSenftenbergerRing12",  "description": "Senftenberger Ring 12",  "lon": 13.358134, "lat": 52.599149, "cssClass": "marker-circle", "icon": "gesobau.png"},
-    {"name": "janitorApartmentSenftenbergerRing34a", "description": "Senftenberger Ring 34a", "lon": 13.363369, "lat": 52.603053, "cssClass": "marker-circle", "icon": "gesobau.png"},
-    {"name": "janitorApartmentSenftenbergerRing40a", "description": "Senftenberger Ring 40a", "lon": 13.361643, "lat": 52.605300, "cssClass": "marker-circle", "icon": "gesobau.png"},
-    {"name": "janitorApartmentSenftenbergerRing42n", "description": "Senftenberger Ring 42n", "lon": 13.356610, "lat": 52.606285, "cssClass": "marker-circle", "icon": "gesobau.png"},
-    {"name": "janitorApartmentSenftenbergerRing95",  "description": "Senftenberger Ring 95",  "lon": 13.353598, "lat": 52.602502, "cssClass": "marker-circle", "icon": "gesobau.png"},
-    {"name": "janitorApartmentDannenwalderWeg184",   "description": "Dannenwalder Weg 184",   "lon": 13.361209, "lat": 52.593627, "cssClass": "marker-circle", "icon": "gesobau.png"},
+    {"name": "janitorApartment.eichhorsterWeg44",     "description": "Eichhorster Weg 44",     "lon": 13.343263, "lat": 52.599128, "cssClass": "marker-circle", "icon": "gesobau.png"},
+    {"name": "janitorApartment.finsterwalderStraße1", "description": "Finsterwalder Straße 1", "lon": 13.338920, "lat": 52.596196, "cssClass": "marker-circle", "icon": "gesobau.png"},
+    {"name": "janitorApartment.wilhelmsruherDamm97",  "description": "Wilhelmsruher Damm 97",  "lon": 13.361504, "lat": 52.596668, "cssClass": "marker-circle", "icon": "gesobau.png"},
+    {"name": "janitorApartment.wilhelmsruherDamm127", "description": "Wilhelmsruher Damm 127", "lon": 13.355345, "lat": 52.596274, "cssClass": "marker-circle", "icon": "gesobau.png"},
+    {"name": "janitorApartment.wilhelmsruherDamm173", "description": "Wilhelmsruher Damm 173", "lon": 13.350369, "lat": 52.596006, "cssClass": "marker-circle", "icon": "gesobau.png"},
+    {"name": "janitorApartment.senftenbergerRing12",  "description": "Senftenberger Ring 12",  "lon": 13.358134, "lat": 52.599149, "cssClass": "marker-circle", "icon": "gesobau.png"},
+    {"name": "janitorApartment.senftenbergerRing34a", "description": "Senftenberger Ring 34a", "lon": 13.363369, "lat": 52.603053, "cssClass": "marker-circle", "icon": "gesobau.png"},
+    {"name": "janitorApartment.senftenbergerRing40a", "description": "Senftenberger Ring 40a", "lon": 13.361643, "lat": 52.605300, "cssClass": "marker-circle", "icon": "gesobau.png"},
+    {"name": "janitorApartment.senftenbergerRing42n", "description": "Senftenberger Ring 42n", "lon": 13.356610, "lat": 52.606285, "cssClass": "marker-circle", "icon": "gesobau.png"},
+    {"name": "janitorApartment.senftenbergerRing95",  "description": "Senftenberger Ring 95",  "lon": 13.353598, "lat": 52.602502, "cssClass": "marker-circle", "icon": "gesobau.png"},
+    {"name": "janitorApartment.dannenwalderWeg184",   "description": "Dannenwalder Weg 184",   "lon": 13.361209, "lat": 52.593627, "cssClass": "marker-circle", "icon": "gesobau.png"},
     {"name": "gesobau.familientreff",                "description": "Finsterwalder Straße 33",    "lon": 13.338725, "lat": 52.598481, "cssClass": "marker-rectangle-s", "icon": "gesobau-familientreff.svg"},
     {"name": "gesobau.viertelbox",                   "description": "Wilhelmsruher Damm",         "lon": 13.354391, "lat": 52.596228, "cssClass": "marker-rectangle-l", "icon": "gesobau-mieterservice-senioren-infothek-viertel-box.svg"},
     {"name": "gesobau.musterwohnungPflegeQuartier",  "description": "Finsterwalder Straße 27",    "lon": 13.338798, "lat": 52.597852, "cssClass": "marker-rectangle-m", "icon": "gesobau-musterwohnung-pflege-quartier.svg"},
